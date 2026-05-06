@@ -54,7 +54,7 @@ export default function ICP() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {audiences.map((aud, i) => (
-            <Link key={aud.href} to={aud.href} aria-label={`Learn more about FastTrackr for ${aud.title}`}>
+            <Link key={aud.href} to={aud.href}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function ICP() {
                 </div>
                 
                 <div className="relative z-10 mt-auto flex items-center font-semibold text-brandDeep group-hover:text-brandMint transition-colors">
-                  Learn more
+                  See FastTrackr for {aud.title}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>

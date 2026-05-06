@@ -63,10 +63,9 @@ export default function Beyond() {
                 </p>
                 <Link
                   to={card.href}
-                  aria-label={`Learn more about ${card.title}`}
                   className="inline-flex items-center font-medium text-brandDeep group-hover:text-brandMint transition-colors mt-auto"
                 >
-                  Learn more <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  Explore {card.title} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </motion.div>

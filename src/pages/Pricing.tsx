@@ -98,10 +98,10 @@ export default function Pricing() {
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
-                  Value-Based Enterprise Pricing
+                  Priced to your scope, not a seat count.
                 </h2>
                 <p className="text-white/80 text-lg leading-relaxed mb-8">
-                  We price based on the time we save you and the additional revenue we help you capture. Every firm's transition volume is different. We work with you to structure pricing that ties to your specific outcomes, AUM in transit, and integration timelines.
+                  Every firm's transition requirements and volume is different. We work with you to understand where FastTrackr can best support your transition, and to reflect scope and usage so you don't pay for anything you don't use.
                 </p>
                 <ul className="space-y-4 mb-8">
                   {transitionScopeBlocks.map((item) => (
@@ -113,7 +113,7 @@ export default function Pricing() {
                 </ul>
                 <Link to="/contact">
                   <button className="bg-brandMint text-brandDeep hover:bg-white px-8 py-4 rounded-full font-bold transition-colors duration-300 inline-flex items-center gap-2">
-                    Book a Pricing Call
+                    Book an Exploratory Call
                     <ArrowRight className="w-5 h-5" />
                   </button>
                 </Link>

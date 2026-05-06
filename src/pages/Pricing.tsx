@@ -84,7 +84,7 @@ export default function Pricing() {
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <div className="text-sm font-semibold text-brandMint uppercase tracking-wider mb-4">Advisor Transitions</div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
                   Priced to your scope, not a seat count.
                 </h2>
                 <p className="text-white/80 text-lg leading-relaxed mb-8">
@@ -98,11 +98,11 @@ export default function Pricing() {
                 </Link>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md">
-                <h3 className="text-xl font-bold mb-6">What's in scope</h3>
+              <div className="bg-white/[0.07] border border-white/15 rounded-2xl p-8 backdrop-blur-md">
+                <div className="text-xs font-semibold text-brandMint uppercase tracking-wider mb-4">What's in scope</div>
                 <ul className="space-y-4">
                   {transitionScopeBlocks.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-3 text-white">
                       <CheckCircle2 className="w-5 h-5 text-brandMint shrink-0" />
                       <span className="font-medium">{item}</span>
                     </li>

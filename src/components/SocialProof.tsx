@@ -13,11 +13,11 @@ export default function SocialProof() {
             {/* We'll duplicate the logos to create a seamless loop */}
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                <div className="text-2xl font-display font-bold text-gray-300">FIDELITY</div>
-                <div className="text-2xl font-display font-bold text-gray-300">CHARLES SCHWAB</div>
-                <div className="text-2xl font-display font-bold text-gray-300">LPL FINANCIAL</div>
-                <div className="text-2xl font-display font-bold text-gray-300">RAYMOND JAMES</div>
-                <div className="text-2xl font-display font-bold text-gray-300">PERSHING</div>
+                <div className="text-2xl font-display font-bold text-gray-500">FIDELITY</div>
+                <div className="text-2xl font-display font-bold text-gray-500">CHARLES SCHWAB</div>
+                <div className="text-2xl font-display font-bold text-gray-500">LPL FINANCIAL</div>
+                <div className="text-2xl font-display font-bold text-gray-500">RAYMOND JAMES</div>
+                <div className="text-2xl font-display font-bold text-gray-500">PERSHING</div>
               </React.Fragment>
             ))}
           </div>

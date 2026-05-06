@@ -83,7 +83,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
         {/* Podcast Block */}
         <div className="bg-bgCanvas rounded-2xl p-6 border border-gray-100 flex flex-col sm:flex-row items-center justify-between mb-16 gap-6">
           <div>
-            <h4 className="font-semibold text-textPrimary mb-1">Advisor Ally Podcast</h4>
+            <h3 className="font-semibold text-textPrimary mb-1">Advisor Ally Podcast</h3>
             <p className="text-sm text-textSecondary">Tune in to our podcast on advisor transitions, technology, and the future of wealth management.</p>
           </div>
           <div className="flex gap-4">
@@ -117,7 +117,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
 function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <h4 className="font-semibold text-textPrimary mb-4">{title}</h4>
+      <h3 className="font-semibold text-textPrimary mb-4">{title}</h3>
       <ul className="space-y-3 text-sm text-textSecondary">
         {links.map((link) => (
           <li key={link.label}>

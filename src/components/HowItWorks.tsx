@@ -131,7 +131,7 @@ function Step({ step, index, onActive }: { step: typeof steps[number]; index: nu
       }`}
     >
       <div className="flex gap-6">
-        <div className={`flex-shrink-0 text-5xl font-display font-bold transition-colors duration-500 ${isInView ? 'text-brandMint' : 'text-gray-200'}`}>
+        <div className={`flex-shrink-0 text-5xl font-display font-bold transition-colors duration-500 ${isInView ? 'text-brandMint' : 'text-gray-400'}`}>
           {step.number}
         </div>
         <div>

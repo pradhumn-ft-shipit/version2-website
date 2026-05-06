@@ -52,7 +52,6 @@ export default function Solution() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-brandDeep text-white p-6 rounded-2xl shadow-lg border border-brandDeepHover relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
               <p className="relative z-10 font-medium text-lg">
                 <span className="text-brandMint font-bold mr-2">The Difference:</span>
                 Every transition is different. We get that. The system flexes around your book, not the other way around.
@@ -78,7 +77,7 @@ export default function Solution() {
                     {cap.icon}
                   </div>
                   <div>
-                    <h4 className="text-xl font-display font-bold text-textPrimary mb-2">{cap.title}</h4>
+                    <h3 className="text-xl font-display font-bold text-textPrimary mb-2">{cap.title}</h3>
                     <p className="text-textSecondary leading-relaxed">{cap.description}</p>
                   </div>
                 </div>

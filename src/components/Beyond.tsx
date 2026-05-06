@@ -61,7 +61,11 @@ export default function Beyond() {
                 <p className="text-textSecondary leading-relaxed mb-8 flex-grow">
                   {card.description}
                 </p>
-                <Link to={card.href} className="inline-flex items-center font-medium text-brandDeep group-hover:text-brandMint transition-colors mt-auto">
+                <Link
+                  to={card.href}
+                  aria-label={`Learn more about ${card.title}`}
+                  className="inline-flex items-center font-medium text-brandDeep group-hover:text-brandMint transition-colors mt-auto"
+                >
                   Learn more <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

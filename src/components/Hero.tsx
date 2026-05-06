@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
-import { AnimatedText } from './ui/AnimatedText';
 import { ArrowDown, Activity } from 'lucide-react';
 
 export default function Hero() {
@@ -47,26 +46,23 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
-          {/* Content Column */}
+          {/* Content Column.
+              Headline + subhead render as plain text (no framer-motion) so
+              they paint immediately. The subhead was the LCP element and the
+              prior animation delay (0.8s + 0.6s) blocked LCP for ~2.7s. */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <AnimatedText 
-              text="Advisor transitions, finally built right."
-              className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-textPrimary leading-[1.1] tracking-tight mb-6"
-            />
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-textPrimary leading-[1.1] tracking-tight mb-6">
+              Advisor transitions, finally built right.
+            </h1>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-lg sm:text-xl text-textSecondary max-w-2xl leading-relaxed mb-10"
-            >
+            <p className="text-lg sm:text-xl text-textSecondary max-w-2xl leading-relaxed mb-10">
               Move advisor books in weeks, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.
-            </motion.p>
+            </p>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-wrap items-center gap-6 mb-16"
             >
               <Link to="/contact">
@@ -83,10 +79,10 @@ export default function Hero() {
             </motion.div>
 
             {/* Live Activity Strip */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.5 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="w-full max-w-xl border-y border-gray-200 py-3 flex items-center gap-3 text-sm text-textTertiary"
             >
               <Activity className="w-4 h-4 text-brandMint animate-pulse" />

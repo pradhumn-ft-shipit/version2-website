@@ -54,7 +54,7 @@ export default function ICP() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {audiences.map((aud, i) => (
-            <Link key={aud.href} to={aud.href}>
+            <Link key={aud.href} to={aud.href} aria-label={`Learn more about FastTrackr for ${aud.title}`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -118,7 +118,7 @@ export default function PainSection() {
           {/* Medium Tile 1 */}
           <BentoCard className="md:col-span-4">
             <div>
-              <h4 className="text-xl font-display font-bold text-textPrimary mb-2">Tracked in spreadsheets.</h4>
+              <h3 className="text-xl font-display font-bold text-textPrimary mb-2">Tracked in spreadsheets.</h3>
               <p className="text-textSecondary">
                 Hundreds of accounts. Ops teams chasing status and inputs across emails, PDFs, and calls. One mis-keyed cell and the picture changes.
               </p>
@@ -128,7 +128,7 @@ export default function PainSection() {
           {/* Medium Tile 2 */}
           <BentoCard className="md:col-span-4">
             <div>
-              <h4 className="text-xl font-display font-bold text-textPrimary mb-2">Burned-out teams.</h4>
+              <h3 className="text-xl font-display font-bold text-textPrimary mb-2">Burned-out teams.</h3>
               <p className="text-textSecondary">
                 Transition season is overtime season. Mistakes pile up. So does the resentment.
               </p>
@@ -138,7 +138,7 @@ export default function PainSection() {
           {/* Medium Tile 3 */}
           <BentoCard className="md:col-span-4">
             <div>
-              <h4 className="text-xl font-display font-bold text-textPrimary mb-2">NIGO means rework.</h4>
+              <h3 className="text-xl font-display font-bold text-textPrimary mb-2">NIGO means rework.</h3>
               <p className="text-textSecondary">
                 Even one missing field can lead to a rejection. Multiply that by hundreds.
               </p>

@@ -19,14 +19,28 @@ const whoWeServeLinks = [
 const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Advisor Ally Podcast', href: '/resources/podcast' },
+  { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
 ];
 
 const companyLinks = [
-  { label: 'About', href: '/about' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Contact', href: '/contact' },
   { label: 'Book a Demo', href: '/contact' },
 ];
+
+const podcastLinks = {
+  youtube: 'https://www.youtube.com/playlist?list=PL62WoDwasFkKSIN6l1dzcyZUOkCCV4bqV',
+  apple: 'https://podcasts.apple.com/us/podcast/advisor-ally/id1814318489',
+  spotify: 'https://open.spotify.com/show/2I2qpkqczILncDxf3haRhZ',
+};
+
+const socialLinks = {
+  linkedin: 'https://www.linkedin.com/company/fasttrackr-ai/',
+  twitter: 'https://x.com/Fasttrackr_AI',
+  youtube: 'https://www.youtube.com/channel/UCnzPn4iuHJwjTj9bM_1FcbA',
+};
+
+const investorUrl = 'https://gai.ventures/';
 
 export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
   return (
@@ -90,9 +104,9 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
             <p className="text-sm text-textSecondary">Tune in to our podcast on advisor transitions, technology, and the future of wealth management.</p>
           </div>
           <div className="flex gap-4">
-            <Link to="/resources/podcast" className="text-brandDeep font-medium text-sm hover:underline">YouTube</Link>
-            <Link to="/resources/podcast" className="text-brandDeep font-medium text-sm hover:underline">Apple Podcasts</Link>
-            <Link to="/resources/podcast" className="text-brandDeep font-medium text-sm hover:underline">Spotify</Link>
+            <a href={podcastLinks.youtube} target="_blank" rel="noreferrer" className="text-brandDeep font-medium text-sm hover:underline">YouTube</a>
+            <a href={podcastLinks.apple} target="_blank" rel="noreferrer" className="text-brandDeep font-medium text-sm hover:underline">Apple Podcasts</a>
+            <a href={podcastLinks.spotify} target="_blank" rel="noreferrer" className="text-brandDeep font-medium text-sm hover:underline">Spotify</a>
           </div>
         </div>
 
@@ -105,10 +119,18 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
           </div>
           <div className="flex items-center gap-6 text-sm text-textSecondary">
             <div className="flex gap-4">
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-brandDeep">LinkedIn</a>
-              <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-brandDeep">X</a>
+              <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" className="hover:text-brandDeep">LinkedIn</a>
+              <a href={socialLinks.twitter} target="_blank" rel="noreferrer" className="hover:text-brandDeep">X</a>
+              <a href={socialLinks.youtube} target="_blank" rel="noreferrer" className="hover:text-brandDeep">YouTube</a>
             </div>
-            <span className="text-xs border border-gray-200 px-2 py-1 rounded">Backed by gAI Ventures</span>
+            <a
+              href={investorUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs border border-gray-200 px-2 py-1 rounded hover:border-brandMint hover:text-brandDeep transition-colors"
+            >
+              Backed by gAI Ventures
+            </a>
           </div>
         </div>
 

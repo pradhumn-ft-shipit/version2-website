@@ -15,18 +15,25 @@ const SolClientOnboarding = lazy(() => import('./pages/solutions/SolClientOnboar
 const SolMeetingAssistant = lazy(() => import('./pages/solutions/SolMeetingAssistant'));
 const SolDocumentIntelligence = lazy(() => import('./pages/solutions/SolDocumentIntelligence'));
 const Pricing = lazy(() => import('./pages/Pricing'));
-const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
+const PrivacyTransitions = lazy(() => import('./pages/legal/PrivacyTransitions'));
+const TermsTransitions = lazy(() => import('./pages/legal/TermsTransitions'));
+const ClientPrivacyNotice = lazy(() => import('./pages/legal/ClientPrivacyNotice'));
+const ClientDataConsent = lazy(() => import('./pages/legal/ClientDataConsent'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Podcast = lazy(() => import('./pages/Podcast'));
+const Resources = lazy(() => import('./pages/Resources'));
+const ZoomHelp = lazy(() => import('./pages/ZoomHelp'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) return;
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -70,15 +77,33 @@ function App() {
             {/* Resources */}
             <Route path="/resources/blog" element={<Blog />} />
             <Route path="/resources/podcast" element={<Podcast />} />
+            <Route path="/resources-for-financial-advisors" element={<Resources />} />
 
             {/* Core */}
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Removed About — redirect any inbound traffic to homepage */}
+            <Route path="/about" element={<Navigate to="/" replace />} />
+
+            {/* Pages that should redirect to contact */}
+            <Route path="/fpa" element={<Navigate to="/contact" replace />} />
+            <Route path="/aon" element={<Navigate to="/contact" replace />} />
+            <Route path="/onepagecrm" element={<Navigate to="/contact" replace />} />
 
             {/* Legal */}
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/tos" element={<Terms />} />
+            <Route path="/privacy-policy-transitions" element={<PrivacyTransitions />} />
+            <Route path="/tos-transitions" element={<TermsTransitions />} />
+            <Route path="/client-privacy-notice" element={<ClientPrivacyNotice />} />
+            <Route path="/client-data-consent-acknowledgment" element={<ClientDataConsent />} />
+
+            {/* Help */}
+            <Route path="/zoom-help-documentation" element={<ZoomHelp />} />
+
+            {/* 404 catch-all */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </div>

@@ -1,0 +1,5 @@
+# 301 Redirects served by Cloudflare Pages / Workers Static Assets.
+
+/fpa            /contact        301
+/aon            /contact        301
+/onepagecrm     /contact        301

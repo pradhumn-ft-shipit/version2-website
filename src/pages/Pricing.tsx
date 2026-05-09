@@ -32,18 +32,21 @@ const moduleCards = [
     title: 'Meeting Assistant',
     description: 'Per-seat, free tier to start. For advisors and teams who want meeting prep, notes, and follow-ups handled. Start free, scale up as your team grows.',
     href: '/solutions/meeting-assistant',
+    interest: 'meeting-assistant',
   },
   {
     icon: <FileSearch className="w-6 h-6 text-brandDeep" />,
     title: 'Document Intelligence',
     description: 'Per-seat, pay for what you use. For advisors and teams turning brokerage statements, tax docs, and equity comp into clean, structured data. Free tier to start.',
     href: '/solutions/document-intelligence',
+    interest: 'document-intelligence',
   },
   {
     icon: <UserPlus className="w-6 h-6 text-brandDeep" />,
     title: 'Client Onboarding',
     description: 'Per-seat for advisors. Custom for firms. For advisors onboarding new clients faster, and firms running onboarding at volume. Pricing flexes to either.',
     href: '/solutions/client-onboarding',
+    interest: 'client-onboarding',
   },
 ];
 
@@ -111,7 +114,7 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact">
+                <Link to="/contact?interest=advisor-transitions">
                   <button className="bg-brandMint text-brandDeep hover:bg-white px-8 py-4 rounded-full font-bold transition-colors duration-300 inline-flex items-center gap-2">
                     Book an Exploratory Call
                     <ArrowRight className="w-5 h-5" />
@@ -157,7 +160,7 @@ export default function Pricing() {
                 </div>
                 <h3 className="text-2xl font-display font-bold text-textPrimary mb-4">{card.title}</h3>
                 <p className="text-textSecondary leading-relaxed mb-8 flex-grow">{card.description}</p>
-                <Link to="/contact">
+                <Link to={`/contact?interest=${card.interest}`}>
                   <button className="w-full bg-brandDeep text-white hover:bg-brandMint hover:text-brandDeep px-6 py-3 rounded-xl font-bold transition-colors">
                     Talk to Us
                   </button>

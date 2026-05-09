@@ -62,11 +62,14 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
 
           <div className="col-span-2 lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-brandDeep flex items-center justify-center">
-                <span className="text-brandMint font-display font-bold text-xl">F</span>
-              </div>
-              <span className="font-display font-bold text-xl text-textPrimary tracking-tight">FastTrackr AI</span>
+            <Link to="/" className="inline-flex items-center mb-6">
+              <img
+                src="/logo.png"
+                alt="FastTrackr AI"
+                width={180}
+                height={40}
+                className="h-9 w-auto"
+              />
             </Link>
             <p className="text-sm text-textSecondary italic">
               Reimagining wealth management.<br/>One complex workflow at a time.

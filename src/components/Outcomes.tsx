@@ -81,56 +81,66 @@ export default function Outcomes() {
           </p>
         </motion.div>
 
-        {/* Horizontal Pill Visual */}
-        <div className="max-w-4xl mx-auto relative mt-24">
-          <motion.div 
-            className="relative bg-white rounded-full border border-gray-100 shadow-[0_10px_50px_rgba(45,212,160,0.08)] py-12 px-8 md:px-16 flex items-center justify-between overflow-visible min-h-[300px]"
+        {/* Outcome Loop Visual */}
+        <div className="max-w-3xl mx-auto relative mt-24">
+          <motion.div
+            className="relative bg-white rounded-3xl border border-gray-100 shadow-[0_10px_50px_rgba(45,212,160,0.08)] px-4 py-6 sm:px-8 sm:py-8"
             initial={{ scale: 0.95, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Background dashed circle lines */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[320px] h-[320px] rounded-full border border-brandMint/30 border-dashed absolute" />
-              <div className="w-[320px] h-[320px] rounded-full border border-brandMint/20 border-dashed absolute rotate-45" />
-              {/* Nodes on dashed circle */}
-              <div className="w-3 h-3 bg-brandMint/40 rounded-full absolute -top-[160px]" />
-              <div className="w-3 h-3 bg-brandMint/40 rounded-full absolute -bottom-[160px]" />
-              <div className="w-3 h-3 bg-brandMint/40 rounded-full absolute top-1/2 -right-[160px] -translate-y-1/2" />
-            </div>
+            <div className="relative mx-auto w-full max-w-[640px] aspect-[5/3]">
+              {/* Dashed orbit (ellipse) */}
+              <div className="absolute inset-x-[28%] inset-y-[14%] rounded-full border border-dashed border-brandMint/50" aria-hidden />
 
-            {/* Left Content */}
-            <div className="relative z-10 w-1/3 text-center md:text-right pr-4 md:pr-12">
-              <div className="font-display font-bold text-textPrimary text-lg mb-1">Smoother next transition</div>
-              <div className="text-sm text-textSecondary">System learns patterns</div>
-            </div>
+              {/* Orbiting dot, traces the elliptical orbit */}
+              <motion.div
+                className="absolute inset-x-[28%] inset-y-[14%] pointer-events-none"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 12, ease: 'linear', repeat: Infinity }}
+                aria-hidden
+              >
+                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-brandMint shadow-[0_0_16px_rgba(45,212,160,0.9)]" />
+              </motion.div>
 
-            {/* Center Core */}
-            <div className="relative z-20 shrink-0">
-              <div className="absolute inset-0 bg-brandMint/20 blur-2xl rounded-full scale-150" />
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-brandDeep flex flex-col items-center justify-center shadow-2xl relative z-10">
-                <span className="text-brandMint font-display font-bold text-5xl mb-1">F</span>
+              {/* Center FT logomark */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-brandMint/25 blur-2xl rounded-full scale-150" aria-hidden />
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center shadow-2xl ring-1 ring-brandMint/20">
+                    <img
+                      src="/logomark-classic.png"
+                      alt="FastTrackr AI"
+                      className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
+                    />
+                  </div>
+                </div>
               </div>
-              
-              {/* Top/Bottom Floating text */}
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 text-center w-40 font-display font-bold text-textPrimary text-lg">
+
+              {/* Top label */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 sm:w-48 text-center font-display font-bold text-textPrimary text-base sm:text-lg md:text-xl">
                 Faster transition
               </div>
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-center w-40 font-display font-bold text-textPrimary text-lg">
-                Retained AUM
+
+              {/* Right label */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 sm:w-32 md:w-40 text-center font-display font-bold text-textPrimary text-base sm:text-lg md:text-xl">
+                Better client experience
+              </div>
+
+              {/* Bottom label */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 sm:w-48 text-center font-display font-bold text-textPrimary text-base sm:text-lg md:text-xl">
+                Higher retained AUM
+              </div>
+
+              {/* Left label */}
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 sm:w-32 md:w-40 text-center font-display font-bold text-textPrimary text-base sm:text-lg md:text-xl">
+                Improved next transition
               </div>
             </div>
-
-            {/* Right Content */}
-            <div className="relative z-10 w-1/3 text-center md:text-left pl-4 md:pl-12">
-              <div className="font-display font-bold text-textPrimary text-lg mb-1">Better client experience</div>
-              <div className="text-sm text-textSecondary">No redundant forms</div>
-            </div>
-
           </motion.div>
-          
-          <p className="text-center text-sm text-textTertiary mt-24">
+
+          <p className="text-center text-sm text-textTertiary mt-10">
             Every transition makes the next one easier. The system learns. So does your team.
           </p>
         </div>

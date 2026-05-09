@@ -49,7 +49,7 @@ export default function SolAdvisorTransitions() {
               <p className="text-xl text-textSecondary leading-relaxed mb-10 max-w-3xl mx-auto">
                 Move advisor books in weeks, not months. Purpose-built for advisor transitions and shaped by the consultants, operators, and RIA founders who do this work every day.
               </p>
-              <Link to="/contact">
+              <Link to="/contact?interest=advisor-transitions">
                 <button className="bg-brandDeep text-brandMint hover:bg-brandDeepHover px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300 shadow-xl">
                   Book a Demo
                 </button>
@@ -197,7 +197,7 @@ export default function SolAdvisorTransitions() {
         </section>
 
         <PageFAQ faqs={faqs} />
-        <PageCTA headline="Book a 20-minute walkthrough. We'll show you exactly how a transition would run for your book." />
+        <PageCTA headline="Book a 20-minute walkthrough. We'll show you exactly how a transition would run for your book." link="/contact?interest=advisor-transitions" />
 
       </main>
       

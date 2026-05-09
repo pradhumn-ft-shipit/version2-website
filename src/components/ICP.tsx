@@ -77,7 +77,7 @@ export default function ICP() {
                 </div>
                 
                 <div className="relative z-10 mt-auto flex items-center font-semibold text-brandDeep group-hover:text-brandMint transition-colors">
-                  See FastTrackr for {aud.title}
+                  How it works for you
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>

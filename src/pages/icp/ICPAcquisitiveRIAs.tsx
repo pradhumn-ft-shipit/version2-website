@@ -189,7 +189,7 @@ export default function ICPAcquisitiveRIAs() {
         </section>
 
         <PageFAQ faqs={faqs} />
-        <PageCTA headline="Make integration your competitive advantage." />
+        <PageCTA headline="Make integration your competitive advantage." link="/contact?interest=advisor-transitions&company=ria" />
 
       </main>
       

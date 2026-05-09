@@ -46,11 +46,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-            <span aria-hidden className="w-8 h-8 rounded-lg bg-brandDeep flex items-center justify-center">
-              <span className="text-brandMint font-display font-bold text-xl leading-none">F</span>
-            </span>
-            <span className="font-display font-bold text-xl text-textPrimary tracking-tight">FastTrackr AI</span>
+          <Link to="/" className="flex-shrink-0 flex items-center cursor-pointer">
+            <img
+              src="/logo.png"
+              alt="FastTrackr AI"
+              width={180}
+              height={40}
+              className="h-9 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}

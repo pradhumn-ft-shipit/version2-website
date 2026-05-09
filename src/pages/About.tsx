@@ -32,7 +32,7 @@ export default function About() {
             <div className="text-lg text-textSecondary space-y-6 leading-relaxed">
               <p className="font-semibold text-2xl text-brandDeep">Wealth management is in transition.</p>
               <p>
-                Advisors are moving firms at record rates. RIAs are growing through acquisition. The advisor population is aging, and a generation of practices will change hands over the next decade. The plumbing underneath all of this—the repapering, the data migration, the operational handoffs—wasn't built for the volume the industry is now running.
+                Advisors are moving firms at record rates. RIAs are growing through acquisition. The advisor population is aging, and a generation of practices will change hands over the next decade. The plumbing underneath all of this (the repapering, the data migration, the operational handoffs) wasn't built for the volume the industry is now running.
               </p>
               <p>
                 We're building what comes next. AI that actually understands the work. Workflows shaped by the people who do it. A system that gets better with every transition it runs.

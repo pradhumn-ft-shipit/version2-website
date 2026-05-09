@@ -25,7 +25,7 @@ export default function SolClientOnboarding() {
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 The same technology built to handle thousands of account openings during advisor transitions, now accelerating your day-to-day client onboarding.
               </p>
-              <Link to="/contact">
+              <Link to="/contact?interest=client-onboarding">
                 <button className="bg-brandDeep text-brandMint hover:bg-brandDeepHover px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300 shadow-xl">
                   Book a Demo
                 </button>
@@ -162,7 +162,7 @@ export default function SolClientOnboarding() {
           </div>
         </section>
 
-        <PageCTA headline="Start onboarding clients the right way." />
+        <PageCTA headline="Start onboarding clients the right way." link="/contact?interest=client-onboarding" />
 
       </main>
       

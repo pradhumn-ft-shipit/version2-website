@@ -188,7 +188,7 @@ export default function ICPCustodians() {
         </section>
 
         <PageFAQ faqs={faqs} />
-        <PageCTA headline="Let's make your platform the easiest place to land." />
+        <PageCTA headline="Let's make your platform the easiest place to land." link="/contact?interest=advisor-transitions&company=custodian" />
 
       </main>
       

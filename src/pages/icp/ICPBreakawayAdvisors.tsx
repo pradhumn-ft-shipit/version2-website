@@ -179,7 +179,7 @@ export default function ICPBreakawayAdvisors() {
         </section>
 
         <PageFAQ faqs={faqs} />
-        <PageCTA headline="Make this the smoothest move of your career." />
+        <PageCTA headline="Make this the smoothest move of your career." link="/contact?interest=advisor-transitions&company=breakaway-advisor" />
 
       </main>
       

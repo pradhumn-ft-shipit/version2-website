@@ -1,10 +1,10 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
-// Eagerly loaded — first paint of the marketing site is the homepage
+// Eagerly loaded: first paint of the marketing site is the homepage
 import Home from './pages/Home';
 
-// Code-split everything else — these load on demand
+// Code-split everything else; these load on demand
 const ICPTransitionConsultants = lazy(() => import('./pages/icp/ICPTransitionConsultants'));
 const ICPBreakawayAdvisors = lazy(() => import('./pages/icp/ICPBreakawayAdvisors'));
 const ICPAcquisitiveRIAs = lazy(() => import('./pages/icp/ICPAcquisitiveRIAs'));

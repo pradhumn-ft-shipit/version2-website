@@ -29,12 +29,12 @@ export default function SolDocumentIntelligence() {
                 Brokerage statements, tax documents, equity comp, bank docs, extracted, organized, and ready for analysis in minutes.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact">
+                <Link to="/contact?interest=document-intelligence">
                   <button className="bg-brandDeep text-brandMint hover:bg-brandDeepHover px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300 shadow-xl">
                     Try for Free
                   </button>
                 </Link>
-                <Link to="/contact">
+                <Link to="/contact?interest=document-intelligence">
                   <button className="bg-white border-2 border-gray-200 text-textPrimary hover:border-brandDeep px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300">
                     Book a Demo
                   </button>
@@ -114,7 +114,7 @@ export default function SolDocumentIntelligence() {
           </div>
         </section>
 
-        <PageCTA headline="Upload your first statement for free today." />
+        <PageCTA headline="Upload your first statement for free today." link="/contact?interest=document-intelligence" />
 
       </main>
       

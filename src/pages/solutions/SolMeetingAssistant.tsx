@@ -29,12 +29,12 @@ export default function SolMeetingAssistant() {
                 Pre-meeting prep, in-meeting notes, post-meeting follow-ups, handled. So you can focus on the conversation.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact">
+                <Link to="/contact?interest=meeting-assistant">
                   <button className="bg-brandDeep text-brandMint hover:bg-brandDeepHover px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300 shadow-xl">
                     Try for Free
                   </button>
                 </Link>
-                <Link to="/contact">
+                <Link to="/contact?interest=meeting-assistant">
                   <button className="bg-white border-2 border-gray-200 text-textPrimary hover:border-brandDeep px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300">
                     Book a Demo
                   </button>
@@ -114,7 +114,7 @@ export default function SolMeetingAssistant() {
           </div>
         </section>
 
-        <PageCTA headline="Try the Meeting Assistant for free today." />
+        <PageCTA headline="Try the Meeting Assistant for free today." link="/contact?interest=meeting-assistant" />
 
       </main>
       

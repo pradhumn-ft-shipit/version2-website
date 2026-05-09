@@ -189,7 +189,7 @@ export default function ICPTransitionConsultants() {
         </section>
 
         <PageFAQ faqs={faqs} />
-        <PageCTA headline="Let's see how many more deals your team could take on." />
+        <PageCTA headline="Let's see how many more deals your team could take on." link="/contact?interest=advisor-transitions&company=transition-consultant" />
 
       </main>
       

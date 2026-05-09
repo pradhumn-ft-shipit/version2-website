@@ -183,7 +183,7 @@ export default function ICPIBDs() {
         </section>
 
         <PageFAQ faqs={faqs} />
-        <PageCTA headline="Make your transition experience the reason advisors say yes." />
+        <PageCTA headline="Make your transition experience the reason advisors say yes." link="/contact?interest=advisor-transitions&company=broker-dealer" />
 
       </main>
       

@@ -71,4 +71,82 @@
   .legal-prose .callout-warning {
     @apply bg-brandMint/5 border border-brandMint/30 rounded-2xl p-5 my-6;
   }
+
+  .blog-prose {
+    @apply text-base md:text-lg text-textSecondary leading-relaxed;
+  }
+  .blog-prose > * + * {
+    @apply mt-5;
+  }
+  .blog-prose h1,
+  .blog-prose h2 {
+    @apply text-2xl md:text-3xl font-display font-bold text-textPrimary mt-12 mb-4 tracking-tight;
+  }
+  .blog-prose h3 {
+    @apply text-xl md:text-2xl font-display font-semibold text-textPrimary mt-10 mb-3 tracking-tight;
+  }
+  .blog-prose h4 {
+    @apply text-lg font-display font-semibold text-textPrimary mt-8 mb-2 tracking-tight;
+  }
+  .blog-prose p {
+    @apply leading-relaxed;
+  }
+  .blog-prose strong {
+    @apply text-textPrimary font-semibold;
+  }
+  .blog-prose em {
+    @apply italic;
+  }
+  .blog-prose a {
+    @apply text-brandDeep font-medium underline decoration-brandMint/60 underline-offset-2 hover:decoration-brandMint hover:text-brandMint transition-colors;
+  }
+  .blog-prose ul {
+    @apply list-disc pl-6 space-y-2 marker:text-brandMint;
+  }
+  .blog-prose ol {
+    @apply list-decimal pl-6 space-y-2 marker:text-brandMint;
+  }
+  .blog-prose li {
+    @apply leading-relaxed;
+  }
+  .blog-prose li > ul,
+  .blog-prose li > ol {
+    @apply mt-2;
+  }
+  .blog-prose blockquote {
+    @apply border-l-4 border-brandMint bg-bgCanvas px-5 py-4 my-6 rounded-r-lg text-textSecondary italic;
+  }
+  .blog-prose img {
+    @apply rounded-2xl my-8 w-full h-auto border border-gray-100;
+  }
+  .blog-prose figure {
+    @apply my-8;
+  }
+  .blog-prose figcaption {
+    @apply text-sm text-textTertiary text-center mt-3;
+  }
+  .blog-prose hr {
+    @apply my-10 border-gray-100;
+  }
+  .blog-prose code {
+    @apply font-mono text-sm bg-bgCanvas border border-gray-100 px-1.5 py-0.5 rounded;
+  }
+  .blog-prose pre {
+    @apply bg-bgCanvas border border-gray-100 rounded-2xl p-5 overflow-x-auto my-6 text-sm;
+  }
+  .blog-prose pre code {
+    @apply bg-transparent border-0 p-0;
+  }
+  .blog-prose table {
+    @apply w-full text-sm border-collapse my-6;
+  }
+  .blog-prose th {
+    @apply text-left font-semibold text-textPrimary border-b border-gray-200 px-3 py-2 align-top;
+  }
+  .blog-prose td {
+    @apply border-b border-gray-100 px-3 py-2 align-top;
+  }
+  .blog-prose iframe {
+    @apply w-full aspect-video rounded-2xl my-6;
+  }
 }

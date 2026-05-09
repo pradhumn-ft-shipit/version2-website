@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run blog:build && vite",
     "dev:cf": "npm run build && wrangler dev",
-    "build": "tsc -b && vite build",
+    "blog:build": "node scripts/build-blog-data.mjs",
+    "build": "npm run blog:build && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy"

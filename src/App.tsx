@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 
 // Eagerly loaded: first paint of the marketing site is the homepage
 import Home from './pages/Home';
@@ -23,10 +23,16 @@ const TermsTransitions = lazy(() => import('./pages/legal/TermsTransitions'));
 const ClientPrivacyNotice = lazy(() => import('./pages/legal/ClientPrivacyNotice'));
 const ClientDataConsent = lazy(() => import('./pages/legal/ClientDataConsent'));
 const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Podcast = lazy(() => import('./pages/Podcast'));
 const Resources = lazy(() => import('./pages/Resources'));
 const ZoomHelp = lazy(() => import('./pages/ZoomHelp'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+function BlogPostRedirect() {
+  const { slug } = useParams<{ slug: string }>();
+  return <Navigate to={`/blog/${slug ?? ''}`} replace />;
+}
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -76,6 +82,9 @@ function App() {
 
             {/* Resources */}
             <Route path="/resources/blog" element={<Blog />} />
+            <Route path="/blog" element={<Navigate to="/resources/blog" replace />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/resources/blog/:slug" element={<BlogPostRedirect />} />
             <Route path="/resources/podcast" element={<Podcast />} />
             <Route path="/resources-for-financial-advisors" element={<Resources />} />
 

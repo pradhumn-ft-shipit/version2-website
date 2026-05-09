@@ -1,4 +1,4 @@
-interface Env {
+export interface ContactEnv {
   SLACK_WEBHOOK_URL: string;
 }
 
@@ -37,7 +37,7 @@ const formatTimestamp = () =>
     timeStyle: 'short',
   }) + ' PT';
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export async function handleContact(request: Request, env: ContactEnv): Promise<Response> {
   let payload: ContactPayload;
   try {
     payload = await request.json();
@@ -129,4 +129,4 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   }
 
   return json({ ok: true });
-};
+}

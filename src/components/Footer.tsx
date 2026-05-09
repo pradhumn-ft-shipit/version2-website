@@ -18,8 +18,6 @@ const whoWeServeLinks = [
 
 const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
-  { label: 'Advisor Ally Podcast', href: '/resources/podcast' },
-  { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
 ];
 
 const companyLinks = [

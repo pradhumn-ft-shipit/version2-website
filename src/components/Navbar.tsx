@@ -21,7 +21,6 @@ const whoWeServeItems = [
 
 const resourcesItems = [
   { label: 'Blog', href: '/resources/blog' },
-  { label: 'Advisor Ally Podcast', href: '/resources/podcast' },
 ];
 
 export default function Navbar() {

@@ -24,7 +24,6 @@ const ClientPrivacyNotice = lazy(() => import('./pages/legal/ClientPrivacyNotice
 const ClientDataConsent = lazy(() => import('./pages/legal/ClientDataConsent'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
-const Podcast = lazy(() => import('./pages/Podcast'));
 const Resources = lazy(() => import('./pages/Resources'));
 const ZoomHelp = lazy(() => import('./pages/ZoomHelp'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -85,7 +84,7 @@ function App() {
             <Route path="/blog" element={<Navigate to="/resources/blog" replace />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/resources/blog/:slug" element={<BlogPostRedirect />} />
-            <Route path="/resources/podcast" element={<Podcast />} />
+            <Route path="/resources/podcast" element={<Navigate to="/resources/blog" replace />} />
             <Route path="/resources-for-financial-advisors" element={<Resources />} />
 
             {/* Core */}

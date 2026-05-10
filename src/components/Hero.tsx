@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
-import { ArrowDown, Activity } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
+// Live Activity Strip — temporarily hidden. To restore: re-add `useEffect, useState`
+// to the react import, re-add `Activity` to the lucide-react import, restore the
+// count state + effect below, and uncomment the JSX block in the hero column.
 
 export default function Hero() {
-  const [count, setCount] = useState(247);
-
-  useEffect(() => {
-    // Simulate live incrementing counter
-    const interval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        setCount(c => c + 1);
-      }
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  // const [count, setCount] = useState(247);
+  //
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (Math.random() > 0.7) {
+  //       setCount(c => c + 1);
+  //     }
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <section className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
@@ -78,7 +79,8 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Live Activity Strip */}
+            {/* Live Activity Strip — temporarily hidden, uncomment to restore */}
+            {/*
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -88,6 +90,7 @@ export default function Hero() {
               <Activity className="w-4 h-4 text-brandMint animate-pulse" />
               <span>Live: <strong className="text-textPrimary tabular-nums">{count}</strong> households moving through FastTrackr today</span>
             </motion.div>
+            */}
           </div>
 
           {/* Visual Column */}

@@ -60,6 +60,7 @@ function matches(article: Article, q: string) {
 
 export default function Resources() {
   const [posts, setPosts] = useState<BlogIndexEntry[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const [activeId, setActiveId] = useState<string>('');
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -70,8 +71,8 @@ export default function Resources() {
       .then((data) => {
         if (!cancelled) setPosts(data.posts);
       })
-      .catch(() => {
-        if (!cancelled) setPosts([]);
+      .catch((err) => {
+        if (!cancelled) setError(err?.message ?? 'Failed to load articles');
       });
     return () => {
       cancelled = true;
@@ -285,7 +286,13 @@ export default function Resources() {
 
             {/* Main content */}
             <div className="min-w-0">
-              {posts === null ? (
+              {error ? (
+                <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-12 text-center">
+                  <p className="text-textSecondary">
+                    We couldn't load articles right now. Please refresh, or come back in a moment.
+                  </p>
+                </div>
+              ) : posts === null ? (
                 <div className="space-y-12">
                   {Array.from({ length: 2 }).map((_, i) => (
                     <div key={i} className="animate-pulse">

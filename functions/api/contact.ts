@@ -130,3 +130,7 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
 
   return json({ ok: true });
 }
+
+export const onRequestPost: PagesFunction<ContactEnv> = ({ request, env }) =>
+  handleContact(request, env);
+

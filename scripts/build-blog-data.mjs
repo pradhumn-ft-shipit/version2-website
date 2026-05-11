@@ -136,14 +136,13 @@ function main() {
     return byDate !== 0 ? byDate : a.slug.localeCompare(b.slug);
   });
 
-  const indexPayload = JSON.stringify({ count: index.length, posts: index });
-
-  // Primary path used by src/lib/blog.ts since 2026-05-11. Renamed from
-  // index.json to sidestep a Cloudflare Pages asset state that 500s on the
-  // old path. Keep index.json written too as a fallback for cached clients
-  // during the transition.
-  fs.writeFileSync(path.join(OUT_DIR, 'posts-list.json'), indexPayload);
-  fs.writeFileSync(path.join(OUT_DIR, 'index.json'), indexPayload);
+  // index.json is bundled into the Pages Function at functions/api/blog-index.ts
+  // (served at /api/blog-index). It is not fetched directly over HTTP by the
+  // frontend; keep it on disk as the source of truth the function imports.
+  fs.writeFileSync(
+    path.join(OUT_DIR, 'index.json'),
+    JSON.stringify({ count: index.length, posts: index })
+  );
 
   console.log(
     `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`

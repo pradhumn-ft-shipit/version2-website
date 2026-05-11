@@ -129,9 +129,10 @@ export default function Blog() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-textTertiary text-sm">
-                      No image
-                    </div>
+                    <div
+                      aria-hidden
+                      className="w-full h-full bg-gradient-to-br from-bgCanvas via-bgTint to-brandMint/20"
+                    />
                   )}
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -187,9 +188,10 @@ export default function Blog() {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-textTertiary text-sm">
-                              No image
-                            </div>
+                            <div
+                              aria-hidden
+                              className="w-full h-full bg-gradient-to-br from-bgCanvas via-bgTint to-brandMint/20"
+                            />
                           )}
                         </div>
                         <div className="p-6">

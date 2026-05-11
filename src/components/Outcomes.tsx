@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Zap, ShieldCheck, TrendingUp, CalendarX2, ArrowRight } from 'lucide-react';
 
 const stats = [
@@ -38,20 +38,20 @@ export default function Outcomes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center mb-16">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight mb-6"
           >
             What changes when transitions stop being chaos.
-          </motion.h2>
+          </m.h2>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, i) => (
-            <motion.div
+            <m.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -66,11 +66,11 @@ export default function Outcomes() {
                 {typeof stat.headline === 'string' ? <span className="text-3xl">{stat.headline}</span> : stat.headline}
               </div>
               <p className="text-textSecondary text-sm leading-relaxed">{stat.description}</p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -79,11 +79,11 @@ export default function Outcomes() {
           <p className="text-xl text-textSecondary italic max-w-3xl mx-auto">
             And what doesn't show up in the numbers, calmer advisors, clients who barely notice the move, and ops teams that stop dreading next month.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Outcome Loop Visual */}
         <div className="max-w-3xl mx-auto relative mt-24">
-          <motion.div
+          <m.div
             className="relative bg-white rounded-3xl border border-gray-100 shadow-[0_10px_50px_rgba(45,212,160,0.08)] px-4 py-6 sm:px-8 sm:py-8"
             initial={{ scale: 0.95, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -95,14 +95,14 @@ export default function Outcomes() {
               <div className="absolute inset-x-[28%] inset-y-[14%] rounded-full border border-dashed border-brandMint/50" aria-hidden />
 
               {/* Orbiting dot, traces the elliptical orbit */}
-              <motion.div
+              <m.div
                 className="absolute inset-x-[28%] inset-y-[14%] pointer-events-none"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 12, ease: 'linear', repeat: Infinity }}
                 aria-hidden
               >
                 <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-brandMint shadow-[0_0_16px_rgba(45,212,160,0.9)]" />
-              </motion.div>
+              </m.div>
 
               {/* Center FT logomark */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -138,7 +138,7 @@ export default function Outcomes() {
                 Improved next transition
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           <p className="text-center text-sm text-textTertiary mt-10">
             Every transition makes the next one easier. The system learns. So does your team.

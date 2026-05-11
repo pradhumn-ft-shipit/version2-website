@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageFAQ from '../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Mic, FileSearch, UserPlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -73,7 +73,7 @@ export default function Pricing() {
       <main className="flex-grow pt-32 bg-bgPrimary">
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto mb-20 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -84,12 +84,12 @@ export default function Pricing() {
             <p className="text-xl text-textSecondary leading-relaxed">
               We don't sell seats by the dozen and hope you fit. Pricing flexes to what you're using FastTrackr for, and what it gives back to your firm.
             </p>
-          </motion.div>
+          </m.div>
         </section>
 
         {/* Advisor Transitions, full-width hero card */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -134,7 +134,7 @@ export default function Pricing() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </section>
 
         {/* Other modules row */}
@@ -147,7 +147,7 @@ export default function Pricing() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {moduleCards.map((card, i) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -165,7 +165,7 @@ export default function Pricing() {
                     Talk to Us
                   </button>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </section>

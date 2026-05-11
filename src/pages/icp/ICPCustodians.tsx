@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, TrendingUp, Users, Landmark, ShieldCheck, HeartHandshake } from 'lucide-react';
 
 export default function ICPCustodians() {
@@ -33,7 +33,7 @@ export default function ICPCustodians() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -47,10 +47,10 @@ export default function ICPCustodians() {
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 You want to attract more advisors and practices to your platform. Today, the onboarding experience is owned by everyone except you. FastTrackr puts it back in your hands.
               </p>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -82,7 +82,7 @@ export default function ICPCustodians() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -91,7 +91,7 @@ export default function ICPCustodians() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -102,9 +102,9 @@ export default function ICPCustodians() {
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-textPrimary leading-tight mb-6">
                   The platform is ready. The pricing is competitive.<br/>But how does the move feel?
                 </h2>
-              </motion.div>
+              </m.div>
               
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -123,7 +123,7 @@ export default function ICPCustodians() {
                     Some practices arrive smoothly. <strong className="text-textPrimary">Others arrive bruised, and they remember.</strong> Word travels fast in advisor circles. A painful move lives longer in conversation than any marketing campaign you'll run this year.
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>
@@ -142,7 +142,7 @@ export default function ICPCustodians() {
                 { title: 'Help your advisors win their own deals', desc: 'Advisors and RIAs on your platform get the same transition tooling for their breakaways and acquisitions. They grow faster. So do you.' },
                 { title: 'Visibility into your incoming book', desc: 'See practices in transit, status by household, projected go-live dates, all in one place.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ export default function ICPCustodians() {
                   <CheckCircle2 className="w-8 h-8 text-brandMint mb-4" />
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

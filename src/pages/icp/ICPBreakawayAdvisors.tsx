@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, TrendingUp, Users, Calendar, ShieldCheck } from 'lucide-react';
 
 export default function ICPBreakawayAdvisors() {
@@ -33,7 +33,7 @@ export default function ICPBreakawayAdvisors() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -47,10 +47,10 @@ export default function ICPBreakawayAdvisors() {
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 You decided to move to build something better. Don't let the repapering be the thing that breaks you on the way there.
               </p>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -73,7 +73,7 @@ export default function ICPBreakawayAdvisors() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -82,7 +82,7 @@ export default function ICPBreakawayAdvisors() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -93,9 +93,9 @@ export default function ICPBreakawayAdvisors() {
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-textPrimary leading-tight mb-6">
                   The transition isn't the part anyone tells you about.<br/>It's the part that almost makes you reconsider.
                 </h2>
-              </motion.div>
+              </m.div>
               
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -114,7 +114,7 @@ export default function ICPBreakawayAdvisors() {
                     <strong className="text-textPrimary">Ninety days. Hundreds of forms.</strong> Account applications, transfer-of-asset forms, feature forms, for every household, sometimes for every account. Your assistant is buried. Your weekends are gone. Some clients drift in the silence between "we're moving" and "we're done." A few don't come with you.
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>
@@ -133,7 +133,7 @@ export default function ICPBreakawayAdvisors() {
                 { title: 'Clients see a calm, organized move', desc: 'Not seven separate emails asking for the same information. The experience matches the message you\'re selling them.' },
                 { title: 'See every household in one place', desc: 'No more chasing your assistant for status. No more mid-night Excel updates.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export default function ICPBreakawayAdvisors() {
                   <CheckCircle2 className="w-8 h-8 text-brandMint mb-4" />
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -58,19 +58,19 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-16">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl font-display font-bold text-textPrimary tracking-tight"
           >
             Questions worth answering up front.
-          </motion.h2>
+          </m.h2>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <motion.div
+            <m.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ export default function FAQ() {
 
               <AnimatePresence>
                 {openIndex === i && (
-                  <motion.div
+                  <m.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -99,10 +99,10 @@ export default function FAQ() {
                     <div className="px-6 pb-6 pt-0 text-textSecondary leading-relaxed border-t border-gray-50 mt-2">
                       <div className="pt-4">{faq.a}</div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

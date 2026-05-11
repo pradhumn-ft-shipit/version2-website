@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -217,7 +217,7 @@ export default function Resources() {
       <main className="flex-grow pt-32 bg-bgPrimary">
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mb-12 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -229,7 +229,7 @@ export default function Resources() {
             <p className="text-xl text-textSecondary leading-relaxed max-w-3xl mx-auto">
               {totalArticles} articles, deep dives, and field notes for advisors, RIAs, and wealth firms putting AI to work — without the buzzwords.
             </p>
-          </motion.div>
+          </m.div>
         </section>
 
         {/* Mobile chip nav (lg- only) */}
@@ -400,7 +400,7 @@ export default function Resources() {
 
                       <div className="grid sm:grid-cols-2 gap-4">
                         {cat.articles.map((article, i) => (
-                          <motion.div
+                          <m.div
                             key={`${cat.id}-${i}`}
                             initial={{ opacity: 0, y: 12 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -423,7 +423,7 @@ export default function Resources() {
                                 Read article →
                               </div>
                             </Link>
-                          </motion.div>
+                          </m.div>
                         ))}
                       </div>
                     </section>

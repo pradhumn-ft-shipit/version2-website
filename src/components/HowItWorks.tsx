@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { m, AnimatePresence, useInView } from 'framer-motion';
 
 const steps = [
   {
@@ -46,7 +46,7 @@ function StepVisual({ index }: { index: number }) {
     return (
       <div className="w-full max-w-sm space-y-4">
         {[1, 2, 3].map(i => (
-          <motion.div
+          <m.div
             key={i}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -58,7 +58,7 @@ function StepVisual({ index }: { index: number }) {
               <div className="h-3 w-24 bg-gray-200 rounded" />
             </div>
             <div className="w-5 h-5 rounded-full bg-brandMint text-white flex items-center justify-center text-xs">✓</div>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     );
@@ -89,7 +89,7 @@ function StepVisual({ index }: { index: number }) {
       </div>
       <div className="p-6 space-y-4">
         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-          <motion.div
+          <m.div
             initial={{ width: 0 }}
             animate={{ width: '84%' }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
@@ -151,15 +151,15 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-24">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight mb-6"
           >
             Every transition is different.<br/>We've built for that.
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -167,7 +167,7 @@ export default function HowItWorks() {
             className="text-lg text-textSecondary max-w-2xl mx-auto"
           >
             No two books move the same way. The process flexes around your specifics, your book, your custodians, your edge cases.
-          </motion.p>
+          </m.p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 relative">
@@ -187,7 +187,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block sticky top-32 self-start h-[calc(100vh-10rem)]">
             <div className="w-full h-full aspect-square max-h-full mx-auto bg-bgCanvas rounded-3xl border border-gray-100 overflow-hidden shadow-glass flex items-center justify-center p-12 relative">
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={activeStep}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -196,7 +196,7 @@ export default function HowItWorks() {
                   className="w-full h-full flex items-center justify-center"
                 >
                   <StepVisual index={activeStep} />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Step indicator dots */}

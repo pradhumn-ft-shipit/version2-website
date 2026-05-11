@@ -1,4 +1,4 @@
-import { motion, type Variants } from 'framer-motion';
+import { m, type Variants } from 'framer-motion';
 
 export const AnimatedText = ({ text, className = '' }: { text: string; className?: string }) => {
   // Split text into words
@@ -34,17 +34,17 @@ export const AnimatedText = ({ text, className = '' }: { text: string; className
   };
 
   return (
-    <motion.div
+    <m.div
       className={`overflow-hidden flex flex-wrap ${className}`}
       variants={container}
       initial="hidden"
       animate="visible"
     >
       {words.map((word, index) => (
-        <motion.span variants={child} key={index} className="mr-2 mb-2 inline-block">
+        <m.span variants={child} key={index} className="mr-2 mb-2 inline-block">
           {word}
-        </motion.span>
+        </m.span>
       ))}
-    </motion.div>
+    </m.div>
   );
 };

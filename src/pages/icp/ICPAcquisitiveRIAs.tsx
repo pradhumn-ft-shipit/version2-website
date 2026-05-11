@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, TrendingUp, Clock, FileWarning, Layers } from 'lucide-react';
 
 export default function ICPAcquisitiveRIAs() {
@@ -33,7 +33,7 @@ export default function ICPAcquisitiveRIAs() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -47,10 +47,10 @@ export default function ICPAcquisitiveRIAs() {
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 M&A is your growth strategy. Stop letting the integration timeline drag your AUM and your returns down with it.
               </p>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -83,7 +83,7 @@ export default function ICPAcquisitiveRIAs() {
                   <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div className="w-[5%] h-full bg-gray-400" /></div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -92,7 +92,7 @@ export default function ICPAcquisitiveRIAs() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -103,9 +103,9 @@ export default function ICPAcquisitiveRIAs() {
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-textPrimary leading-tight mb-6">
                   You closed the deal.<br/>The hard part was supposed to be over.
                 </h2>
-              </motion.div>
+              </m.div>
               
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -121,10 +121,10 @@ export default function ICPAcquisitiveRIAs() {
                 <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-400" />
                   <p className="text-lg text-textSecondary leading-relaxed">
-                    By the time the last account is moved, the next acquisition is already in motion. <strong className="text-textPrimary">The team that's burned out from this one is the team that has to do the next one.</strong>
+                    By the time the last account is moved, the next acquisition is already in m. <strong className="text-textPrimary">The team that's burned out from this one is the team that has to do the next one.</strong>
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>
@@ -143,7 +143,7 @@ export default function ICPAcquisitiveRIAs() {
                 { title: 'Your ops team scales without growing', desc: 'The system absorbs the volume. They focus on the judgment calls.' },
                 { title: 'Multi-deal pipelines stay visible', desc: 'Three acquisitions running at once? You see the status of every household, every account, in one place.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ export default function ICPAcquisitiveRIAs() {
                   <CheckCircle2 className="w-8 h-8 text-brandMint mb-4" />
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

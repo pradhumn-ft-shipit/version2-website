@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { ReactNode } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -18,7 +18,7 @@ export default function LegalShell({ eyebrow = 'Legal', title, subtitle, lastUpd
 
       <main className="flex-grow pt-32 pb-24 bg-bgPrimary">
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -37,7 +37,7 @@ export default function LegalShell({ eyebrow = 'Legal', title, subtitle, lastUpd
             <div className="legal-prose text-base leading-relaxed text-textSecondary space-y-6">
               {children}
             </div>
-          </motion.div>
+          </m.div>
         </section>
       </main>
 

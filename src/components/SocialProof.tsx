@@ -1,13 +1,13 @@
 import React from 'react';
 
-const logos = [
-  { src: '/logos/fidelity.webp', alt: 'Fidelity Investments' },
-  { src: '/logos/charles-schwab.svg', alt: 'Charles Schwab' },
-  { src: '/logos/lpl-financial.svg', alt: 'LPL Financial' },
-  { src: '/logos/edward-jones.png', alt: 'Edward Jones' },
-  { src: '/logos/cetera.png', alt: 'Cetera Financial Group' },
-  { src: '/logos/newedge-advisors.jpg', alt: 'NewEdge Advisors' },
-  { src: '/logos/advizorstack.svg', alt: 'Advizorstack' },
+const logos: { src: string; alt: string; width: number; height: number }[] = [
+  { src: '/logos/fidelity.png', alt: 'Fidelity Investments', width: 65, height: 40 },
+  { src: '/logos/charles-schwab.svg', alt: 'Charles Schwab', width: 140, height: 40 },
+  { src: '/logos/lpl-financial.svg', alt: 'LPL Financial', width: 120, height: 40 },
+  { src: '/logos/edward-jones.png', alt: 'Edward Jones', width: 244, height: 40 },
+  { src: '/logos/cetera.png', alt: 'Cetera Financial Group', width: 136, height: 40 },
+  { src: '/logos/newedge-advisors.jpg', alt: 'NewEdge Advisors', width: 140, height: 40 },
+  { src: '/logos/advizorstack.svg', alt: 'Advizorstack', width: 150, height: 40 },
 ];
 
 export default function SocialProof() {
@@ -28,7 +28,10 @@ export default function SocialProof() {
                     key={`${i}-${logo.alt}`}
                     src={logo.src}
                     alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
                     loading="lazy"
+                    decoding="async"
                     className="h-10 w-auto max-w-none object-contain shrink-0 grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
                   />
                 ))}

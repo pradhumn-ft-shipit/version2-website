@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Database, FileText, LayoutList } from 'lucide-react';
 
 const capabilities = [
@@ -26,7 +26,7 @@ export default function Solution() {
         
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <motion.h2 
+            <m.h2 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -34,8 +34,8 @@ export default function Solution() {
               className="text-4xl md:text-5xl font-display font-bold text-textPrimary leading-tight mb-6"
             >
               Built for transition.<br/>Not retrofitted with it.
-            </motion.h2>
-            <motion.p 
+            </m.h2>
+            <m.p 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -43,9 +43,9 @@ export default function Solution() {
               className="text-lg text-textSecondary mb-8 leading-relaxed"
             >
               FastTrackr is shaped by advisory practices, transition consultants, and operators who've moved billions in client assets. We've encoded what they know and their best practices into a system that handles the work, the quirks, and the edge cases that others miss.
-            </motion.p>
+            </m.p>
             
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -56,12 +56,12 @@ export default function Solution() {
                 <span className="text-brandMint font-bold mr-2">The Difference:</span>
                 Every transition is different. We get that. The system flexes around your book, not the other way around.
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
           <div className="space-y-6">
             {capabilities.map((cap, index) => (
-              <motion.div 
+              <m.div 
                 key={index}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -81,7 +81,7 @@ export default function Solution() {
                     <p className="text-textSecondary leading-relaxed">{cap.description}</p>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

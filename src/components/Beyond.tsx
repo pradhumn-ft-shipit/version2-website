@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Mic, FileSearch, UserPlus, ArrowRight } from 'lucide-react';
 
@@ -29,14 +29,14 @@ export default function Beyond() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-16">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight mb-4"
           >
             From moving the book to running the practice.
-          </motion.h2>
+          </m.h2>
           <p className="text-lg text-textSecondary max-w-2xl mx-auto">
             FastTrackr stays with you after the transition. The same AI engine that moved your book keeps your day-to-day operations running.
           </p>
@@ -44,7 +44,7 @@ export default function Beyond() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {cards.map((card, i) => (
-            <motion.div
+            <m.div
               key={card.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function Beyond() {
                   Explore {card.title} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

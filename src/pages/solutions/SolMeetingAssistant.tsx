@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Mic, FileText, Database, Send } from 'lucide-react';
 
@@ -14,7 +14,7 @@ export default function SolMeetingAssistant() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -40,10 +40,10 @@ export default function SolMeetingAssistant() {
                   </button>
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -65,7 +65,7 @@ export default function SolMeetingAssistant() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -83,7 +83,7 @@ export default function SolMeetingAssistant() {
                 { title: 'Drafts follow-ups', icon: <Send />, desc: 'Drafts contextual follow-up emails and identifies action items' },
                 { title: 'Updates tools', icon: <Database />, desc: 'Updates your CRM and other tools in one click' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export default function SolMeetingAssistant() {
                   </div>
                   <h3 className="text-lg font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary text-sm">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

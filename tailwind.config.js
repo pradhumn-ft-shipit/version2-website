@@ -31,12 +31,22 @@ export default {
       animation: {
         marquee: 'marquee 25s linear infinite',
         'spin-slow': 'spin 6s linear infinite',
+        'glow-pulse-slow': 'glow-pulse-slow 8s ease-in-out infinite',
+        'glow-pulse-slower': 'glow-pulse-slower 10s ease-in-out 1s infinite',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
-        }
+        },
+        'glow-pulse-slow': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
+          '50%': { transform: 'scale(1.2)', opacity: '0.5' },
+        },
+        'glow-pulse-slower': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.2' },
+          '50%': { transform: 'scale(1.5)', opacity: '0.4' },
+        },
       }
     },
   },

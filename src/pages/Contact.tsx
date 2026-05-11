@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Send, CheckCircle2 } from 'lucide-react';
 
 const INTERESTS: Record<string, string> = {
@@ -113,18 +113,18 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-16">
-            <motion.h1
+            <m.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl font-display font-bold text-textPrimary tracking-tight mb-6"
             >
               Let's talk about your transition process.
-            </motion.h1>
+            </m.h1>
             <p className="text-xl text-textSecondary max-w-2xl mx-auto">
               Whether you're looking to cut your timeline in half or just want to see how the engine works, we're here to help.
             </p>
             {validInterestParam && (
-              <motion.div
+              <m.div
                 key={validInterestParam}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ export default function Contact() {
               >
                 <span className="w-2 h-2 rounded-full bg-brandMint" />
                 Inquiring about: {INTERESTS[validInterestParam]}
-              </motion.div>
+              </m.div>
             )}
           </div>
 
@@ -165,7 +165,7 @@ export default function Contact() {
             <div className="lg:col-span-3">
               <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/20">
                 {formStatus === 'success' ? (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-10"
@@ -193,7 +193,7 @@ export default function Contact() {
                         Back to home
                       </Link>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">

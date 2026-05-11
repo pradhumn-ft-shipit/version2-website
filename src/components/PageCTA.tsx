@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 export default function PageCTA({ headline, ctaText = "Book a Demo", link = "/contact" }: { headline: string, ctaText?: string, link?: string }) {
   return (
     <section className="py-24 bg-bgPrimary relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -25,7 +25,7 @@ export default function PageCTA({ headline, ctaText = "Book a Demo", link = "/co
               </button>
             </Link>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

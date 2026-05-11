@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const testimonials = [
   {
@@ -32,20 +32,20 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight mb-4"
           >
             Top-performing advisors and firms use FastTrackr.
-          </motion.h2>
+          </m.h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           
           {/* Featured Testimonial */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -66,12 +66,12 @@ export default function Testimonials() {
                 <div className="text-textSecondary">Wealth Management Practice</div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Other Testimonials Grid */}
           <div className="flex flex-col gap-6">
             {testimonials.slice(1).map((t, i) => (
-              <motion.div 
+              <m.div 
                 key={i}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -91,7 +91,7 @@ export default function Testimonials() {
                     <div className="text-sm text-textTertiary">{t.role}, {t.company}</div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 

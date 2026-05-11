@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowRight, Briefcase, UserPlus, Building, Network, Landmark } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -41,21 +41,21 @@ export default function ICP() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight mb-4"
           >
             Built for every player in the transition.
-          </motion.h2>
+          </m.h2>
           <p className="text-lg text-textSecondary">Click through to see what changes for you.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {audiences.map((aud, i) => (
             <Link key={aud.href} to={aud.href}>
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -80,7 +80,7 @@ export default function ICP() {
                   How it works for you
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </motion.div>
+              </m.div>
             </Link>
           ))}
         </div>

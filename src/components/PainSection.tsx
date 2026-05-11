@@ -1,8 +1,31 @@
-import React from 'react';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { m, useMotionTemplate, useMotionValue, type MotionValue } from 'framer-motion';
 import { Calendar } from 'lucide-react';
 
-function BentoCard({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+function useHasHover() {
+  const [hasHover, setHasHover] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(hover: hover)');
+    setHasHover(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setHasHover(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+  return hasHover;
+}
+
+function HoverGradient({ mouseX, mouseY }: { mouseX: MotionValue<number>; mouseY: MotionValue<number> }) {
+  const background = useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px, rgba(45, 212, 160, 0.05), transparent 80%)`;
+  return (
+    <m.div
+      className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+      style={{ background }}
+    />
+  );
+}
+
+function HoverBentoCard({ children, className = '' }: { children: React.ReactNode, className?: string }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -13,28 +36,34 @@ function BentoCard({ children, className = '' }: { children: React.ReactNode, cl
   }
 
   return (
-    <motion.div
+    <m.div
       className={`relative group overflow-hidden rounded-3xl bg-white border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl ${className}`}
       onMouseMove={handleMouseMove}
       whileHover={{ y: -5 }}
     >
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(45, 212, 160, 0.05),
-              transparent 80%
-            )
-          `,
-        }}
-      />
+      <HoverGradient mouseX={mouseX} mouseY={mouseY} />
       <div className="relative h-full p-8 md:p-10 flex flex-col justify-between z-10">
         {children}
       </div>
-    </motion.div>
+    </m.div>
   );
+}
+
+function StaticBentoCard({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+  return (
+    <div
+      className={`relative group overflow-hidden rounded-3xl bg-white border border-gray-100 shadow-sm transition-all duration-500 ${className}`}
+    >
+      <div className="relative h-full p-8 md:p-10 flex flex-col justify-between z-10">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function BentoCard(props: { children: React.ReactNode, className?: string }) {
+  const hasHover = useHasHover();
+  return hasHover ? <HoverBentoCard {...props} /> : <StaticBentoCard {...props} />;
 }
 
 export default function PainSection() {
@@ -45,7 +74,7 @@ export default function PainSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -53,8 +82,8 @@ export default function PainSection() {
             className="text-4xl md:text-5xl font-display font-bold text-textPrimary tracking-tight mb-6"
           >
             If you've moved a book before, you know.
-          </motion.h2>
-          <motion.p 
+          </m.h2>
+          <m.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -62,7 +91,7 @@ export default function PainSection() {
             className="text-lg text-textSecondary max-w-2xl mx-auto"
           >
             Repapering hasn't changed in decades. Advisors and their teams just learned to live with it. The process is broken, and clients, advisors, and teams all suffer for it.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Bento Grid Layout */}
@@ -157,7 +186,7 @@ export default function PainSection() {
               </div>
               <div className="w-full md:w-80">
                 <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                  <motion.div
+                  <m.div
                     className="h-full bg-red-400 rounded-full"
                     animate={{ width: ["100%", "40%", "70%", "30%", "80%", "50%"] }}
                     transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}

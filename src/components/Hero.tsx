@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 import { ArrowDown } from 'lucide-react';
@@ -25,22 +25,12 @@ export default function Hero() {
         <div className="absolute inset-0 bg-bgPrimary" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
         
-        {/* Glow Effects */}
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-brandMint/20 rounded-full blur-[100px]" 
+        {/* Glow Effects — CSS-only, GPU composited, no main-thread cost */}
+        <div
+          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-brandMint/20 rounded-full blur-[100px] motion-safe:animate-glow-pulse-slow will-change-transform"
         />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.5, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-brandDeep/10 rounded-full blur-[120px]" 
+        <div
+          className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-brandDeep/10 rounded-full blur-[120px] motion-safe:animate-glow-pulse-slower will-change-transform"
         />
       </div>
 
@@ -60,7 +50,7 @@ export default function Hero() {
               Move advisor books in weeks, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.
             </p>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -77,11 +67,11 @@ export default function Hero() {
                 See how it works
                 <span className="ml-2 text-brandMint group-hover:translate-y-1 transition-transform">↓</span>
               </a>
-            </motion.div>
+            </m.div>
 
             {/* Live Activity Strip — temporarily hidden, uncomment to restore */}
             {/*
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -89,13 +79,13 @@ export default function Hero() {
             >
               <Activity className="w-4 h-4 text-brandMint animate-pulse" />
               <span>Live: <strong className="text-textPrimary tabular-nums">{count}</strong> households moving through FastTrackr today</span>
-            </motion.div>
+            </m.div>
             */}
           </div>
 
           {/* Visual Column */}
           <div className="lg:col-span-5 hidden lg:block relative" style={{ perspective: '1000px' }}>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, rotateY: 20, rotateX: 10, scale: 0.9 }}
               animate={{ opacity: 1, rotateY: -5, rotateX: 5, scale: 1 }}
               transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
@@ -121,7 +111,7 @@ export default function Hero() {
                   { status: 'Completed', color: 'text-green-700', bg: 'bg-green-100', dot: 'bg-green-500' },
                   { status: 'In Progress', color: 'text-blue-700', bg: 'bg-blue-100', dot: 'bg-blue-500' }
                 ].map((item, i) => (
-                  <motion.div 
+                  <m.div 
                     key={i}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -137,10 +127,10 @@ export default function Hero() {
                     <div className={`px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider ${item.bg} ${item.color}`}>
                       {item.status}
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, TrendingUp, Clock, Database, Smile } from 'lucide-react';
 
@@ -14,7 +14,7 @@ export default function SolClientOnboarding() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -30,10 +30,10 @@ export default function SolClientOnboarding() {
                   Book a Demo
                 </button>
               </Link>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -65,22 +65,22 @@ export default function SolClientOnboarding() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* The Pain */}
         <section className="py-24 bg-bgCanvas border-y border-gray-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.h2 
+            <m.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-4xl font-display font-bold text-textPrimary mb-8"
             >
               Bringing on a new client should be a celebration.<br/>Today, it's a slog.
-            </motion.h2>
-            <motion.div 
+            </m.h2>
+            <m.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -99,7 +99,7 @@ export default function SolClientOnboarding() {
               <p>
                 <strong>Errors live forever.</strong> A typo on day one becomes a wrong tax document at year-end.
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -114,10 +114,10 @@ export default function SolClientOnboarding() {
               {[
                 { title: 'Data gathered from any source', desc: 'Meetings, emails, prospect documents, extracted and structured automatically.' },
                 { title: 'Clients confirm, they don\'t retype', desc: 'Send a clean, pre-filled summary for confirmation rather than another blank intake form.' },
-                { title: 'One source feeds your stack', desc: 'CRM, planning software, account opening, populated in one motion.' },
+                { title: 'One source feeds your stack', desc: 'CRM, planning software, account opening, populated in one m.' },
                 { title: 'Account opening kicked off automatically', desc: 'Disclosures, agreements, custodial paperwork, initiated in the same flow.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function SolClientOnboarding() {
                   <CheckCircle2 className="w-8 h-8 text-brandMint mb-4" />
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

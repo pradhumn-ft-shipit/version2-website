@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, TrendingUp, Users, Zap, Clock } from 'lucide-react';
 
 export default function ICPTransitionConsultants() {
@@ -33,7 +33,7 @@ export default function ICPTransitionConsultants() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -47,10 +47,10 @@ export default function ICPTransitionConsultants() {
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 Take on more transitions with the team you already have. FastTrackr handles the data collection, form-filling, and project management, so your consultants spend their time on the parts only humans can do.
               </p>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -72,7 +72,7 @@ export default function ICPTransitionConsultants() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -81,7 +81,7 @@ export default function ICPTransitionConsultants() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -92,9 +92,9 @@ export default function ICPTransitionConsultants() {
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-textPrimary leading-tight mb-6">
                   Every deal looks different on paper.<br/>In practice, every deal grinds the same way.
                 </h2>
-              </motion.div>
+              </m.div>
               
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -113,7 +113,7 @@ export default function ICPTransitionConsultants() {
                     Multiply that by every advisor on your roster, and the ceiling on your business stops being demand. It's capacity. <strong className="text-textPrimary block mt-2">You hire more ops people. The work scales. Your margin doesn't.</strong>
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>
@@ -132,7 +132,7 @@ export default function ICPTransitionConsultants() {
                 { title: 'Every household visible in one place', desc: 'Replaces the Excel war room. Your consultants and the advisors they\'re moving all see the same status, in real time.' },
                 { title: 'It learns your playbook', desc: 'The way your firm handles transitions gets encoded. New consultants ramp faster. Senior consultants take on more.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +143,7 @@ export default function ICPTransitionConsultants() {
                   <CheckCircle2 className="w-8 h-8 text-brandMint mb-4" />
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

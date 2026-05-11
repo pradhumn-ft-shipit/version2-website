@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, TrendingUp, Clock, FileWarning, Smile, Database, LayoutList, FileText } from 'lucide-react';
 
@@ -38,7 +38,7 @@ export default function SolAdvisorTransitions() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -54,22 +54,22 @@ export default function SolAdvisorTransitions() {
                   Book a Demo
                 </button>
               </Link>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* The Pain */}
         <section className="py-24 bg-bgCanvas border-y border-gray-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.h2 
+            <m.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-4xl font-display font-bold text-textPrimary mb-8"
             >
               Why advisor transitions are broken
-            </motion.h2>
-            <motion.div 
+            </m.h2>
+            <m.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -88,7 +88,7 @@ export default function SolAdvisorTransitions() {
               <p className="font-semibold text-brandDeep text-2xl">
                 The industry loses an estimated $19B in client assets every year to transitions that didn't go smoothly enough.
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -105,7 +105,7 @@ export default function SolAdvisorTransitions() {
                 { title: 'Documentation', icon: <FileText />, desc: 'Smart mapping across custodians and firms. The right forms identified, pre-filled, and ready for signature. Push to the custodian via API where supported, or generate signature-ready documents.' },
                 { title: 'Project Management', icon: <LayoutList />, desc: 'Hundreds of households, every form, every status, in one place. Replaces the Excel war room. Visible to you, your team, and your clients.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function SolAdvisorTransitions() {
                   </div>
                   <h3 className="text-2xl font-bold text-textPrimary mb-4">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

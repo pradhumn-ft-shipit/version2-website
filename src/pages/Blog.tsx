@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { fetchBlogIndex, formatBlogDate, type BlogIndexEntry } from '../lib/blog';
@@ -55,7 +55,7 @@ export default function Blog() {
       <main className="flex-grow pt-32 pb-24 bg-bgPrimary">
         {/* Hero */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -67,7 +67,7 @@ export default function Blog() {
             <p className="text-xl text-textSecondary leading-relaxed max-w-3xl mx-auto">
               Articles, deep dives, and conversations on advisor transitions, AI in wealth, compliance, and the work behind the work.
             </p>
-          </motion.div>
+          </m.div>
         </section>
 
         {/* Search */}
@@ -168,7 +168,7 @@ export default function Blog() {
               <>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {restOfShown.map((post, i) => (
-                    <motion.div
+                    <m.div
                       key={post.slug}
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -210,7 +210,7 @@ export default function Blog() {
                           </div>
                         </div>
                       </Link>
-                    </motion.div>
+                    </m.div>
                   ))}
                 </div>
 
@@ -237,7 +237,7 @@ export default function Blog() {
 
         {/* Newsletter */}
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -278,7 +278,7 @@ export default function Blog() {
                 </button>
               </form>
             )}
-          </motion.div>
+          </m.div>
         </section>
       </main>
 

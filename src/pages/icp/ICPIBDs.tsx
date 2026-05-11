@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, TrendingUp, Users, Target, Rocket } from 'lucide-react';
 
 export default function ICPIBDs() {
@@ -33,7 +33,7 @@ export default function ICPIBDs() {
         {/* Hero */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -47,10 +47,10 @@ export default function ICPIBDs() {
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 Your transition experience is part of your recruiting pitch. Make it the part that closes the deal.
               </p>
-            </motion.div>
+            </m.div>
             
             {/* Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -76,7 +76,7 @@ export default function ICPIBDs() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -85,7 +85,7 @@ export default function ICPIBDs() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -96,9 +96,9 @@ export default function ICPIBDs() {
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-textPrimary leading-tight mb-6">
                   Then they ask the question that decides it:<br/>what does the move look like?
                 </h2>
-              </motion.div>
+              </m.div>
               
-              <motion.div 
+              <m.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -118,7 +118,7 @@ export default function ICPIBDs() {
                   </p>
                   <strong className="text-textPrimary block mt-4 text-xl">The transition experience isn't a back-office concern. It's a recruiting weapon.</strong>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>
@@ -137,7 +137,7 @@ export default function ICPIBDs() {
                 { title: 'Differentiation in the pitch', desc: '"Here\'s how the move actually looks" becomes a slide you want to show, not one you skip.' },
                 { title: 'Lower load on your transition team', desc: 'Your in-house transition staff handles judgment work, not data entry.' }
               ].map((feature, i) => (
-                <motion.div 
+                <m.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -148,7 +148,7 @@ export default function ICPIBDs() {
                   <CheckCircle2 className="w-8 h-8 text-brandMint mb-4" />
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

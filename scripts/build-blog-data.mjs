@@ -136,10 +136,14 @@ function main() {
     return byDate !== 0 ? byDate : a.slug.localeCompare(b.slug);
   });
 
-  fs.writeFileSync(
-    path.join(OUT_DIR, 'index.json'),
-    JSON.stringify({ count: index.length, posts: index })
-  );
+  const indexPayload = JSON.stringify({ count: index.length, posts: index });
+
+  // Primary path used by src/lib/blog.ts since 2026-05-11. Renamed from
+  // index.json to sidestep a Cloudflare Pages asset state that 500s on the
+  // old path. Keep index.json written too as a fallback for cached clients
+  // during the transition.
+  fs.writeFileSync(path.join(OUT_DIR, 'posts-list.json'), indexPayload);
+  fs.writeFileSync(path.join(OUT_DIR, 'index.json'), indexPayload);
 
   console.log(
     `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`

@@ -3,7 +3,9 @@ import { m } from 'framer-motion';
 const testimonials = [
   {
     quote: "This is the smoothest transition anyone in our circle has seen or heard about. It aligned with our workflow, and it just worked. We had planned for a month, we finished in two weeks. Amazing tool, very intuitive to use.",
-    author: "Cana Wealth Advisors",
+    author: "Nico DeMaio",
+    role: "President and Co-founder",
+    company: "Cana Wealth Advisors",
     featured: true
   },
   {
@@ -59,11 +61,11 @@ export default function Testimonials() {
             </div>
             <div className="mt-12 flex items-center gap-4">
               <div className="w-14 h-14 rounded-full bg-brandDeep flex items-center justify-center text-brandMint font-display font-bold text-xl">
-                C
+                N
               </div>
               <div>
-                <div className="font-bold text-textPrimary text-lg">Cana Wealth Advisors</div>
-                <div className="text-textSecondary">Wealth Management Practice</div>
+                <div className="font-bold text-textPrimary text-lg">Nico DeMaio</div>
+                <div className="text-textSecondary">President and Co-founder, Cana Wealth Advisors</div>
               </div>
             </div>
           </m.div>

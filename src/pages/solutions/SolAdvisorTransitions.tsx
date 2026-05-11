@@ -192,7 +192,8 @@ export default function SolAdvisorTransitions() {
             <p className="text-2xl md:text-3xl font-display font-semibold text-textPrimary leading-snug relative z-10 mb-8">
               This is the smoothest transition anyone in our circle has seen or heard about. It aligned with our workflow, and it just worked. We had planned for a month, we finished in two weeks.
             </p>
-            <div className="font-bold text-textPrimary text-lg">Cana Wealth Advisors</div>
+            <div className="font-bold text-textPrimary text-lg">Nico DeMaio</div>
+            <div className="text-textSecondary">President and Co-founder, Cana Wealth Advisors</div>
           </div>
         </section>
 

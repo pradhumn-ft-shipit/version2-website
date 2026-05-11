@@ -185,7 +185,7 @@ export default function ICPTransitionConsultants() {
               This is the smoothest transition anyone in our circle has seen or heard about. It aligned with our workflow, and it just worked. We had planned for a month, we finished in two weeks. Amazing tool, very intuitive to use.
             </p>
             <div className="font-bold text-textPrimary text-lg">Nico DeMaio</div>
-            <div className="text-textSecondary">President and Co-founder, Cana Wealth Advisors</div>
+            <div className="text-textSecondary">President and Co-founder, AdvizorStack</div>
           </div>
         </section>
 

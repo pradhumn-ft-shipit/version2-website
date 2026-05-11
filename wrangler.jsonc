@@ -3,6 +3,9 @@
   "name": "newft",
   "compatibility_date": "2025-05-01",
   "main": "functions/_worker.ts",
+  // Preserve env vars / secrets set in the Cloudflare dashboard.
+  // Without this, `wrangler deploy` strips any plaintext Variable not declared here.
+  "keep_vars": true,
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

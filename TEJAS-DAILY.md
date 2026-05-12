@@ -1,5 +1,8 @@
 # Daily Blog Publishing — Tejas
 
+**Repo:** https://github.com/pradhumn-ft-shipit/version2-website
+**HTTPS clone URL:** `https://github.com/pradhumn-ft-shipit/version2-website.git`
+
 This is your one-page playbook. Every day, you do the same six steps and the posts go live automatically. You only ever touch one folder: `content/tejas/`.
 
 ---

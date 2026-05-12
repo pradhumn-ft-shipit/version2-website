@@ -1,8 +1,62 @@
 # Publishing Blogs
 
-One post = one Markdown file in `content/blog/<slug>.md`. Push to `main`, it's live in ~2 minutes.
+There are two paths into the site:
+
+1. **Daily team drop** (`content/tejas/<YYYY-MM-DD>/`) — what the blog team uses every day. Restricted to that one folder, auto-validates, auto-merges. See [Daily team workflow](#daily-team-workflow) below.
+2. **Ad-hoc developer post** (`content/blog/<slug>.md`) — for one-off posts you author directly. See [Ad-hoc developer workflow](#ad-hoc-developer-workflow).
+
+Both paths render to the same `public/blog-data/posts/<slug>.json` and appear on `/blog` + `/resources` automatically. Push to `main`, it's live in ~2 minutes.
 
 The 269 migrated posts already live as JSON in `public/blog-data/posts/` — don't touch those; everything new goes through Markdown.
+
+## Daily team workflow
+
+Every day, drop your folder into:
+
+```
+content/tejas/YYYY-MM-DD/
+  ├── my-first-post.md
+  ├── my-second-post.md
+  ├── chart.png
+  └── headshot.jpg
+```
+
+The folder name is the date (`2026-05-12`). Inside it: one `.md` file per post and the image files those posts reference. **Filenames in the folder, no `/blog-images/` prefix needed** — the build copies them to `public/blog-images/<YYYY-MM-DD>-<filename>` and rewrites the references.
+
+Frontmatter for each post:
+
+```markdown
+---
+title: "My Post Title"
+topic: "AI in Wealth Management Strategy"
+description: "One- or two-sentence excerpt shown on Blog and Resources cards."
+author: "Tejas"
+image: chart.png
+imageAlt: "Quarterly chart"
+---
+
+Body in Markdown. Reference images by filename: ![Headshot](headshot.jpg).
+```
+
+Required: `title`, `topic`, `description`. `date` defaults to the folder name. `author` defaults to "FastTrackr AI Team". `image` is optional (just the filename — it lives next to the .md). The `topic` value must exactly match one of the strings in the [Topic values](#topic-values-resources-page-auto-mapping) list below — the build will fail with the valid options listed if you typo it.
+
+**Daily push (one command per day):**
+
+```bash
+git checkout -b tejas/2026-05-12
+mkdir -p content/tejas/2026-05-12
+cp -r ~/Drops/2026-05-12/* content/tejas/2026-05-12/
+git add content/tejas/2026-05-12
+git commit -m "Posts for 2026-05-12"
+git push -u origin tejas/2026-05-12
+gh pr create --fill --base main
+```
+
+That's it. The PR auto-merges if validation passes (frontmatter complete, topic valid, all referenced images present, no files changed outside `content/tejas/<date>/`). You'll get a PR comment naming the failing post if anything's wrong.
+
+Daily folders stay in the repo permanently as an audit trail — never delete or rename them once they're merged.
+
+## Ad-hoc developer workflow
 
 ## File layout
 

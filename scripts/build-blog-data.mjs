@@ -1,8 +1,16 @@
 #!/usr/bin/env node
-// Renders content/blog/*.md → public/blog-data/posts/<slug>.json,
-// then regenerates public/blog-data/index.json from every post JSON
-// (markdown-sourced + the legacy migrated ones already on disk).
-// Idempotent. Run as part of `npm run build`.
+// Renders content/blog/*.md and content/tejas/<YYYY-MM-DD>/*.md
+// → public/blog-data/posts/<slug>.json, then regenerates
+// public/blog-data/index.json from every post JSON on disk
+// (markdown-sourced + the legacy migrated ones).
+//
+// content/blog/ is the long-standing developer drop point — lenient
+// (skips bad files with a warning).
+// content/tejas/<YYYY-MM-DD>/ is the blog team's daily drop — strict
+// (any validation failure aborts the build with a non-zero exit so
+// Cloudflare Pages won't deploy broken content). Image files alongside
+// the markdown are copied to public/blog-images/<YYYY-MM-DD>-<filename>
+// and references in the markdown body + frontmatter are rewritten.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,8 +20,13 @@ import { marked } from 'marked';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'content/blog');
+const TEJAS_DIR = path.join(ROOT, 'content/tejas');
 const OUT_DIR = path.join(ROOT, 'public/blog-data');
 const POSTS_DIR = path.join(OUT_DIR, 'posts');
+const IMAGES_DIR = path.join(ROOT, 'public/blog-images');
+const CATEGORIES_TS = path.join(ROOT, 'src/lib/blogCategories.ts');
+const TEJAS_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const ABSOLUTE_ASSET_RE = /^(https?:\/\/|\/\/|\/|data:|mailto:|#)/i;
 
 function parseFrontmatter(raw) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -60,6 +73,128 @@ function readingTimeMinutes(html) {
   return Math.max(1, Math.round(words / 220));
 }
 
+function loadCanonicalTopics() {
+  // Read the title: '...' / "..." strings from BLOG_CATEGORIES in
+  // src/lib/blogCategories.ts so the build script stays in sync with the
+  // Resources page without duplicating the list. UNCATEGORIZED_CATEGORY is
+  // declared after BLOG_CATEGORIES, so we cut the text at its declaration.
+  if (!fs.existsSync(CATEGORIES_TS)) return [];
+  const text = fs.readFileSync(CATEGORIES_TS, 'utf8');
+  const cut = text.indexOf('UNCATEGORIZED_CATEGORY');
+  const region = cut === -1 ? text : text.slice(0, cut);
+  return [...region.matchAll(/title:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
+}
+
+function isLocalAsset(p) {
+  return typeof p === 'string' && p.length > 0 && !ABSOLUTE_ASSET_RE.test(p);
+}
+
+function copyImageOnce(src, dest) {
+  if (fs.existsSync(dest)) {
+    const a = fs.statSync(src);
+    const b = fs.statSync(dest);
+    if (a.size === b.size) return;
+  }
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
+}
+
+function resolveDailyImage(relPath, sourceDir, datePrefix, errors, fileLabel) {
+  const abs = path.resolve(sourceDir, relPath);
+  if (!fs.existsSync(abs)) {
+    errors.push(`${fileLabel}: image not found "${relPath}"`);
+    return relPath;
+  }
+  if (!fs.statSync(abs).isFile()) {
+    errors.push(`${fileLabel}: image path "${relPath}" is not a file`);
+    return relPath;
+  }
+  const destName = `${datePrefix}-${path.basename(abs)}`;
+  copyImageOnce(abs, path.join(IMAGES_DIR, destName));
+  return `/blog-images/${destName}`;
+}
+
+function rewriteBodyImages(body, sourceDir, datePrefix, errors, fileLabel) {
+  // ![alt](path) and ![alt](path "title")
+  let out = body.replace(
+    /!\[([^\]]*)\]\(\s*([^)\s]+)(\s+"[^"]*")?\s*\)/g,
+    (match, alt, p, titlePart) => {
+      if (!isLocalAsset(p)) return match;
+      const rewritten = resolveDailyImage(p, sourceDir, datePrefix, errors, fileLabel);
+      return `![${alt}](${rewritten}${titlePart || ''})`;
+    }
+  );
+  // <img ... src="path" ...>
+  out = out.replace(
+    /<img\b([^>]*?)\bsrc=("|')([^"']+)\2/gi,
+    (match, before, quote, p) => {
+      if (!isLocalAsset(p)) return match;
+      const rewritten = resolveDailyImage(p, sourceDir, datePrefix, errors, fileLabel);
+      return `<img${before} src=${quote}${rewritten}${quote}`;
+    }
+  );
+  return out;
+}
+
+function renderTejasFile(filePath, dateFolder, canonicalTopics) {
+  const errors = [];
+  const fileLabel = path.relative(ROOT, filePath);
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const parsed = parseFrontmatter(raw);
+  if (!parsed) {
+    return { errors: [`${fileLabel}: missing or malformed frontmatter`], post: null };
+  }
+  const { data, body } = parsed;
+  const sourceDir = path.dirname(filePath);
+  const slug = (data.slug || path.basename(filePath, '.md')).trim();
+  const title = (data.title || '').trim();
+  const description = (data.description || '').trim();
+  const topic = (data.topic || '').trim();
+
+  if (!slug) errors.push(`${fileLabel}: cannot derive slug from filename or "slug" field`);
+  if (!title) errors.push(`${fileLabel}: missing "title"`);
+  if (!description) errors.push(`${fileLabel}: missing "description"`);
+  if (!topic) {
+    errors.push(`${fileLabel}: missing "topic"`);
+  } else if (
+    canonicalTopics.length &&
+    !canonicalTopics.some((t) => t.toLowerCase() === topic.toLowerCase())
+  ) {
+    errors.push(
+      `${fileLabel}: invalid topic "${topic}". Valid values:\n    - ` +
+        canonicalTopics.join('\n    - ')
+    );
+  }
+
+  let imageField = (data.image || '').trim();
+  if (imageField && isLocalAsset(imageField)) {
+    imageField = resolveDailyImage(imageField, sourceDir, dateFolder, errors, fileLabel);
+  }
+
+  const rewrittenBody = rewriteBodyImages(body || '', sourceDir, dateFolder, errors, fileLabel);
+
+  if (errors.length) return { errors, post: null };
+
+  const html = marked.parse(rewrittenBody);
+  return {
+    errors: [],
+    post: {
+      slug,
+      title,
+      image: imageField || null,
+      imageAlt: (data.imageAlt || '').trim() || title,
+      date: safeDate(data.date) || safeDate(dateFolder),
+      author: (data.author || '').trim() || 'FastTrackr AI Team',
+      description,
+      excerpt: makeExcerpt(description, html),
+      content: html,
+      topic,
+      persona: (data.persona || '').trim() || null,
+      readingTime: readingTimeMinutes(html),
+    },
+  };
+}
+
 function renderMarkdownFile(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const parsed = parseFrontmatter(raw);
@@ -94,8 +229,11 @@ function renderMarkdownFile(filePath) {
 
 function main() {
   fs.mkdirSync(POSTS_DIR, { recursive: true });
+  fs.mkdirSync(IMAGES_DIR, { recursive: true });
 
+  const seenSlugs = new Map(); // slug -> source label, for collision detection
   let rendered = 0;
+
   if (fs.existsSync(CONTENT_DIR)) {
     const files = fs
       .readdirSync(CONTENT_DIR)
@@ -103,12 +241,69 @@ function main() {
     for (const f of files) {
       const post = renderMarkdownFile(path.join(CONTENT_DIR, f));
       if (!post) continue;
+      seenSlugs.set(post.slug, `content/blog/${f}`);
       fs.writeFileSync(
         path.join(POSTS_DIR, `${post.slug}.json`),
         JSON.stringify(post)
       );
       rendered++;
     }
+  }
+
+  // content/tejas/<YYYY-MM-DD>/*.md — strict daily-folder pipeline.
+  const tejasErrors = [];
+  if (fs.existsSync(TEJAS_DIR)) {
+    const canonicalTopics = loadCanonicalTopics();
+    const dayFolders = fs
+      .readdirSync(TEJAS_DIR, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name)
+      .sort();
+
+    for (const day of dayFolders) {
+      if (!TEJAS_DATE_RE.test(day)) {
+        tejasErrors.push(
+          `content/tejas/${day}: folder name must be YYYY-MM-DD (got "${day}")`
+        );
+        continue;
+      }
+      const dayDir = path.join(TEJAS_DIR, day);
+      const mdFiles = fs
+        .readdirSync(dayDir)
+        .filter((f) => f.toLowerCase().endsWith('.md'));
+
+      for (const f of mdFiles) {
+        const result = renderTejasFile(path.join(dayDir, f), day, canonicalTopics);
+        if (result.errors.length) {
+          tejasErrors.push(...result.errors);
+          continue;
+        }
+        const post = result.post;
+        const sourceLabel = `content/tejas/${day}/${f}`;
+        const previousSource = seenSlugs.get(post.slug);
+        if (previousSource && previousSource !== sourceLabel) {
+          tejasErrors.push(
+            `${sourceLabel}: duplicate slug "${post.slug}" (also produced by ${previousSource})`
+          );
+          continue;
+        }
+        seenSlugs.set(post.slug, sourceLabel);
+        fs.writeFileSync(
+          path.join(POSTS_DIR, `${post.slug}.json`),
+          JSON.stringify(post)
+        );
+        rendered++;
+      }
+    }
+  }
+
+  if (tejasErrors.length) {
+    console.error('\n[blog] content/tejas validation failed:');
+    for (const msg of tejasErrors) console.error('  • ' + msg);
+    console.error(
+      `\n[blog] ${tejasErrors.length} error${tejasErrors.length === 1 ? '' : 's'}; aborting before index regeneration.`
+    );
+    process.exit(1);
   }
 
   const jsonFiles = fs

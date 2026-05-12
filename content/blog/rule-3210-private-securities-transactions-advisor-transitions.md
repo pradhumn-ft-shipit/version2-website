@@ -1,10 +1,11 @@
 ---
 title: "FINRA Rule 3210 and Advisor Transitions: What Compliance Officers Should Be Watching"
 date: 2026-05-11
-author: Vineet Mohan
+author: FastTrackr AI Team
 topic: "Advisor Transitions & Repapering"
 description: "FINRA Rule 3210 governs outside brokerage accounts for registered representatives. During a transition it gets messy. Here's what compliance officers should verify before, during, and after a repapering event."
 persona: Compliance officers at independent broker-dealers
+image: /blog-images/finra-rule-3210-cover.png
 slug: rule-3210-private-securities-transactions-advisor-transitions
 ---
 # FINRA Rule 3210 and Advisor Transitions: What Compliance Officers Should Be Watching

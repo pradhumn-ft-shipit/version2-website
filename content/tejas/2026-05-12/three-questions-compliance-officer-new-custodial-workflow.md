@@ -6,7 +6,7 @@ description: A practical pre-approval checklist for compliance officers reviewin
 image: three-questions-compliance-officer-new-custodial-workflow.jpg
 imageAlt: Compliance officer reviewing a custodial workflow approval checklist on a tablet
 persona: Compliance officers at independent broker-dealers
-author: Tejas
+author: FastTrackr AI Team
 ---
 # Three Questions Every Compliance Officer Should Ask Before Approving a New Custodial Workflow
 

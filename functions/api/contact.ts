@@ -1,5 +1,6 @@
 export interface ContactEnv {
   SLACK_WEBHOOK_URL: string;
+  LOOPS_API_KEY?: string;
 }
 
 interface ContactPayload {
@@ -20,6 +21,9 @@ const INTEREST_LABELS: Record<string, string> = {
   'document-intelligence': 'Document Intelligence',
   'meeting-assistant': 'Meeting Assistant',
 };
+
+const LOOPS_TRANSACTIONAL_ID = 'cmp3m4caa045e0iytakc81lkx';
+const LEAD_NOTIFICATION_EMAILS = ['pradhumn@fasttrackr.ai', 'vineet@fasttrackr.ai'];
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -117,16 +121,69 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
     ],
   };
 
-  const slackRes = await fetch(env.SLACK_WEBHOOK_URL, {
+  const submittedAt = formatTimestamp();
+
+  const loopsDataVariables = {
+    fullName,
+    email,
+    companyType,
+    interestLabel,
+    message: messageText,
+    source: source || 'Direct',
+    submittedAt,
+  };
+
+  const slackPromise = fetch(env.SLACK_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(slackBody),
   });
 
-  if (!slackRes.ok) {
-    const text = await slackRes.text();
+  const loopsPromises = env.LOOPS_API_KEY
+    ? LEAD_NOTIFICATION_EMAILS.map((to) =>
+        fetch('https://app.loops.so/api/v1/transactional', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            authorization: `Bearer ${env.LOOPS_API_KEY}`,
+          },
+          body: JSON.stringify({
+            transactionalId: LOOPS_TRANSACTIONAL_ID,
+            email: to,
+            dataVariables: loopsDataVariables,
+          }),
+        }),
+      )
+    : [];
+
+  const [slackResult, ...loopsResults] = await Promise.allSettled([
+    slackPromise,
+    ...loopsPromises,
+  ]);
+
+  // Slack is the primary channel — fail loudly if it doesn't deliver.
+  if (slackResult.status === 'rejected') {
+    return json({ error: 'Slack delivery failed', detail: String(slackResult.reason) }, 502);
+  }
+  if (!slackResult.value.ok) {
+    const text = await slackResult.value.text();
     return json({ error: 'Slack delivery failed', detail: text }, 502);
   }
+
+  // Loops is best-effort — log failures but don't fail the form submission.
+  await Promise.all(
+    loopsResults.map(async (result, i) => {
+      const to = LEAD_NOTIFICATION_EMAILS[i];
+      if (result.status === 'rejected') {
+        console.error(`Loops send to ${to} threw:`, result.reason);
+        return;
+      }
+      if (!result.value.ok) {
+        const text = await result.value.text().catch(() => '<no body>');
+        console.error(`Loops send to ${to} failed (${result.value.status}):`, text);
+      }
+    }),
+  );
 
   return json({ ok: true });
 }

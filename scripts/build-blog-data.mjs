@@ -25,8 +25,29 @@ const OUT_DIR = path.join(ROOT, 'public/blog-data');
 const POSTS_DIR = path.join(OUT_DIR, 'posts');
 const IMAGES_DIR = path.join(ROOT, 'public/blog-images');
 const CATEGORIES_TS = path.join(ROOT, 'src/lib/blogCategories.ts');
+const SITEMAP_PATH = path.join(ROOT, 'public/sitemap.xml');
 const TEJAS_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const ABSOLUTE_ASSET_RE = /^(https?:\/\/|\/\/|\/|data:|mailto:|#)/i;
+
+const SITE_ORIGIN = 'https://www.fasttrackr.ai';
+const STATIC_SITEMAP_PAGES = [
+  { path: '/', priority: '1.0' },
+  { path: '/solutions/advisor-transitions', priority: '0.9' },
+  { path: '/solutions/client-onboarding', priority: '0.8' },
+  { path: '/solutions/meeting-assistant', priority: '0.8' },
+  { path: '/solutions/document-intelligence', priority: '0.8' },
+  { path: '/who-we-serve/transition-consultants', priority: '0.8' },
+  { path: '/who-we-serve/breakaway-advisors', priority: '0.8' },
+  { path: '/who-we-serve/acquisitive-rias', priority: '0.8' },
+  { path: '/who-we-serve/independent-broker-dealers', priority: '0.8' },
+  { path: '/who-we-serve/custodians', priority: '0.8' },
+  { path: '/pricing', priority: '0.7' },
+  { path: '/about', priority: '0.6' },
+  { path: '/contact', priority: '0.7' },
+  { path: '/resources/blog', priority: '0.5' },
+  { path: '/privacy-policy', priority: '0.3' },
+  { path: '/tos', priority: '0.3' },
+];
 
 function parseFrontmatter(raw) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -339,9 +360,41 @@ function main() {
     JSON.stringify({ count: index.length, posts: index })
   );
 
+  writeSitemap(index);
+
   console.log(
     `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`
   );
+}
+
+function writeSitemap(index) {
+  const urls = [
+    ...STATIC_SITEMAP_PAGES.map((p) => ({
+      loc: `${SITE_ORIGIN}${p.path}`,
+      priority: p.priority,
+    })),
+    ...index.map((post) => ({
+      loc: `${SITE_ORIGIN}/blog/${post.slug}`,
+      lastmod: post.date ? post.date.slice(0, 10) : null,
+      priority: '0.5',
+    })),
+  ];
+
+  const lines = urls.map((u) => {
+    const parts = [`<loc>${u.loc}</loc>`];
+    if (u.lastmod) parts.push(`<lastmod>${u.lastmod}</lastmod>`);
+    parts.push(`<priority>${u.priority}</priority>`);
+    return `  <url>${parts.join('')}</url>`;
+  });
+
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    lines.join('\n') +
+    `\n</urlset>\n`;
+
+  fs.writeFileSync(SITEMAP_PATH, xml);
+  console.log(`[blog] wrote sitemap.xml with ${urls.length} URLs`);
 }
 
 try {

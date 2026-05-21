@@ -45,6 +45,7 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/about', priority: '0.6' },
   { path: '/contact', priority: '0.7' },
   { path: '/resources/blog', priority: '0.5' },
+  { path: '/case-study/advisor-transition', priority: '0.7' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
 ];

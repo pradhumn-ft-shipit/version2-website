@@ -25,6 +25,7 @@ const ClientDataConsent = lazy(() => import('./pages/legal/ClientDataConsent'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Resources = lazy(() => import('./pages/Resources'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const ZoomHelp = lazy(() => import('./pages/ZoomHelp'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -86,6 +87,7 @@ function App() {
             <Route path="/resources/blog/:slug" element={<BlogPostRedirect />} />
             <Route path="/resources/podcast" element={<Navigate to="/resources/blog" replace />} />
             <Route path="/resources-for-financial-advisors" element={<Resources />} />
+            <Route path="/case-study/advisor-transition" element={<CaseStudy />} />
 
             {/* Core */}
             <Route path="/pricing" element={<Pricing />} />

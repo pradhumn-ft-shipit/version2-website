@@ -21,6 +21,7 @@ const whoWeServeItems = [
 
 const resourcesItems = [
   { label: 'Blog', href: '/resources/blog' },
+  { label: 'Case Study', href: '/case-study/advisor-transition' },
 ];
 
 export default function Navbar() {

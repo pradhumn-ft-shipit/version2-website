@@ -18,6 +18,7 @@ const whoWeServeLinks = [
 
 const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
+  { label: 'Case Study', href: '/case-study/advisor-transition' },
   { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
 ];
 

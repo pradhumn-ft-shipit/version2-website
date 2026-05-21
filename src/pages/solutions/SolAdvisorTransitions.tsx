@@ -132,11 +132,11 @@ export default function SolAdvisorTransitions() {
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
                   <h3 className="text-xl font-bold text-brandDeep mb-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brandMint" /> Live today</h3>
-                  <ul className="space-y-2 text-lg text-textSecondary mb-4">
+                  <ul className="space-y-2 text-lg text-textSecondary">
                     <li>Fidelity</li>
                     <li>Charles Schwab</li>
+                    <li>Goldman Sachs</li>
                   </ul>
-                  <p className="text-sm text-textTertiary italic">Together these cover roughly 70% of the market.</p>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-500 mb-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-400" /> In active development</h3>

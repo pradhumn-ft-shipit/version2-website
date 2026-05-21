@@ -202,7 +202,7 @@ export default function CaseStudy() {
                 icon: Users,
                 label: 'The team moving shop',
                 value: '2 advisors + 2 support',
-                note: 'plus a transition consultant',
+                note: 'guided by transition consultant',
               },
               {
                 icon: Building2,
@@ -237,7 +237,7 @@ export default function CaseStudy() {
           </div>
         </section>
 
-        {/* Section 01 — Households signed & moved */}
+        {/* Section 01 — Household Transitioned */}
         <section className="py-24 bg-bgCanvas border-y border-gray-100 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brandMint/5 rounded-full blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -247,7 +247,7 @@ export default function CaseStudy() {
               viewport={{ once: true }}
               className="text-textPrimary"
             >
-              <SectionLabel number="01" title="Households signed & moved" />
+              <SectionLabel number="01" title="Household Transitioned" />
             </m.div>
 
             <div className="grid lg:grid-cols-3 gap-8 items-stretch">

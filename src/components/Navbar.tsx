@@ -3,6 +3,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/Button';
 import { Link } from 'react-router-dom';
+import AnnouncementRibbon from './AnnouncementRibbon';
 
 const solutionsItems = [
   { label: 'Advisor Transitions', href: '/solutions/advisor-transitions' },
@@ -43,6 +44,8 @@ export default function Navbar() {
         scrolled ? 'bg-white/70 backdrop-blur-xl shadow-glass border-b border-white/20' : 'bg-transparent'
       }`}
     >
+      <AnnouncementRibbon scrolled={scrolled} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}

@@ -4,12 +4,14 @@ type Props = {
   children: ReactNode;
   minHeight: string;
   rootMargin?: string;
+  id?: string;
 };
 
 export default function DeferredSection({
   children,
   minHeight,
   rootMargin = '300px',
+  id,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [shouldMount, setShouldMount] = useState(false);
@@ -41,6 +43,7 @@ export default function DeferredSection({
 
   return (
     <div
+      id={id}
       ref={ref}
       style={{
         minHeight: shouldMount ? undefined : minHeight,

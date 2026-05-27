@@ -21,7 +21,7 @@ export default function Home() {
         <SocialProof />
         <DeferredSection minHeight="2000px"><PainSection /></DeferredSection>
         <DeferredSection minHeight="1100px"><Solution /></DeferredSection>
-        <DeferredSection minHeight="1500px"><HowItWorks /></DeferredSection>
+        <DeferredSection id="how-it-works" minHeight="1500px"><HowItWorks /></DeferredSection>
         <DeferredSection minHeight="900px"><Outcomes /></DeferredSection>
         <DeferredSection minHeight="1200px"><ICP /></DeferredSection>
         <DeferredSection minHeight="900px"><Beyond /></DeferredSection>

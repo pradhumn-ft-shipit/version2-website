@@ -147,7 +147,7 @@ export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="how-it-works" className="py-24 bg-bgPrimary relative">
+    <section className="py-24 bg-bgPrimary relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-24">

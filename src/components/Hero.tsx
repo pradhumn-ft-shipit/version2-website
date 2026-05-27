@@ -63,10 +63,13 @@ export default function Hero() {
                 </Button>
               </Link>
 
-              <a href="#how-it-works" className="group flex items-center text-textPrimary font-medium hover:text-brandDeep transition-colors">
+              <button
+                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group flex items-center text-textPrimary font-medium hover:text-brandDeep transition-colors"
+              >
                 See how it works
                 <span className="ml-2 text-brandMint group-hover:translate-y-1 transition-transform">↓</span>
-              </a>
+              </button>
             </m.div>
 
             {/* Live Activity Strip — temporarily hidden, uncomment to restore */}

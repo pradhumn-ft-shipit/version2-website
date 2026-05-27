@@ -130,7 +130,7 @@ export default function PainSection() {
               </p>
             </div>
             {/* Visual element placeholder */}
-            <div className="mt-8 flex-1 w-full relative">
+            <div className="mt-8 flex-1 w-full relative overflow-hidden">
               <div className="absolute right-0 bottom-0 translate-x-8 translate-y-8 w-64 h-64 bg-white shadow-xl border border-gray-100 rounded-xl rotate-12 transition-transform duration-500 group-hover:rotate-6 group-hover:-translate-y-4" />
               <div className="absolute right-8 bottom-4 translate-x-8 translate-y-8 w-64 h-64 bg-white shadow-xl border border-gray-100 rounded-xl rotate-6 transition-transform duration-500 group-hover:rotate-3 group-hover:-translate-y-2" />
               <div className="absolute right-16 bottom-8 translate-x-8 translate-y-8 w-64 h-64 bg-white shadow-xl border border-gray-100 rounded-xl transition-transform duration-500 group-hover:-translate-y-0 p-6">

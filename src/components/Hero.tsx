@@ -50,12 +50,7 @@ export default function Hero() {
               Move advisor books in weeks, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.
             </p>
 
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-wrap items-center gap-6 mb-16"
-            >
+            <div className="flex flex-wrap items-center gap-6 mb-16">
               <Link to="/contact">
                 <Button size="lg" className="group">
                   Book a Demo
@@ -70,7 +65,7 @@ export default function Hero() {
                 See how it works
                 <span className="ml-2 text-brandMint group-hover:translate-y-1 transition-transform">↓</span>
               </button>
-            </m.div>
+            </div>
 
             {/* Live Activity Strip — temporarily hidden, uncomment to restore */}
             {/*

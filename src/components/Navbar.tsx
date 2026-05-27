@@ -55,6 +55,7 @@ export default function Navbar() {
               alt="FastTrackr AI"
               width={180}
               height={40}
+              fetchPriority="high"
               className="h-9 w-auto"
             />
           </Link>

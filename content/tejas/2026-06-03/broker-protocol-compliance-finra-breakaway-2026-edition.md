@@ -3,7 +3,7 @@ title: Broker Protocol Compliance Guide for Breakaway Advisors (2026 Edition)
 topic: "Compliance, Security & Data"
 categoryId: ai-for-compliance-security-and-data-management
 description: "The Broker Protocol is a 2004 voluntary agreement among 2,200+ firms. Morgan Stanley and UBS withdrew in 2017. Here is what a breakaway advisor can take, what they cannot, and how to resign cleanly in 2026."
-image: broker-protocol-compliance-guide-breakaway-advisors-2026.jpg
+image: broker-protocol-compliance-finra-breakaway-2026-edition.jpg
 imageAlt: A senior wirehouse advisor reviews compliance paperwork with her transition consultant in a quiet conference room
 persona: "Breakaway wirehouse advisors leaving Morgan Stanley, Merrill Lynch, UBS, or Wells Fargo for independence"
 author: FastTrackr AI Team

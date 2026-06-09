@@ -188,6 +188,35 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
   return json({ ok: true });
 }
 
-export const onRequestPost: PagesFunction<ContactEnv> = ({ request, env }) =>
-  handleContact(request, env);
+// CORS: the site is served from Render (fasttrackr.ai) while this worker stays
+// on Cloudflare (*.pages.dev), so the form POST is cross-origin. Mirrors the
+// CORS in functions/_worker.ts so the form works regardless of which entry
+// point Cloudflare uses to serve /api/contact.
+const ALLOWED_ORIGINS = new Set([
+  'https://fasttrackr.ai',
+  'https://www.fasttrackr.ai',
+]);
+
+const corsHeaders = (origin: string | null): Record<string, string> => {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : 'https://fasttrackr.ai';
+  return {
+    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'content-type',
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin',
+  };
+};
+
+export const onRequestOptions: PagesFunction = ({ request }) =>
+  new Response(null, { status: 204, headers: corsHeaders(request.headers.get('Origin')) });
+
+export const onRequestPost: PagesFunction<ContactEnv> = async ({ request, env }) => {
+  const res = await handleContact(request, env);
+  const withCors = new Response(res.body, res);
+  for (const [k, v] of Object.entries(corsHeaders(request.headers.get('Origin')))) {
+    withCors.headers.set(k, v);
+  }
+  return withCors;
+};
 

@@ -11,13 +11,43 @@ const REDIRECTS: Record<string, string> = {
   '/onepagecrm': '/contact',
 };
 
+// The site is served from Render (fasttrackr.ai); this worker stays on
+// Cloudflare (*.pages.dev) and serves /api/contact cross-origin. Allow the
+// production origins to call it.
+const ALLOWED_ORIGINS = new Set([
+  'https://fasttrackr.ai',
+  'https://www.fasttrackr.ai',
+]);
+
+const corsHeaders = (origin: string | null): Record<string, string> => {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : 'https://fasttrackr.ai';
+  return {
+    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'content-type',
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin',
+  };
+};
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const pathname = url.pathname.replace(/\/$/, '');
+    const origin = request.headers.get('Origin');
+
+    // CORS preflight for the cross-origin contact form on Render.
+    if (url.pathname === '/api/contact' && request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: corsHeaders(origin) });
+    }
 
     if (url.pathname === '/api/contact' && request.method === 'POST') {
-      return handleContact(request, env);
+      const res = await handleContact(request, env);
+      const withCors = new Response(res.body, res);
+      for (const [k, v] of Object.entries(corsHeaders(origin))) {
+        withCors.headers.set(k, v);
+      }
+      return withCors;
     }
 
     if (url.pathname === '/api/blog-index' && request.method === 'GET') {

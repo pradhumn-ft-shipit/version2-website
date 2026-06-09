@@ -23,7 +23,7 @@ const postCache = new Map<string, Promise<BlogPost | null>>();
 
 export function fetchBlogIndex(): Promise<IndexFile> {
   if (!indexCache) {
-    indexCache = fetch('/api/blog-index').then((res) => {
+    indexCache = fetch('/blog-data/index.json').then((res) => {
       if (!res.ok) throw new Error(`Blog index fetch failed: ${res.status}`);
       return res.json() as Promise<IndexFile>;
     });

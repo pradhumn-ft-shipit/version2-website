@@ -77,7 +77,7 @@ export default function Contact() {
     setErrorMessage('');
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(import.meta.env.VITE_CONTACT_API_URL ?? '/api/contact', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({

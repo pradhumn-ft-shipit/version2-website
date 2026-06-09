@@ -22,6 +22,9 @@ dist-ssr
 # Local agent state
 .claude/
 
+# Local ops notes (not for the repo)
+godaddy-migration.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -122,6 +122,17 @@ indexCache = fetch('/blog-data/index.json').then(...)
 
 > **GOTCHA we already hit:** setting Publish Directory to `./` makes Render serve the repo *root* (the source `index.html`, which loads `/src/main.tsx`). Render serves that `.tsx` as `binary/octet-stream`, the browser refuses the module script, and you get a **blank page**. Fix = Publish Directory `dist`. Node version on Render defaulted to 24.x and the build worked fine; pin `NODE_VERSION=20` only if a future build breaks.
 
+> ⚠️ **GOTCHA we hit (important):** because the static site was created
+> **manually** in the dashboard (not from a Blueprint), Render **does NOT read
+> `render.yaml`**. Both its `routes` AND its `envVars` are ignored. Symptoms:
+> every refresh/deep-link shows Render's plain "Not Found", redirects don't
+> fire, and the form silently 404s (it falls back to the relative
+> `/api/contact` because `VITE_CONTACT_API_URL` was never set at build). **Fix:
+> configure the routes and env vars in the Render dashboard** (Redirects/Rewrites
+> tab + Environment tab). `render.yaml` is kept in the repo as a documented
+> mirror only. After adding/changing `VITE_*` env vars, trigger **Manual Deploy →
+> Clear build cache & deploy** (Vite bakes them in at build time).
+
 ### 2b. SPA deep-link rewrite (required)
 Add a rewrite rule so React Router handles deep links / refreshes:
 - **Source:** `/*`  →  **Destination:** `/index.html`  →  **Action:** Rewrite

@@ -1,3 +1,13 @@
+# ⚠️ REFERENCE / MIRROR ONLY — this file is NOT live.
+#
+# The Render Static Site was created manually in the dashboard, so Render does
+# NOT read this file (it only applies render.yaml for services created from a
+# Blueprint). The actual source of truth is the Render dashboard:
+#   - Redirects/Rewrites tab: the routes below (redirects above the SPA rewrite)
+#   - Environment tab: NODE_VERSION and VITE_CONTACT_API_URL below
+# Keep this file in sync with the dashboard by hand so it documents the intended
+# config. To make it live instead, connect the repo to Render as a Blueprint.
+
 services:
   - type: web
     name: version2-website

@@ -1,12 +1,13 @@
-# ⚠️ REFERENCE / MIRROR ONLY — this file is NOT live.
+# Render Blueprint (Infrastructure as Code) — the live source of truth for the
+# static site's build, env vars, and routing.
 #
-# The Render Static Site was created manually in the dashboard, so Render does
-# NOT read this file (it only applies render.yaml for services created from a
-# Blueprint). The actual source of truth is the Render dashboard:
-#   - Redirects/Rewrites tab: the routes below (redirects above the SPA rewrite)
-#   - Environment tab: NODE_VERSION and VITE_CONTACT_API_URL below
-# Keep this file in sync with the dashboard by hand so it documents the intended
-# config. To make it live instead, connect the repo to Render as a Blueprint.
+# IMPORTANT: `name` MUST exactly match the existing Render service
+# (version2-website). On a matching name, Render ADOPTS the existing service and
+# applies this config to it. On a mismatch, Render creates a DUPLICATE service
+# (with a name suffix) that won't have the custom domain — so don't rename this.
+#
+# To activate: Render dashboard → New → Blueprint → pick this repo/branch →
+# Apply. After that, every push to main reconciles the service to this file.
 
 services:
   - type: web

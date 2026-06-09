@@ -17,6 +17,9 @@ const REDIRECTS: Record<string, string> = {
 const ALLOWED_ORIGINS = new Set([
   'https://fasttrackr.ai',
   'https://www.fasttrackr.ai',
+  // Temporary: lets the form be tested from the Render preview URL before the
+  // DNS cutover. Safe to remove once fasttrackr.ai points at Render.
+  'https://version2-website.onrender.com',
 ]);
 
 const corsHeaders = (origin: string | null): Record<string, string> => {

@@ -27,6 +27,7 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Resources = lazy(() => import('./pages/Resources'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const ZoomHelp = lazy(() => import('./pages/ZoomHelp'));
+const FPA = lazy(() => import('./pages/FPA'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function BlogPostRedirect() {
@@ -96,8 +97,10 @@ function App() {
             {/* Removed About — redirect any inbound traffic to homepage */}
             <Route path="/about" element={<Navigate to="/" replace />} />
 
+            {/* FPA co-marketing landing — Meeting Assistant discount form */}
+            <Route path="/fpa" element={<FPA />} />
+
             {/* Pages that should redirect to contact */}
-            <Route path="/fpa" element={<Navigate to="/contact" replace />} />
             <Route path="/aon" element={<Navigate to="/contact" replace />} />
             <Route path="/onepagecrm" element={<Navigate to="/contact" replace />} />
 

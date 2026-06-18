@@ -24,9 +24,7 @@ services:
         value: https://version2-website.pages.dev/api/contact
     # Redirect rules MUST come before the SPA catch-all rewrite so they win.
     routes:
-      - type: redirect
-        source: /fpa
-        destination: /contact
+      # /fpa is a real page now (FPA-member Meeting Assistant landing), not a redirect.
       - type: redirect
         source: /aon
         destination: /contact

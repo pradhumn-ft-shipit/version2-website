@@ -8,6 +8,15 @@
 #
 # To activate: Render dashboard → New → Blueprint → pick this repo/branch →
 # Apply. After that, every push to main reconciles the service to this file.
+#
+# ⚠️ GOTCHA — Blueprint sync does NOT delete redirect/rewrite rules. Adding a
+# route here works, but REMOVING one does not take effect: Render keeps the rule
+# on the service and a Blueprint sync reports "Resources already up to date"
+# while the old redirect keeps firing (a fresh 301 from origin, not a CDN cache).
+# To remove/change a route you MUST also delete it by hand in the dashboard:
+#   Service (version2-website) → Settings → Redirect and Rewrite Rules.
+# (This is how the /fpa → /contact redirect was finally removed when /fpa
+# became a real page — editing this file alone did nothing.)
 
 services:
   - type: web

@@ -6,7 +6,7 @@ export default function PrivacyTransitions() {
       eyebrow="Transition Platform"
       title="Privacy Policy"
       subtitle="FastTrackr Inc. (&ldquo;FastTrackr AI&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is committed to protecting the privacy of individuals whose information is collected and processed through the FastTrackr Advisor Transition Platform (the &ldquo;Platform&rdquo;). This Privacy Policy describes how we collect, use, store, share, and protect information in connection with the Platform."
-      lastUpdated="13 April, 2026"
+      lastUpdated="July 21, 2026"
     >
       <p>This Privacy Policy applies specifically to the FastTrackr Transition Platform. For our general website and other services, please refer to the applicable privacy policy at <a href="/privacy-policy">fasttrackr.ai/privacy-policy</a>.</p>
       <p>By using the Platform, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
@@ -98,7 +98,7 @@ export default function PrivacyTransitions() {
         <li>Facilitate Client-facing workflows where a Client is invited to verify or add their own information;</li>
         <li>Comply with legal obligations, including applicable breach notification requirements.</li>
       </ul>
-      <p>FastTrackr AI does not use Client Data to train its own AI models. All third-party AI services are engaged under terms that exclude data submitted via API from use in training their models. FastTrackr AI does not use Client Data to market to Clients or develop products for third parties.</p>
+      <p>FastTrackr AI does not use Client Data to train its own AI models. All third-party AI services are engaged under terms that exclude data submitted via API from use in training their models. FastTrackr AI does not use Client Data to market to Clients or develop products for third parties. FastTrackr AI may generate and use aggregated and/or de-identified data that does not identify, and cannot reasonably be used to identify, any individual, for operating, securing, analyzing, and improving the Platform.</p>
 
       <h3>4.3 No sale of personal data</h3>
       <p>FastTrackr AI does not sell, rent, or trade any User Account Data or Client Data to any third party for any commercial purpose.</p>
@@ -143,7 +143,7 @@ export default function PrivacyTransitions() {
         <li>Regular security assessments and monitoring</li>
       </ul>
       <p>Given the sensitivity of Sensitive Client Data — including SSNs, account numbers, and financial information — we apply security controls appropriate to the nature of such data.</p>
-      <p>No data transmission or storage system can be guaranteed completely secure. In the event of a security incident, FastTrackr AI will notify affected Users within the timeframe required by applicable law. FastTrackr AI's notification obligation runs solely to Users — not to end Clients. Notifying end Clients of any breach affecting their data is solely the responsibility of the User.</p>
+      <p>No data transmission or storage system can be guaranteed completely secure. In the event of a security incident, FastTrackr AI will notify affected Users promptly and within the timeframe required by applicable law. FastTrackr AI's notification obligation runs solely to Users — not to end Clients. Notifying end Clients of any breach affecting their data is solely the responsibility of the User.</p>
 
       <h2>9. Cookies and technical tracking</h2>
       <p>The Platform uses cookies and similar technologies for authentication, session management, and analytics. We do not use third-party advertising cookies or cross-site tracking. You can control cookie settings through your browser, though disabling cookies may affect Platform functionality.</p>
@@ -170,7 +170,7 @@ export default function PrivacyTransitions() {
       <p>However, Users may upload or process personal information relating to minors in connection with custodial accounts (UTMA/UGMA), 529 education savings accounts, beneficiary designations, trust accounts, and other financial records as part of a transition Project. Such information is processed by FastTrackr AI solely as a service provider acting on the User's instructions. Users are solely responsible for ensuring that any processing of information relating to minors complies with all applicable laws.</p>
 
       <h2>12. Data transfers</h2>
-      <p>Data may be processed in the United States and, in limited cases involving third-party processing services, in other countries. FastTrackr AI takes reasonable steps to require appropriate data protections through its arrangements with service providers.</p>
+      <p>Client Data is stored and processed within the United States, using cloud infrastructure located in U.S. regions, and FastTrackr AI engages service providers that process Client Data within the United States. FastTrackr AI personnel may be located within and outside the United States; any access by personnel located outside the United States occurs solely through controlled, secured connections to FastTrackr AI's U.S.-based production systems. Where a User or Client accesses, reviews, or submits their own information directly through the Platform via their own secure (e.g., OTP-verified) session, the location of that access (even outside the US) is determined by accessing User or Client.</p>
 
       <h2>13. Relationship with Terms of Service</h2>
       <p>This Privacy Policy is incorporated into and forms part of the FastTrackr Transition Platform <a href="/tos-transitions">Terms of Service</a>. In the event of any conflict, the Terms of Service shall control.</p>

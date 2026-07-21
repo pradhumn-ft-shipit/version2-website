@@ -5,7 +5,7 @@ export default function TermsTransitions() {
     <LegalShell
       eyebrow="Transition Platform"
       title="Terms of Service"
-      lastUpdated="13 April, 2026"
+      lastUpdated="July 21, 2026"
     >
       <div className="callout-warning">
         <p><strong>IMPORTANT:</strong> By using the FastTrackr Transition Platform, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree, do not use the Platform.</p>
@@ -105,12 +105,12 @@ export default function TermsTransitions() {
       <p><strong>5.1 Data Controller / Processor Relationship.</strong> You are the data controller and FastTrackr AI is the data processor, acting solely on your instructions. You remain solely responsible for the lawfulness of processing and all obligations owed to Clients.</p>
       <p><strong>5.2 Regulatory Compliance — User Responsibility.</strong> All regulatory compliance obligations — including under Regulation S-P, GLBA, FINRA rules, and state privacy laws — are solely the responsibility of the User.</p>
       <p><strong>5.3 Sensitive Client Data.</strong> The Platform may be used to collect and store Sensitive Client Data, including SSNs and account numbers. You are solely responsible for ensuring compliance with all Applicable Law.</p>
-      <p><strong>5.4 Data Security.</strong> FastTrackr AI implements commercially reasonable security measures including encryption in transit and at rest, access controls, and regular security assessments. No system is completely secure. FastTrackr AI shall not be liable for any security breach except to the extent caused solely and directly by FastTrackr AI's gross negligence or willful misconduct.</p>
-      <p><strong>5.5 Data Breach Notification.</strong> FastTrackr AI will notify affected Users within the timeframe required by applicable law for material breaches. Notification runs solely to Users — not to end Clients. Notifying Clients is solely the responsibility of the User.</p>
+      <p><strong>5.4 Data Security.</strong> FastTrackr AI implements commercially reasonable security measures including encryption in transit and at rest, access controls, and regular security assessments. FastTrackr AI has completed a SOC 2 Type II examination. No system is completely secure. FastTrackr AI shall not be liable for any security breach except to the extent caused solely and directly by FastTrackr AI's gross negligence or willful misconduct.</p>
+      <p><strong>5.5 Data Breach Notification.</strong> FastTrackr AI will notify affected Users promptly and within the timeframe required by applicable law for material breaches. Notification runs solely to Users — not to end Clients. Notifying Clients is solely the responsibility of the User.</p>
 
       <h2>6. Intellectual property</h2>
       <p>The Platform is the exclusive property of FastTrackr AI. You are granted a limited, non-exclusive, non-transferable, revocable license to use the Platform solely for the purposes described in this Agreement.</p>
-      <p>You retain ownership of all Client Data you upload. FastTrackr AI does not sell Client Data or use it for any purpose beyond providing and improving the Platform.</p>
+      <p>You retain ownership of all Client Data you upload. FastTrackr AI does not sell Client Data and does not use it for any purpose beyond providing, maintaining, securing, and improving the Platform. FastTrackr AI does not use Client Data to train its own AI models. FastTrackr AI may generate and use aggregated and/or de-identified data that does not identify, and cannot reasonably be used to identify, any individual or User, for operating, securing, analyzing, and improving the Platform.</p>
 
       <h2>7. Disclaimers of warranties</h2>
       <p>THE PLATFORM IS PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE&rdquo; WITHOUT WARRANTY OF ANY KIND. FASTTRACKR AI EXPRESSLY DISCLAIMS ALL WARRANTIES INCLUDING:</p>
@@ -125,7 +125,7 @@ export default function TermsTransitions() {
 
       <h2>8. Limitation of liability</h2>
       <p><strong>8.1 Exclusion of Consequential Damages.</strong> IN NO EVENT SHALL FASTTRACKR AI BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST BUSINESS, LOSS OF DATA, OR REPUTATIONAL HARM.</p>
-      <p><strong>8.2 Cap on Liability.</strong> FASTTRACKR AI'S TOTAL CUMULATIVE LIABILITY SHALL NOT EXCEED THE GREATER OF (A) TOTAL FEES PAID IN THE THREE (3) MONTHS PRECEDING THE CLAIM, OR (B) ONE THOUSAND DOLLARS ($1,000).</p>
+      <p><strong>8.2 Cap on Liability.</strong> FASTTRACKR AI'S TOTAL CUMULATIVE LIABILITY SHALL NOT EXCEED THE GREATER OF (A) TEN THOUSAND DOLLARS ($10,000), OR (B) TOTAL FEES PAID IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</p>
       <p><strong>8.3 Specific Liability Exclusions.</strong> FASTTRACKR AI SHALL HAVE NO LIABILITY FOR ANY CLAIM ARISING FROM:</p>
       <ul>
         <li>Any User violation of the Broker Protocol or any solicitation law;</li>
@@ -167,7 +167,7 @@ export default function TermsTransitions() {
       <p><strong>12.4 Force Majeure.</strong> Neither party is liable for delays caused by events beyond its reasonable control.</p>
 
       <h2>13. General provisions</h2>
-      <p><strong>13.1 Entire Agreement.</strong> This Agreement supersedes all prior understandings and agreements.</p>
+      <p><strong>13.1 Entire Agreement.</strong> This Agreement supersedes all prior understandings and agreements. Notwithstanding the foregoing, if you access or use the Platform on behalf of, at the direction of, or under the supervision or authorization of an organization that has a separate written agreement with FastTrackr AI (such as a master services agreement, design partner agreement, data processing agreement, or statement of work) &mdash; including where you are a client of, or an advisor or firm working with, such an organization &mdash; nothing in this Agreement supersedes that written agreement, and as between FastTrackr AI and that organization, that written agreement controls in the event of any conflict with this Agreement.</p>
       <p><strong>13.2 Amendments.</strong> FastTrackr AI may modify this Agreement at any time. Continued use constitutes acceptance.</p>
       <p><strong>13.3 Severability.</strong> If any provision is found unenforceable, remaining provisions continue in full force.</p>
       <p><strong>13.4 No Waiver.</strong> Failure to enforce any provision is not a waiver of the right to enforce it in future.</p>

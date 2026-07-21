@@ -1,20 +1,27 @@
+> **SUPERSEDED — ARCHIVED FOR AUDIT. DO NOT PUBLISH.**
+> This is the version of the Transition Platform Terms of Service that was live at
+> https://fasttrackr.ai/tos-transitions from 13 April, 2026 until 21 July, 2026.
+> It was replaced on 21 July, 2026. The current version is
+> `../tos-transitions.md`, rendered by `src/pages/legal/TermsTransitions.tsx`.
+> Retained solely as a historical record — this text no longer governs any User.
+
 # Terms of Service
 
 #### FastTrackr Advisor Transition Platform
 
-**Status:** CURRENT — in effect from 21 July, 2026  
-**URL:** https://fasttrackr.ai/tos-transitions  
-**Rendered by:** `src/pages/legal/TermsTransitions.tsx`  
-**Supersedes:** `archive/tos-transitions-2026-04-13.md`  
-Last Updated: July 21, 2026
+**Status:** Superseded — in effect 13 April, 2026 to 21 July, 2026  
+**URL when live:** https://fasttrackr.ai/tos-transitions  
+Last Updated: 13 April, 2026
 
-**IMPORTANT:** By using the FastTrackr Transition Platform, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree, do not use the Platform.
+**IMPORTANT: BY USING THE FASTTRACKR TRANSITION PLATFORM, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE, DO NOT USE THE PLATFORM.**
 
 Fasttrackr, Inc. ("FastTrackr AI", "we", "us", or "our") provides the FastTrackr Advisor Transition Platform (the "Platform") as a neutral technology tool to assist financial advisors, their staff, and transition consultants in managing the administrative, data-management, documentation and other execution aspects of advisor transitions, firm acquisitions and liftouts. This Agreement governs your access to and use of the Platform.
 
-FastTrackr AI is not a broker-dealer, registered investment adviser, compliance consultant, legal adviser, or licensed or regulated entity. Nothing in this Agreement or on the Platform constitutes legal, compliance, financial, or regulatory advice.
+FastTrackr AI is not a broker-dealer, registered investment adviser, compliance consultant, legal adviser, licensed or regulated entity. Nothing in this Agreement or on the Platform constitutes legal, compliance, financial, or regulatory advice.
 
-## 1. Definitions
+---
+
+## 1. DEFINITIONS
 
 **1.1 "Agreement"** means these Terms of Service, together with FastTrackr AI's Privacy Policy, all of which are incorporated herein by reference. By accessing or using the Platform, you agree to be bound by this Agreement. No separate order form or written signature is required.
 
@@ -48,13 +55,15 @@ FastTrackr AI is not a broker-dealer, registered investment adviser, compliance 
 
 **1.16 "Applicable Law"** means all federal and state laws, rules, regulations, and self-regulatory organization rules applicable to Users, including but not limited to the Securities Exchange Act of 1934, the Investment Advisers Act of 1940, FINRA rules, the Gramm-Leach-Bliley Act, state non-solicitation and non-compete laws, and the Broker Protocol where applicable.
 
-## 2. Services
+---
 
-### 2.1 Platform description
+## 2. SERVICES
 
-The FastTrackr Advisor Transition Platform is a neutral data management and workflow tool. The Platform allows Users to: (a) create and manage transition Projects; (b) upload, organize, and enrich Client household data; (c) collect and store Client information including PII and Sensitive Client Data; (d) generate transition-related documents and forms; (e) coordinate data enrichment with Clients and Users; and (f) track transition progress across Households.
+**2.1 Platform Description**
 
-### 2.2 Neutral technology platform
+The FastTrackr Advisor Transition Platform is a neutral data management and workflow tool. The Platform allows Users to: (a) create and manage transition Projects; (b) upload, organize, and enrich Client household data; (c) collect and store Client information including PII and Sensitive Client Data; (d) generate transition-related documents and forms; (e) coordinate data enrichment with Clients, and Users; and (f) track transition progress across Households.
+
+**2.2 Neutral Technology Platform**
 
 FastTrackr AI operates solely as a neutral technology platform. FastTrackr AI:
 
@@ -66,17 +75,19 @@ FastTrackr AI operates solely as a neutral technology platform. FastTrackr AI:
 
 It is solely the responsibility of each User to ensure that their use of the Platform complies with all Applicable Law and all contractual obligations owed to any Prior Firm, Acquiring Firm, or Custodian.
 
-### 2.3 US market only
+**2.3 US Market Only**
 
 The Platform is designed exclusively to support advisor transition activity within the United States financial services regulatory framework.
 
-### 2.4 No regulatory compliance representation
+**2.4 No Regulatory Compliance Representation**
 
 The Platform is not designed or certified to comply with any industry-specific regulation. All regulatory, legal, and compliance obligations arising from use of the Platform are solely the responsibility of the User.
 
-## 3. User obligations and representations
+---
 
-### 3.1 Legal compliance — general
+## 3. USER OBLIGATIONS AND REPRESENTATIONS
+
+**3.1 Legal Compliance — General**
 
 By using the Platform, you represent, warrant, and covenant that:
 
@@ -85,7 +96,7 @@ By using the Platform, you represent, warrant, and covenant that:
 - You have obtained, or will obtain prior to uploading any Client Data, all necessary consents, authorizations, and permissions required by Applicable Law from each Client;
 - You will not use the Platform to collect, store, or transmit Client Data in a manner that violates any Applicable Law.
 
-### 3.2 Protocol and solicitation law compliance
+**3.2 Protocol and Solicitation Law Compliance**
 
 **YOU ACKNOWLEDGE AND AGREE THAT:**
 
@@ -94,7 +105,7 @@ By using the Platform, you represent, warrant, and covenant that:
 - The Platform does not enforce any restriction on the type of Client Data that may be entered;
 - FastTrackr AI shall have no liability for any claim arising from your violation of the Broker Protocol, any non-solicitation or non-compete agreement, or any Applicable Law.
 
-### 3.3 Client data — upload and consent obligations
+**3.3 Client Data — Upload and Consent Obligations**
 
 By uploading, entering, or processing any Client Data you represent and warrant that:
 
@@ -105,15 +116,17 @@ By uploading, entering, or processing any Client Data you represent and warrant 
 
 FastTrackr AI does not provide consent forms, template disclosures, or legal guidance regarding consent requirements.
 
-### 3.4 Advisor-client relationship
+**3.4 Advisor-Client Relationship**
 
 FastTrackr AI has no direct relationship with your Clients. You are the data controller with respect to all Client Data. FastTrackr AI processes Client Data solely as a service provider acting on your instructions.
 
-### 3.5 Transition consultants and third-party Users
+**3.5 Transition Consultants and Third-Party Users**
 
 If you are a Transition Consultant using the Platform on behalf of an Advisor or firm, you represent that you have full authority and that all parties are fully bound by this Agreement. You and the Advisor or Acquiring Firm on whose behalf you act shall be jointly and severally responsible for all obligations under this Agreement.
 
-## 4. Prohibited uses
+---
+
+## 4. PROHIBITED USES
 
 You may NOT use the Platform to:
 
@@ -127,25 +140,41 @@ You may NOT use the Platform to:
 - Misrepresent your identity, credentials, or authority;
 - Scrape, reverse engineer, or introduce automated bots without FastTrackr AI's prior written consent.
 
-## 5. Client data, privacy, and security
+---
 
-**5.1 Data Controller / Processor Relationship.** You are the data controller and FastTrackr AI is the data processor, acting solely on your instructions. You remain solely responsible for the lawfulness of processing and all obligations owed to Clients.
+## 5. CLIENT DATA, PRIVACY, AND SECURITY
 
-**5.2 Regulatory Compliance — User Responsibility.** All regulatory compliance obligations — including under Regulation S-P, GLBA, FINRA rules, and state privacy laws — are solely the responsibility of the User.
+**5.1 Data Controller / Processor Relationship**
 
-**5.3 Sensitive Client Data.** The Platform may be used to collect and store Sensitive Client Data, including SSNs and account numbers. You are solely responsible for ensuring compliance with all Applicable Law.
+You are the data controller and FastTrackr AI is the data processor, acting solely on your instructions. You remain solely responsible for the lawfulness of processing and all obligations owed to Clients.
 
-**5.4 Data Security.** FastTrackr AI implements commercially reasonable security measures including encryption in transit and at rest, access controls, and regular security assessments. FastTrackr AI has completed a SOC 2 Type II examination. No system is completely secure. FastTrackr AI shall not be liable for any security breach except to the extent caused solely and directly by FastTrackr AI's gross negligence or willful misconduct.
+**5.2 Regulatory Compliance — User Responsibility**
 
-**5.5 Data Breach Notification.** FastTrackr AI will notify affected Users promptly and within the timeframe required by applicable law for material breaches. Notification runs solely to Users — not to end Clients. Notifying Clients is solely the responsibility of the User.
+All regulatory compliance obligations — including under Regulation S-P, GLBA, FINRA rules, and state privacy laws — are solely the responsibility of the User.
 
-## 6. Intellectual property
+**5.3 Sensitive Client Data**
+
+The Platform may be used to collect and store Sensitive Client Data, including SSNs and account numbers. You are solely responsible for ensuring compliance with all Applicable Law.
+
+**5.4 Data Security**
+
+FastTrackr AI implements commercially reasonable security measures including encryption in transit and at rest, access controls, and regular security assessments. No system is completely secure. FastTrackr AI shall not be liable for any security breach except to the extent caused solely and directly by FastTrackr AI's gross negligence or willful misconduct.
+
+**5.5 Data Breach Notification**
+
+FastTrackr AI will notify affected Users within the timeframe required by applicable law for material breaches. Notification runs solely to Users — not to end Clients. Notifying Clients is solely the responsibility of the User.
+
+---
+
+## 6. INTELLECTUAL PROPERTY
 
 The Platform is the exclusive property of FastTrackr AI. You are granted a limited, non-exclusive, non-transferable, revocable license to use the Platform solely for the purposes described in this Agreement.
 
-You retain ownership of all Client Data you upload. FastTrackr AI does not sell Client Data and does not use it for any purpose beyond providing, maintaining, securing, and improving the Platform. FastTrackr AI does not use Client Data to train its own AI models. FastTrackr AI may generate and use aggregated and/or de-identified data that does not identify, and cannot reasonably be used to identify, any individual or User, for operating, securing, analyzing, and improving the Platform.
+You retain ownership of all Client Data you upload. FastTrackr AI does not sell Client Data or use it for any purpose beyond providing and improving the Platform.
 
-## 7. Disclaimers of warranties
+---
+
+## 7. DISCLAIMERS OF WARRANTIES
 
 THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND. FASTTRACKR AI EXPRESSLY DISCLAIMS ALL WARRANTIES INCLUDING:
 
@@ -157,13 +186,21 @@ THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND
 
 **FASTTRACKR AI MAKES NO WARRANTY REGARDING THE LEGAL PERMISSIBILITY OF ANY ADVISOR'S USE OF CLIENT DATA, ANY SOLICITATION ACTIVITY, OR ANY ASPECT OF AN ADVISOR TRANSITION.**
 
-## 8. Limitation of liability
+---
 
-**8.1 Exclusion of Consequential Damages.** IN NO EVENT SHALL FASTTRACKR AI BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST BUSINESS, LOSS OF DATA, OR REPUTATIONAL HARM.
+## 8. LIMITATION OF LIABILITY
 
-**8.2 Cap on Liability.** FASTTRACKR AI'S TOTAL CUMULATIVE LIABILITY SHALL NOT EXCEED THE GREATER OF (A) TEN THOUSAND DOLLARS ($10,000), OR (B) TOTAL FEES PAID IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
+**8.1 Exclusion of Consequential Damages**
 
-**8.3 Specific Liability Exclusions.** FASTTRACKR AI SHALL HAVE NO LIABILITY FOR ANY CLAIM ARISING FROM:
+IN NO EVENT SHALL FASTTRACKR AI BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST BUSINESS, LOSS OF DATA, OR REPUTATIONAL HARM.
+
+**8.2 Cap on Liability**
+
+FASTTRACKR AI'S TOTAL CUMULATIVE LIABILITY SHALL NOT EXCEED THE GREATER OF (A) TOTAL FEES PAID IN THE THREE (3) MONTHS PRECEDING THE CLAIM, OR (B) ONE THOUSAND DOLLARS ($1,000).
+
+**8.3 Specific Liability Exclusions**
+
+FASTTRACKR AI SHALL HAVE NO LIABILITY FOR ANY CLAIM ARISING FROM:
 
 - Any User violation of the Broker Protocol or any solicitation law;
 - Any User violation of any non-solicitation, non-compete, or employment agreement;
@@ -175,7 +212,9 @@ THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND
 - Any Client's claim arising from processing of their personal information by a User;
 - Any dispute between a User and their Prior Firm, Acquiring Firm, Custodian, or Client.
 
-## 9. Indemnification
+---
+
+## 9. INDEMNIFICATION
 
 You agree to defend, indemnify, and hold harmless FastTrackr AI from all claims, damages, losses, liabilities, costs, and expenses arising out of or relating to:
 
@@ -185,51 +224,61 @@ You agree to defend, indemnify, and hold harmless FastTrackr AI from all claims,
 - Any unauthorized collection, upload, use, or disclosure of Client Data;
 - Any claim by any Prior Firm, Custodian, Acquiring Firm, or regulatory authority arising from your use of the Platform.
 
-## 10. Confidentiality
+---
+
+## 10. CONFIDENTIALITY
 
 Each party shall keep the other's Confidential Information confidential. FastTrackr AI treats all Client Data as Confidential Information and shall not disclose it to any third party except as necessary to provide the Platform services or as required by Applicable Law. FastTrackr AI does not disclose Client Data, Project Data, or User information to any Prior Firm or party adverse to a User in any transition-related dispute.
 
 Confidentiality obligations survive termination of this Agreement for **five (5) years**.
 
-## 11. Term and termination
+---
 
-**11.1 Term.** Commences on the date you first access the Platform and continues until terminated by either party.
+## 11. TERM AND TERMINATION
 
-**11.2 Termination by User.** You may terminate at any time by ceasing all use and providing written notice to contact@fasttrackr.ai.
+**11.1 Term** — Commences on the date you first access the Platform and continues until terminated by either party.
 
-**11.3 Termination by FastTrackr AI.** FastTrackr AI may suspend or terminate access immediately upon written notice for material breach, legal or regulatory risk, regulatory requirement, or if FastTrackr AI ceases to offer the Platform.
+**11.2 Termination by User** — You may terminate at any time by ceasing all use and providing written notice to contact@fasttrackr.ai.
 
-**11.4 Effect of Termination.** Your right to access the Platform ceases immediately. Sections 3, 7, 8, 9, 10, 12, and 13 survive termination.
+**11.3 Termination by FastTrackr AI** — FastTrackr AI may suspend or terminate access immediately upon written notice for material breach, legal or regulatory risk, regulatory requirement, or if FastTrackr AI ceases to offer the Platform.
 
-**11.5 Data Following Termination.** Client Data is retained for up to thirty (30) days after termination, then deleted from active systems. Backup copies are purged within sixty (60) days.
+**11.4 Effect of Termination** — Your right to access the Platform ceases immediately. Sections 3, 7, 8, 9, 10, 12, and 13 survive termination.
 
-## 12. Dispute resolution
+**11.5 Data Following Termination** — Client Data is retained for up to thirty (30) days after termination, then deleted from active systems. Backup copies are purged within sixty (60) days.
 
-**12.1 Governing Law.** Laws of the State of Delaware.
+---
 
-**12.2 Arbitration.** Binding arbitration under AAA rules, conducted by a single arbitrator in Delaware, in the English language.
+## 12. DISPUTE RESOLUTION
 
-**12.3 No Class Actions.** YOU WAIVE ANY RIGHT TO BRING CLAIMS AS A CLASS ACTION OR REPRESENTATIVE ACTION.
+**12.1 Governing Law** — Laws of the State of Delaware.
 
-**12.4 Force Majeure.** Neither party is liable for delays caused by events beyond its reasonable control.
+**12.2 Arbitration** — Binding arbitration under AAA rules, conducted by a single arbitrator in Delaware, in the English language.
 
-## 13. General provisions
+**12.3 No Class Actions** — YOU WAIVE ANY RIGHT TO BRING CLAIMS AS A CLASS ACTION OR REPRESENTATIVE ACTION.
 
-**13.1 Entire Agreement.** This Agreement supersedes all prior understandings and agreements. Notwithstanding the foregoing, if you access or use the Platform on behalf of, at the direction of, or under the supervision or authorization of an organization that has a separate written agreement with FastTrackr AI (such as a master services agreement, design partner agreement, data processing agreement, or statement of work) — including where you are a client of, or an advisor or firm working with, such an organization — nothing in this Agreement supersedes that written agreement, and as between FastTrackr AI and that organization, that written agreement controls in the event of any conflict with this Agreement.
+**12.4 Force Majeure** — Neither party is liable for delays caused by events beyond its reasonable control.
 
-**13.2 Amendments.** FastTrackr AI may modify this Agreement at any time. Continued use constitutes acceptance.
+---
 
-**13.3 Severability.** If any provision is found unenforceable, remaining provisions continue in full force.
+## 13. GENERAL PROVISIONS
 
-**13.4 No Waiver.** Failure to enforce any provision is not a waiver of the right to enforce it in future.
+**13.1 Entire Agreement** — This Agreement supersedes all prior understandings and agreements.
 
-**13.5 Assignment.** You may not assign rights without FastTrackr AI's prior written consent.
+**13.2 Amendments** — FastTrackr AI may modify this Agreement at any time. Continued use constitutes acceptance.
 
-**13.6 No Third-Party Beneficiaries.** No Client, Prior Firm, Acquiring Firm, Custodian, or other third party has any rights under this Agreement.
+**13.3 Severability** — If any provision is found unenforceable, remaining provisions continue in full force.
 
-**13.7 Notices.** Legal notices to FastTrackr AI: contact@fasttrackr.ai and by certified mail to FastTrackr, Inc., 131 Continental Dr, Suite 305, Newark, DE 19713.
+**13.4 No Waiver** — Failure to enforce any provision is not a waiver of the right to enforce it in future.
 
-## Contact
+**13.5 Assignment** — You may not assign rights without FastTrackr AI's prior written consent.
+
+**13.6 No Third-Party Beneficiaries** — No Client, Prior Firm, Acquiring Firm, Custodian, or other third party has any rights under this Agreement.
+
+**13.7 Notices** — Legal notices to FastTrackr AI: contact@fasttrackr.ai and by certified mail to FastTrackr, Inc., 131 Continental Dr, Suite 305, Newark, DE 19713.
+
+---
+
+## CONTACT
 
 **FastTrackr Inc.**  
 Email: contact@fasttrackr.ai

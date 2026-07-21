@@ -1,20 +1,27 @@
+> **SUPERSEDED — ARCHIVED FOR AUDIT. DO NOT PUBLISH.**
+> This is the version of the Transition Platform Privacy Policy that was live at
+> https://fasttrackr.ai/privacy-policy-transitions from 13 April, 2026 until 21 July, 2026.
+> It was replaced on 21 July, 2026. The current version is
+> `../privacy-policy-transitions.md`, rendered by `src/pages/legal/PrivacyTransitions.tsx`.
+> Retained solely as a historical record — this text no longer governs any User.
+
 # Privacy Policy
 
 #### FastTrackr Advisor Transition Platform
 
-**Status:** CURRENT — in effect from 21 July, 2026  
-**URL:** https://fasttrackr.ai/privacy-policy-transitions  
-**Rendered by:** `src/pages/legal/PrivacyTransitions.tsx`  
-**Supersedes:** `archive/privacy-policy-transitions-2026-04-13.md`  
-Last Updated: July 21, 2026
+**Status:** Superseded — in effect 13 April, 2026 to 21 July, 2026  
+**URL when live:** https://fasttrackr.ai/privacy-policy-transitions  
+Last Updated: 13 April, 2026
 
 FastTrackr Inc. ("FastTrackr AI", "we", "us", or "our") is committed to protecting the privacy of individuals whose information is collected and processed through the FastTrackr Advisor Transition Platform (the "Platform"). This Privacy Policy describes how we collect, use, store, share, and protect information in connection with the Platform.
 
-This Privacy Policy applies specifically to the FastTrackr Transition Platform. For our general website and other services, please refer to the applicable privacy policy at fasttrackr.ai/privacy-policy.
+This Privacy Policy applies specifically to the FastTrackr Transition Platform. For our general website and other services, please refer to the applicable privacy policy at fasttrackr.ai.
 
 By using the Platform, you agree to the collection and use of information in accordance with this Privacy Policy.
 
-## 1. Definitions
+---
+
+## 1. DEFINITIONS
 
 **"User"** means any individual who accesses or uses the Platform, including financial advisors, transition consultants, firm administrators, and support staff.
 
@@ -30,24 +37,28 @@ By using the Platform, you agree to the collection and use of information in acc
 
 **"Project Data"** means all information associated with a transition Project, including Household records, document uploads, advisor configurations, and progress tracking data.
 
-## 2. Scope of this policy and our role
+---
 
-### 2.1 Dual role
+## 2. SCOPE OF THIS POLICY AND OUR ROLE
+
+**2.1 Dual Role**
 
 FastTrackr AI operates in two distinct capacities:
 
 - As a **data controller** with respect to User Account Data and Platform usage information we collect directly from Users for our own purposes (account management, billing, platform improvement); and
 - As a **data processor** acting on behalf of Users with respect to all Client Data that Users upload, enter, or process through the Platform. In this capacity, we process Client Data solely at the direction of Users, who are the data controllers with respect to their Clients.
 
-**IMPORTANT:** FastTrackr AI does not control the collection or use of Client Data. Users — not FastTrackr AI — are solely responsible for ensuring they have the legal right to collect, upload, and process Client Data, and for obtaining all necessary Client consents required by law.
+**IMPORTANT: FastTrackr AI does not control the collection or use of Client Data. Users — not FastTrackr AI — are solely responsible for ensuring they have the legal right to collect, upload, and process Client Data, and for obtaining all necessary Client consents required by law.**
 
-### 2.2 US Platform Only
+**2.2 US Platform Only**
 
 The Platform is designed exclusively to support advisor transition activity within the United States financial services regulatory framework.
 
-## 3. Information we collect
+---
 
-### 3.1 User account and registration data
+## 3. INFORMATION WE COLLECT
+
+**3.1 User Account and Registration Data**
 
 When you register for or use the Platform, we collect:
 
@@ -59,7 +70,7 @@ When you register for or use the Platform, we collect:
 - Advisor identifiers such as G Numbers, RR Codes, or identification numbers required for transition workflows
 - Any other information as may be reasonably required
 
-### 3.2 Client data uploaded by Users
+**3.2 Client Data Uploaded by Users**
 
 Users may upload or enter Client Data into the Platform in connection with transition Projects. This may include:
 
@@ -75,25 +86,27 @@ Users may upload or enter Client Data into the Platform in connection with trans
 
 **NOTICE REGARDING SENSITIVE CLIENT DATA:** The Platform may be used by Users to store Social Security Numbers and other highly sensitive financial information. FastTrackr AI processes this information solely as a service provider at the direction of the User. Users are solely responsible for ensuring they are legally and contractually authorized to collect and upload this data, and for obtaining all required Client consents.
 
-### 3.3 Client-submitted data
+**3.3 Client-Submitted Data**
 
 In certain workflows, Clients may be invited to directly access the Platform via OTP-verified login to review, verify, or add their own information. FastTrackr AI processes this data as a service provider on behalf of the User.
 
-### 3.4 Document uploads
+**3.4 Document Uploads**
 
 Users and Clients may upload documents through the Platform, including account statements, tax forms, identification documents, and other financial or non-financial records. FastTrackr AI uses AI and OCR technology to extract and structure relevant data for use in the transition Project.
 
-### 3.5 Audio and transcript data
+**3.5 Audio and Transcript Data**
 
 Where enabled, Users may upload audio recordings or transcripts of client calls for the purpose of enriching Household records. These recordings are processed to extract relevant information and are retained for the period described in Section 7.
 
-### 3.6 Usage and technical data
+**3.6 Usage and Technical Data**
 
 We may collect technical data including IP addresses, device identifiers, browser type and version, pages and features accessed, login timestamps, session data, and error logs.
 
-## 4. How we use information
+---
 
-### 4.1 User Account Data
+## 4. HOW WE USE INFORMATION
+
+**4.1 User Account Data**
 
 We use User Account Data to:
 
@@ -105,7 +118,7 @@ We use User Account Data to:
 - Improve the Platform and develop new features
 - Comply with legal obligations
 
-### 4.2 Client Data
+**4.2 Client Data**
 
 We use Client Data solely to:
 
@@ -115,27 +128,43 @@ We use Client Data solely to:
 - Facilitate Client-facing workflows where a Client is invited to verify or add their own information;
 - Comply with legal obligations, including applicable breach notification requirements.
 
-FastTrackr AI does not use Client Data to train its own AI models. All third-party AI services are engaged under terms that exclude data submitted via API from use in training their models. FastTrackr AI does not use Client Data to market to Clients or develop products for third parties. FastTrackr AI may generate and use aggregated and/or de-identified data that does not identify, and cannot reasonably be used to identify, any individual, for operating, securing, analyzing, and improving the Platform.
+FastTrackr AI does not use Client Data to train its own AI models. All third-party AI services are engaged under terms that exclude data submitted via API from use in training their models. FastTrackr AI does not use Client Data to market to Clients or develop products for third parties.
 
-### 4.3 No sale of personal data
+**4.3 No Sale of Personal Data**
 
 FastTrackr AI does not sell, rent, or trade any User Account Data or Client Data to any third party for any commercial purpose.
 
-## 5. How we share information
+---
 
-**5.1 Service Providers.** We work with third-party service providers who assist us in providing the Platform, including cloud hosting providers, AI and OCR processing services, and security providers. We require these service providers to handle data confidentially and use it only for the purpose of providing services to us.
+## 5. HOW WE SHARE INFORMATION
 
-**5.2 AI and Automated Processing.** The Platform uses AI and OCR technology to extract and analyze data from uploaded documents and audio files. Client Data may be transmitted to third-party AI service providers as part of this process. FastTrackr AI selects AI providers that operate under terms excluding API-submitted data from model training.
+**5.1 Service Providers**
 
-**5.3 Custodians and Destination Firms.** Client Data is not shared with custodians or destination firms by FastTrackr AI directly. Such sharing is conducted by Users using data organized and prepared through the Platform.
+We work with third-party service providers who assist us in providing the Platform, including cloud hosting providers, AI and OCR processing services, and security providers. We require these service providers to handle data confidentially and use it only for the purpose of providing services to us.
 
-**5.4 Legal Requirements.** We may disclose information if required by law, regulation, court order, or valid request from a regulatory or law enforcement authority.
+**5.2 AI and Automated Processing**
 
-**5.5 Business Transfers.** In the event of a merger, acquisition, or sale of substantially all of FastTrackr AI's assets, Client Data and User Account Data may be transferred to the acquiring entity, subject to the same privacy protections described in this Policy.
+The Platform uses AI and OCR technology to extract and analyze data from uploaded documents and audio files. Client Data may be transmitted to third-party AI service providers as part of this process. FastTrackr AI selects AI providers that operate under terms excluding API-submitted data from model training.
 
-**5.6 No Disclosure to Prior Firms.** FastTrackr AI does not disclose any Client Data, User Account Data, or Project Data to any Prior Firm or to any party adverse to a User in any employment or transition-related dispute.
+**5.3 Custodians and Destination Firms**
 
-## 6. Broker Protocol, solicitation laws, and data responsibility
+Client Data is not shared with custodians or destination firms by FastTrackr AI directly. Such sharing is conducted by Users using data organized and prepared through the Platform.
+
+**5.4 Legal Requirements**
+
+We may disclose information if required by law, regulation, court order, or valid request from a regulatory or law enforcement authority.
+
+**5.5 Business Transfers**
+
+In the event of a merger, acquisition, or sale of substantially all of FastTrackr AI's assets, Client Data and User Account Data may be transferred to the acquiring entity, subject to the same privacy protections described in this Policy.
+
+**5.6 No Disclosure to Prior Firms**
+
+FastTrackr AI does not disclose any Client Data, User Account Data, or Project Data to any Prior Firm or to any party adverse to a User in any employment or transition-related dispute.
+
+---
+
+## 6. BROKER PROTOCOL, SOLICITATION LAWS, AND DATA RESPONSIBILITY
 
 **CRITICAL NOTICE TO ALL USERS:** FastTrackr AI is a neutral technology platform. We do not verify, monitor, or enforce compliance with the Broker Protocol for Broker Recruiting, any non-solicitation agreement, or any solicitation law. The legal permissibility of collecting and using specific types of Client Data during an advisor transition is YOUR sole responsibility.
 
@@ -146,7 +175,9 @@ Users acknowledge and agree that:
 - FastTrackr AI takes no responsibility for any regulatory action, lawsuit, or proceeding arising from a User's collection, storage, or use of Client Data;
 - All regulatory compliance obligations arising from use of the Platform rest solely with the User.
 
-## 7. Data retention
+---
+
+## 7. DATA RETENTION
 
 **7.1 Client Data** — Retained for the duration of the active Project. Following Project closure or receipt of a deletion request:
 
@@ -163,7 +194,9 @@ Users acknowledge and agree that:
 
 **7.6 Confidentiality After Deletion** — Deletion does not affect FastTrackr AI's confidentiality obligations. The obligation to not disclose or misuse Confidential Information continues for **five (5) years** following termination.
 
-## 8. Data security
+---
+
+## 8. DATA SECURITY
 
 FastTrackr AI implements commercially reasonable technical and organizational security measures including:
 
@@ -173,15 +206,19 @@ FastTrackr AI implements commercially reasonable technical and organizational se
 
 Given the sensitivity of Sensitive Client Data — including SSNs, account numbers, and financial information — we apply security controls appropriate to the nature of such data.
 
-No data transmission or storage system can be guaranteed completely secure. In the event of a security incident, FastTrackr AI will notify affected Users promptly and within the timeframe required by applicable law. FastTrackr AI's notification obligation runs solely to Users — not to end Clients. Notifying end Clients of any breach affecting their data is solely the responsibility of the User.
+No data transmission or storage system can be guaranteed completely secure. In the event of a security incident, FastTrackr AI will notify affected Users within the timeframe required by applicable law. FastTrackr AI's notification obligation runs solely to Users — not to end Clients. Notifying end Clients of any breach affecting their data is solely the responsibility of the User.
 
-## 9. Cookies and technical tracking
+---
+
+## 9. COOKIES AND TECHNICAL TRACKING
 
 The Platform uses cookies and similar technologies for authentication, session management, and analytics. We do not use third-party advertising cookies or cross-site tracking. You can control cookie settings through your browser, though disabling cookies may affect Platform functionality.
 
-## 10. Your rights and choices
+---
 
-### 10.1 User Account Data rights
+## 10. YOUR RIGHTS AND CHOICES
+
+**10.1 User Account Data Rights**
 
 With respect to your own User Account Data, you have the right to:
 
@@ -192,33 +229,43 @@ With respect to your own User Account Data, you have the right to:
 
 Contact us at contact@fasttrackr.ai. FastTrackr AI will respond within 30 days.
 
-### 10.2 Client rights — advisor responsibility
+**10.2 Client Rights — Advisor Responsibility**
 
 FastTrackr AI does not have a direct relationship with Clients whose information is processed through the Platform. If a Client wishes to exercise rights regarding their personal information, they should contact the Advisor or firm on whose behalf their data was uploaded. FastTrackr AI will cooperate with Users to facilitate Client data requests as technically feasible.
 
-### 10.3 California privacy rights
+**10.3 California Privacy Rights**
 
 As an early-stage company, we do not currently meet CCPA applicability thresholds. However, we respect California residents' privacy concerns and implement reasonable data protection practices. Contact us at contact@fasttrackr.ai with any questions.
 
-## 11. Children's privacy
+---
+
+## 11. CHILDREN'S PRIVACY
 
 The Platform is intended for use by adults only. Individuals under 18 may not register as Users.
 
 However, Users may upload or process personal information relating to minors in connection with custodial accounts (UTMA/UGMA), 529 education savings accounts, beneficiary designations, trust accounts, and other financial records as part of a transition Project. Such information is processed by FastTrackr AI solely as a service provider acting on the User's instructions. Users are solely responsible for ensuring that any processing of information relating to minors complies with all applicable laws.
 
-## 12. Data transfers
+---
 
-Client Data is stored and processed within the United States, using cloud infrastructure located in U.S. regions, and FastTrackr AI engages service providers that process Client Data within the United States. FastTrackr AI personnel may be located within and outside the United States; any access by personnel located outside the United States occurs solely through controlled, secured connections to FastTrackr AI's U.S.-based production systems. Where a User or Client accesses, reviews, or submits their own information directly through the Platform via their own secure (e.g., OTP-verified) session, the location of that access (even outside the US) is determined by accessing User or Client.
+## 12. DATA TRANSFERS
 
-## 13. Relationship with Terms of Service
+Data may be processed in the United States and, in limited cases involving third-party processing services, in other countries. FastTrackr AI takes reasonable steps to require appropriate data protections through its arrangements with service providers.
 
-This Privacy Policy is incorporated into and forms part of the FastTrackr Transition Platform Terms of Service (https://fasttrackr.ai/tos-transitions). In the event of any conflict, the Terms of Service shall control.
+---
 
-## 14. Changes to this Privacy Policy
+## 13. RELATIONSHIP WITH TERMS OF SERVICE
+
+This Privacy Policy is incorporated into and forms part of the FastTrackr Transition Platform Terms of Service. In the event of any conflict, the Terms of Service shall control.
+
+---
+
+## 14. CHANGES TO THIS PRIVACY POLICY
 
 We may update this Privacy Policy from time to time. We will notify Users of material changes by posting an updated version on the Platform with a revised 'Last Updated' date. Your continued use of the Platform after any such update constitutes your acceptance of the revised Policy.
 
-## Contact us
+---
+
+## CONTACT US
 
 **FastTrackr Inc.**  
 Email: contact@fasttrackr.ai

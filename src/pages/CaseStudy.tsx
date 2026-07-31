@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageCTA from '../components/PageCTA';
@@ -85,6 +85,116 @@ function SectionLabel({
         {title}
       </h2>
     </div>
+  );
+}
+
+const quotes = [
+  {
+    id: 'jason-carter',
+    body: (
+      <>
+        Transitioning was the{' '}
+        <strong className="font-bold">
+          most stressful month I've had in my career.
+        </strong>{' '}
+        Working with FastTrackr allowed me to{' '}
+        <strong className="font-bold">focus on contacting clients</strong> and
+        devote very little mental energy to the details around completion of
+        paperwork.
+      </>
+    ),
+    author: 'Jason Carter, CFA®, MBA',
+    role: 'Managing Partner | Wealth Advisor, Cana Wealth Management',
+  },
+  {
+    id: 'transition-consultant',
+    body: (
+      <>
+        The most seamless transition we've ever run.{' '}
+        <strong className="font-bold">No manual overload</strong>, and for the{' '}
+        <strong className="font-bold">
+          first time neither we nor the advisor team were burning through our
+          weekends.
+        </strong>{' '}
+        <strong className="font-bold">
+          Work that would normally take 30+ days, with far more manual effort
+          and errors, we completed in two weeks.
+        </strong>
+      </>
+    ),
+    author: 'Transition Consultant',
+    role: '',
+  },
+];
+
+const QUOTE_INTERVAL = 4000;
+
+function QuoteCarousel() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(
+      () => setIndex((i) => (i + 1) % quotes.length),
+      QUOTE_INTERVAL
+    );
+    return () => clearInterval(timer);
+  }, [paused]);
+
+  return (
+    <section className="py-24 overflow-hidden">
+      <div
+        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+      >
+        <span className="text-8xl text-brandMint/30 leading-none font-display block -mb-6">
+          “
+        </span>
+
+        <div className="overflow-hidden">
+          <m.div
+            className="flex items-start"
+            animate={{ x: `-${index * 100}%` }}
+            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+          >
+            {quotes.map((quote) => (
+              <div key={quote.id} className="w-full flex-shrink-0 px-1">
+                <p className="text-2xl md:text-3xl font-display font-semibold text-textPrimary leading-snug mb-8">
+                  {quote.body}
+                </p>
+                <div className="font-bold text-textPrimary text-lg">
+                  {quote.author}
+                </div>
+                {quote.role && (
+                  <div className="text-textSecondary">{quote.role}</div>
+                )}
+              </div>
+            ))}
+          </m.div>
+        </div>
+
+        <div className="flex items-center justify-center gap-3 mt-10">
+          {quotes.map((quote, i) => (
+            <button
+              key={quote.id}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`Show quote from ${quote.author}`}
+              aria-current={i === index}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === index
+                  ? 'w-8 bg-brandDeep'
+                  : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -353,37 +463,8 @@ export default function CaseStudy() {
           </div>
         </section>
 
-        {/* Consultant Quote */}
-        <section className="py-24">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="text-8xl text-brandMint/30 leading-none font-display block -mb-6">
-              “
-            </span>
-            <m.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl md:text-3xl font-display font-semibold text-textPrimary leading-snug mb-8"
-            >
-              The most seamless transition we've ever run.{' '}
-              <strong className="font-bold">
-                No manual overload
-              </strong>
-              , and for the{' '}
-              <strong className="font-bold">
-                first time neither we nor the advisor team were burning through
-                our weekends.
-              </strong>{' '}
-              <strong className="font-bold">
-                Work that would normally take 30+ days, with far more manual
-                effort and errors, we completed in two weeks.
-              </strong>
-            </m.p>
-            <div className="font-bold text-textPrimary text-lg">
-              Transition Consultant
-            </div>
-          </div>
-        </section>
+        {/* Quotes carousel */}
+        <QuoteCarousel />
 
         {/* Section 03 — What the team actually experienced */}
         <section className="py-24 bg-bgCanvas border-y border-gray-100">

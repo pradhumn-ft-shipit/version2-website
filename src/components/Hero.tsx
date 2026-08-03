@@ -42,7 +42,7 @@ export default function Hero() {
               they paint immediately. The subhead was the LCP element and the
               prior animation delay (0.8s + 0.6s) blocked LCP for ~2.7s. */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
               <div className="flex items-center gap-3">
                 <img
                   src="/logos/soc2-type-ii.png"
@@ -58,12 +58,12 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="pl-4 border-l-2 border-brandMint">
-                <span className="text-sm text-textSecondary">
-                  Featured on the{' '}
-                  <strong className="font-semibold text-textPrimary">
-                    Kitces Advisor Technology Map
-                  </strong>
+              <span className="hidden sm:block w-px h-10 bg-gray-300" />
+
+              <div className="flex flex-col leading-tight">
+                <span className="text-sm text-textSecondary">Featured on</span>
+                <span className="text-sm font-bold text-textPrimary">
+                  Kitces AdvisorTech Map
                 </span>
               </div>
             </div>

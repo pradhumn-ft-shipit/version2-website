@@ -178,7 +178,8 @@ function NewsArticleView({ article }: { article: NewsArticleType }) {
                   Coverage
                 </h2>
                 <p className="text-sm text-textTertiary mb-6">
-                  This release was distributed over the wire and republished by the outlets below.
+                  This release was distributed over the wire and republished by the{' '}
+                  {article.coverage.length === 1 ? 'outlet' : 'outlets'} below.
                 </p>
                 <ul className="space-y-3">
                   {article.coverage.map((link) => (

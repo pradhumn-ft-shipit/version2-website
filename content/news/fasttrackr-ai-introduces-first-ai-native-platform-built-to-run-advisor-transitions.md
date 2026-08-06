@@ -12,7 +12,6 @@ image: /news-images/fasttrackr-ai-leadership-team.jpg
 imageAlt: FastTrackr AI Leadership Team, from left to right; Vineet Mohan, Kartik Kumar, Pradhumn Vijayvargiya
 coverage:
   - AP News | https://apnews.com/press-release/ein-presswire-newsmatics/press-release-ddad71136945f79a7664c3952102b919
-  - National Law Review | https://natlawreview.com/press-releases/fasttrackr-ai-introduces-first-ai-native-platform-built-to-run-advisor-transitions
 ---
 
 SAN FRANCISCO, CA, UNITED STATES, August 5, 2026 /EINPresswire.com/ -- In a transition completed a couple of months back, an advisor team moved approximately $100 million across 150 households in two weeks, starting from zero client data. It was a move from a broker-dealer to a major registered investment advisor, with zero not-in-good-order errors arising from repapering and 100 percent straight-through processing. According to the published case study, 70 percent of households were signed and moved by the end of the second week.

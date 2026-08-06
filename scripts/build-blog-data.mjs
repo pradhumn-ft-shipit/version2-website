@@ -49,14 +49,23 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/who-we-serve/acquisitive-rias', priority: '0.8' },
   { path: '/who-we-serve/independent-broker-dealers', priority: '0.8' },
   { path: '/who-we-serve/custodians', priority: '0.8' },
+  // /about is deliberately absent: it redirects to "/" (see src/App.tsx), and a
+  // sitemap should list canonical destinations rather than redirects. It was
+  // carried over from the previous version of the site.
   { path: '/pricing', priority: '0.7' },
-  { path: '/about', priority: '0.6' },
   { path: '/contact', priority: '0.7' },
   { path: '/resources/blog', priority: '0.5' },
   { path: '/resources/news', priority: '0.6' },
+  { path: '/resources-for-financial-advisors', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
+  // Intentionally NOT listed, though they are real routes in src/App.tsx:
+  // /fpa (link-only co-marketing landing), /zoom-help-documentation,
+  // /privacy-policy-transitions, /tos-transitions, /client-privacy-notice and
+  // /client-data-consent-acknowledgment. They stay crawlable and are still
+  // prerendered with their own <head> — they are just not submitted for
+  // indexing. Don't "fix" this list by adding them back.
 ];
 
 function parseFrontmatter(raw) {

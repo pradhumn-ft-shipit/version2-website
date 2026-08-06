@@ -4,10 +4,19 @@ import { m } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { fetchBlogIndex, formatBlogDate, type BlogIndexEntry } from '../lib/blog';
+import { useSeo, SITE_ORIGIN } from '../lib/seo';
 
 const PAGE_SIZE = 18;
 
 export default function Blog() {
+  useSeo({
+    title: 'Blog | FastTrackr AI',
+    description:
+      'Field notes from the operators reshaping wealth management: advisor transitions, AI in wealth, compliance, and the work behind the work.',
+    canonical: `${SITE_ORIGIN}/resources/blog`,
+    ogImage: `${SITE_ORIGIN}/logomark.png`,
+  });
+
   const [posts, setPosts] = useState<BlogIndexEntry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState('');

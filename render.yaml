@@ -40,6 +40,23 @@ services:
       - type: redirect
         source: /onepagecrm
         destination: /contact
+      # Prerendered content pages (scripts/prerender.mjs writes a real <head>
+      # per article into dist/<route>/index.html). These MUST come before the
+      # catch-all below: a bare SPA rewrite swallows the prerendered file and
+      # serves the generic shell instead, which is exactly what we're avoiding
+      # — verified locally, `serve -s` returns the shell for these paths.
+      - type: rewrite
+        source: /resources/news
+        destination: /resources/news/index.html
+      - type: rewrite
+        source: /resources/news/*
+        destination: /resources/news/*/index.html
+      - type: rewrite
+        source: /resources/blog
+        destination: /resources/blog/index.html
+      - type: rewrite
+        source: /blog/*
+        destination: /blog/*/index.html
       # SPA deep-link fallback — every other path serves the app shell so
       # React Router can handle it (and hard refreshes on /blog/<post> work).
       - type: rewrite

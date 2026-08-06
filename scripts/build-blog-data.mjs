@@ -4,6 +4,11 @@
 // public/blog-data/index.json from every post JSON on disk
 // (markdown-sourced + the legacy migrated ones).
 //
+// Also renders content/news/*.md → public/news-data/posts/<slug>.json +
+// public/news-data/index.json (press releases and announcements shown at
+// /resources/news). Both content types feed public/sitemap.xml, so a new
+// markdown file is all it takes for a URL to appear there.
+//
 // content/blog/ is the long-standing developer drop point — lenient
 // (skips bad files with a warning).
 // content/tejas/<YYYY-MM-DD>/ is the blog team's daily drop — strict
@@ -21,8 +26,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'content/blog');
 const TEJAS_DIR = path.join(ROOT, 'content/tejas');
+const NEWS_DIR = path.join(ROOT, 'content/news');
 const OUT_DIR = path.join(ROOT, 'public/blog-data');
 const POSTS_DIR = path.join(OUT_DIR, 'posts');
+const NEWS_OUT_DIR = path.join(ROOT, 'public/news-data');
+const NEWS_POSTS_DIR = path.join(NEWS_OUT_DIR, 'posts');
 const IMAGES_DIR = path.join(ROOT, 'public/blog-images');
 const CATEGORIES_TS = path.join(ROOT, 'src/lib/blogCategories.ts');
 const SITEMAP_PATH = path.join(ROOT, 'public/sitemap.xml');
@@ -45,6 +53,7 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/about', priority: '0.6' },
   { path: '/contact', priority: '0.7' },
   { path: '/resources/blog', priority: '0.5' },
+  { path: '/resources/news', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
@@ -249,6 +258,228 @@ function renderMarkdownFile(filePath) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// content/news/*.md — press releases and announcements for /resources/news.
+// Strict: any validation failure aborts the build (a broken press release page
+// is worse than no deploy). Frontmatter supports block lists, which the blog
+// parser above does not, so `coverage:` can carry one "Outlet | URL" per line.
+// ---------------------------------------------------------------------------
+
+/**
+ * Deliberately a small subset of YAML, with every unsupported construct raised
+ * as a build error rather than skipped. A press release that ships with a
+ * silently-empty `coverage:` or an `intro:` of ">" is worse than a failed build,
+ * so anything this parser does not understand is reported by line.
+ *
+ * Supported: `key: value` (optionally quoted) and block lists whose items are
+ * `- item`, at any indentation.
+ */
+function parseNewsFrontmatter(raw, fileLabel) {
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!m) return null;
+  const data = {};
+  const errors = [];
+  let listKey = null;
+  // Set after a block-scalar error so its indented continuation lines don't
+  // each raise a second, redundant error.
+  let skipIndented = false;
+  const lines = m[1].split(/\r?\n/);
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const where = `${fileLabel} (frontmatter line ${i + 1})`;
+    if (!line.trim()) continue;
+
+    // Block-list item. Accepted at any indent — zero-indent items are valid
+    // YAML, and silently reading them as keys is how coverage links vanish.
+    const item = line.match(/^\s*-\s+(.*)$/);
+    if (item) {
+      if (!listKey) {
+        errors.push(`${where}: list item "${item[1].trim()}" has no key above it`);
+        continue;
+      }
+      skipIndented = false;
+      data[listKey].push(item[1].trim());
+      continue;
+    }
+
+    if (skipIndented && /^\s/.test(line)) continue;
+
+    const idx = line.indexOf(':');
+    if (idx === -1) {
+      errors.push(`${where}: expected "key: value" or "- list item", got "${line.trim()}"`);
+      continue;
+    }
+    const key = line.slice(0, idx).trim();
+    if (!key) {
+      errors.push(`${where}: missing key before ":"`);
+      continue;
+    }
+    let val = line.slice(idx + 1).trim();
+
+    // >, |, >-, |+ etc. YAML folds these across the following lines; this
+    // parser does not, and would store the indicator itself as the value.
+    if (/^[>|][-+]?$/.test(val)) {
+      errors.push(
+        `${where}: multi-line values ("${key}: ${val}") are not supported — put the whole value on one line`
+      );
+      listKey = null;
+      skipIndented = true;
+      continue;
+    }
+
+    skipIndented = false;
+    if (val === '') {
+      listKey = key;
+      data[key] = [];
+      continue;
+    }
+    listKey = null;
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    data[key] = val;
+  }
+  return { data, body: m[2], errors };
+}
+
+function parseCoverage(value, errors, fileLabel) {
+  if (!value) return [];
+  const raw = Array.isArray(value) ? value : [value];
+  const out = [];
+  for (const entry of raw) {
+    const [outlet, url] = String(entry).split('|').map((s) => s.trim());
+    if (!outlet || !url) {
+      errors.push(`${fileLabel}: coverage entry must be "Outlet Name | https://url" (got "${entry}")`);
+      continue;
+    }
+    if (!/^https?:\/\//i.test(url)) {
+      errors.push(`${fileLabel}: coverage URL must be absolute (got "${url}")`);
+      continue;
+    }
+    out.push({ outlet, url });
+  }
+  return out;
+}
+
+function renderNewsFile(filePath) {
+  const errors = [];
+  const fileLabel = path.relative(ROOT, filePath);
+  const parsed = parseNewsFrontmatter(fs.readFileSync(filePath, 'utf8'), fileLabel);
+  if (!parsed) {
+    return { errors: [`${fileLabel}: missing or malformed frontmatter`], item: null };
+  }
+  const { data, body } = parsed;
+  errors.push(...parsed.errors);
+  const slug = String(data.slug || path.basename(filePath, '.md')).trim();
+  const title = String(data.title || '').trim();
+  const description = String(data.description || '').trim();
+  const excerpt = String(data.excerpt || '').trim();
+  const intro = String(data.intro || '').trim();
+  const date = safeDate(data.date);
+
+  if (!slug) errors.push(`${fileLabel}: cannot derive slug from filename or "slug" field`);
+  if (!title) errors.push(`${fileLabel}: missing "title" (the headline)`);
+  if (!description) errors.push(`${fileLabel}: missing "description" (meta description, ~150–155 chars)`);
+  if (!excerpt) errors.push(`${fileLabel}: missing "excerpt" (one line for the index card)`);
+  if (!intro) errors.push(`${fileLabel}: missing "intro" (original framing above the release text)`);
+  if (!date) errors.push(`${fileLabel}: missing or unparseable "date" (use the original release date)`);
+
+  const image = String(data.image || '').trim();
+  if (image && !image.startsWith('/')) {
+    errors.push(`${fileLabel}: "image" must be a site-absolute path, e.g. /news-images/${slug}.jpg`);
+  }
+  if (image && !String(data.imageAlt || '').trim()) {
+    errors.push(`${fileLabel}: "imageAlt" is required whenever "image" is set`);
+  }
+
+  const coverage = parseCoverage(data.coverage, errors, fileLabel);
+
+  if (errors.length) return { errors, item: null };
+
+  const html = marked.parse(body || '');
+  return {
+    errors: [],
+    item: {
+      slug,
+      title,
+      seoTitle: String(data.seoTitle || '').trim() || null,
+      label: String(data.label || '').trim() || 'News',
+      image: image || null,
+      imageAlt: String(data.imageAlt || '').trim() || title,
+      date,
+      author: String(data.author || '').trim() || 'FastTrackr AI',
+      description,
+      excerpt,
+      intro,
+      coverage,
+      content: html,
+    },
+  };
+}
+
+function buildNews() {
+  if (!fs.existsSync(NEWS_DIR)) return [];
+  fs.mkdirSync(NEWS_POSTS_DIR, { recursive: true });
+
+  const errors = [];
+  const items = [];
+  const seen = new Set();
+  const files = fs
+    .readdirSync(NEWS_DIR)
+    .filter((f) => f.toLowerCase().endsWith('.md'))
+    .sort();
+
+  for (const f of files) {
+    const result = renderNewsFile(path.join(NEWS_DIR, f));
+    if (result.errors.length) {
+      errors.push(...result.errors);
+      continue;
+    }
+    const item = result.item;
+    if (seen.has(item.slug)) {
+      errors.push(`content/news/${f}: duplicate slug "${item.slug}"`);
+      continue;
+    }
+    seen.add(item.slug);
+    fs.writeFileSync(
+      path.join(NEWS_POSTS_DIR, `${item.slug}.json`),
+      JSON.stringify(item)
+    );
+    items.push(item);
+  }
+
+  if (errors.length) {
+    console.error('\n[news] content/news validation failed:');
+    for (const msg of errors) console.error('  • ' + msg);
+    console.error(`\n[news] ${errors.length} error${errors.length === 1 ? '' : 's'}; aborting.`);
+    process.exit(1);
+  }
+
+  const index = items
+    .map((item) => ({
+      slug: item.slug,
+      title: item.title,
+      label: item.label,
+      image: item.image,
+      imageAlt: item.imageAlt,
+      date: item.date,
+      excerpt: item.excerpt,
+    }))
+    .sort((a, b) => {
+      const byDate = (b.date || '').localeCompare(a.date || '');
+      return byDate !== 0 ? byDate : a.slug.localeCompare(b.slug);
+    });
+
+  fs.writeFileSync(
+    path.join(NEWS_OUT_DIR, 'index.json'),
+    JSON.stringify({ count: index.length, items: index })
+  );
+
+  console.log(`[news] rendered ${index.length} news item${index.length === 1 ? '' : 's'}`);
+  return index;
+}
+
 function main() {
   fs.mkdirSync(POSTS_DIR, { recursive: true });
   fs.mkdirSync(IMAGES_DIR, { recursive: true });
@@ -361,14 +592,16 @@ function main() {
     JSON.stringify({ count: index.length, posts: index })
   );
 
-  writeSitemap(index);
+  const newsIndex = buildNews();
+
+  writeSitemap(index, newsIndex);
 
   console.log(
     `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`
   );
 }
 
-function writeSitemap(index) {
+function writeSitemap(index, newsIndex = []) {
   const urls = [
     ...STATIC_SITEMAP_PAGES.map((p) => ({
       loc: `${SITE_ORIGIN}${p.path}`,
@@ -378,6 +611,11 @@ function writeSitemap(index) {
       loc: `${SITE_ORIGIN}/blog/${post.slug}`,
       lastmod: post.date ? post.date.slice(0, 10) : null,
       priority: '0.5',
+    })),
+    ...newsIndex.map((item) => ({
+      loc: `${SITE_ORIGIN}/resources/news/${item.slug}`,
+      lastmod: item.date ? item.date.slice(0, 10) : null,
+      priority: '0.6',
     })),
   ];
 

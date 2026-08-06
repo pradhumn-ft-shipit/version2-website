@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from '
 
 // Eagerly loaded: first paint of the marketing site is the homepage
 import Home from './pages/Home';
+import CanonicalSync from './components/CanonicalSync';
 
 // Code-split everything else; these load on demand
 const ICPTransitionConsultants = lazy(() => import('./pages/icp/ICPTransitionConsultants'));
@@ -24,6 +25,8 @@ const ClientPrivacyNotice = lazy(() => import('./pages/legal/ClientPrivacyNotice
 const ClientDataConsent = lazy(() => import('./pages/legal/ClientDataConsent'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
+const News = lazy(() => import('./pages/News'));
+const NewsArticle = lazy(() => import('./pages/NewsArticle'));
 const Resources = lazy(() => import('./pages/Resources'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy'));
 const ZoomHelp = lazy(() => import('./pages/ZoomHelp'));
@@ -56,6 +59,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <CanonicalSync />
       <div className="min-h-screen bg-bgPrimary flex flex-col font-sans text-textSecondary selection:bg-brandMint selection:text-brandDeep overflow-x-clip">
         <Suspense fallback={<PageFallback />}>
           <Routes>
@@ -86,6 +90,8 @@ function App() {
             <Route path="/blog" element={<Navigate to="/resources/blog" replace />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/resources/blog/:slug" element={<BlogPostRedirect />} />
+            <Route path="/resources/news" element={<News />} />
+            <Route path="/resources/news/:slug" element={<NewsArticle />} />
             <Route path="/resources/podcast" element={<Navigate to="/resources/blog" replace />} />
             <Route path="/resources-for-financial-advisors" element={<Resources />} />
             <Route path="/case-study/advisor-transition" element={<CaseStudy />} />

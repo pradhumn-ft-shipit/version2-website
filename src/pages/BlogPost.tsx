@@ -11,12 +11,32 @@ import {
   type BlogIndexEntry,
   type BlogPost as BlogPostType,
 } from '../lib/blog';
+import { useSeo, SITE_ORIGIN, absoluteUrl, clampText } from '../lib/seo';
 import NotFound from './NotFound';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPostType | null | undefined>(undefined);
   const [index, setIndex] = useState<BlogIndexEntry[]>([]);
+
+  // Every post used to inherit index.html's homepage title, description and
+  // canonical. Hooks can't sit behind the early returns below, so this runs on
+  // every render and falls back to blog-level defaults until the post lands.
+  useSeo({
+    title: post ? `${post.title} | FastTrackr AI` : 'Blog | FastTrackr AI',
+    // Clamped to match the prerendered <head> exactly (see clampText).
+    description: clampText(
+      post?.description ||
+        post?.excerpt ||
+        'Field notes on advisor transitions, AI in wealth management, and compliance from FastTrackr AI.',
+      155
+    ),
+    canonical: `${SITE_ORIGIN}/blog/${slug ?? ''}`,
+    ogType: 'article',
+    ogImage: post?.image ? absoluteUrl(post.image) : `${SITE_ORIGIN}/logomark.png`,
+    ogImageAlt: post?.image ? post.imageAlt : undefined,
+    publishedTime: post?.date ?? undefined,
+  });
 
   useEffect(() => {
     if (!slug) {

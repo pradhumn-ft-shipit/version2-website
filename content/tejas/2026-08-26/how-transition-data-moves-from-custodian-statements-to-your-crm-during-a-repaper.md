@@ -1,0 +1,73 @@
+---
+title: "How Transition Data Moves From Custodian Statements to Your CRM During a Repaper"
+topic: "Advisor Transitions & Repapering"
+description: "A repaper is a data-migration problem wearing a compliance costume. Here is the actual path client data takes from an old custodian statement through your CRM to the new account forms, and the three points where NIGO hides in the handoffs."
+author: "FastTrackr AI Team"
+image: how-transition-data-moves-from-custodian-statements-to-your-crm-during-a-repaper-hero.png
+imageAlt: "How Transition Data Moves From Custodian Statements to Your CRM During a Repaper"
+---
+
+Client data follows a fixed path in a repaper: the old custodian statement is the source, the CRM is the hub that holds it once, and the new account forms and ACATS request are the destinations. Failures happen in the handoffs, where a registration, tax ID, or account type gets rekeyed and drifts. Capture each field once and let it flow.
+
+Strip away the compliance vocabulary and an advisor transition is a data-migration project. A book of business is a set of records living in one firm's systems, and moving it means reading those records, reshaping them to fit a new custodian's forms, and re-establishing them cleanly on the other side. The reason repapers reject, stall, and burn specialist hours is almost never the transfer mechanics themselves. It is the data handoffs: every time a client's registration or account number is read off one document and typed into another, the move accumulates a chance to drift. Understand the path the data actually travels and you can see exactly where it breaks.
+
+This is that path, document by document, with the three handoffs where NIGO is manufactured and how to close each one.
+
+## The source: what a custodian statement actually carries
+
+The transition starts with the most recent statement from the losing firm, because that document is the closest thing to ground truth for the account as it exists today. A brokerage or custodial statement carries the fields a repaper depends on: the exact account registration, the account number, the account type, the positions and their quantities, and depending on the custodian, cost basis and tax-lot detail. It is the record you reconcile everything else against.
+
+But a statement is built to be read by a client, not parsed by a system, and that mismatch is the first source of friction. Registration lines wrap and abbreviate. Joint accounts, trusts, and entity accounts render their titling in formats that vary by custodian. The account type that matters for the transfer, whether a position sits in an IRA, a joint taxable account, or a trust, is often implied by context rather than stated in a clean field. A human specialist resolves this ambiguity by experience; a naive automation trips on it. This is why reading the statement correctly is the hinge of the whole repaper, and why document intelligence tuned to financial statements, rather than generic OCR, is the tool that belongs at this step. The mechanics of extracting a brokerage statement into pre-filled account forms are covered in [how AI reads a brokerage statement to pre-fill account forms and cut NIGO](https://fasttrackr.ai/blog/ai-reads-brokerage-statement-prefill-account-forms-cut-nigo).
+
+## The hub: why the CRM holds the data, not the forms
+
+The instinct on a small transition is to read the statement and type straight into the new account form. That instinct is exactly what produces the double-entry problem at scale. The correct architecture puts the CRM in the middle as the single place client and account data lives once, from which every downstream document is populated.
+
+There is a reason for this beyond tidiness. A repaper does not produce one form per account; it produces a packet, often several forms plus the transfer request, all of which need the same client identity data. If that data is keyed independently into each document, a typo in the tax ID on form three that was correct on forms one and two is now a silent inconsistency waiting to reject. When the CRM is the source of record, the client's name, tax ID, address, and registration are entered and validated once, and every form draws from that validated record. Purpose-built advisor CRMs like Redtail, Wealthbox, and Salesforce Financial Services Cloud are designed to be this hub, and the discipline of wiring client data into the repaper from the CRM rather than re-keying it per form is detailed in [the CRM-side of an advisor transition and how client data wires into repapering](https://fasttrackr.ai/blog/crm-side-advisor-transition-client-data-wire-into-repapering).
+
+The single most common data-integrity failure in transition operations is manual re-entry between the statement, the CRM, and the portfolio or account-opening system, because one transposed digit in an account number touches the transfer, the performance report, and the billing record at the same time. The architecture that prevents it is not a better typist. It is capturing each field once and syncing it, so there is only ever one place a given fact is entered.
+
+## The destinations: forms and the ACATS transfer request
+
+From the CRM hub, the validated data flows to two kinds of destination. The first is the new custodian's account-opening paperwork, the applications that establish each account at the receiving firm. The second is the transfer request itself, the ACATS Transfer Initiation Form that instructs the system to pull the assets over.
+
+These two destinations validate on different things, which is why they fail differently. Account-opening forms fail on completeness and internal consistency: a missing field, a signature that does not match the registration, an account type that does not match its application. The ACATS transfer, by contrast, validates against the losing firm's records. ACATS runs on the National Securities Clearing Corporation's automated system under [FINRA Rule 11870 on customer account transfer contracts](https://www.finra.org/rules-guidance/rulebooks/finra-rules/11870), and the receiving firm electronically enters the identifying data, the customer name, tax ID, and account number, that the system uses to match the account at the delivering firm. If the registration or tax ID you captured does not match what the old firm has on file, the transfer rejects regardless of how clean your account-opening packet looks. FINRA's own [report of the Customer Account Transfer Task Force](https://www.finra.org/rules-guidance/guidance/faqs/report-customer-account-transfer-task-force) describes how this matching works and why identifying-data mismatches are a primary rejection cause.
+
+## The three handoffs where NIGO is manufactured
+
+Map the path and the failure points become obvious. NIGO is not distributed evenly across a repaper; it clusters at the three moments data changes hands.
+
+| Handoff | What moves | How it breaks | The fix |
+|---|---|---|---|
+| Statement to CRM | Registration, tax ID, account type, positions | Wrapped registration lines and ambiguous account types get read wrong at the source | Extract with statement-tuned document intelligence, validate the registration read before it is committed |
+| CRM to account forms | Client identity, account details | Fields rekeyed per form drift out of sync; one typo on one form rejects the packet | Populate every form from the one validated CRM record, never retype |
+| CRM to ACATS request | Name, tax ID, account number | Data that is internally consistent still fails because it does not match the losing firm's records | Reconcile the captured registration against the source statement before submitting the transfer |
+
+The pattern across all three is the same: error enters when a field is transcribed rather than carried. The first handoff breaks because the source is hard to read; the second because the same fact is entered in multiple places; the third because internal consistency is not the same as matching the other firm. A repaper designed so that each field is captured once, validated at capture, and then referenced everywhere downstream removes two of these three failure modes outright and shrinks the third to a reconciliation check. The field-level root-cause view of which specific fields drive most rejects is worth pairing with this map, in [NIGO root-cause analysis: finding the repaper fields that cause most of your ACATS rejects](https://fasttrackr.ai/blog/nigo-root-cause-analysis-finding-the-repaper-fields-that-cause-most-of-your-acats-rejects).
+
+## Status data flows the other way, and it double-enters too
+
+The data flow is not one-directional. Once the transfer is submitted, status information starts flowing back, ACATS moving to review, to output, to settled, plus custodian-side onboarding milestones, and that return flow has its own double-entry trap. Teams that track transition status in the custodian's portal and again in the CRM end up maintaining two systems of record that disagree, and reconciling them by hand is its own source of wasted hours and missed follow-ups.
+
+The same principle that governs the inbound data governs the status data: it should live in one place. Whether that place is the CRM or a dedicated transition tracker, the goal is to avoid a specialist copying ACATS status from a custodian portal into a CRM field twice a day. The specific reconciliation problem and how to avoid maintaining two disagreeing status records is worked through in [custodian portal versus your CRM: reconciling transition status without double entry](https://fasttrackr.ai/blog/custodian-portal-vs-your-crm-reconciling-transition-status-without-double-entry).
+
+## Designing the flow so data is captured once
+
+Put the whole path together and the operating principle is a single sentence: every field enters the system exactly once, at the point where it can be validated against its source, and is referenced everywhere else. That principle is what separates a repaper that scales from one that generates rework proportional to its volume.
+
+In practice, capturing once means the statement is read by [document intelligence](https://fasttrackr.ai/solutions/document-intelligence) that extracts registration, account, and position data with a confidence score attached, a human confirms the fields the model flagged as uncertain, and the confirmed record populates the CRM, the account-opening forms, and the ACATS request without anyone retyping it. Running that flow on a purpose-built [advisor transition platform](https://fasttrackr.ai/solutions/advisor-transitions) rather than a manual chain of copy-paste is what makes capture-once the default rather than an aspiration, because the platform is what enforces that a field committed at the source is the field used downstream. The compounding effect of removing the transcription steps, across a full book rather than a single account, is visible in the [advisor transition case study](https://fasttrackr.ai/case-study/advisor-transition), and it is the difference that lets firms and the [transition consultants](https://fasttrackr.ai/who-we-serve/transition-consultants) who run these moves at scale add books without adding proportional rekeying.
+
+The compliance costume on a repaper is real, and the rules matter. But the reason one transition team clears a book in days while another grinds through weeks of rejects is usually not their grasp of the rules. It is whether they treat the repaper as what it actually is: a data-migration problem where the only durable fix is to stop moving the same fact by hand more than once.
+
+## Frequently asked questions
+
+**What is the source of truth for account data in a repaper?** The most recent statement from the losing custodian. It carries the exact account registration, account number, account type, positions, and often cost basis as they exist today, which is what everything downstream must reconcile against. The catch is that statements are built to be read by clients, not parsed by systems: registration lines wrap and abbreviate, and account types are often implied by context rather than stated cleanly. Reading the statement correctly is the hinge of the whole repaper, which is why statement-tuned document intelligence beats generic OCR at this step.
+
+**Why should client data live in the CRM rather than the account forms?** Because a repaper produces a packet of several forms plus the transfer request, all needing the same client identity data. If that data is keyed independently into each document, a typo on one form that was correct on the others becomes a silent inconsistency that rejects. When the CRM holds the data once and every form draws from that validated record, there is only one place each fact is entered. Manual re-entry between the statement, CRM, and account system is the single most common data-integrity failure in transition operations.
+
+**Why does an ACATS transfer reject even when my account forms look clean?** Because the two validate against different things. Account-opening forms validate on completeness and internal consistency. The ACATS transfer validates against the losing firm's records: the receiving firm enters the customer name, tax ID, and account number, and the system matches them to the account at the delivering firm. If the registration or tax ID you captured does not match what the old firm has on file, the transfer rejects no matter how clean your packet is. Internal consistency is not the same as matching the other firm.
+
+**Where does NIGO actually get manufactured in the data flow?** At the three handoffs where data changes hands: statement to CRM, where hard-to-read registrations get misread at the source; CRM to account forms, where fields rekeyed per form drift out of sync; and CRM to ACATS request, where internally consistent data still fails because it does not match the losing firm's records. Error enters whenever a field is transcribed rather than carried. Capturing each field once, validating it at capture, and referencing it downstream removes two of the three failure modes and shrinks the third to a reconciliation check.
+
+**How do I stop transition status from double-entering between the custodian portal and the CRM?** Keep status in one system of record rather than copying ACATS status from the custodian portal into a CRM field by hand. Teams that track status in both end up maintaining two records that disagree and spend specialist hours reconciling them. Whether the single home for status is the CRM or a dedicated transition tracker matters less than the discipline of not maintaining two, so that follow-ups fire off one accurate timeline instead of two conflicting ones.
+

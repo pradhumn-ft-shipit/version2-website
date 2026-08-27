@@ -45,6 +45,35 @@ services:
       - type: redirect
         source: /blog
         destination: /resources/blog
+      # Legacy / renamed URLs that only redirect (app/routes/redirects/*). These
+      # MUST be real 301s, not rewrites: rewriting them serves React Router's
+      # prerendered redirect stub, which shows an ugly "Redirecting from X to Y"
+      # page with a 2-second <meta refresh> delay before it moves the user.
+      # A host 301 is instant and invisible (and correct for SEO).
+      - type: redirect
+        source: /about
+        destination: /
+      - type: redirect
+        source: /resources/podcast
+        destination: /resources/blog
+      - type: redirect
+        source: /resources/blog/*
+        destination: /blog/*
+      - type: redirect
+        source: /for-acquisitive-rias
+        destination: /who-we-serve/acquisitive-rias
+      - type: redirect
+        source: /for-breakaway-advisors
+        destination: /who-we-serve/breakaway-advisors
+      - type: redirect
+        source: /for-custodians
+        destination: /who-we-serve/custodians
+      - type: redirect
+        source: /for-ibds
+        destination: /who-we-serve/independent-broker-dealers
+      - type: redirect
+        source: /for-transition-consultants
+        destination: /who-we-serve/transition-consultants
       # Prerendered content pages (scripts/prerender.mjs writes a real <head>
       # per article into dist/<route>/index.html). These MUST come before the
       # catch-all below: a bare SPA rewrite swallows the prerendered file and
@@ -82,12 +111,6 @@ services:
         source: /case-study/*
         destination: /case-study/*/index.html
       - type: rewrite
-        source: /for-*
-        destination: /for-*/index.html
-      - type: rewrite
-        source: /about
-        destination: /about/index.html
-      - type: rewrite
         source: /pricing
         destination: /pricing/index.html
       - type: rewrite
@@ -99,9 +122,6 @@ services:
       - type: rewrite
         source: /resources-for-financial-advisors
         destination: /resources-for-financial-advisors/index.html
-      - type: rewrite
-        source: /resources/podcast
-        destination: /resources/podcast/index.html
       - type: rewrite
         source: /privacy-policy
         destination: /privacy-policy/index.html

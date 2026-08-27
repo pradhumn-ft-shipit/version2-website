@@ -1,115 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/Button';
-import {
-  fetchNewsArticle,
-  formatNewsDate,
-  dateAttr,
-  type NewsArticle as NewsArticleType,
-} from '../lib/news';
-import { useSeo, SITE_ORIGIN, absoluteUrl } from '../lib/seo';
-import NotFound from './NotFound';
+import { formatNewsDate, dateAttr, type NewsArticle as NewsArticleType } from '../lib/news';
 
-function buildJsonLd(article: NewsArticleType, url: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'NewsArticle',
-    headline: article.title,
-    description: article.description,
-    datePublished: article.date,
-    ...(article.image ? { image: [absoluteUrl(article.image)] } : {}),
-    author: {
-      '@type': 'Organization',
-      name: article.author,
-      url: SITE_ORIGIN,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'FastTrackr AI',
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/logo.png`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
-    },
-  };
-}
-
-export default function NewsArticle() {
-  const { slug } = useParams<{ slug: string }>();
-  const [article, setArticle] = useState<NewsArticleType | null | undefined>(undefined);
-
-  useEffect(() => {
-    if (!slug) {
-      setArticle(null);
-      return;
-    }
-    let cancelled = false;
-    setArticle(undefined);
-    fetchNewsArticle(slug)
-      .then((a) => {
-        if (!cancelled) setArticle(a);
-      })
-      .catch(() => {
-        if (!cancelled) setArticle(null);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [slug]);
-
-  if (article === undefined) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow pt-32 pb-24">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="animate-pulse space-y-4">
-              <div className="h-4 bg-gray-100 rounded w-1/4" />
-              <div className="h-12 bg-gray-100 rounded w-5/6" />
-              <div className="h-6 bg-gray-100 rounded w-1/3" />
-              <div className="aspect-video bg-gray-100 rounded-2xl mt-8" />
-              <div className="h-4 bg-gray-100 rounded w-full mt-8" />
-              <div className="h-4 bg-gray-100 rounded w-11/12" />
-              <div className="h-4 bg-gray-100 rounded w-10/12" />
-            </div>
-          </div>
-        </main>
-        <Footer hideCTA />
-      </div>
-    );
-  }
-
-  if (article === null) {
-    return <NotFound />;
-  }
-
-  return <NewsArticleView article={article} />;
-}
-
-function NewsArticleView({ article }: { article: NewsArticleType }) {
-  const url = `${SITE_ORIGIN}/resources/news/${article.slug}`;
-
-  useSeo({
-    title: article.seoTitle ?? article.title,
-    description: article.description,
-    // Self-referencing: the same release runs on 80+ syndication sites, so this
-    // must always point at our own domain, never at a syndicated copy.
-    canonical: url,
-    ogType: 'article',
-    ogImage: article.image ? absoluteUrl(article.image) : `${SITE_ORIGIN}/logomark.png`,
-    ogImageAlt: article.image ? article.imageAlt : undefined,
-    twitterCard: 'summary_large_image',
-    publishedTime: article.date ?? undefined,
-    jsonLd: buildJsonLd(article, url),
-  });
-
+// `article` comes from the route `loader` (build-time disk read) via useLoaderData
+// in app/routes/news-article.tsx — no client fetch. A missing slug is handled by
+// the loader (throws 404 → route ErrorBoundary renders NotFound), so this
+// component always has a real article and just renders it. SEO/JSON-LD live in the
+// route's `meta` export.
+export default function NewsArticle({ article }: { article: NewsArticleType }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />

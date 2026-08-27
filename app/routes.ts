@@ -2,8 +2,8 @@ import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
 // Static/marketing surface ported from src/App.tsx (ticket 003) plus the blog
 // data-backed routes (ticket 004): /resources/blog, /blog/:slug and the
-// /resources/blog/:slug → /blog/:slug redirect. The news routes (/resources/news,
-// /resources/news/:slug) remain owned by ticket 005 and are intentionally absent.
+// /resources/blog/:slug → /blog/:slug redirect, plus the news routes
+// (/resources/news, /resources/news/:slug) added in ticket 005.
 export default [
   index('routes/home.tsx'),
 
@@ -33,6 +33,11 @@ export default [
   route('resources/blog', 'routes/blog-index.tsx'),
   route('blog/:slug', 'routes/blog-post.tsx'),
   route('resources/blog/:slug', 'routes/redirects/resources-blog-slug.tsx'),
+
+  // News / press releases (ticket 005): build-time loaders read the committed JSON
+  // off disk so the full index + release bodies ship in prerendered HTML.
+  route('resources/news', 'routes/news-index.tsx'),
+  route('resources/news/:slug', 'routes/news-article.tsx'),
 
   // Legal
   route('privacy-policy', 'routes/legal/privacy-policy.tsx'),

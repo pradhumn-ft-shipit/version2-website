@@ -166,66 +166,15 @@ function main() {
     count++;
   }
 
-  // --- News -----------------------------------------------------------------
-  const newsIndexPath = path.join(ROOT, 'public/news-data/index.json');
-  if (fs.existsSync(newsIndexPath)) {
-    const { items } = readJson(newsIndexPath);
-
-    writeRoute(
-      '/resources/news',
-      renderHead(shell, {
-        title: 'News & Press | FastTrackr AI',
-        description:
-          'Company news, press releases, and announcements from FastTrackr AI, the AI-native platform built to run advisor transitions end to end.',
-        canonical: `${SITE_ORIGIN}/resources/news`,
-        ogType: 'website',
-        image: `${SITE_ORIGIN}/logomark.png`,
-      })
-    );
-    count++;
-
-    for (const item of items) {
-      const article = readJson(
-        path.join(ROOT, 'public/news-data/posts', `${item.slug}.json`)
-      );
-      const url = `${SITE_ORIGIN}/resources/news/${article.slug}`;
-      const image = article.image ? `${SITE_ORIGIN}${article.image}` : `${SITE_ORIGIN}/logomark.png`;
-
-      writeRoute(
-        `/resources/news/${article.slug}`,
-        renderHead(shell, {
-          title: article.seoTitle || article.title,
-          description: article.description,
-          canonical: url,
-          ogType: 'article',
-          image,
-          imageAlt: article.image ? article.imageAlt : null,
-          publishedTime: article.date,
-          jsonLd: {
-            '@context': 'https://schema.org',
-            '@type': 'NewsArticle',
-            headline: article.title,
-            description: article.description,
-            datePublished: article.date,
-            ...(article.image ? { image: [image] } : {}),
-            author: { '@type': 'Organization', name: article.author, url: SITE_ORIGIN },
-            publisher: organization(),
-            mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-          },
-        })
-      );
-      count++;
-    }
-  }
-
-  // --- Blog -----------------------------------------------------------------
-  // MOVED to framework loaders in ticket 004. `/resources/blog` and every
-  // `/blog/<slug>` now render their FULL BODY via app/routes/blog-*.tsx loaders
-  // (see react-router.config.ts `prerender`). If this script kept writing those
-  // paths it would run AFTER stage-dist and CLOBBER the framework's full-body
-  // dist/blog/<slug>/index.html with a head-only shell — the opposite of the goal
-  // (mirrors why STATIC_ROUTES was emptied in 003). News heads stay here until
-  // ticket 005 moves them too; the whole script is deleted in ticket 009.
+  // --- Blog + News ----------------------------------------------------------
+  // MOVED to framework loaders in tickets 004 (blog) and 005 (news).
+  // `/resources/blog`, every `/blog/<slug>`, `/resources/news`, and every
+  // `/resources/news/<slug>` now render their FULL BODY via app/routes/blog-*.tsx
+  // and app/routes/news-*.tsx loaders (see react-router.config.ts `prerender`).
+  // If this script kept writing those paths it would run AFTER stage-dist and
+  // CLOBBER the framework's full-body dist/<route>/index.html with a head-only
+  // shell — the opposite of the goal (mirrors why STATIC_ROUTES was emptied in
+  // 003). The whole script is deleted in ticket 009.
 
   console.log(`[prerender] wrote ${count} static HTML pages`);
 }

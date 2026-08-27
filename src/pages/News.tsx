@@ -1,38 +1,13 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { fetchNewsIndex, formatNewsDate, dateAttr, type NewsIndexEntry } from '../lib/news';
-import { useSeo, SITE_ORIGIN } from '../lib/seo';
+import { formatNewsDate, dateAttr, type NewsIndexEntry } from '../lib/news';
 
-export default function News() {
-  const [items, setItems] = useState<NewsIndexEntry[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useSeo({
-    title: 'News & Press | FastTrackr AI',
-    description:
-      'Company news, press releases, and announcements from FastTrackr AI, the AI-native platform built to run advisor transitions end to end.',
-    canonical: `${SITE_ORIGIN}/resources/news`,
-    ogType: 'website',
-    ogImage: `${SITE_ORIGIN}/logomark.png`,
-  });
-
-  useEffect(() => {
-    let cancelled = false;
-    fetchNewsIndex()
-      .then((data) => {
-        if (!cancelled) setItems(data.items);
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err?.message ?? 'Failed to load news');
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
+// Items arrive from the route `loader` (build-time disk read) via `useLoaderData`
+// in app/routes/news-index.tsx — no client fetch. SEO lives in that route's `meta`
+// export. This component is pure presentation over the passed-in list.
+export default function News({ items }: { items: NewsIndexEntry[] }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -52,40 +27,9 @@ export default function News() {
           </m.div>
         </section>
 
-        {/* Loading state */}
-        {!items && !error && (
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="bg-bgCanvas rounded-2xl overflow-hidden border border-gray-100 animate-pulse grid md:grid-cols-[minmax(0,18rem)_1fr]"
-              >
-                <div className="aspect-video bg-gray-100" />
-                <div className="p-6 space-y-3">
-                  <div className="h-4 bg-gray-100 rounded w-1/3" />
-                  <div className="h-6 bg-gray-100 rounded w-5/6" />
-                  <div className="h-4 bg-gray-100 rounded w-full" />
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Error state */}
-        {error && (
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-8 text-center">
-              <p className="text-textSecondary">
-                We couldn't load news right now. Please refresh, or come back in a moment.
-              </p>
-            </div>
-          </div>
-        )}
-
         {/* List — reverse-chronological, same layout at 1 item or 50 */}
-        {items && (
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            {items.length === 0 ? (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {items.length === 0 ? (
               <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-12 text-center">
                 <p className="text-textSecondary">No announcements yet. Check back soon.</p>
               </div>
@@ -141,8 +85,7 @@ export default function News() {
                 ))}
               </ul>
             )}
-          </section>
-        )}
+        </section>
       </main>
 
       <Footer />

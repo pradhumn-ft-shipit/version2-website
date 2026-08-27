@@ -1,3 +1,10 @@
+// Pure, isomorphic news types + shaping helpers. This module is safe to import
+// from client components AND from build-time loaders — it does NO I/O (no
+// `fetch`, no `node:fs`). The data actually comes from framework `loader`s that
+// read the committed JSON off disk at build time (see app/lib/newsData.server.ts);
+// those loaders serialize the result into the prerendered HTML, so the full
+// press-release body ships in the raw markup for non-JS crawlers.
+
 export type CoverageLink = {
   outlet: string;
   url: string;
@@ -24,34 +31,7 @@ export type NewsArticle = NewsIndexEntry & {
   content: string;
 };
 
-type IndexFile = { count: number; items: NewsIndexEntry[] };
-
-let indexCache: Promise<IndexFile> | null = null;
-const articleCache = new Map<string, Promise<NewsArticle | null>>();
-
-export function fetchNewsIndex(): Promise<IndexFile> {
-  if (!indexCache) {
-    indexCache = fetch('/news-data/index.json').then((res) => {
-      if (!res.ok) throw new Error(`News index fetch failed: ${res.status}`);
-      return res.json() as Promise<IndexFile>;
-    });
-  }
-  return indexCache;
-}
-
-export function fetchNewsArticle(slug: string): Promise<NewsArticle | null> {
-  if (!articleCache.has(slug)) {
-    articleCache.set(
-      slug,
-      fetch(`/news-data/posts/${encodeURIComponent(slug)}.json`).then((res) => {
-        if (res.status === 404) return null;
-        if (!res.ok) throw new Error(`News article fetch failed: ${res.status}`);
-        return res.json() as Promise<NewsArticle>;
-      })
-    );
-  }
-  return articleCache.get(slug)!;
-}
+export type NewsIndexFile = { count: number; items: NewsIndexEntry[] };
 
 /**
  * Same display format as the blog, but pinned to UTC: news dates are the

@@ -44,6 +44,11 @@ export default {
     '/resources/blog',
     '/blog/how-many-concurrent-repapers-one-transition-specialist-can-actually-handle',
     '/blog/where-ai-removes-real-work-in-an-advisor-repaper-and-where-it-quietly-adds-risk',
+    // News (ticket 005): the index plus one sample release slug, to prove the
+    // build-time news loaders bake full release HTML. Ticket 006 swaps this array
+    // for a function that enumerates EVERY news slug from the JSON index.
+    '/resources/news',
+    '/resources/news/fasttrackr-ai-introduces-first-ai-native-platform-built-to-run-advisor-transitions',
     // Legal
     '/privacy-policy',
     '/tos',

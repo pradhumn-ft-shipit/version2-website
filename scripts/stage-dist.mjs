@@ -3,9 +3,7 @@
 //
 // In `ssr: false` mode the framework writes the deployable static site to
 // build/client/ (with build/server/ used only during the build to prerender).
-// The rest of the toolchain — render.yaml (staticPublishPath: ./dist) and the
-// still-wired scripts/prerender.mjs (SHELL = dist/index.html) — expects the site
-// at ./dist, so we copy build/client there. Retired in 011 alongside prerender.
+// render.yaml serves `staticPublishPath: ./dist`, so we copy build/client there.
 
 import fs from 'node:fs';
 import path from 'node:path';

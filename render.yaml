@@ -74,11 +74,12 @@ services:
       - type: redirect
         source: /for-transition-consultants
         destination: /who-we-serve/transition-consultants
-      # Prerendered content pages (scripts/prerender.mjs writes a real <head>
-      # per article into dist/<route>/index.html). These MUST come before the
-      # catch-all below: a bare SPA rewrite swallows the prerendered file and
-      # serves the generic shell instead, which is exactly what we're avoiding
-      # — verified locally, `serve -s` returns the shell for these paths.
+      # Prerendered content pages. `react-router build` writes a full-content
+      # dist/<route>/index.html per article (framework-mode SSG). These rewrites
+      # MUST come before the catch-all below: a bare SPA rewrite swallows the
+      # prerendered file and serves the generic shell instead, which is exactly
+      # what we're avoiding — verified locally, `serve -s` returns the shell for
+      # these paths without the explicit rewrite.
       - type: rewrite
         source: /resources/news
         destination: /resources/news/index.html

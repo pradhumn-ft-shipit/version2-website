@@ -21,9 +21,27 @@ This document is an assessment, not a build plan.
 
 **Bottom line on current state:** the site is set up like a marketing brochure, not a content site. There is no foundation for blogs to slot into.
 
-> **Update (post-migration reality).** The blog infrastructure described above as
-> missing now exists (Markdown pipeline via `scripts/build-blog-data.mjs`,
-> `/blog/:slug` routes, prerendering). Data hygiene is settled:
+> **Update (post-migration reality).** The "pure client-side SPA on Cloudflare
+> Pages" model described above is no longer accurate. The site now runs **React
+> Router v7 in framework mode as a static-site generator** (`ssr: false` in
+> `react-router.config.ts`): `react-router build` executes every route at build
+> time and serializes its full rendered `<body>` to `dist/<route>/index.html`,
+> so crawlers that don't run JS see real content. The client bundle hydrates
+> that HTML and still behaves as an SPA for in-app navigation. The old
+> hand-rolled `scripts/prerender.mjs` (which only baked the `<head>` into an
+> empty shell) and the runtime `useSeo()` hook were **retired** — per-page SEO
+> is now emitted at build time via `seoMeta()` in each route's `meta()`.
+>
+> **Hosting is now a Render static site** (`render.yaml`, `staticPublishPath:
+> ./dist`), not Cloudflare Pages. Render serves the prerendered `dist` and its
+> routing rules map clean URLs to the per-route `index.html`. The only
+> server-side piece is the contact form, which still runs on a **Cloudflare
+> worker** (`*.pages.dev/api/contact`); the site itself has no Node/Workers
+> runtime.
+>
+> The blog infrastructure described above as missing now exists (Markdown
+> pipeline via `scripts/build-blog-data.mjs`, `/blog/:slug` routes, framework
+> prerendering). Data hygiene is settled:
 > - **Source of truth = `content/`** only — `content/blog/`, `content/tejas/`,
 >   `content/news/`, and `content/legacy-posts/` (the ~196 pre-Markdown posts
 >   that exist only as JSON).

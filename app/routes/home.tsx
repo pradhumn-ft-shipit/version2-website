@@ -8,7 +8,7 @@ import { SITE_ORIGIN, seoMeta, type SeoConfig } from '../../src/lib/seo';
 //
 // Values mirror the homepage <head> that index.html shipped pre-migration: the
 // full meta description, the shorter OG/Twitter hook, canonical "/", and the
-// site's Organization JSON-LD (from scripts/prerender.mjs's organization()).
+// site's Organization JSON-LD.
 const seo: SeoConfig = {
   title: 'FastTrackr AI | Advisor transitions, finally built right.',
   description:

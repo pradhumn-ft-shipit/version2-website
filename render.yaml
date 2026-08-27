@@ -40,6 +40,11 @@ services:
       - type: redirect
         source: /onepagecrm
         destination: /contact
+      # /blog is a redirect-only route (canonical blog index is /resources/blog).
+      # Serve a real 301 here instead of the catch-all homepage shell.
+      - type: redirect
+        source: /blog
+        destination: /resources/blog
       # Prerendered content pages (scripts/prerender.mjs writes a real <head>
       # per article into dist/<route>/index.html). These MUST come before the
       # catch-all below: a bare SPA rewrite swallows the prerendered file and
@@ -57,6 +62,67 @@ services:
       - type: rewrite
         source: /blog/*
         destination: /blog/*/index.html
+      # Static marketing / solutions / ICP / legal routes are ALSO prerendered
+      # (dist/<route>/index.html) and must be served as their own file, not the
+      # SPA shell — same reason as blog/news above. The catch-all `/*` below
+      # would otherwise swallow every one of these and serve the homepage,
+      # which defeats the SSG crawlability goal for these pages.
+      #
+      # NOTE: this list mirrors the fully-static routes enumerated by
+      # getStaticPaths() (app/routes.ts). If you add a new static marketing
+      # route, add a rewrite here too (or it will silently serve the homepage
+      # shell to crawlers). Prefix wildcards cover multi-child sections.
+      - type: rewrite
+        source: /solutions/*
+        destination: /solutions/*/index.html
+      - type: rewrite
+        source: /who-we-serve/*
+        destination: /who-we-serve/*/index.html
+      - type: rewrite
+        source: /case-study/*
+        destination: /case-study/*/index.html
+      - type: rewrite
+        source: /for-*
+        destination: /for-*/index.html
+      - type: rewrite
+        source: /about
+        destination: /about/index.html
+      - type: rewrite
+        source: /pricing
+        destination: /pricing/index.html
+      - type: rewrite
+        source: /contact
+        destination: /contact/index.html
+      - type: rewrite
+        source: /fpa
+        destination: /fpa/index.html
+      - type: rewrite
+        source: /resources-for-financial-advisors
+        destination: /resources-for-financial-advisors/index.html
+      - type: rewrite
+        source: /resources/podcast
+        destination: /resources/podcast/index.html
+      - type: rewrite
+        source: /privacy-policy
+        destination: /privacy-policy/index.html
+      - type: rewrite
+        source: /privacy-policy-transitions
+        destination: /privacy-policy-transitions/index.html
+      - type: rewrite
+        source: /client-privacy-notice
+        destination: /client-privacy-notice/index.html
+      - type: rewrite
+        source: /client-data-consent-acknowledgment
+        destination: /client-data-consent-acknowledgment/index.html
+      - type: rewrite
+        source: /tos
+        destination: /tos/index.html
+      - type: rewrite
+        source: /tos-transitions
+        destination: /tos-transitions/index.html
+      - type: rewrite
+        source: /zoom-help-documentation
+        destination: /zoom-help-documentation/index.html
       # SPA deep-link fallback — every other path serves the app shell so
       # React Router can handle it (and hard refreshes on /blog/<post> work).
       - type: rewrite

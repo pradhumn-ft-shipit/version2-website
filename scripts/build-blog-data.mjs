@@ -4,6 +4,14 @@
 // public/blog-data/index.json from every post JSON on disk
 // (markdown-sourced + the legacy migrated ones).
 //
+// public/blog-data/ is 100% build output — git-ignored, regenerated here.
+// The ONLY tracked blog sources are content/blog, content/tejas, and
+// content/legacy-posts/ (the pre-markdown migrated posts that exist only as
+// JSON, with no markdown source). Each build clears public/blog-data/posts/,
+// renders all markdown into it, then copies content/legacy-posts/*.json in, so
+// the index scan below sees legacy + rendered — same output as before, but
+// legacy now comes from a tracked source dir rather than committed output.
+//
 // Also renders content/news/*.md → public/news-data/posts/<slug>.json +
 // public/news-data/index.json (press releases and announcements shown at
 // /resources/news). Both content types feed public/sitemap.xml, so a new
@@ -26,6 +34,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const CONTENT_DIR = path.join(ROOT, 'content/blog');
 const TEJAS_DIR = path.join(ROOT, 'content/tejas');
+const LEGACY_POSTS_DIR = path.join(ROOT, 'content/legacy-posts');
 const NEWS_DIR = path.join(ROOT, 'content/news');
 const OUT_DIR = path.join(ROOT, 'public/blog-data');
 const POSTS_DIR = path.join(OUT_DIR, 'posts');
@@ -429,6 +438,9 @@ function renderNewsFile(filePath) {
 
 function buildNews() {
   if (!fs.existsSync(NEWS_DIR)) return [];
+  // Like POSTS_DIR, NEWS_POSTS_DIR is pure build output — wipe it so a renamed
+  // or deleted news markdown can't leave a stale JSON behind.
+  fs.rmSync(NEWS_POSTS_DIR, { recursive: true, force: true });
   fs.mkdirSync(NEWS_POSTS_DIR, { recursive: true });
 
   const errors = [];
@@ -490,6 +502,9 @@ function buildNews() {
 }
 
 function main() {
+  // POSTS_DIR is pure build output: wipe it so a deleted/renamed source can
+  // never leave a stale JSON behind to be picked up by the index scan below.
+  fs.rmSync(POSTS_DIR, { recursive: true, force: true });
   fs.mkdirSync(POSTS_DIR, { recursive: true });
   fs.mkdirSync(IMAGES_DIR, { recursive: true });
 
@@ -568,6 +583,50 @@ function main() {
     process.exit(1);
   }
 
+  // Legacy migrated posts: JSON-only source of truth, copied verbatim into the
+  // (freshly wiped) output dir so the index scan sees them alongside the
+  // markdown-rendered posts. A legacy slug that collides with a markdown post is
+  // a genuine authoring error — abort rather than silently clobber.
+  let legacyCopied = 0;
+  if (fs.existsSync(LEGACY_POSTS_DIR)) {
+    const legacyErrors = [];
+    const legacyFiles = fs
+      .readdirSync(LEGACY_POSTS_DIR)
+      .filter((f) => f.toLowerCase().endsWith('.json'));
+    for (const f of legacyFiles) {
+      const src = path.join(LEGACY_POSTS_DIR, f);
+      let post;
+      try {
+        post = JSON.parse(fs.readFileSync(src, 'utf8'));
+      } catch (err) {
+        legacyErrors.push(`content/legacy-posts/${f}: invalid JSON (${err.message})`);
+        continue;
+      }
+      const slug = (post.slug || path.basename(f, '.json')).trim();
+      const previousSource = seenSlugs.get(slug);
+      if (previousSource) {
+        legacyErrors.push(
+          `content/legacy-posts/${f}: duplicate slug "${slug}" (also produced by ${previousSource})`
+        );
+        continue;
+      }
+      seenSlugs.set(slug, `content/legacy-posts/${f}`);
+      // Persist the resolved slug so the index scan below can't emit `undefined`
+      // for a legacy JSON that omitted its own `slug` field (it falls back to the
+      // filename, and the written file must agree with the collision key).
+      fs.writeFileSync(path.join(POSTS_DIR, `${slug}.json`), JSON.stringify({ ...post, slug }));
+      legacyCopied++;
+    }
+    if (legacyErrors.length) {
+      console.error('\n[blog] content/legacy-posts validation failed:');
+      for (const msg of legacyErrors) console.error('  • ' + msg);
+      console.error(
+        `\n[blog] ${legacyErrors.length} error${legacyErrors.length === 1 ? '' : 's'}; aborting before index regeneration.`
+      );
+      process.exit(1);
+    }
+  }
+
   const jsonFiles = fs
     .readdirSync(POSTS_DIR)
     .filter((f) => f.toLowerCase().endsWith('.json'));
@@ -606,7 +665,7 @@ function main() {
   writeSitemap(index, newsIndex);
 
   console.log(
-    `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`
+    `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}, copied ${legacyCopied} legacy post${legacyCopied === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`
   );
 }
 

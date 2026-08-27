@@ -7,7 +7,9 @@ There are two paths into the site:
 
 Both paths render to the same `public/blog-data/posts/<slug>.json` and appear on `/blog` + `/resources` automatically. Push to `main`, it's live in ~2 minutes.
 
-The 269 migrated posts already live as JSON in `public/blog-data/posts/` — don't touch those; everything new goes through Markdown.
+`public/blog-data/` is **git-ignored build output** — regenerated on every build, never committed. Don't be surprised that the JSON isn't in git; the source of truth is `content/`.
+
+The ~196 migrated posts that predate Markdown live as JSON under `content/legacy-posts/` (tracked). The build copies them into `public/blog-data/posts/` alongside the rendered Markdown. Don't touch those; everything new goes through Markdown.
 
 ## Daily team workflow
 

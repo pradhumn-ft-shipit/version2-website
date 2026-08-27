@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { reactRouter } from '@react-router/dev/vite'
 
+// The React Router framework plugin bundles React support, so we no longer add
+// @vitejs/plugin-react separately (the two must not be combined).
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [reactRouter()],
   build: {
     chunkSizeWarningLimit: 800,
     rolldownOptions: {

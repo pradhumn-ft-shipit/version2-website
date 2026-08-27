@@ -1,6 +1,10 @@
 import type { MetaDescriptor } from 'react-router';
 
-export const SITE_ORIGIN = 'https://www.fasttrackr.ai';
+// Non-www is the canonical host: www.fasttrackr.ai 301-redirects to the bare
+// domain (verified), and all internal links are host-relative. Canonicals,
+// og:url, JSON-LD and the sitemap must match the host that actually serves 200s
+// — pointing them at www sends a self-referential-redirect signal on every page.
+export const SITE_ORIGIN = 'https://fasttrackr.ai';
 
 export function absoluteUrl(pathOrUrl: string): string {
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;

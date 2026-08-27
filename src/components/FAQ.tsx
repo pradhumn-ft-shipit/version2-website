@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { m } from '../lib/motion';
 import { Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const faqs: { q: string; a: React.ReactNode }[] = [
+// `a` is what's rendered (may contain links). `schemaAnswer` is the plain-text
+// equivalent used only for FAQPage JSON-LD, required whenever `a` isn't a string.
+const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
   {
     q: "How is FastTrackr different from a generic AI tool?",
     a: "We didn't add a \"transition\" feature to a general-purpose product. FastTrackr was built for advisor transitions from the start, shaped by consultants and operators who move billions in client assets every year. The system understands the household structures, custodian quirks, and form variations that generic AI tools don't."
@@ -25,7 +26,8 @@ const faqs: { q: string; a: React.ReactNode }[] = [
         <Link to="/privacy-policy" className="text-brandDeep font-semibold hover:text-brandMint transition-colors">Privacy Policy</Link>
         {' '}for the full detail.
       </>
-    )
+    ),
+    schemaAnswer: "No. Your client data is yours. We don't use it to train any models. See our Privacy Policy for the full detail."
   },
   {
     q: "Is our data secure?",
@@ -47,15 +49,33 @@ const faqs: { q: string; a: React.ReactNode }[] = [
         <Link to="/pricing" className="text-brandDeep font-semibold hover:text-brandMint transition-colors">Pricing</Link>
         {' '}page has more, or we can walk through it on a call.
       </>
-    )
+    ),
+    schemaAnswer: "For Advisor Transitions, we price based on the time saved and the additional revenue we help you capture. For other modules, pricing is per-seat. The Pricing page has more, or we can walk through it on a call."
   }
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: typeof faq.a === 'string' ? faq.a : faq.schemaAnswer ?? '',
+    },
+  })),
+};
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section className="py-24 bg-bgCanvas border-y border-gray-100">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-16">
@@ -70,41 +90,43 @@ export default function FAQ() {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, i) => (
-            <m.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
-            >
-              <button
-                className="w-full text-left px-6 py-6 flex items-center justify-between focus:outline-none"
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+          {faqs.map((faq, i) => {
+            const open = openIndex === i;
+            return (
+              <m.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
               >
-                <span className="text-lg font-semibold text-textPrimary pr-8">{faq.q}</span>
-                <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${openIndex === i ? 'bg-brandMint text-white' : 'bg-gray-100 text-gray-500'}`}>
-                  {openIndex === i ? <Minus size={18} /> : <Plus size={18} />}
-                </div>
-              </button>
+                <button
+                  className="w-full text-left px-6 py-6 flex items-center justify-between focus:outline-none"
+                  aria-expanded={open}
+                  onClick={() => setOpenIndex(open ? null : i)}
+                >
+                  <span className="text-lg font-semibold text-textPrimary pr-8">{faq.q}</span>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${open ? 'bg-brandMint text-white' : 'bg-gray-100 text-gray-500'}`}>
+                    {open ? <Minus size={18} /> : <Plus size={18} />}
+                  </div>
+                </button>
 
-              <AnimatePresence>
-                {openIndex === i && (
-                  <m.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="px-6 pb-6 pt-0 text-textSecondary leading-relaxed border-t border-gray-50 mt-2">
-                      <div className="pt-4">{faq.a}</div>
-                    </div>
-                  </m.div>
-                )}
-              </AnimatePresence>
-            </m.div>
-          ))}
+                {/* Answer is ALWAYS rendered (ships in prerendered HTML, readable
+                    by crawlers / answer engines); only the height animates. */}
+                <m.div
+                  initial={false}
+                  animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <div className="px-6 pb-6 pt-0 text-textSecondary leading-relaxed border-t border-gray-50 mt-2">
+                    <div className="pt-4">{faq.a}</div>
+                  </div>
+                </m.div>
+              </m.div>
+            );
+          })}
         </div>
 
       </div>

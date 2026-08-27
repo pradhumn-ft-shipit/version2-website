@@ -46,7 +46,9 @@ const SITEMAP_PATH = path.join(ROOT, 'public/sitemap.xml');
 const TEJAS_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const ABSOLUTE_ASSET_RE = /^(https?:\/\/|\/\/|\/|data:|mailto:|#)/i;
 
-const SITE_ORIGIN = 'https://www.fasttrackr.ai';
+// Non-www is canonical (www 301-redirects to the bare domain). Keep this in sync
+// with SITE_ORIGIN in src/lib/seo.ts and the Sitemap line in public/robots.txt.
+const SITE_ORIGIN = 'https://fasttrackr.ai';
 const STATIC_SITEMAP_PAGES = [
   { path: '/', priority: '1.0' },
   { path: '/solutions/advisor-transitions', priority: '0.9' },

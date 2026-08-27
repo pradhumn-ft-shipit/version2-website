@@ -15,9 +15,10 @@ export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet
  * `meta` export (see app/routes/home.tsx).
  *
  * ScrollRestoration replaces the old <ScrollToTop/> from src/App.tsx. Per-route
- * canonical syncing (the old <CanonicalSync/>) is deferred to 007, where SEO
- * moves into route `meta`; with only "/" prerendered today the canonical is
- * static and already set by the home route.
+ * canonical syncing (the old <CanonicalSync/>) is now handled by each route's
+ * `meta` export, which emits a real <link rel="canonical"> into the static head
+ * (ticket 002; see seoMeta in src/lib/seo.ts). The homepage route already does
+ * this; 003/004/005 replicate it as they port the remaining routes.
  */
 export function Layout({ children }: { children: ReactNode }) {
   return (

@@ -30,8 +30,13 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#0A3D2E" />
 
-        {/* Fonts: preconnect + non-blocking stylesheet (loads as media=print
-            then swaps to all on load, so it doesn't block first paint). */}
+        {/* Fonts: preconnect + preload, then a plain stylesheet. The old
+            media="print" + onLoad swap trick does NOT survive prerendering —
+            React drops the onLoad handler when serializing to static HTML, so
+            the stylesheet stays media="print" and the fonts never apply. A
+            normal <link rel="stylesheet"> with display=swap in the URL is
+            non-blocking at first paint (fallback text shows, then swaps) and
+            works identically with or without JS. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" as="image" href="/logo.png" />
@@ -43,17 +48,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
-          media="print"
-          onLoad={(e) => {
-            (e.currentTarget as HTMLLinkElement).media = 'all';
-          }}
         />
-        <noscript>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
-          />
-        </noscript>
 
         <Meta />
         <Links />

@@ -106,7 +106,7 @@ export default function NewsArticle({ article }: { article: NewsArticleType }) {
           <div className="bg-brandDeep text-white rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-brandMint/10 rounded-full blur-[100px] pointer-events-none" />
             <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3">
+              <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white">
                 See how FastTrackr fits your transition.
               </h2>
               <p className="text-white/80 max-w-xl mx-auto mb-8">

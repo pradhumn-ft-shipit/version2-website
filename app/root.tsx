@@ -25,6 +25,22 @@ export function Layout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
+        {/* Google tag (gtag.js) — GA4 property G-JK6XW881LK. Placed high in the
+            head so it ships in every prerendered page. In-app (client-side)
+            navigations are counted by GA4 Enhanced Measurement via browser
+            history events (on by default), so we do NOT also fire manual
+            page_view events here — doing both would double-count every SPA nav.
+            dangerouslySetInnerHTML is required because React does not serialize
+            inline script bodies otherwise. */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK6XW881LK" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JK6XW881LK');`,
+          }}
+        />
         <link rel="icon" type="image/png" href="/logomark.png" />
         <link rel="apple-touch-icon" href="/logomark.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

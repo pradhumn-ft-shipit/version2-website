@@ -5,7 +5,7 @@ import { Search, X } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/Button';
-import { fetchBlogIndex, type BlogIndexEntry } from '../lib/blog';
+import { type BlogIndexEntry } from '../lib/blog';
 import {
   BLOG_CATEGORIES,
   UNCATEGORIZED_CATEGORY,
@@ -58,28 +58,15 @@ function matches(article: Article, q: string) {
   return haystack.includes(q);
 }
 
-export default function Resources() {
-  const [posts, setPosts] = useState<BlogIndexEntry[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+// Posts arrive from the route `loader` (build-time disk read) via `useLoaderData`
+// in app/routes/resources.tsx — no client fetch. The full category listing ships
+// in the prerendered HTML.
+export default function Resources({ posts }: { posts: BlogIndexEntry[] }) {
   const [query, setQuery] = useState('');
   const [activeId, setActiveId] = useState<string>('');
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  useEffect(() => {
-    let cancelled = false;
-    fetchBlogIndex()
-      .then((data) => {
-        if (!cancelled) setPosts(data.posts);
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err?.message ?? 'Failed to load articles');
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const categories = useMemo(() => (posts ? buildCategories(posts) : []), [posts]);
+  const categories = useMemo(() => buildCategories(posts), [posts]);
   const totalArticles = useMemo(
     () => categories.reduce((acc, c) => acc + c.articles.length, 0),
     [categories]
@@ -286,30 +273,7 @@ export default function Resources() {
 
             {/* Main content */}
             <div className="min-w-0">
-              {error ? (
-                <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-12 text-center">
-                  <p className="text-textSecondary">
-                    We couldn't load articles right now. Please refresh, or come back in a moment.
-                  </p>
-                </div>
-              ) : posts === null ? (
-                <div className="space-y-12">
-                  {Array.from({ length: 2 }).map((_, i) => (
-                    <div key={i} className="animate-pulse">
-                      <div className="h-8 bg-gray-100 rounded w-1/3 mb-4" />
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        {Array.from({ length: 4 }).map((__, j) => (
-                          <div key={j} className="bg-bgCanvas border border-gray-100 rounded-2xl p-6 space-y-3">
-                            <div className="h-5 bg-gray-100 rounded w-5/6" />
-                            <div className="h-4 bg-gray-100 rounded w-full" />
-                            <div className="h-4 bg-gray-100 rounded w-3/4" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : filteredCategories.length === 0 ? (
+              {filteredCategories.length === 0 ? (
                 <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-12 text-center">
                   <p className="text-textSecondary">
                     {query ? (

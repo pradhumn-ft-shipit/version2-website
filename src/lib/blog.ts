@@ -1,3 +1,10 @@
+// Pure, isomorphic blog types + shaping helpers. This module is safe to import
+// from client components AND from build-time loaders — it does NO I/O (no
+// `fetch`, no `node:fs`). The data actually comes from framework `loader`s that
+// read the committed JSON off disk at build time (see app/lib/blogData.server.ts);
+// those loaders serialize the result into the prerendered HTML, so the full
+// article body ships in the raw markup for non-JS crawlers.
+
 export type BlogIndexEntry = {
   slug: string;
   title: string;
@@ -16,34 +23,7 @@ export type BlogPost = BlogIndexEntry & {
   content: string;
 };
 
-type IndexFile = { count: number; posts: BlogIndexEntry[] };
-
-let indexCache: Promise<IndexFile> | null = null;
-const postCache = new Map<string, Promise<BlogPost | null>>();
-
-export function fetchBlogIndex(): Promise<IndexFile> {
-  if (!indexCache) {
-    indexCache = fetch('/blog-data/index.json').then((res) => {
-      if (!res.ok) throw new Error(`Blog index fetch failed: ${res.status}`);
-      return res.json() as Promise<IndexFile>;
-    });
-  }
-  return indexCache;
-}
-
-export function fetchBlogPost(slug: string): Promise<BlogPost | null> {
-  if (!postCache.has(slug)) {
-    postCache.set(
-      slug,
-      fetch(`/blog-data/posts/${encodeURIComponent(slug)}.json`).then((res) => {
-        if (res.status === 404) return null;
-        if (!res.ok) throw new Error(`Blog post fetch failed: ${res.status}`);
-        return res.json() as Promise<BlogPost>;
-      })
-    );
-  }
-  return postCache.get(slug)!;
-}
+export type BlogIndexFile = { count: number; posts: BlogIndexEntry[] };
 
 export function formatBlogDate(iso: string | null): string {
   if (!iso) return '';

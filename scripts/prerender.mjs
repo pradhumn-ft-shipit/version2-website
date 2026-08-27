@@ -219,57 +219,13 @@ function main() {
   }
 
   // --- Blog -----------------------------------------------------------------
-  const blogIndexPath = path.join(ROOT, 'public/blog-data/index.json');
-  if (fs.existsSync(blogIndexPath)) {
-    const { posts } = readJson(blogIndexPath);
-
-    writeRoute(
-      '/resources/blog',
-      renderHead(shell, {
-        title: 'Blog | FastTrackr AI',
-        description:
-          'Field notes from the operators reshaping wealth management: advisor transitions, AI in wealth, compliance, and the work behind the work.',
-        canonical: `${SITE_ORIGIN}/resources/blog`,
-        ogType: 'website',
-        image: `${SITE_ORIGIN}/logomark.png`,
-      })
-    );
-    count++;
-
-    for (const post of posts) {
-      const url = `${SITE_ORIGIN}/blog/${post.slug}`;
-      const image = post.image ? `${SITE_ORIGIN}${post.image}` : `${SITE_ORIGIN}/logomark.png`;
-      const description = clamp(post.excerpt || post.title, 155);
-
-      writeRoute(
-        `/blog/${post.slug}`,
-        renderHead(shell, {
-          // Not clamped: a truncated "…" title would drop the brand suffix and
-          // disagree with the title BlogPost.tsx sets once the post loads.
-          // Google shortens for display on its own; the tag stays whole.
-          title: `${post.title} | FastTrackr AI`,
-          description,
-          canonical: url,
-          ogType: 'article',
-          image,
-          imageAlt: post.image ? post.imageAlt : null,
-          publishedTime: post.date,
-          jsonLd: {
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.title,
-            description,
-            datePublished: post.date,
-            ...(post.image ? { image: [image] } : {}),
-            author: { '@type': 'Organization', name: post.author || 'FastTrackr AI', url: SITE_ORIGIN },
-            publisher: organization(),
-            mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-          },
-        })
-      );
-      count++;
-    }
-  }
+  // MOVED to framework loaders in ticket 004. `/resources/blog` and every
+  // `/blog/<slug>` now render their FULL BODY via app/routes/blog-*.tsx loaders
+  // (see react-router.config.ts `prerender`). If this script kept writing those
+  // paths it would run AFTER stage-dist and CLOBBER the framework's full-body
+  // dist/blog/<slug>/index.html with a head-only shell — the opposite of the goal
+  // (mirrors why STATIC_ROUTES was emptied in 003). News heads stay here until
+  // ticket 005 moves them too; the whole script is deleted in ticket 009.
 
   console.log(`[prerender] wrote ${count} static HTML pages`);
 }

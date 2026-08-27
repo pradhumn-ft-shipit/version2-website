@@ -1,45 +1,22 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { fetchBlogIndex, formatBlogDate, type BlogIndexEntry } from '../lib/blog';
-import { useSeo, SITE_ORIGIN } from '../lib/seo';
+import { formatBlogDate, type BlogIndexEntry } from '../lib/blog';
 
 const PAGE_SIZE = 18;
 
-export default function Blog() {
-  useSeo({
-    title: 'Blog | FastTrackr AI',
-    description:
-      'Field notes from the operators reshaping wealth management: advisor transitions, AI in wealth, compliance, and the work behind the work.',
-    canonical: `${SITE_ORIGIN}/resources/blog`,
-    ogImage: `${SITE_ORIGIN}/logomark.png`,
-  });
-
-  const [posts, setPosts] = useState<BlogIndexEntry[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+// Posts arrive from the route `loader` (build-time disk read) via `useLoaderData`
+// in app/routes/blog-index.tsx — no client fetch. SEO lives in that route's
+// `meta` export. This component is pure presentation over the passed-in list.
+export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
   const [query, setQuery] = useState('');
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
-    fetchBlogIndex()
-      .then((data) => {
-        if (!cancelled) setPosts(data.posts);
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err.message ?? 'Failed to load posts');
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   const filtered = useMemo(() => {
-    if (!posts) return [];
     const q = query.trim().toLowerCase();
     if (!q) return posts;
     return posts.filter((p) => {
@@ -54,7 +31,7 @@ export default function Blog() {
   const shown = filtered.slice(0, visible);
   const hasMore = filtered.length > visible;
 
-  const featured = posts?.[0];
+  const featured = posts[0];
   const restOfShown = featured && !query ? shown.filter((p) => p.slug !== featured.slug) : shown;
 
   return (
@@ -93,36 +70,8 @@ export default function Blog() {
           />
         </section>
 
-        {/* Loading state */}
-        {!posts && !error && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="bg-bgCanvas rounded-2xl overflow-hidden border border-gray-100 animate-pulse">
-                  <div className="aspect-video bg-gray-100" />
-                  <div className="p-6 space-y-3">
-                    <div className="h-4 bg-gray-100 rounded w-1/3" />
-                    <div className="h-6 bg-gray-100 rounded w-5/6" />
-                    <div className="h-4 bg-gray-100 rounded w-full" />
-                    <div className="h-4 bg-gray-100 rounded w-3/4" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Error state */}
-        {error && (
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-            <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-8 text-center">
-              <p className="text-textSecondary">We couldn't load articles right now. Please refresh, or come back in a moment.</p>
-            </div>
-          </div>
-        )}
-
         {/* Featured */}
-        {posts && featured && !query && (
+        {featured && !query && (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <Link
               to={`/blog/${featured.slug}`}
@@ -168,7 +117,7 @@ export default function Blog() {
         )}
 
         {/* Grid */}
-        {posts && (
+        {(
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             {filtered.length === 0 ? (
               <div className="bg-bgCanvas border border-gray-100 rounded-2xl p-12 text-center">

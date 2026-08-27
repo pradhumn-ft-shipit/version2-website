@@ -38,6 +38,12 @@ export default {
     '/case-study/advisor-transition',
     '/resources-for-financial-advisors',
     '/zoom-help-documentation',
+    // Blog (ticket 004): the index plus a couple of sample post slugs, to prove the
+    // build-time loaders bake full article HTML. Ticket 005/006 swaps this array for
+    // a function that enumerates EVERY blog/news slug from the JSON indexes.
+    '/resources/blog',
+    '/blog/how-many-concurrent-repapers-one-transition-specialist-can-actually-handle',
+    '/blog/where-ai-removes-real-work-in-an-advisor-repaper-and-where-it-quietly-adds-risk',
     // Legal
     '/privacy-policy',
     '/tos',

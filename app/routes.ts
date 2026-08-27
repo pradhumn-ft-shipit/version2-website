@@ -1,10 +1,9 @@
 import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
-// Full static/marketing surface ported from src/App.tsx (ticket 003). Data-backed
-// routes — /resources/blog, /blog/:slug, /resources/news, /resources/news/:slug and
-// the /resources/blog/:slug → /blog/:slug redirect — are owned by tickets 004/005 and
-// are intentionally absent here. This ticket ports every NON-dynamic route plus every
-// redirect, so the whole static surface renders full-body in prerendered HTML.
+// Static/marketing surface ported from src/App.tsx (ticket 003) plus the blog
+// data-backed routes (ticket 004): /resources/blog, /blog/:slug and the
+// /resources/blog/:slug → /blog/:slug redirect. The news routes (/resources/news,
+// /resources/news/:slug) remain owned by ticket 005 and are intentionally absent.
 export default [
   index('routes/home.tsx'),
 
@@ -28,6 +27,12 @@ export default [
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
   route('resources-for-financial-advisors', 'routes/resources.tsx'),
   route('zoom-help-documentation', 'routes/zoom-help.tsx'),
+
+  // Blog (ticket 004): build-time loaders read the committed JSON off disk so the
+  // full index + article bodies ship in prerendered HTML.
+  route('resources/blog', 'routes/blog-index.tsx'),
+  route('blog/:slug', 'routes/blog-post.tsx'),
+  route('resources/blog/:slug', 'routes/redirects/resources-blog-slug.tsx'),
 
   // Legal
   route('privacy-policy', 'routes/legal/privacy-policy.tsx'),

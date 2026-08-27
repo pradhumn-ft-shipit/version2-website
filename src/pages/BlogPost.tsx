@@ -1,105 +1,25 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/Button';
 import {
-  fetchBlogIndex,
-  fetchBlogPost,
   formatBlogDate,
   type BlogIndexEntry,
   type BlogPost as BlogPostType,
 } from '../lib/blog';
-import { useSeo, SITE_ORIGIN, absoluteUrl, clampText } from '../lib/seo';
-import NotFound from './NotFound';
 
-export default function BlogPost() {
-  const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPostType | null | undefined>(undefined);
-  const [index, setIndex] = useState<BlogIndexEntry[]>([]);
-
-  // Every post used to inherit index.html's homepage title, description and
-  // canonical. Hooks can't sit behind the early returns below, so this runs on
-  // every render and falls back to blog-level defaults until the post lands.
-  useSeo({
-    title: post ? `${post.title} | FastTrackr AI` : 'Blog | FastTrackr AI',
-    // Clamped to match the prerendered <head> exactly (see clampText).
-    description: clampText(
-      post?.description ||
-        post?.excerpt ||
-        'Field notes on advisor transitions, AI in wealth management, and compliance from FastTrackr AI.',
-      155
-    ),
-    canonical: `${SITE_ORIGIN}/blog/${slug ?? ''}`,
-    ogType: 'article',
-    ogImage: post?.image ? absoluteUrl(post.image) : `${SITE_ORIGIN}/logomark.png`,
-    ogImageAlt: post?.image ? post.imageAlt : undefined,
-    publishedTime: post?.date ?? undefined,
-  });
-
-  useEffect(() => {
-    if (!slug) {
-      setPost(null);
-      return;
-    }
-    let cancelled = false;
-    setPost(undefined);
-    fetchBlogPost(slug)
-      .then((p) => {
-        if (!cancelled) setPost(p);
-      })
-      .catch(() => {
-        if (!cancelled) setPost(null);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [slug]);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetchBlogIndex()
-      .then((data) => {
-        if (!cancelled) setIndex(data.posts);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const related = useMemo(() => {
-    if (!post || index.length === 0) return [];
-    return index.filter((p) => p.slug !== post.slug).slice(0, 3);
-  }, [post, index]);
-
-  if (post === undefined) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow pt-32 pb-24">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="animate-pulse space-y-4">
-              <div className="h-4 bg-gray-100 rounded w-1/4" />
-              <div className="h-12 bg-gray-100 rounded w-5/6" />
-              <div className="h-6 bg-gray-100 rounded w-1/3" />
-              <div className="aspect-video bg-gray-100 rounded-2xl mt-8" />
-              <div className="h-4 bg-gray-100 rounded w-full mt-8" />
-              <div className="h-4 bg-gray-100 rounded w-11/12" />
-              <div className="h-4 bg-gray-100 rounded w-10/12" />
-            </div>
-          </div>
-        </main>
-        <Footer hideCTA />
-      </div>
-    );
-  }
-
-  if (post === null) {
-    return <NotFound />;
-  }
-
+// `post` + `related` come from the route `loader` (build-time disk read) via
+// useLoaderData in app/routes/blog-post.tsx — no client fetch. A missing slug is
+// handled by the loader (throws 404 → route ErrorBoundary renders NotFound), so
+// this component always has a real post and just renders it.
+export default function BlogPost({
+  post,
+  related,
+}: {
+  post: BlogPostType;
+  related: BlogIndexEntry[];
+}) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />

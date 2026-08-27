@@ -129,143 +129,19 @@ function readJson(file) {
 }
 
 /**
- * Every non-content route in src/App.tsx that renders a real page (redirects and
- * :slug routes excluded). Without these, index.html's homepage <head> ships to
- * any crawler that doesn't execute JS — Bing, LinkedIn, Slack — telling them the
- * homepage is the canonical version of /pricing, /contact and the rest.
+ * Static marketing/ICP/solutions/legal routes.
  *
- * "/" is deliberately absent: dist/index.html is already the homepage's own head.
+ * EMPTIED in ticket 003: these routes are now ported into the React Router
+ * framework route tree (app/routes/**) and prerendered with their FULL BODY by
+ * `react-router build` (see react-router.config.ts `prerender`). This old script
+ * only ever baked the <head> into an otherwise-empty shell; if it kept writing
+ * these paths it would run AFTER stage-dist and CLOBBER the framework's full-body
+ * dist/<route>/index.html with a head-only version — the opposite of the goal.
  *
- * Titles/descriptions are drawn from each page's h1 and hero subhead. If you
- * change a hero, change it here too.
+ * The script stays wired only for the blog/news heads below until tickets 004/005
+ * move those into framework loaders; it is deleted entirely in ticket 009.
  */
-const STATIC_ROUTES = [
-  {
-    path: '/solutions/advisor-transitions',
-    title: 'Advisor Transitions | FastTrackr AI',
-    description:
-      'The AI transition engine for wealth management. Move advisor books in weeks, not months, with data collection, form-filling, and e-signature handled end to end.',
-  },
-  {
-    path: '/solutions/client-onboarding',
-    title: 'Client Onboarding | FastTrackr AI',
-    description:
-      'Onboard new clients in days, not weeks. The same technology built to handle thousands of account openings during advisor transitions, applied to day-to-day onboarding.',
-  },
-  {
-    path: '/solutions/meeting-assistant',
-    title: 'AI Meeting Assistant for Advisors | FastTrackr AI',
-    description:
-      'Your always-on meeting coordinator. Pre-meeting prep, in-meeting notes, and post-meeting follow-ups handled, so advisors can focus on the conversation.',
-  },
-  {
-    path: '/solutions/document-intelligence',
-    title: 'Document Intelligence | FastTrackr AI',
-    description:
-      'From piles of client paperwork to instant insights. Brokerage statements, tax documents, equity comp, and bank docs extracted and organized in minutes.',
-  },
-  {
-    path: '/who-we-serve/transition-consultants',
-    title: 'For Transition Consultants | FastTrackr AI',
-    description:
-      'More deals per consultant, without more admin slog. FastTrackr handles data collection, form-filling, and project management so your team takes on more transitions.',
-  },
-  {
-    path: '/who-we-serve/breakaway-advisors',
-    title: 'For Breakaway Advisors | FastTrackr AI',
-    description:
-      'Bring your book with you without breaking your team. Repapering, client data collection, and custodian paperwork run for you, so your move lands in weeks.',
-  },
-  {
-    path: '/who-we-serve/acquisitive-rias',
-    title: 'For Acquisitive RIAs | FastTrackr AI',
-    description:
-      'Every acquisition is a repapering project. Stop letting the integration timeline drag your AUM down, and make a fast, clean repaper your competitive edge.',
-  },
-  {
-    path: '/who-we-serve/independent-broker-dealers',
-    title: 'For Independent Broker-Dealers | FastTrackr AI',
-    description:
-      'Win the advisors, win their books, win them faster. Your transition experience is part of your recruiting pitch — make it the part that closes the deal.',
-  },
-  {
-    path: '/who-we-serve/custodians',
-    title: 'For Custodians | FastTrackr AI',
-    description:
-      'Be the on-ramp for every new RIA and advisory practice. FastTrackr puts the advisor onboarding experience back in the hands of the custodian.',
-  },
-  {
-    path: '/pricing',
-    title: 'Pricing | FastTrackr AI',
-    description:
-      "Pricing built around the value you get. It flexes to what you're using FastTrackr for and what it gives back to your firm, rather than selling seats by the dozen.",
-  },
-  {
-    path: '/contact',
-    title: 'Contact | FastTrackr AI',
-    description:
-      "Let's talk about your transition process. Whether you want to cut your timeline in half or just see how the engine works, book a 20-minute walkthrough.",
-  },
-  {
-    path: '/fpa',
-    title: 'FPA Member Discount | FastTrackr AI',
-    description:
-      "An exclusive discount on FastTrackr's AI Meeting Assistant for FPA members: automatic notes, summaries, and follow-ups built for financial advisors.",
-  },
-  {
-    path: '/resources-for-financial-advisors',
-    title: 'AI Resources for Financial Advisors | FastTrackr AI',
-    description:
-      'The AI playbook for modern advisors: deep dives and field notes for advisors, RIAs, and wealth firms putting AI to work — without the buzzwords.',
-  },
-  {
-    path: '/case-study/advisor-transition',
-    title: 'Case Study: $100M Moved in Two Weeks | FastTrackr AI',
-    description:
-      'How an advisor team moved $100M across 150 households in two weeks with zero repapering NIGOs, starting from zero client data.',
-  },
-  {
-    path: '/zoom-help-documentation',
-    title: 'Zoom Help Documentation | FastTrackr AI',
-    description:
-      'How FastTrackr AI connects to Zoom meetings: installation, features, data privacy considerations, and troubleshooting for the AI meeting assistant.',
-  },
-  {
-    path: '/privacy-policy',
-    title: 'Privacy Policy | FastTrackr AI',
-    description:
-      'How FastTrackr Inc. collects, uses, and discloses your information when you use the FastTrackr AI service.',
-  },
-  {
-    path: '/tos',
-    title: 'Terms of Service | FastTrackr AI',
-    description: 'The terms governing your use of the FastTrackr AI service.',
-  },
-  {
-    path: '/privacy-policy-transitions',
-    title: 'Transitions Privacy Policy | FastTrackr AI',
-    description:
-      'How FastTrackr collects, uses, stores, shares, and protects information processed through the FastTrackr Advisor Transition Platform.',
-  },
-  {
-    path: '/tos-transitions',
-    title: 'Transitions Terms of Service | FastTrackr AI',
-    description:
-      'The terms governing use of the FastTrackr Advisor Transition Platform.',
-  },
-  {
-    path: '/client-privacy-notice',
-    title: 'Client Privacy Notice | FastTrackr AI',
-    description:
-      'A plain-language notice for clients: what data your advisor collects through FastTrackr during an account transition, how it is used, and your rights.',
-  },
-  {
-    path: '/client-data-consent-acknowledgment',
-    title: 'Client Data Consent & Acknowledgment | FastTrackr AI',
-    description:
-      'A short, plain-language consent document covering how your information is handled on the FastTrackr platform during an account transition.',
-  },
-];
+const STATIC_ROUTES = [];
 
 function main() {
   if (!fs.existsSync(SHELL)) {

@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { m } from 'framer-motion';
+import { m } from '../../lib/motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, TrendingUp, Clock, FileWarning, Smile, Database, LayoutList, FileText } from 'lucide-react';
 

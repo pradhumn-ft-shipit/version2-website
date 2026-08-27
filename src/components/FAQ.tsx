@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

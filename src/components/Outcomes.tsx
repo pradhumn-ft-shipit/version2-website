@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Zap, ShieldCheck, TrendingUp, CalendarX2, ArrowRight } from 'lucide-react';
 
 const stats = [

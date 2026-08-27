@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { m, useMotionTemplate, useMotionValue, type MotionValue } from 'framer-motion';
+import { useMotionTemplate, useMotionValue, type MotionValue } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Calendar } from 'lucide-react';
 
 function useHasHover() {

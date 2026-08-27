@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { ArrowRight, Briefcase, UserPlus, Building, Network, Landmark } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

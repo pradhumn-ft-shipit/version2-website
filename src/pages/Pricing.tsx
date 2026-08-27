@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageFAQ from '../components/PageFAQ';
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { CheckCircle2, ArrowRight, Mic, FileSearch, UserPlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

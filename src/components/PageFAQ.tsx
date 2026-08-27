@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Plus, Minus } from 'lucide-react';
 
 export default function PageFAQ({ faqs }: { faqs: { q: string, a: string }[] }) {

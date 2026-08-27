@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
-import { m } from 'framer-motion';
+import { m } from '../../lib/motion';
 import { Link } from 'react-router-dom';
 import { Mic, FileText, Database, Send } from 'lucide-react';
 

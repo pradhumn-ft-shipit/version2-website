@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Link } from 'react-router-dom';
 import { Mic, FileSearch, UserPlus, ArrowRight } from 'lucide-react';
 

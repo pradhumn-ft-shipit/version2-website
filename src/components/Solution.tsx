@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Database, FileText, LayoutList } from 'lucide-react';
 
 const capabilities = [

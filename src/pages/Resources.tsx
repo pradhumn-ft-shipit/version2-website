@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Link } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
 import Navbar from '../components/Navbar';

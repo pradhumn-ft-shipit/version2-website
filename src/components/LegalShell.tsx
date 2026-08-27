@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import type { ReactNode } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';

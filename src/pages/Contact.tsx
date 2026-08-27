@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Mail, Send, CheckCircle2 } from 'lucide-react';
 
 const INTERESTS: Record<string, string> = {

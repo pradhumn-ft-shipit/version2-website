@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { m, AnimatePresence, useInView } from 'framer-motion';
-
+import { AnimatePresence, useInView } from 'framer-motion';
+import { m } from '../lib/motion';
 const steps = [
   {
     title: "We learn your book",

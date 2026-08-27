@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageCTA from '../components/PageCTA';
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import {
   Users,
   Building2,

@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Link } from 'react-router-dom';
 
 export default function PageCTA({ headline, ctaText = "Book a Demo", link = "/contact" }: { headline: string, ctaText?: string, link?: string }) {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { m } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Send, CheckCircle2, Sparkles } from 'lucide-react';
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';

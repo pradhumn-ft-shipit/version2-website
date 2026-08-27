@@ -1,5 +1,5 @@
-import { m, type Variants } from 'framer-motion';
-
+import { type Variants } from 'framer-motion';
+import { m } from '../../lib/motion';
 export const AnimatedText = ({ text, className = '' }: { text: string; className?: string }) => {
   // Split text into words
   const words = text.split(' ');

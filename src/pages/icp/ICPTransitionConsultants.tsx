@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
-import { m } from 'framer-motion';
+import { m } from '../../lib/motion';
 import { CheckCircle2, TrendingUp, Users, Zap, Clock } from 'lucide-react';
 
 export default function ICPTransitionConsultants() {

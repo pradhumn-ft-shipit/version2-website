@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { m } from '../lib/motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/Button';
 import { Link } from 'react-router-dom';

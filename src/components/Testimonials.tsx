@@ -1,5 +1,4 @@
-import { m } from 'framer-motion';
-
+import { m } from '../lib/motion';
 const featured = {
   quote: "Transitioning was the most stressful month I've had in my career. Working with FastTrackr allowed me to focus on contacting clients and devote very little mental energy to the details around completion of paperwork.",
   author: "Jason Carter, CFA®, MBA",

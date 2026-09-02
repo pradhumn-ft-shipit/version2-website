@@ -3,6 +3,7 @@ import {
   buildPrerenderPaths,
   readBlogSlugs,
   readNewsSlugs,
+  readPodcastSlugs,
 } from './app/lib/prerenderPaths';
 
 // React Router v7 framework mode, configured as a static-site generator.
@@ -31,6 +32,7 @@ export default {
       staticPaths: getStaticPaths(),
       blogSlugs: readBlogSlugs(),
       newsSlugs: readNewsSlugs(),
+      podcastSlugs: readPodcastSlugs(),
     });
   },
 } satisfies Config;

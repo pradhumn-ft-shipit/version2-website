@@ -23,6 +23,7 @@ const whoWeServeItems = [
 
 const resourcesItems = [
   { label: 'Blog', href: '/resources/blog' },
+  { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
   { label: 'Case Study', href: '/case-study/advisor-transition' },
 ];

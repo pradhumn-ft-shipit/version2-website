@@ -92,6 +92,12 @@ services:
       - type: rewrite
         source: /blog/*
         destination: /blog/*/index.html
+      - type: rewrite
+        source: /resources/podcasts
+        destination: /resources/podcasts/index.html
+      - type: rewrite
+        source: /resources/podcasts/*
+        destination: /resources/podcasts/*/index.html
       # Static marketing / solutions / ICP / legal routes are ALSO prerendered
       # (dist/<route>/index.html) and must be served as their own file, not the
       # SPA shell — same reason as blog/news above. The catch-all `/*` below

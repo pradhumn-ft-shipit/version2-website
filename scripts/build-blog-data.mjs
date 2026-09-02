@@ -40,6 +40,9 @@ const OUT_DIR = path.join(ROOT, 'public/blog-data');
 const POSTS_DIR = path.join(OUT_DIR, 'posts');
 const NEWS_OUT_DIR = path.join(ROOT, 'public/news-data');
 const NEWS_POSTS_DIR = path.join(NEWS_OUT_DIR, 'posts');
+const PODCAST_DIR = path.join(ROOT, 'content/podcasts');
+const PODCAST_OUT_DIR = path.join(ROOT, 'public/podcast-data');
+const PODCAST_POSTS_DIR = path.join(PODCAST_OUT_DIR, 'posts');
 const IMAGES_DIR = path.join(ROOT, 'public/blog-images');
 const CATEGORIES_TS = path.join(ROOT, 'src/lib/blogCategories.ts');
 const SITEMAP_PATH = path.join(ROOT, 'public/sitemap.xml');
@@ -67,6 +70,7 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/contact', priority: '0.7' },
   { path: '/resources/blog', priority: '0.5' },
   { path: '/resources/news', priority: '0.6' },
+  { path: '/resources/podcasts', priority: '0.6' },
   { path: '/resources-for-financial-advisors', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
   { path: '/privacy-policy', priority: '0.3' },
@@ -503,6 +507,183 @@ function buildNews() {
   return index;
 }
 
+// ---------------------------------------------------------------------------
+// content/podcasts/*.md — YouTube podcast episodes for /resources/podcasts.
+// Strict, like news (a broken episode page is worse than no deploy). Reuses the
+// news frontmatter parser (it understands `- item` block lists, so `takeaways:`
+// and `chapters:` can be authored as lists). The markdown body is the long
+// editorial summary. Each episode embeds a YouTube video the summary describes;
+// the unique summary text is what makes the page indexable, not the embed.
+// ---------------------------------------------------------------------------
+
+function parseTimestampToSeconds(ts) {
+  const parts = String(ts).trim().split(':').map((p) => Number(p));
+  if (parts.some((n) => Number.isNaN(n))) return null;
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 1) return parts[0];
+  return null;
+}
+
+function parseChapters(value, errors, fileLabel) {
+  if (!value) return [];
+  const raw = Array.isArray(value) ? value : [value];
+  const out = [];
+  for (const entry of raw) {
+    const [time, ...rest] = String(entry).split('|');
+    const label = rest.join('|').trim();
+    const seconds = parseTimestampToSeconds(time || '');
+    if (seconds === null || !label) {
+      errors.push(`${fileLabel}: chapter must be "mm:ss | Label" (got "${entry}")`);
+      continue;
+    }
+    out.push({ time: String(time).trim(), seconds, label });
+  }
+  return out;
+}
+
+function renderPodcastFile(filePath) {
+  const errors = [];
+  const fileLabel = path.relative(ROOT, filePath);
+  const parsed = parseNewsFrontmatter(fs.readFileSync(filePath, 'utf8'), fileLabel);
+  if (!parsed) {
+    return { errors: [`${fileLabel}: missing or malformed frontmatter`], item: null };
+  }
+  const { data, body } = parsed;
+  errors.push(...parsed.errors);
+
+  const slug = String(data.slug || path.basename(filePath, '.md')).trim();
+  const title = String(data.title || '').trim();
+  const kind = String(data.kind || '').trim();
+  const show = String(data.show || '').trim();
+  const youtubeId = String(data.youtubeId || '').trim();
+  const description = String(data.description || '').trim();
+  const excerpt = String(data.excerpt || '').trim();
+  const date = safeDate(data.date);
+
+  if (!slug) errors.push(`${fileLabel}: cannot derive slug from filename or "slug" field`);
+  if (!title) errors.push(`${fileLabel}: missing "title"`);
+  if (kind !== 'hosted' && kind !== 'guest') {
+    errors.push(`${fileLabel}: "kind" must be "hosted" or "guest" (got "${kind}")`);
+  }
+  if (!show) errors.push(`${fileLabel}: missing "show" (the series or channel name)`);
+  if (!youtubeId) errors.push(`${fileLabel}: missing "youtubeId"`);
+  if (!description) errors.push(`${fileLabel}: missing "description" (meta description, ~150–155 chars)`);
+  if (!excerpt) errors.push(`${fileLabel}: missing "excerpt" (one line for the index card)`);
+  if (!date) errors.push(`${fileLabel}: missing or unparseable "date"`);
+
+  const episodeRaw = String(data.episode || '').trim();
+  const episode = episodeRaw ? Number(episodeRaw) : null;
+  if (episodeRaw && Number.isNaN(episode)) {
+    errors.push(`${fileLabel}: "episode" must be a number (got "${episodeRaw}")`);
+  }
+  const durationRaw = String(data.durationSeconds || '').trim();
+  const durationSeconds = durationRaw ? Number(durationRaw) : null;
+  if (durationRaw && Number.isNaN(durationSeconds)) {
+    errors.push(`${fileLabel}: "durationSeconds" must be a number of seconds (got "${durationRaw}")`);
+  }
+
+  const takeaways = (Array.isArray(data.takeaways) ? data.takeaways : [])
+    .map((t) => String(t).trim())
+    .filter(Boolean);
+  const chapters = parseChapters(data.chapters, errors, fileLabel);
+
+  if (errors.length) return { errors, item: null };
+
+  const html = marked.parse(body || '');
+  return {
+    errors: [],
+    item: {
+      slug,
+      title,
+      seoTitle: String(data.seoTitle || '').trim() || null,
+      kind,
+      show,
+      episode: episode === null || Number.isNaN(episode) ? null : episode,
+      guest: String(data.guest || '').trim(),
+      guestTitle: String(data.guestTitle || '').trim(),
+      host: String(data.host || '').trim() || 'Vineet Mohan',
+      youtubeId,
+      date,
+      durationSeconds:
+        durationSeconds === null || Number.isNaN(durationSeconds) ? null : durationSeconds,
+      description,
+      excerpt,
+      takeaways,
+      chapters,
+      content: html,
+    },
+  };
+}
+
+function buildPodcasts() {
+  if (!fs.existsSync(PODCAST_DIR)) return [];
+  // Pure build output — wipe so a renamed/deleted source can't leave stale JSON.
+  fs.rmSync(PODCAST_POSTS_DIR, { recursive: true, force: true });
+  fs.mkdirSync(PODCAST_POSTS_DIR, { recursive: true });
+
+  const errors = [];
+  const items = [];
+  const seen = new Set();
+  const files = fs
+    .readdirSync(PODCAST_DIR)
+    .filter((f) => f.toLowerCase().endsWith('.md'))
+    .sort();
+
+  for (const f of files) {
+    const result = renderPodcastFile(path.join(PODCAST_DIR, f));
+    if (result.errors.length) {
+      errors.push(...result.errors);
+      continue;
+    }
+    const item = result.item;
+    if (seen.has(item.slug)) {
+      errors.push(`content/podcasts/${f}: duplicate slug "${item.slug}"`);
+      continue;
+    }
+    seen.add(item.slug);
+    fs.writeFileSync(
+      path.join(PODCAST_POSTS_DIR, `${item.slug}.json`),
+      JSON.stringify(item)
+    );
+    items.push(item);
+  }
+
+  if (errors.length) {
+    console.error('\n[podcasts] content/podcasts validation failed:');
+    for (const msg of errors) console.error('  • ' + msg);
+    console.error(`\n[podcasts] ${errors.length} error${errors.length === 1 ? '' : 's'}; aborting.`);
+    process.exit(1);
+  }
+
+  const index = items
+    .map((item) => ({
+      slug: item.slug,
+      title: item.title,
+      kind: item.kind,
+      show: item.show,
+      episode: item.episode,
+      guest: item.guest,
+      guestTitle: item.guestTitle,
+      youtubeId: item.youtubeId,
+      date: item.date,
+      durationSeconds: item.durationSeconds,
+      excerpt: item.excerpt,
+    }))
+    .sort((a, b) => {
+      const byDate = (b.date || '').localeCompare(a.date || '');
+      return byDate !== 0 ? byDate : a.slug.localeCompare(b.slug);
+    });
+
+  fs.writeFileSync(
+    path.join(PODCAST_OUT_DIR, 'index.json'),
+    JSON.stringify({ count: index.length, items: index })
+  );
+
+  console.log(`[podcasts] rendered ${index.length} episode${index.length === 1 ? '' : 's'}`);
+  return index;
+}
+
 function main() {
   // POSTS_DIR is pure build output: wipe it so a deleted/renamed source can
   // never leave a stale JSON behind to be picked up by the index scan below.
@@ -663,15 +844,16 @@ function main() {
   );
 
   const newsIndex = buildNews();
+  const podcastIndex = buildPodcasts();
 
-  writeSitemap(index, newsIndex);
+  writeSitemap(index, newsIndex, podcastIndex);
 
   console.log(
     `[blog] rendered ${rendered} markdown post${rendered === 1 ? '' : 's'}, copied ${legacyCopied} legacy post${legacyCopied === 1 ? '' : 's'}; index has ${index.length} post${index.length === 1 ? '' : 's'}`
   );
 }
 
-function writeSitemap(index, newsIndex = []) {
+function writeSitemap(index, newsIndex = [], podcastIndex = []) {
   const urls = [
     ...STATIC_SITEMAP_PAGES.map((p) => ({
       loc: `${SITE_ORIGIN}${p.path}`,
@@ -684,6 +866,11 @@ function writeSitemap(index, newsIndex = []) {
     })),
     ...newsIndex.map((item) => ({
       loc: `${SITE_ORIGIN}/resources/news/${item.slug}`,
+      lastmod: item.date ? item.date.slice(0, 10) : null,
+      priority: '0.6',
+    })),
+    ...podcastIndex.map((item) => ({
+      loc: `${SITE_ORIGIN}/resources/podcasts/${item.slug}`,
       lastmod: item.date ? item.date.slice(0, 10) : null,
       priority: '0.6',
     })),

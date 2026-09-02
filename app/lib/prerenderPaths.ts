@@ -1,5 +1,6 @@
 import { readBlogIndex } from './blogData.server';
 import { readNewsIndex } from './newsData.server';
+import { readPodcastIndex } from './podcastData.server';
 
 // Zero-touch prerender enumeration (ticket 006).
 //
@@ -25,6 +26,8 @@ export interface PrerenderInput {
   blogSlugs: string[];
   /** News article slugs → become `/resources/news/<slug>`. */
   newsSlugs: string[];
+  /** Podcast episode slugs → become `/resources/podcasts/<slug>`. */
+  podcastSlugs?: string[];
 }
 
 /**
@@ -36,11 +39,13 @@ export function buildPrerenderPaths({
   staticPaths,
   blogSlugs,
   newsSlugs,
+  podcastSlugs = [],
 }: PrerenderInput): string[] {
   const paths = [
     ...staticPaths,
     ...blogSlugs.map((slug) => `/blog/${slug}`),
     ...newsSlugs.map((slug) => `/resources/news/${slug}`),
+    ...podcastSlugs.map((slug) => `/resources/podcasts/${slug}`),
   ];
   // De-duplicate, preserving first-seen order.
   return Array.from(new Set(paths));
@@ -54,4 +59,9 @@ export function readBlogSlugs(): string[] {
 /** Read every news slug from the committed news index (`public/news-data/`). */
 export function readNewsSlugs(): string[] {
   return readNewsIndex().items.map((item) => item.slug);
+}
+
+/** Read every podcast slug from the committed index (`public/podcast-data/`). */
+export function readPodcastSlugs(): string[] {
+  return readPodcastIndex().items.map((item) => item.slug);
 }

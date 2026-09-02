@@ -18,6 +18,7 @@ const whoWeServeLinks = [
 
 const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
+  { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
   { label: 'Case Study', href: '/case-study/advisor-transition' },
   { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
@@ -87,7 +88,7 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
               />
             </Link>
             <p className="text-sm text-textSecondary italic">
-              Reimagining wealth management.<br/>One complex workflow at a time.
+              Advisor transitions, finally built right.<br/>Move advisor books in weeks, not months.
             </p>
           </div>
 

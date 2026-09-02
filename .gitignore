@@ -21,6 +21,7 @@ build
 # public/blog-images/ stays TRACKED (image sourcing is a separate story).
 public/blog-data/
 public/news-data/
+public/podcast-data/
 public/sitemap.xml
 
 # Env / secrets

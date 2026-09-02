@@ -42,6 +42,11 @@ export default [
   route('resources/news', 'routes/news-index.tsx'),
   route('resources/news/:slug', 'routes/news-article.tsx'),
 
+  // Podcast (Advisor Ally + guest spots): build-time loaders read the committed
+  // JSON off disk so the full index + episode summaries ship in prerendered HTML.
+  route('resources/podcasts', 'routes/podcast-index.tsx'),
+  route('resources/podcasts/:slug', 'routes/podcast-episode.tsx'),
+
   // Legal
   route('privacy-policy', 'routes/legal/privacy-policy.tsx'),
   route('tos', 'routes/legal/tos.tsx'),

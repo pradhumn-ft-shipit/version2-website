@@ -24,7 +24,10 @@ export default [
   route('pricing', 'routes/pricing.tsx'),
   route('contact', 'routes/contact.tsx'),
   route('fpa', 'routes/fpa.tsx'),
+  route('case-study', 'routes/case-study-index.tsx'),
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
+  route('case-study/schwab-to-schwab-transition-one-day', 'routes/case-study-breakaway.tsx'),
+  route('case-study/bd-to-ria-400m-transition', 'routes/case-study-bd-to-ria.tsx'),
   route('resources-for-financial-advisors', 'routes/resources.tsx'),
   route('zoom-help-documentation', 'routes/zoom-help.tsx'),
 

@@ -20,7 +20,7 @@ const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
-  { label: 'Case Study', href: '/case-study/advisor-transition' },
+  { label: 'Case Studies', href: '/case-study' },
   { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
 ];
 

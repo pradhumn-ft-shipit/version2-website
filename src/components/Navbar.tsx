@@ -25,7 +25,6 @@ const resourcesItems = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
-  { label: 'Case Studies', href: '/case-study' },
 ];
 
 export default function Navbar() {
@@ -68,6 +67,7 @@ export default function Navbar() {
             <NavItem label="Solutions" items={solutionsItems} />
             <NavItem label="Who We Serve" items={whoWeServeItems} />
             <NavItem label="Resources" items={resourcesItems} />
+            <Link to="/case-study" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Case Studies</Link>
             <Link to="/pricing" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Pricing</Link>
             <Link to="/contact" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Contact</Link>
           </nav>
@@ -121,6 +121,13 @@ export default function Navbar() {
                 onToggle={() => setMobileSubmenu(mobileSubmenu === 'Resources' ? null : 'Resources')}
                 onNavigate={() => setMobileMenuOpen(false)}
               />
+              <Link
+                to="/case-study"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-3 text-base font-medium text-textSecondary"
+              >
+                Case Studies
+              </Link>
               <Link
                 to="/pricing"
                 onClick={() => setMobileMenuOpen(false)}

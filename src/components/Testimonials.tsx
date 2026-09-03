@@ -1,21 +1,32 @@
 import { m } from '../lib/motion';
 const featured = {
+  quote: [
+    "FastTrackr saved me a tremendous amount of time and frustration throughout this process. Out of 411 accounts, we only had two NIGOs (neither due to FastTrackr), which is remarkable given the volume and complexity of the project.",
+    "Their team is brilliant and the platform did an excellent job organizing and managing a significant amount of data. The efficiency, accuracy, and time savings were extremely valuable to me."
+  ],
+  author: "Douglas Vowels",
+  role: "Managing Partner",
+  company: "Intentional Wealth Planning"
+};
+
+// Secondary emphasis quote — heads the right column
+const secondary = {
   quote: "Transitioning was the most stressful month I've had in my career. Working with FastTrackr allowed me to focus on contacting clients and devote very little mental energy to the details around completion of paperwork.",
   author: "Jason Carter, CFA®, MBA",
   role: "Managing Partner | Wealth Advisor",
   company: "Cana Wealth Management"
 };
 
-// Secondary emphasis quote — heads the right column
-const secondary = {
+// Sits under the featured quote, in the left column
+const leftColumn = {
   quote: "This is the smoothest transition anyone in our circle has seen or heard about. It aligned with our workflow, and it just worked. We had planned for a month, we finished in two weeks. Amazing tool, very intuitive to use.",
   author: "Nico DeMaio",
   role: "President and Co-founder",
   company: "AdvizorStack"
 };
 
-// Sits under the featured quote, in the left column
-const leftColumn = {
+// Sits under the supporting quote in the left column
+const leftColumnSecond = {
   quote: "FastTrackr AI has been a game-changer for our practice. We're saving 10–15 hours weekly on meeting prep, CRM updates and follow-ups. Our clients love how quickly we follow up and that we never miss important details. It's made us more efficient and our service much better.",
   author: "Christian von Stackelberg",
   role: "Partner",
@@ -97,8 +108,11 @@ export default function Testimonials() {
           >
             <div>
               <span className="text-8xl text-brandMint/30 leading-none font-display block -mb-8">"</span>
-              <p className="text-2xl md:text-3xl font-display font-semibold text-textPrimary leading-snug relative z-10">
-                {featured.quote}
+              <p className="text-lg md:text-xl font-display font-semibold text-textPrimary leading-snug relative z-10">
+                {featured.quote[0]}
+                <br />
+                <br />
+                {featured.quote[1]}
               </p>
             </div>
             <div className="mt-12 flex items-center gap-4">
@@ -113,6 +127,7 @@ export default function Testimonials() {
           </m.div>
 
             <QuoteCard t={leftColumn} delay={0.1} from={-20} />
+            <QuoteCard t={leftColumnSecond} delay={0.2} from={-20} />
           </div>
 
           {/* Right column — emphasis quote + supporting quotes */}
@@ -125,7 +140,7 @@ export default function Testimonials() {
               viewport={{ once: true }}
               className="bg-bgCanvas rounded-3xl p-8 md:p-10 border border-gray-100"
             >
-              <p className="text-xl md:text-2xl font-display font-semibold text-textPrimary leading-snug mb-8">
+              <p className="text-lg md:text-xl font-display font-semibold text-textPrimary leading-snug mb-8">
                 "{secondary.quote}"
               </p>
               <div className="flex items-center gap-4">

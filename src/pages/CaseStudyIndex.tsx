@@ -12,7 +12,7 @@ import { ArrowRight, Zap, Layers, Users } from 'lucide-react';
 
 const studies = [
   {
-    href: '/case-study/schwab-to-schwab-transition-one-day',
+    href: '/case-study/independent-breakaway-setup',
     eyebrow: 'Breakaway Advisor · 2026',
     stat: '411 accounts',
     statNote: 'every envelope out before noon',

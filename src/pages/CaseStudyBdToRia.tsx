@@ -46,7 +46,7 @@ const context = [
     icon: BarChart3,
     label: 'Assets in motion',
     value: '~$400M',
-    note: 'to Fidelity, single custodian',
+    note: 'to Fidelity',
   },
 ];
 
@@ -66,7 +66,7 @@ const zeros = [
   {
     icon: Search,
     title: 'Data digging',
-    desc: 'Broker-dealer exports in, signature-ready documents out. No hunting through folders, nothing re-keyed by hand.',
+    desc: 'System exports in, signature-ready documents out. No hunting through folders, nothing re-keyed by hand.',
   },
   {
     icon: Table,
@@ -76,7 +76,7 @@ const zeros = [
   {
     icon: Flame,
     title: 'Fire drills',
-    desc: 'No re-dos, no escalations, no scrambling. The work simply completed.',
+    desc: 'No re-dos, no escalations, no scrambling. FastTrackr just got it done.',
   },
 ];
 
@@ -89,7 +89,7 @@ const experiences = [
   {
     icon: Database,
     title: 'A single source of truth',
-    desc: 'One spreadsheet export from the broker-dealer, plus the client documents the team already held. FastTrackr made sense of the unstructured PDFs alongside the structured data and worked from both as one source.',
+    desc: 'FastTrackr pulled data from several system exports and the old client paperwork the team already held, then normalized all of it — structured data and unstructured PDFs alike — into a single source of truth.',
   },
   {
     icon: UserCheck,
@@ -263,9 +263,11 @@ export default function CaseStudyBdToRia() {
                 is measured in months.
               </p>
               <p>
-                Everything FastTrackr worked from was already in the team's hands:
-                their own broker-dealer exports and the account opening forms they
-                already held. There was no new data collection, no client
+                The data didn't arrive clean or in one place. FastTrackr pulled it
+                from several system exports and reconciled it against the
+                team's old client paperwork — normalizing structured data and
+                unstructured PDFs into a single reliable source and flagging the
+                gaps along the way. There was no new data collection, no client
                 questionnaires, no discovery phase. The only information clients
                 were ever asked for was a current phone number or email address
                 where the one on file had gone stale.
@@ -295,8 +297,8 @@ export default function CaseStudyBdToRia() {
                   ))}
                 </div>
                 <p className="text-textSecondary text-center border-t border-gray-100 pt-6">
-                  Every account type generated from the same source data, each with
-                  its own document set.
+                  Every account type generated from the same source data and
+                  validated before every send, each with its own document set.
                 </p>
               </div>
 
@@ -317,21 +319,8 @@ export default function CaseStudyBdToRia() {
                   <div className="text-lg font-semibold mb-2">
                     NIGOs from repapering error
                   </div>
-                  <div className="text-white/70 mb-6">
+                  <div className="text-white/70">
                     Across 1,000+ accounts, entities, trusts, and plans.
-                  </div>
-                  <div className="border-t border-white/10 pt-5 space-y-3">
-                    <div className="text-xs font-semibold text-brandMint uppercase tracking-widest mb-1">
-                      Validated before every send
-                    </div>
-                    {accountTypes.map((t) => (
-                      <div key={t.label} className="flex items-center gap-3">
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-brandMint/15 text-brandMint flex items-center justify-center">
-                          <Check className="w-3 h-3" />
-                        </span>
-                        <span className="text-sm text-white/80">{t.label}</span>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </m.div>
@@ -538,7 +527,7 @@ export default function CaseStudyBdToRia() {
                         The milestone
                       </div>
                       <div className="text-textSecondary text-sm">
-                        Celebrated in Vegas, no laptop required
+                        Celebrations were on, no laptop required
                       </div>
                     </div>
                   </div>

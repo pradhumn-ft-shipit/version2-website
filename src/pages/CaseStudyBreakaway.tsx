@@ -36,14 +36,14 @@ const context = [
   {
     icon: Building2,
     label: 'Scope of the transition',
-    value: '143 households',
-    note: '411 accounts',
+    value: '411 accounts',
+    note: null,
   },
   {
     icon: Landmark,
     label: 'Assets in motion',
     value: '~$100M',
-    note: 'independent setup, built from scratch',
+    note: 'to Schwab',
   },
 ];
 
@@ -117,7 +117,7 @@ const experiences = [
   {
     icon: TrendingUp,
     title: 'No revenue lag',
-    desc: '95% of clients moved by Monday. The book started earning at the new shop almost immediately.',
+    desc: '95% of clients moved by Monday — 2+ weeks of revenue pulled forward.',
   },
 ];
 
@@ -155,10 +155,11 @@ export default function CaseStudyBreakaway() {
                 </span>
               </h1>
               <p className="text-xl text-textSecondary leading-relaxed">
-                A solo advisor going independent — 143 households, 411 accounts,
-                roughly $100M. No transition team. No big firm behind him. Every
-                document built, validated, and in DocuSign before lunch on day
-                one.
+                A solo advisor going independent — roughly $100M across 411
+                accounts. No transition team. No big firm behind him. FastTrackr
+                normalized all the data from every source, flagged the gaps, and
+                had every document built, validated, and in DocuSign before lunch
+                on day one — pulling 2+ weeks of revenue forward.
               </p>
             </m.div>
 
@@ -226,6 +227,9 @@ export default function CaseStudyBreakaway() {
                     411 accounts
                   </div>
                   <div className="text-textTertiary">all sent before noon</div>
+                  <div className="text-sm font-semibold text-brandDeep mt-3">
+                    2+ weeks of revenue pulled forward
+                  </div>
                 </div>
               </div>
             </m.div>

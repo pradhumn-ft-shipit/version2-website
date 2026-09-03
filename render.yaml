@@ -74,6 +74,11 @@ services:
       - type: redirect
         source: /for-transition-consultants
         destination: /who-we-serve/transition-consultants
+      # Renamed breakaway case-study slug. Must precede the /case-study/* rewrite
+      # below so the old URL 301s instead of being rewritten to a missing file.
+      - type: redirect
+        source: /case-study/schwab-to-schwab-transition-one-day
+        destination: /case-study/independent-breakaway-setup
       # Prerendered content pages. `react-router build` writes a full-content
       # dist/<route>/index.html per article (framework-mode SSG). These rewrites
       # MUST come before the catch-all below: a bare SPA rewrite swallows the

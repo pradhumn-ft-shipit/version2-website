@@ -41,6 +41,22 @@ gtag('js', new Date());
 gtag('config', 'G-JK6XW881LK');`,
           }}
         />
+        {/* OnlyAEO (AEO analytics) — tracks human visitors and which AI platform
+            referred them. ~4 KB, no cookies, no PII. The inline stub queues
+            oa(...) calls (e.g. conversions) until o.js loads; o.js is deferred so
+            it doesn't block first paint. dangerouslySetInnerHTML is required
+            because React does not serialize inline script bodies otherwise. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.oa=window.oa||function(){(oa.q=oa.q||[]).push(arguments)}`,
+          }}
+        />
+        <script
+          defer
+          src="https://app.onlyaeo.com/o.js"
+          data-domain="fasttrackr.ai"
+          data-site-token="pst_e7e0901f0351316ccfa40da1"
+        />
         <link rel="icon" type="image/png" href="/logomark.png" />
         <link rel="apple-touch-icon" href="/logomark.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

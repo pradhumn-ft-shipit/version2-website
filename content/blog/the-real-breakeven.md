@@ -81,7 +81,7 @@ Read the bottom two rows carefully. At 70% retention the move still wins eventua
 
 ## Where FastTrackr fits
 
-Retention is the most sensitive number in this model, and it turns on how fast the book gets serviceable. FastTrackr builds every household from the documents you and your clients already have, fills every form, and stages them for signature — so day-one service across the whole book is realistic, not aspirational. Move the reconstruction from weeks to days and you move retention up, which moves breakeven in by months. It's the highest-leverage lever the calculator has.
+Retention is the most sensitive number in this model, and it turns on how fast the book gets serviceable. FastTrackr builds every household from the documents you and your clients already have, fills every form, and stages them for signature — so day-one service across the whole book is realistic, not aspirational. Clients feel it too: instead of the long form that sours a relationship mid-move, they upload what they have and watch the data populate in front of them — goodwill that shows up in the retention number. Move the reconstruction from weeks to days and you move retention up, which moves breakeven in by months. It's the highest-leverage lever the calculator has.
 
 ## The first two quarters run slower than you'll model
 

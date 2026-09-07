@@ -79,7 +79,7 @@ Sequenced this way, the two revenue lines don't bottom out in the same quarter, 
 
 ## Where FastTrackr fits
 
-FastTrackr turns the conversion into a data exercise instead of a manual one. Upload your book and it builds every household, sorts the product mix — advisory, trails, C-shares, annuities, non-traded — and generates the repapering and conversion paperwork pre-filled, then pushes it to signature. The advisory revenue line starts ramping while everyone else is still sorting spreadsheets.
+FastTrackr turns the conversion into a data exercise instead of a manual one. Upload your book and it reads every account off your statements and exports, builds each household, and generates the repapering and conversion paperwork pre-filled, then pushes it to signature. The advisory revenue line starts ramping while everyone else is still sorting spreadsheets.
 
 ## Where this goes next
 

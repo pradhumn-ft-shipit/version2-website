@@ -110,7 +110,7 @@ The detail that bites: advisory fees are typically drawn **quarterly in arrears*
 
 ## Where FastTrackr fits
 
-Clean data upstream is what makes billing and repapering just work. FastTrackr builds each household correctly once — right registrations, right assets, right fee schedule attached — so there are no billing errors to unwind and no not-in-good-order rejections sending households back to the queue. Everything downstream, from the custodian transfer to your first billing cycle, runs on the first pass.
+Clean data upstream is what makes billing and repapering just work. FastTrackr builds each household correctly once — right registrations, right assets, right fee schedule attached — so there are no billing errors to unwind and no not-in-good-order rejections sending households back to the queue. And because it tracks completion per household — form by form, against each custodian's requirements — you can see exactly what's still missing and sort the whole book by readiness, so the build is a tracked queue, not a guess about what's ready. Everything downstream, from the custodian transfer to your first billing cycle, runs on the first pass.
 
 ## Step 9 — Resign, then run the transfer window
 

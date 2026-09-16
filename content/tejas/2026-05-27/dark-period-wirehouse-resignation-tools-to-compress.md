@@ -139,7 +139,7 @@ Pre-resignation prep platform. Doing 30–60 days of work *before* resignation e
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -210,7 +210,7 @@ Pre-resignation prep platform. Doing 30–60 days of work *before* resignation e
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

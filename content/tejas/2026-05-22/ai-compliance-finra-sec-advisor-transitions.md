@@ -184,7 +184,7 @@ This is how you deploy agentic AI in wealth management without regulatory risk. 
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -247,7 +247,7 @@ This is how you deploy agentic AI in wealth management without regulatory risk. 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

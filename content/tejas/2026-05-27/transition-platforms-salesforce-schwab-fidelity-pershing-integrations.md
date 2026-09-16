@@ -138,7 +138,7 @@ A reasonable contractual SLA is 14 days. Some vendors will commit to faster. Get
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -209,7 +209,7 @@ A reasonable contractual SLA is 14 days. Some vendors will commit to faster. Get
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

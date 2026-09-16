@@ -140,7 +140,7 @@ Ten business days or less is the target. The LOI should be drafted and out withi
 
 The advisor's transition experience drives word-of-mouth among their network of curious peers at the old firm. Clean 3-week transitions with 95% NIGO reduction produce referral cohorts. Messy 12-week transitions with elevated NIGOs do the opposite. Firms running inbound recruiting funnels on top of weak transition operations sabotage their own pipeline within two cohorts, which is why purpose-built AI-driven transition platforms are now a growth investment, not just an operational one.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -195,7 +195,7 @@ The advisor's transition experience drives word-of-mouth among their network of 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions) · [For Transition Consultants](/who-we-serve/transition-consultants)

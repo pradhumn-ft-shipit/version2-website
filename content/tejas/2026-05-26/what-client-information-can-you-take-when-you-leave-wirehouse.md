@@ -138,7 +138,7 @@ Client consent forms and ACATS transfers bring the account data legally. For the
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -201,7 +201,7 @@ Client consent forms and ACATS transfers bring the account data legally. For the
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant)

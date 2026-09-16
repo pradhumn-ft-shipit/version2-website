@@ -153,7 +153,7 @@ Custodian integration quality, NIGO prevention built into the workflow, transpar
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -216,5 +216,5 @@ Custodian integration quality, NIGO prevention built into the workflow, transpar
     }
   ]
 }
-```
+</script>
 

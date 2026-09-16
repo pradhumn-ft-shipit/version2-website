@@ -127,7 +127,7 @@ Every field-level data access and modification attributable to a specific user a
 
 Single-tenant isolation — separate database schemas or instances per tenant with separate encryption keys — contains the blast radius of any compromise to one tenant's data. It is more expensive to operate than shared-tenant architectures, and for large-volume broker-dealer and RIA deployments it is the posture that meets the highest bar of regulatory review. A transition vendor supporting tenant-isolated keys and data scopes as a deployment option is operating at the maturity level a CISO at a broker-dealer should treat as the baseline rather than the premium.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -182,7 +182,7 @@ Single-tenant isolation — separate database schemas or instances per tenant wi
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

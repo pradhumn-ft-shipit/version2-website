@@ -159,7 +159,7 @@ Treating the platform as a procurement decision rather than an operational capab
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -230,7 +230,7 @@ Treating the platform as a procurement decision rather than an operational capab
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

@@ -142,7 +142,7 @@ Annual is common, with multi-year discounts (10–20%) for two- or three-year co
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -213,7 +213,7 @@ Annual is common, with multi-year discounts (10–20%) for two- or three-year co
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

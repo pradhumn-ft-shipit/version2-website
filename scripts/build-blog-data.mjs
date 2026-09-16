@@ -221,6 +221,22 @@ function renderTejasFile(filePath, dateFolder, canonicalTopics) {
     );
   }
 
+  // JSON-LD schema (FAQPage etc.) must ship as a raw
+  // <script type="application/ld+json"> tag so it renders invisibly and is read
+  // as structured data. A ```json (or any) fenced code block wrapping @context
+  // renders as a VISIBLE <pre><code> block AND is worthless as schema, so reject
+  // it here rather than let it ship. See the 2026-09 fix converting 45 posts.
+  for (const fence of (body || '').matchAll(/^[ \t]*```[^\n]*\r?\n([\s\S]*?)\r?\n[ \t]*```[ \t]*$/gm)) {
+    if (fence[1].includes('@context')) {
+      errors.push(
+        `${fileLabel}: JSON-LD schema is inside a fenced code block — it will render as ` +
+          `visible JSON, not structured data. Wrap it in a raw ` +
+          `<script type="application/ld+json"> … </script> tag instead of \`\`\`json fences.`
+      );
+      break;
+    }
+  }
+
   let imageField = (data.image || '').trim();
   if (imageField && isLocalAsset(imageField)) {
     imageField = resolveDailyImage(imageField, sourceDir, dateFolder, errors, fileLabel);

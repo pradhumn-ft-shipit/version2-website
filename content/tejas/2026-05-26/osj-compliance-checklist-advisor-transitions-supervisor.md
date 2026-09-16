@@ -127,7 +127,7 @@ Pull the checklist. Show completed items. Show disciplinary history audit. Show 
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -198,7 +198,7 @@ Pull the checklist. Show completed items. Show disciplinary history audit. Show 
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

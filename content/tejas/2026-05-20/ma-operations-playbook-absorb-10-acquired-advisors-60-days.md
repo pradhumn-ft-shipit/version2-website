@@ -125,7 +125,7 @@ The most frequent data quality issues in acquired books are: stale mailing addre
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -180,7 +180,7 @@ The most frequent data quality issues in acquired books are: stale mailing addre
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

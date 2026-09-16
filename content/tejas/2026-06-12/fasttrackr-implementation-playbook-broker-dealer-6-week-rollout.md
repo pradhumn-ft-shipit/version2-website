@@ -117,7 +117,7 @@ The first-quarter metrics are cycle-time reduction against baseline, NIGO rate c
 
 Compliance and vendor-risk review that was not pre-scoped in Week 1. At a serious broker-dealer those processes have their own cadence and gating, and if the rollout team does not start them in Week 1 they become the binding constraint by Week 4 or 5. The fix is to name the compliance liaison in the Week 1 staffing plan and start the vendor risk and information security reviews on the same day discovery starts, so they run in parallel with the technical workstreams rather than blocking them.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -172,7 +172,7 @@ Compliance and vendor-risk review that was not pre-scoped in Week 1. At a seriou
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant)

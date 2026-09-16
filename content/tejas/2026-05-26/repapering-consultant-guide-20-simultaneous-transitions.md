@@ -141,7 +141,7 @@ At a 22% NIGO rate, roughly 1 in 5 accounts requires resubmission — adding 10 
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -196,7 +196,7 @@ At a 22% NIGO rate, roughly 1 in 5 accounts requires resubmission — adding 10 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

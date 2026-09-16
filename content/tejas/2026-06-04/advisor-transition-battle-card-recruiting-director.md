@@ -144,7 +144,7 @@ Mandatory capabilities include real-time submission tracking across all custodia
 - [WealthManagement.com](https://www.wealthmanagement.com) — [Recruiting Coverage](https://www.wealthmanagement.com/recruiting) — 2026
 - AdvisorHub — [Advisor Recruiting](https://www.advisorhub.com/) — 2026
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -215,7 +215,7 @@ Mandatory capabilities include real-time submission tracking across all custodia
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant)

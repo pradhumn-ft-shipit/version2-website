@@ -144,7 +144,7 @@ The releasing firm bears the cost of archiving before the transfer. The receivin
 
 The record-transfer gap isn't a paperwork problem. It's a liability problem. Regulators don't fine firms for being slow. They fine firms for losing records or transferring them in non-compliant formats. Eighteen thousand advisors switch firms every year. Millions of client records require compliant transfer. Most transitions rely on spreadsheets and manual checklists. Purpose-built platforms using intelligent logic layers validate FINRA Rule 4511 compliance automatically. NIGOs drop to 95% reduction. The dual-liability exposure that both releasing and receiving firms face gets eliminated. The question isn't whether to build an audit trail. It's whether to build it on a spreadsheet or a system that knows the rules.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -215,7 +215,7 @@ The record-transfer gap isn't a paperwork problem. It's a liability problem. Reg
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions) · [For Transition Consultants](/who-we-serve/transition-consultants)

@@ -133,7 +133,7 @@ Run the math on your current integration timeline. If 10 deals per year is your 
 - Cerulli Associates: [https://www.cerulli.com/press-releases/new-wealth-management-research-finds-transition-support-services-critical-to-retaining-assets-during-advisor-moves](https://www.cerulli.com/press-releases/new-wealth-management-research-finds-transition-support-services-critical-to-retaining-assets-during-advisor-moves)
 - WealthSolutions Report: [https://www.wealthsolutionsreport.com/ria-m-a-in-2026-five-forces-set-to-reshape-the-industry](https://www.wealthsolutionsreport.com/ria-m-a-in-2026-five-forces-set-to-reshape-the-industry)
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -196,7 +196,7 @@ Run the math on your current integration timeline. If 10 deals per year is your 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

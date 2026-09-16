@@ -134,7 +134,7 @@ The three most costly mistakes: (1) not identifying non-ACATS assets before Day 
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -205,7 +205,7 @@ The three most costly mistakes: (1) not identifying non-ACATS assets before Day 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [For Transition Consultants](/who-we-serve/transition-consultants)

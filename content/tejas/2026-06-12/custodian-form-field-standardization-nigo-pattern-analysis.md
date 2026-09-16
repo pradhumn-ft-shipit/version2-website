@@ -131,7 +131,7 @@ Yes. The firm-level version is to build a canonical field dictionary internally,
 
 Because transitions are the moment of acquisition for custodians, and NIGOs are friction at exactly that moment. Standardization expands the addressable transition volume and shifts competition from form complexity to service quality. Early movers become the easiest custodians to transition to, which advisors and broker-dealers notice immediately. The custodians that have already published structured form specs see 40-60% lower NIGO rates on those forms — the case-by-case data is already there.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -186,7 +186,7 @@ Because transitions are the moment of acquisition for custodians, and NIGOs are 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant)

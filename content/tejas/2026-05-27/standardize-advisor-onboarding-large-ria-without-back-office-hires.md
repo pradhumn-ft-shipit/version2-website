@@ -138,7 +138,7 @@ Allowing exceptions before the standard has hardened. The first six months are a
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -209,7 +209,7 @@ Allowing exceptions before the standard has hardened. The first six months are a
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

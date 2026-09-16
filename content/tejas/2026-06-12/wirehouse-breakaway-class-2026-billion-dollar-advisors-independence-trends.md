@@ -124,7 +124,7 @@ It has become a primary diligence criterion. Destinations are now evaluated on r
 
 About 18,000 advisors switch firms each year across the wealth management industry across all channels. The wirehouse-to-independent slice has been a meaningful and growing portion of that total for the last decade. The exact share varies by source and methodology, but the directional trend across our pipeline and across recruiting head conversations is that the wirehouse-to-independent channel is taking a larger share of total advisor moves in 2026 than in 2023 or 2024.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -179,5 +179,5 @@ About 18,000 advisors switch firms each year across the wealth management indust
     }
   ]
 }
-```
+</script>
 

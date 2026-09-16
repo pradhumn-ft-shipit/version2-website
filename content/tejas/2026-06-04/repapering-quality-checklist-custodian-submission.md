@@ -213,7 +213,7 @@ Escalate immediately. Contact the authorized signatory. Request electronic signa
 
 ## FAQ in JSON-LD
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -284,7 +284,7 @@ Escalate immediately. Contact the authorized signatory. Request electronic signa
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

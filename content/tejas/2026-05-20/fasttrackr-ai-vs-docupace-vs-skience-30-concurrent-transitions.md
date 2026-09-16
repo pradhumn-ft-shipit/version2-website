@@ -169,7 +169,7 @@ Docupace is a compliance documentation system. Skience is a CRM analytics platfo
 
 At $7.5B in AUM at risk per year, the math is relentless. A 10-day delay on 30 transitions costs $9M in lost revenue. Docupace and spreadsheets force your ops team into manual project management. FastTrackr AI cuts that delay to 2 days. Purpose-built architecture for exactly this scenario: 90 days into 3 weeks, 30 transitions at a time. The only question is how much delay you're willing to accept.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -240,7 +240,7 @@ At $7.5B in AUM at risk per year, the math is relentless. A 10-day delay on 30 t
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant)

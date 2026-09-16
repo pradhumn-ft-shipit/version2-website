@@ -143,7 +143,7 @@ Sequence licensing parallel to ACATS transfers, not sequential. File state appli
 
 Licensing surprises destroy M&A timelines. They strand advisors unable to serve clients post-close. The difference between smooth integration and 90-day bottleneck is pre-close discovery and post-close parallel filing. Audit state registrations during due diligence. Identify non-reciprocal states early. File CA, NY, and FL applications Day 1 post-close. Track approvals daily. That's how you compress 90–150-day licensing delays into 15–20 days and keep advisors productive from Day 1 post-acquisition. Treat licensing as a gating item, not a formality. Your integration timeline depends on it.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -222,7 +222,7 @@ Licensing surprises destroy M&A timelines. They strand advisors unable to serve 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions) · [For Transition Consultants](/who-we-serve/transition-consultants)

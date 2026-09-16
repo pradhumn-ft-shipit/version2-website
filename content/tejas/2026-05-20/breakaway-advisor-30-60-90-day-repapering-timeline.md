@@ -118,7 +118,7 @@ With automated repapering technology, a $150M book with 300 accounts can complet
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -173,7 +173,7 @@ With automated repapering technology, a $150M book with 300 accounts can complet
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

@@ -166,7 +166,7 @@ AUM match (advisor's CRM vs. new custodian). Account count verification (all cli
 
 ## FAQ in JSON-LD
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -237,7 +237,7 @@ AUM match (advisor's CRM vs. new custodian). Account count verification (all cli
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

@@ -131,7 +131,7 @@ Yes, if your prior firm has litigation resources and you have high-net-worth cli
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -210,7 +210,7 @@ Yes, if your prior firm has litigation resources and you have high-net-worth cli
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

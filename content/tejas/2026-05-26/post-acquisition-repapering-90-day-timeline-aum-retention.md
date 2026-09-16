@@ -119,7 +119,7 @@ Clients in active transition need specific status updates, not general reassuran
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -174,7 +174,7 @@ Clients in active transition need specific status updates, not general reassuran
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

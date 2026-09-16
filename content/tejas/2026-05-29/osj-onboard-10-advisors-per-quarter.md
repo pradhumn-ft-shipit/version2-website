@@ -109,7 +109,7 @@ Use a centralized transition management dashboard that shows per-advisor, per-ac
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -164,7 +164,7 @@ Use a centralized transition management dashboard that shows per-advisor, per-ac
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

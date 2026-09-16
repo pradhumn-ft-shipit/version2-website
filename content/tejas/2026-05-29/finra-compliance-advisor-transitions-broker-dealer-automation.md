@@ -106,7 +106,7 @@ FINRA penalties range from fines to expulsion, depending on the severity and nat
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -169,7 +169,7 @@ FINRA penalties range from fines to expulsion, depending on the severity and nat
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant)

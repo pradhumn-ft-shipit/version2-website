@@ -144,7 +144,7 @@ For RIA owners, the math is simple: every 1% of asset retention retained = $10,0
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -207,7 +207,7 @@ For RIA owners, the math is simple: every 1% of asset retention retained = $10,0
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

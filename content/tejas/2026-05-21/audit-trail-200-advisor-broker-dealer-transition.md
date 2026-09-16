@@ -167,7 +167,7 @@ Yes. FINRA and the SEC permit electronic record retention provided the system is
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -230,7 +230,7 @@ Yes. FINRA and the SEC permit electronic record retention provided the system is
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions) · [For Transition Consultants](/who-we-serve/transition-consultants)

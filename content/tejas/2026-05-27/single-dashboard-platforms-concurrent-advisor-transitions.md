@@ -124,7 +124,7 @@ Most 15–20 transition-per-quarter firms hit ROI within 4–6 months on ops sav
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -195,7 +195,7 @@ Most 15–20 transition-per-quarter firms hit ROI within 4–6 months on ops sav
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

@@ -133,7 +133,7 @@ Native platforms typically integrate with the firm's existing compliance archive
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -204,7 +204,7 @@ Native platforms typically integrate with the firm's existing compliance archive
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

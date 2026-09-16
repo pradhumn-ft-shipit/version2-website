@@ -133,7 +133,7 @@ A first-submission NIGO rate consistently above 12% is the practical threshold w
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -188,5 +188,5 @@ A first-submission NIGO rate consistently above 12% is the practical threshold w
     }
   ]
 }
-```
+</script>
 

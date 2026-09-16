@@ -196,7 +196,7 @@ Two to six weeks from deck presentation to signed contract, depending on procure
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -267,7 +267,7 @@ Two to six weeks from deck presentation to signed contract, depending on procure
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

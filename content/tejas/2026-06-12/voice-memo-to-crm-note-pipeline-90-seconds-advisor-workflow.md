@@ -149,7 +149,7 @@ Real write-back populates the meeting type, the household and contact records, t
 
 A working pipeline saves roughly 4 to 6 hours per advisor per week, which is the typical time spent on post-meeting documentation across 18 to 25 weekly client meetings. That output reflects approximately a 90% reduction in manual note-writing work and translates directly into capacity for additional client meetings, deeper preparation, or a real lunch break. The pipeline does not replace the advisor's judgment — it replaces the typing.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -162,7 +162,7 @@ A working pipeline saves roughly 4 to 6 hours per advisor per week, which is the
     { "@type": "Question", "name": "How much advisor time does a working voice-to-CRM pipeline actually save?", "acceptedAnswer": { "@type": "Answer", "text": "A working pipeline saves roughly 4 to 6 hours per advisor per week, which is the typical time spent on post-meeting documentation across 18 to 25 weekly client meetings. That output reflects approximately a 90% reduction in manual note-writing work and translates directly into capacity for additional client meetings, deeper preparation, or a real lunch break. The pipeline does not replace the advisor's judgment, it replaces the typing." } }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions) · [For Transition Consultants](/who-we-serve/transition-consultants)

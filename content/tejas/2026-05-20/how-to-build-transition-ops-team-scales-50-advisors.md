@@ -128,7 +128,7 @@ Advisor-facing self-service status dashboards reduce inbound status inquiries to
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -183,7 +183,7 @@ Advisor-facing self-service status dashboards reduce inbound status inquiries to
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

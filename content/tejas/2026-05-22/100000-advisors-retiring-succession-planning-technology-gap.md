@@ -136,7 +136,7 @@ Succession planning addresses ownership: who acquires the practice, at what valu
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -199,5 +199,5 @@ Succession planning addresses ownership: who acquires the practice, at what valu
     }
   ]
 }
-```
+</script>
 

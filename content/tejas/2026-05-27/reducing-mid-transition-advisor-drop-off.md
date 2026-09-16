@@ -146,7 +146,7 @@ It depends on AUM size and competitive pressure. Bridge payments reduce drop-off
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -217,7 +217,7 @@ It depends on AUM size and competitive pressure. Bridge payments reduce drop-off
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

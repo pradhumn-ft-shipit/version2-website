@@ -154,7 +154,7 @@ AI replaces transcription with document extraction and replaces ad-hoc analyst c
 
 It matters operationally but not strategically. The long tail — restricted stock handling, mutual fund networking, duplicate transfers, and similar edge cases — consumes disproportionate analyst time per occurrence because each one is rare enough that the team re-derives the fix every time. Automating the long tail is worth doing once the top three categories are solved, but doing it first is a classic operations anti-pattern: high build effort, low population coverage, and minimal impact on the overall first-pass rate.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -209,7 +209,7 @@ It matters operationally but not strategically. The long tail — restricted sto
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

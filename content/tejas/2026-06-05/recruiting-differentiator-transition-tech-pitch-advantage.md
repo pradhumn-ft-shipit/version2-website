@@ -161,7 +161,7 @@ Yes, if the boutique invests in a modern platform. A 5-advisor RIA with a great 
 
 ## JSON-LD FAQ Schema
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -232,7 +232,7 @@ Yes, if the boutique invests in a modern platform. A 5-advisor RIA with a great 
     }
   ]
 }
-```
+</script>
 
 ## Closing
 

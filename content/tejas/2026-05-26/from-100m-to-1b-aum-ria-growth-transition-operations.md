@@ -117,7 +117,7 @@ NIGO rates increase at scale because manual data validation doesn't scale. At 2 
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -172,7 +172,7 @@ NIGO rates increase at scale because manual data validation doesn't scale. At 2 
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

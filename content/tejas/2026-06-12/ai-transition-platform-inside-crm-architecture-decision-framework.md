@@ -143,7 +143,7 @@ The orchestrated pattern fits large broker-dealers that already operate a seriou
 
 Ask where the AI logic actually executes — inside the CRM runtime, in a separate workspace, or behind an orchestrator. Ask what the source-of-truth contract looks like when the CRM and the AI tool disagree. Ask what the advisor experience looks like outside the AI tool, because adoption depends on whether the AI surfaces inside the CRM the advisor already uses. Ask what happens to compliance documentation if the integration breaks. And ask for the 36-month total cost of ownership including integration maintenance, not just licensing.
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -198,7 +198,7 @@ Ask where the AI logic actually executes — inside the CRM runtime, in a separa
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

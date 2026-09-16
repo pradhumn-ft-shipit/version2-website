@@ -160,7 +160,7 @@ Ask for specific metrics: time per task before and after, error rates, NIGO rate
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -223,7 +223,7 @@ Ask for specific metrics: time per task before and after, error rates, NIGO rate
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [For Transition Consultants](/who-we-serve/transition-consultants)

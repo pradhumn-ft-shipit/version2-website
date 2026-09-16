@@ -135,7 +135,7 @@ Tell clients directly: "Your portfolio positions transfer as-is. Nothing about y
 
 ---
 
-```json
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -198,7 +198,7 @@ Tell clients directly: "Your portfolio positions transfer as-is. Nothing about y
     }
   ]
 }
-```
+</script>
 
 
 **Related:** [Meeting Assistant](/solutions/meeting-assistant) · [Advisor Transitions Platform](/solutions/advisor-transitions)

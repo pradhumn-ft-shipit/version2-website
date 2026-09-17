@@ -44,6 +44,9 @@ export default function ICPCustodians() {
               <h1 className="text-5xl md:text-6xl font-display font-bold text-textPrimary leading-tight mb-6">
                 Be the on-ramp for every new RIA and advisory practice.
               </h1>
+              <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
+                Custodian onboarding and ACATS transfers, owned by your platform.
+              </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 You want to attract more advisors and practices to your platform. Today, the onboarding experience is owned by everyone except you. FastTrackr puts it back in your hands.
               </p>

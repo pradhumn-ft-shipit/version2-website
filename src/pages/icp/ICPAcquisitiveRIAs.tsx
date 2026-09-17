@@ -9,7 +9,7 @@ export default function ICPAcquisitiveRIAs() {
   const faqs = [
     {
       q: "Can you handle multi-deal pipelines?",
-      a: "Yes. Each acquisition is its own workspace inside FastTrackr. Your team sees them all in one view."
+      a: "Yes. Each acquisition runs as its own project in FastTrackr. Your team sees them all in one view."
     },
     {
       q: "How does this fit with our internal integration playbook?",
@@ -44,8 +44,14 @@ export default function ICPAcquisitiveRIAs() {
               <h1 className="text-5xl md:text-6xl font-display font-bold text-textPrimary leading-tight mb-6">
                 Every acquisition is a repapering project. <br/><span className="text-gray-400">Make it your edge.</span>
               </h1>
+              <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
+                Repapering built for RIA M&amp;A and tuck-in acquisitions.
+              </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 M&A is your growth strategy. Stop letting the integration timeline drag your AUM and your returns down with it.
+              </p>
+              <p className="text-xl text-textSecondary leading-relaxed mb-8">
+                It's also your pitch to sellers. When you can show a founder their book moves in days with their clients intact, "who will you sell to" starts answering itself.
               </p>
             </m.div>
             
@@ -121,7 +127,7 @@ export default function ICPAcquisitiveRIAs() {
                 <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-400" />
                   <p className="text-lg text-textSecondary leading-relaxed">
-                    By the time the last account is moved, the next acquisition is already in m. <strong className="text-textPrimary">The team that's burned out from this one is the team that has to do the next one.</strong>
+                    By the time the last account is moved, the next acquisition is already in motion. <strong className="text-textPrimary">The team that's burned out from this one is the team that has to do the next one.</strong> FastTrackr takes the grind off them, so the next deal doesn't start with everyone already exhausted.
                   </p>
                 </div>
               </m.div>
@@ -157,6 +163,21 @@ export default function ICPAcquisitiveRIAs() {
                 </m.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* The full-data / acquisition posture */}
+        <section className="py-24 bg-bgCanvas border-y border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl font-display font-bold text-textPrimary mb-6">When you own the data, there's barely any collection left</h2>
+            <p className="text-lg text-textSecondary leading-relaxed max-w-3xl mx-auto">
+              An acquisition usually comes with the data. Hand FastTrackr the exports you already
+              have — custodian, broker-dealer, CRM, planning tool, fee-billing — and it reads each
+              one, collates them into clean household records, and builds the book. Instead of
+              chasing clients for information, your team is reviewing what's already there and moving
+              straight into paperwork. The heavy client-side data collection only kicks in for the
+              gaps.
+            </p>
           </div>
         </section>
 

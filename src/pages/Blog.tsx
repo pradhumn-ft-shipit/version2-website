@@ -4,15 +4,17 @@ import { m } from '../lib/motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { formatBlogDate, type BlogIndexEntry } from '../lib/blog';
-
-const PAGE_SIZE = 18;
+import { resolveAuthor } from '../lib/authors';
 
 // Posts arrive from the route `loader` (build-time disk read) via `useLoaderData`
 // in app/routes/blog-index.tsx — no client fetch. SEO lives in that route's
 // `meta` export. This component is pure presentation over the passed-in list.
+//
+// W2: every post card renders server-side (no more client-only "Show more"
+// pagination), so all ~500 posts ship a crawlable inbound link in the
+// prerendered HTML — not only the first 18. Search stays client-side.
 export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
   const [query, setQuery] = useState('');
-  const [visible, setVisible] = useState(PAGE_SIZE);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,16 +25,14 @@ export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
       return (
         p.title.toLowerCase().includes(q) ||
         p.excerpt.toLowerCase().includes(q) ||
-        p.author.toLowerCase().includes(q)
+        // W5: search the resolved named author, not the stored generic byline.
+        resolveAuthor(p).name.toLowerCase().includes(q)
       );
     });
   }, [posts, query]);
 
-  const shown = filtered.slice(0, visible);
-  const hasMore = filtered.length > visible;
-
   const featured = posts[0];
-  const restOfShown = featured && !query ? shown.filter((p) => p.slug !== featured.slug) : shown;
+  const restOfShown = featured && !query ? filtered.filter((p) => p.slug !== featured.slug) : filtered;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -61,10 +61,7 @@ export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
           <input
             type="search"
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setVisible(PAGE_SIZE);
-            }}
+            onChange={(e) => setQuery(e.target.value)}
             placeholder="Search articles by title, topic, or author…"
             className="w-full px-5 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandMint/50 focus:border-brandMint transition-all text-base"
           />
@@ -100,7 +97,7 @@ export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
                   </h2>
                   <p className="text-textSecondary leading-relaxed mb-6 line-clamp-3">{featured.excerpt}</p>
                   <div className="flex items-center gap-3 text-sm text-textTertiary">
-                    <span>{featured.author}</span>
+                    <span>{resolveAuthor(featured).name}</span>
                     {featured.date && <span>•</span>}
                     {featured.date && <span>{formatBlogDate(featured.date)}</span>}
                     {featured.readingTime && (
@@ -158,7 +155,7 @@ export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
                           </h3>
                           <p className="text-sm text-textSecondary leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
                           <div className="flex items-center gap-2 text-xs text-textTertiary">
-                            <span>{post.author}</span>
+                            <span>{resolveAuthor(post).name}</span>
                             {post.date && <span>•</span>}
                             {post.date && <span>{formatBlogDate(post.date)}</span>}
                             {post.readingTime && (
@@ -174,20 +171,8 @@ export default function Blog({ posts }: { posts: BlogIndexEntry[] }) {
                   ))}
                 </div>
 
-                {hasMore && (
-                  <div className="text-center mt-12">
-                    <button
-                      type="button"
-                      onClick={() => setVisible((v) => v + PAGE_SIZE)}
-                      className="bg-brandDeep text-white hover:bg-brandMint hover:text-brandDeep px-8 py-3 rounded-full font-bold text-sm transition-colors"
-                    >
-                      Show more articles
-                    </button>
-                  </div>
-                )}
-
                 <div className="text-center mt-8 text-sm text-textTertiary">
-                  Showing {Math.min(visible, filtered.length)} of {filtered.length}
+                  Showing {filtered.length}
                   {query ? ' matches' : ' articles'}
                 </div>
               </>

@@ -79,6 +79,124 @@ services:
       - type: redirect
         source: /case-study/schwab-to-schwab-transition-one-day
         destination: /case-study/independent-breakaway-setup
+      # W4 content consolidation: near-duplicate posts (identical/near-identical
+      # bodies, or -humanized / slug variants), all dated before 2026-09-01, 301
+      # into their canonical. Loser sources were removed from content/, so these
+      # redirects preserve link equity. MUST precede the /blog/* rewrite below.
+      - type: redirect
+        source: /blog/transition-platforms-salesforce-schwab-fidelity-pershing-integrations
+        destination: /blog/salesforce-schwab-fidelity-pershing-native-transition-integrations
+      - type: redirect
+        source: /blog/osj-technology-faq-what-every-office-of-supervisory-jurisdiction-needs-to-know-about-transition-automation
+        destination: /blog/osj-technology-and-advisor-transitions-a-complete-automation-guide-for-office-of-supervisory-jurisdiction
+      - type: redirect
+        source: /blog/large-ria-transition-technology-buying-criteria-humanized
+        destination: /blog/large-ria-transition-technology-buying-criteria
+      - type: redirect
+        source: /blog/ai-and-compliance-how-to-deploy-autonomous-systems-in-advisor-transitions-without-regulatory-risk
+        destination: /blog/ai-compliance-finra-sec-advisor-transitions
+      - type: redirect
+        source: /blog/when-ai-systems-meet-compliance-how-fasttrackr-handles-finra-and-sec-requirements
+        destination: /blog/ai-compliance-finra-sec-advisor-transitions
+      - type: redirect
+        source: /blog/breakaway-vs-recruited-transition-technology-differences
+        destination: /blog/breakaway-vs-recruited-advisor-transition-technology
+      - type: redirect
+        source: /blog/the-wealth-management-ops-tech-stack-every-tool-your-operations-team-actually-needs
+        destination: /blog/the-wealth-management-ops-tech-stack-every-tool-your-operations-team-actually-uses
+      - type: redirect
+        source: /blog/wealth-management-ops-tech-stack-tools-operations-team
+        destination: /blog/the-wealth-management-ops-tech-stack-every-tool-your-operations-team-actually-uses
+      - type: redirect
+        source: /blog/audit-trail-documentation-for-advisor-transitions-what-regulators-actually-look-for
+        destination: /blog/audit-trail-documentation-advisor-transitions-regulators
+      - type: redirect
+        source: /blog/independent-advisor-technology-guide-10-tools-solo-rias-humanized
+        destination: /blog/independent-advisor-technology-guide-10-tools-solo-rias
+      - type: redirect
+        source: /blog/5-custodian-specific-transition-requirements-every-operations-team-needs-to-know
+        destination: /blog/custodian-specific-transition-requirements-operations-teams
+      - type: redirect
+        source: /blog/reducing-time-to-productivity-for-advisors-at-new-firms-a-technology-roadmap
+        destination: /blog/reducing-time-to-productivity-for-advisors-at-new-firms-a-90-day-technology-roadmap
+      - type: redirect
+        source: /blog/wealth-management-ai-hype-vs-reality
+        destination: /blog/wealth-management-ai-what-works-vs-hype-operations
+      - type: redirect
+        source: /blog/advisor-transition-technology-procurement-guide-humanized
+        destination: /blog/advisor-transition-technology-procurement-guide
+      - type: redirect
+        source: /blog/advisor-book-of-business-transfer-legal-considerations-and-technology-requirements
+        destination: /blog/advisor-book-of-business-transfer-legal-frameworks-and-technology-infrastructure
+      - type: redirect
+        source: /blog/broker-protocol-compliance-guide-breakaway-advisors-2026
+        destination: /blog/broker-protocol-compliance-finra-breakaway-2026-edition
+      - type: redirect
+        source: /blog/why-ai-visibility-in-wealth-management-matters-more-than-seo-in-2026
+        destination: /blog/how-machine-learning-is-improving-form-accuracy-in-wealth-management-transitions
+      - type: redirect
+        source: /blog/building-compliance-documentation-ai-driven-advisor-transitions
+        destination: /blog/compliance-documentation-ai-advisor-transitions
+      - type: redirect
+        source: /blog/multi-state-regulatory-complexity-advisor-transitions-humanized
+        destination: /blog/multi-state-regulatory-complexity-advisor-transitions
+      - type: redirect
+        source: /blog/account-migration-technology-move-10000-accounts-humanized
+        destination: /blog/account-migration-technology-move-10000-accounts
+      - type: redirect
+        source: /blog/transition-due-diligence-how-to-evaluate-a-new-firm-before-moving-your-book
+        destination: /blog/transition-due-diligence-critical-questions-to-evaluate-a-new-firm-before-moving-your-book
+      - type: redirect
+        source: /blog/meeting-assistant-financial-advisors-ai-note-taking-humanized
+        destination: /blog/meeting-assistant-financial-advisors-ai-note-taking
+      - type: redirect
+        source: /blog/advisor-transition-technology-ecosystem-integrations-humanized
+        destination: /blog/advisor-transition-technology-ecosystem-integrations
+      - type: redirect
+        source: /blog/reducing-mid-transition-advisor-drop-off
+        destination: /blog/reducing-mid-transition-drop-off-recruited-advisors-reverse-decision
+      - type: redirect
+        source: /blog/single-dashboard-platforms-concurrent-advisor-transitions
+        destination: /blog/single-dashboard-15-20-concurrent-advisor-transitions-quarterly
+      - type: redirect
+        source: /blog/how-top-recruiting-firms-use-technology-to-retain-advisor-assets-during-transitions
+        destination: /blog/how-recruiting-firms-use-technology-retain-advisor-assets
+      - type: redirect
+        source: /blog/client-onboarding-automation-ria-cut-hours-humanized
+        destination: /blog/client-onboarding-automation-ria-cut-hours
+      - type: redirect
+        source: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice
+        destination: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year
+      - type: redirect
+        source: /blog/transition-consultant-toolkit-technology
+        destination: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year
+      - type: redirect
+        source: /blog/transition-consultant-toolkit-technology-scale
+        destination: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year
+      - type: redirect
+        source: /blog/why-client-onboarding-is-broken-in-wealth-management-and-what-ai-is-doing-about-it
+        destination: /blog/client-onboarding-broken-wealth-management-ai
+      - type: redirect
+        source: /blog/what-is-osj-wealth-management-technology-broken
+        destination: /blog/what-is-an-osj-in-wealth-management-and-why-their-technology-is-broken
+      - type: redirect
+        source: /blog/data-security-in-advisor-transitions-how-to-protect-client-pii-during-firm-moves
+        destination: /blog/data-privacy-in-advisor-transitions-how-to-ensure-client-information-never-trains-ai-models
+      - type: redirect
+        source: /blog/precisefp-vs-fasttrackr-ai-why-data-collection-alone-isn-t-enough-for-advisor-transitions
+        destination: /blog/data-privacy-in-advisor-transitions-how-to-ensure-client-information-never-trains-ai-models
+      - type: redirect
+        source: /blog/ai-finra-compliance-automate-vs-attorney
+        destination: /blog/finra-compliance-ai-automation-attorney-still-needed
+      - type: redirect
+        source: /blog/repapering-quality-checklist-custodian-submission-2026
+        destination: /blog/repapering-quality-checklist-custodian-submission
+      - type: redirect
+        source: /blog/ai-powered-form-completion-in-wealth-management-accuracy-speed-and-what-to-look-for
+        destination: /blog/ai-form-completion-wealth-management-accuracy
+      - type: redirect
+        source: /blog/10-questions-advisor-transition-software-vendor-humanized
+        destination: /blog/10-questions-advisor-transition-software-vendor
       # Prerendered content pages. `react-router build` writes a full-content
       # dist/<route>/index.html per article (framework-mode SSG). These rewrites
       # MUST come before the catch-all below: a bare SPA rewrite swallows the
@@ -155,6 +273,32 @@ services:
       - type: rewrite
         source: /zoom-help-documentation
         destination: /zoom-help-documentation/index.html
+      # W6 flagship assets + custodian landing pages. New prerendered static
+      # routes — each needs its own rewrite before the catch-all or Render serves
+      # the homepage shell to crawlers (project_render_static_route_rewrites).
+      - type: rewrite
+        source: /custodians
+        destination: /custodians/index.html
+      - type: rewrite
+        source: /custodians/*
+        destination: /custodians/*/index.html
+      - type: rewrite
+        source: /transition-checklist
+        destination: /transition-checklist/index.html
+      - type: rewrite
+        source: /cost-of-repapering
+        destination: /cost-of-repapering/index.html
+      # W3 glossary hub + entries, and W5 author archive pages. Prerendered
+      # static routes that likewise need their own rewrite before the catch-all.
+      - type: rewrite
+        source: /glossary
+        destination: /glossary/index.html
+      - type: rewrite
+        source: /glossary/*
+        destination: /glossary/*/index.html
+      - type: rewrite
+        source: /authors/*
+        destination: /authors/*/index.html
       # SPA deep-link fallback — every other path serves the app shell so
       # React Router can handle it (and hard refreshes on /blog/<post> work).
       - type: rewrite

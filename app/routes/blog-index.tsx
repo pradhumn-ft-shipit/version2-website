@@ -1,7 +1,7 @@
 import type { MetaDescriptor } from 'react-router';
 import { useLoaderData } from 'react-router';
 import Blog from '../../src/pages/Blog';
-import { seoMeta, type SeoConfig } from '../../src/lib/seo';
+import { seoMeta, blogCrumbs, type SeoConfig } from '../../src/lib/seo';
 import { readBlogIndex } from '../lib/blogData.server';
 
 // /resources/blog — build-time loader reads the committed index off disk, so the
@@ -18,6 +18,11 @@ const seo: SeoConfig = {
     'Field notes from the operators reshaping wealth management: advisor transitions, AI in wealth, compliance, and the work behind the work.',
   canonical: '/resources/blog',
   ogImage: '/logomark.png',
+  // W5: BreadcrumbList on a section page (post pages carry their own).
+  jsonLd: {
+    '@context': 'https://schema.org',
+    ...blogCrumbs(),
+  },
 };
 
 export function meta(): MetaDescriptor[] {

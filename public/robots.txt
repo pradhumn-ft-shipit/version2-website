@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# Gated lead-magnet assets — reachable only after the capture form, keep out of the index.
+Disallow: /downloads/
 
 Sitemap: https://fasttrackr.ai/sitemap.xml

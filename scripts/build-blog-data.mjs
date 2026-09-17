@@ -140,6 +140,18 @@ function loadCanonicalTopics() {
   return [...region.matchAll(/title:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
 }
 
+function loadCategoryIds() {
+  // W4 — the `id:` values from BLOG_CATEGORIES (the eight canonical topics, not
+  // the "more resources" catch-all) so the category hub pages
+  // (/blog/category/<id>) are listed in the sitemap. Same regex-read approach as
+  // loadCanonicalTopics: no import, stays in sync with the single source list.
+  if (!fs.existsSync(CATEGORIES_TS)) return [];
+  const text = fs.readFileSync(CATEGORIES_TS, 'utf8');
+  const cut = text.indexOf('UNCATEGORIZED_CATEGORY');
+  const region = cut === -1 ? text : text.slice(0, cut);
+  return [...region.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
+}
+
 function isLocalAsset(p) {
   return typeof p === 'string' && p.length > 0 && !ABSOLUTE_ASSET_RE.test(p);
 }
@@ -874,6 +886,11 @@ function writeSitemap(index, newsIndex = [], podcastIndex = []) {
     ...STATIC_SITEMAP_PAGES.map((p) => ({
       loc: `${SITE_ORIGIN}${p.path}`,
       priority: p.priority,
+    })),
+    // W4 — category hub pages (/blog/category/<id>) for the eight canonical topics.
+    ...loadCategoryIds().map((id) => ({
+      loc: `${SITE_ORIGIN}/blog/category/${id}`,
+      priority: '0.5',
     })),
     ...index.map((post) => ({
       loc: `${SITE_ORIGIN}/blog/${post.slug}`,

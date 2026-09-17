@@ -17,7 +17,7 @@ export default function ICPTransitionConsultants() {
     },
     {
       q: "What about our existing tooling, do we replace it?",
-      a: "No. FastTrackr sits alongside what you have today and pulls it together. We integrate with common CRMs, e-signature platforms, and custodial portals."
+      a: "No. FastTrackr sits alongside what you have today and pulls it together — working with your existing CRM, e-signature, and custodial tools: pulling data in and pushing signature-ready docs back out."
     },
     {
       q: "How do you price for consultants?",
@@ -44,6 +44,9 @@ export default function ICPTransitionConsultants() {
               <h1 className="text-5xl md:text-6xl font-display font-bold text-textPrimary leading-tight mb-6">
                 More deals per consultant. <br/><span className="text-gray-400">Without more admin slog.</span>
               </h1>
+              <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
+                Advisor repapering software for transition consultants.
+              </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 Take on more transitions with the team you already have. FastTrackr handles the data collection, form-filling, and project management, so your consultants spend their time on the parts only humans can do.
               </p>
@@ -130,7 +133,7 @@ export default function ICPTransitionConsultants() {
                 { title: 'Data collection runs in the background', desc: 'AI pulls client and account data from documents, transcripts, and conversations. Your team reviews, they don\'t transcribe.' },
                 { title: 'Forms are pre-filled, mapped, and validated', desc: 'Across Fidelity, Schwab, and the firms you work with most. NIGOs drop. Rework drops with them.' },
                 { title: 'Every household visible in one place', desc: 'Replaces the Excel war room. Your consultants and the advisors they\'re moving all see the same status, in real time.' },
-                { title: 'It learns your playbook', desc: 'The way your firm handles transitions gets encoded. New consultants ramp faster. Senior consultants take on more.' }
+                { title: 'Your firm\'s playbook, on every deal', desc: 'Your transition process is set up once and repeated the same way across every move. New consultants ramp on it. Senior consultants take on more.' }
               ].map((feature, i) => (
                 <m.div 
                   key={i}
@@ -144,6 +147,37 @@ export default function ICPTransitionConsultants() {
                   <h3 className="text-xl font-bold text-textPrimary mb-2">{feature.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{feature.desc}</p>
                 </m.div>
+              ))}
+            </div>
+            <p className="text-center text-textSecondary max-w-3xl mx-auto mt-10 leading-relaxed">
+              Every custodian wants it delivered differently. FastTrackr pushes signature-ready
+              packets to DocuSign, generates filled PDFs where a wet signature is still required,
+              or maps the household data straight into a custodian's or broker-dealer's own template
+              when they'd rather do the filling — so your consultants aren't reformatting for each one.
+            </p>
+          </div>
+        </section>
+
+        {/* NEW — deeper content: win more mandates */}
+        <section className="py-24 bg-bgCanvas border-y border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-display font-bold text-textPrimary mb-6 text-center">Grow the practice without growing the payroll</h2>
+            <p className="text-lg text-textSecondary leading-relaxed mb-12 text-center max-w-2xl mx-auto">
+              The consultants who scale aren't the ones with the most staff. They're the ones who can credibly promise a faster, cleaner move, and then deliver it on every deal.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { icon: <TrendingUp className="w-6 h-6" />, title: 'Capacity', desc: 'Take on more transitions with the team you already have. The system absorbs the repetitive work so headcount stops being your ceiling.' },
+                { icon: <Zap className="w-6 h-6" />, title: 'Consistency', desc: 'Every consultant runs the same firm playbook. New hires ramp faster; your best people take on the deals only they can handle.' },
+                { icon: <Users className="w-6 h-6" />, title: 'Credibility', desc: 'Walk into the next pitch with a track record of on-time, low-NIGO moves, the proof that wins the mandate over a competing consultant.' },
+              ].map((c, i) => (
+                <div key={i} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-glass text-center">
+                  <div className="w-14 h-14 bg-bgCanvas rounded-2xl flex items-center justify-center text-brandMint mx-auto mb-5">
+                    {c.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-textPrimary mb-2">{c.title}</h3>
+                  <p className="text-textSecondary leading-relaxed">{c.desc}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -165,8 +199,8 @@ export default function ICPTransitionConsultants() {
               </div>
               <div className="text-center">
                 <Zap className="w-8 h-8 text-brandMint mx-auto mb-4" />
-                <div className="text-4xl font-bold font-display mb-2">Faster</div>
-                <div className="text-white/80">custodial empanelment</div>
+                <div className="text-4xl font-bold font-display mb-2">Fewer</div>
+                <div className="text-white/80">NIGOs per deal</div>
               </div>
               <div className="text-center">
                 <TrendingUp className="w-8 h-8 text-brandMint mx-auto mb-4" />

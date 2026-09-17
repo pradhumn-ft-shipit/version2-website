@@ -20,6 +20,16 @@ export default [
   route('solutions/meeting-assistant', 'routes/solutions/meeting-assistant.tsx'),
   route('solutions/document-intelligence', 'routes/solutions/document-intelligence.tsx'),
 
+  // Custodian transition landing pages (W6 · T2-3) — advisors repapering ONTO a
+  // custodian (distinct from the /who-we-serve/custodians ICP page). Hub + one
+  // page per custodian named in the ticket.
+  route('custodians', 'routes/custodians/index.tsx'),
+  route('custodians/schwab', 'routes/custodians/schwab.tsx'),
+  route('custodians/fidelity', 'routes/custodians/fidelity.tsx'),
+  route('custodians/sei', 'routes/custodians/sei.tsx'),
+  route('custodians/goldman-sachs', 'routes/custodians/goldman-sachs.tsx'),
+  route('custodians/pershing', 'routes/custodians/pershing.tsx'),
+
   // Core / marketing
   route('pricing', 'routes/pricing.tsx'),
   route('contact', 'routes/contact.tsx'),
@@ -31,9 +41,17 @@ export default [
   route('resources-for-financial-advisors', 'routes/resources.tsx'),
   route('zoom-help-documentation', 'routes/zoom-help.tsx'),
 
+  // Flagship assets (W6 · T2-4): checklist pillar + cost-of-repapering calculator.
+  route('transition-checklist', 'routes/transition-checklist.tsx'),
+  route('cost-of-repapering', 'routes/cost-of-repapering.tsx'),
+
   // Blog (ticket 004): build-time loaders read the committed JSON off disk so the
   // full index + article bodies ship in prerendered HTML.
   route('resources/blog', 'routes/blog-index.tsx'),
+  // W4: category hubs — declared before /blog/:slug so the static "category"
+  // segment is unambiguous. Slugs enumerated for prerender from blogCategories
+  // via readCategorySlugs (same zero-touch pattern as blog/news/podcasts/glossary).
+  route('blog/category/:slug', 'routes/blog-category.tsx'),
   route('blog/:slug', 'routes/blog-post.tsx'),
   route('resources/blog/:slug', 'routes/redirects/resources-blog-slug.tsx'),
 
@@ -46,6 +64,18 @@ export default [
   // JSON off disk so the full index + episode summaries ship in prerendered HTML.
   route('resources/podcasts', 'routes/podcast-index.tsx'),
   route('resources/podcasts/:slug', 'routes/podcast-episode.tsx'),
+
+  // Glossary (W3): DefinedTerm(Set) hub. The index is a static route (picked up
+  // by getStaticPaths); the per-term pages are a dynamic route whose slugs are
+  // enumerated for prerender from src/lib/glossary via readGlossarySlugs — same
+  // zero-touch pattern as blog/news/podcasts.
+  route('glossary', 'routes/glossary/index.tsx'),
+  route('glossary/:term', 'routes/glossary/term.tsx'),
+
+  // Authors (W5): /authors/<slug> archive pages carrying Person schema (E-E-A-T).
+  // Slugs are enumerated for prerender from src/lib/authors via readAuthorSlugs —
+  // same zero-touch pattern as blog/news/podcasts/glossary.
+  route('authors/:slug', 'routes/authors/author.tsx'),
 
   // Legal
   route('privacy-policy', 'routes/legal/privacy-policy.tsx'),

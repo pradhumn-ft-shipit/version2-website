@@ -25,6 +25,11 @@ const resourcesItems = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
+  // W3: definitional hub — surfaced in nav + footer.
+  { label: 'Glossary', href: '/glossary' },
+  // W2: un-bury the crawlable resource library — the only page that prerenders a
+  // link to every post. Footer-only before; now surfaced in the nav dropdown too.
+  { label: 'Resource Library', href: '/resources-for-financial-advisors' },
 ];
 
 export default function Navbar() {
@@ -69,7 +74,8 @@ export default function Navbar() {
             <NavItem label="Resources" items={resourcesItems} />
             <Link to="/case-study" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Case Studies</Link>
             <Link to="/pricing" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Pricing</Link>
-            <Link to="/contact" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Contact</Link>
+            {/* REVIEW (W0c): replaced "Contact" (→/contact) nav link with "Cost of Transition" (→/cost-of-repapering); Book a Demo button still covers /contact. Note: /cost-of-repapering goes live with WZ. */}
+            <Link to="/cost-of-repapering" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Cost of Transition</Link>
           </nav>
 
           {/* CTA */}
@@ -135,12 +141,13 @@ export default function Navbar() {
               >
                 Pricing
               </Link>
+              {/* REVIEW (W0c): replaced "Contact" (→/contact) with "Cost of Transition" (→/cost-of-repapering); Book a Demo below still covers /contact. */}
               <Link
-                to="/contact"
+                to="/cost-of-repapering"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block px-3 py-3 text-base font-medium text-textSecondary"
               >
-                Contact
+                Cost of Transition
               </Link>
               <div className="pt-4 px-3">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>

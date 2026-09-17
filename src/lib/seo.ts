@@ -24,6 +24,41 @@ export function clampText(text: string, limit: number): string {
   return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\s]+$/, '') + '…';
 }
 
+/**
+ * Build a `BreadcrumbList` JSON-LD node from an ordered trail of crumbs (W5).
+ * Paths are absolutized against SITE_ORIGIN. Emit it inside a page's JSON-LD
+ * `@graph` alongside the primary node (BlogPosting, etc.) so both ship in one
+ * `<script type="application/ld+json">`.
+ */
+export function breadcrumbList(
+  crumbs: { name: string; path: string }[],
+): Record<string, unknown> {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      item: absoluteUrl(c.path),
+    })),
+  };
+}
+
+/**
+ * BreadcrumbList for anything under the blog (posts, author archives, the index
+ * itself). Shares the Home → Blog head so the trail can't drift between pages;
+ * pass the trailing crumbs (empty for the index). See breadcrumbList (W5).
+ */
+export function blogCrumbs(
+  tail: { name: string; path: string }[] = [],
+): Record<string, unknown> {
+  return breadcrumbList([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/resources/blog' },
+    ...tail,
+  ]);
+}
+
 export type SeoConfig = {
   /** <title>. Keep under 60 characters. */
   title: string;

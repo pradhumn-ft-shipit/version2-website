@@ -1,6 +1,9 @@
 import { readBlogIndex } from './blogData.server';
 import { readNewsIndex } from './newsData.server';
 import { readPodcastIndex } from './podcastData.server';
+import { glossarySlugs as glossaryTermSlugs } from '../../src/lib/glossary';
+import { categorySlugs as blogCategorySlugs } from '../../src/lib/blogCategories';
+import { authorSlugs as siteAuthorSlugs } from '../../src/lib/authors';
 
 // Zero-touch prerender enumeration (ticket 006).
 //
@@ -28,6 +31,12 @@ export interface PrerenderInput {
   newsSlugs: string[];
   /** Podcast episode slugs → become `/resources/podcasts/<slug>`. */
   podcastSlugs?: string[];
+  /** Glossary term slugs → become `/glossary/<slug>` (W3). */
+  glossarySlugs?: string[];
+  /** Blog category slugs → become `/blog/category/<slug>` (W4). */
+  categorySlugs?: string[];
+  /** Author slugs → become `/authors/<slug>` (W5). */
+  authorSlugs?: string[];
 }
 
 /**
@@ -40,12 +49,18 @@ export function buildPrerenderPaths({
   blogSlugs,
   newsSlugs,
   podcastSlugs = [],
+  glossarySlugs = [],
+  categorySlugs = [],
+  authorSlugs = [],
 }: PrerenderInput): string[] {
   const paths = [
     ...staticPaths,
     ...blogSlugs.map((slug) => `/blog/${slug}`),
     ...newsSlugs.map((slug) => `/resources/news/${slug}`),
     ...podcastSlugs.map((slug) => `/resources/podcasts/${slug}`),
+    ...glossarySlugs.map((slug) => `/glossary/${slug}`),
+    ...categorySlugs.map((slug) => `/blog/category/${slug}`),
+    ...authorSlugs.map((slug) => `/authors/${slug}`),
   ];
   // De-duplicate, preserving first-seen order.
   return Array.from(new Set(paths));
@@ -64,4 +79,19 @@ export function readNewsSlugs(): string[] {
 /** Read every podcast slug from the committed index (`public/podcast-data/`). */
 export function readPodcastSlugs(): string[] {
   return readPodcastIndex().items.map((item) => item.slug);
+}
+
+/** Read every glossary term slug from the curated data module (W3). */
+export function readGlossarySlugs(): string[] {
+  return glossaryTermSlugs;
+}
+
+/** Read every blog category slug from the canonical category list (W4). */
+export function readCategorySlugs(): string[] {
+  return blogCategorySlugs;
+}
+
+/** Read every author slug from the canonical author roster (W5). */
+export function readAuthorSlugs(): string[] {
+  return siteAuthorSlugs;
 }

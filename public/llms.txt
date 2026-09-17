@@ -1,0 +1,40 @@
+# FastTrackr AI
+
+> FastTrackr AI is an AI platform for financial-advisor transitions and wealth-management operations. It automates the paperwork-heavy work of moving a book of business between firms or custodians — repapering, account applications, transfer-of-asset (ACATS) forms and client onboarding — so transitions that normally take ~90 days and run at a 30–50% not-in-good-order (NIGO) rejection rate move materially faster with fewer errors.
+
+## What FastTrackr is
+- An AI transition engine that reads, validates and pre-fills the forms a repapering generates, catches NIGO-triggering errors before submission, and tracks every household and account through the move.
+- Modules: Advisor Transitions, Client Onboarding, Meeting Assistant, and Document Intelligence.
+
+## Who it serves
+- Transition consultants running repapering for advisors on the move.
+- Breakaway advisors leaving a wirehouse or broker-dealer to go independent.
+- Acquisitive RIAs absorbing books through mergers and tuck-ins.
+- Independent broker-dealers and their OSJs.
+- Custodians processing inbound transfers at scale.
+
+## Proof points (as stated on-site)
+- The industry loses an estimated $19B in client assets each year to transitions that don't go smoothly.
+- Transition paperwork carries an industry-estimated 30–50% NIGO rate; every rejection resets the clock.
+- Firms using FastTrackr report moving books ~75% faster — timelines compressing from months to weeks.
+Note: these are the figures FastTrackr publishes on its marketing pages; independent verification is ongoing.
+
+## Solutions
+- Advisor Transitions: https://fasttrackr.ai/solutions/advisor-transitions
+- Client Onboarding: https://fasttrackr.ai/solutions/client-onboarding
+- Meeting Assistant: https://fasttrackr.ai/solutions/meeting-assistant
+- Document Intelligence: https://fasttrackr.ai/solutions/document-intelligence
+
+## Who we serve
+- Transition Consultants: https://fasttrackr.ai/who-we-serve/transition-consultants
+- Breakaway Advisors: https://fasttrackr.ai/who-we-serve/breakaway-advisors
+- Acquisitive RIAs: https://fasttrackr.ai/who-we-serve/acquisitive-rias
+- Independent Broker-Dealers: https://fasttrackr.ai/who-we-serve/independent-broker-dealers
+- Custodians: https://fasttrackr.ai/who-we-serve/custodians
+
+## Reference
+- Glossary (NIGO, ACATS, repapering, Broker Protocol, Reg BI, TOA, PTE 2020-02, OSJ, tuck-in): https://fasttrackr.ai/glossary
+- Pricing: https://fasttrackr.ai/pricing
+- Case studies: https://fasttrackr.ai/case-study
+- Blog: https://fasttrackr.ai/resources/blog
+- Contact / book a demo: https://fasttrackr.ai/contact

@@ -8,6 +8,8 @@ import {
   type BlogIndexEntry,
   type BlogPost as BlogPostType,
 } from '../lib/blog';
+import { ctaTargetForTopic } from '../../app/lib/ctaTarget';
+import { resolveAuthor } from '../lib/authors';
 
 // `post` + `related` come from the route `loader` (build-time disk read) via
 // useLoaderData in app/routes/blog-post.tsx — no client fetch. A missing slug is
@@ -20,6 +22,15 @@ export default function BlogPost({
   post: BlogPostType;
   related: BlogIndexEntry[];
 }) {
+  // W2: every post — including the ~196 legacy posts — gets one contextual
+  // commercial link, chosen by topic (default: advisor transitions).
+  const cta = ctaTargetForTopic(post.topic);
+  // W5 (E-E-A-T): resolve the generic "FastTrackr AI Team" byline to a named
+  // human author with an author page + Person schema.
+  const author = resolveAuthor(post);
+  const authorHref = `/authors/${author.slug}`;
+  // No edit history is tracked, so "Last updated" == the publish date.
+  const lastUpdated = formatBlogDate(post.date);
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -44,16 +55,26 @@ export default function BlogPost({
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-3 text-sm text-textTertiary mb-10">
-              <span className="font-medium text-textSecondary">{post.author}</span>
-              {post.date && <span>•</span>}
-              {post.date && <span>{formatBlogDate(post.date)}</span>}
-              {post.readingTime && (
-                <>
-                  <span>•</span>
-                  <span>{post.readingTime} min read</span>
-                </>
-              )}
+            <div className="mb-10">
+              <Link
+                to={authorHref}
+                className="font-medium text-textSecondary underline underline-offset-4 hover:text-brandDeep transition-colors"
+              >
+                {author.name}
+              </Link>
+
+              <div className="flex flex-wrap items-center gap-3 text-sm text-textTertiary mt-3">
+                {post.date && <span>{formatBlogDate(post.date)}</span>}
+                {post.readingTime && (
+                  <>
+                    <span>•</span>
+                    <span>{post.readingTime} min read</span>
+                  </>
+                )}
+                {post.date && (
+                  <span className="text-textTertiary">Last updated {lastUpdated}</span>
+                )}
+              </div>
             </div>
 
             {post.image && (
@@ -91,6 +112,11 @@ export default function BlogPost({
                   More articles →
                 </Link>
               </div>
+              <p className="mt-6 text-white/90">
+                <Link to={cta.href} className="font-semibold text-brandMint underline underline-offset-4 hover:text-white transition-colors">
+                  {cta.label} →
+                </Link>
+              </p>
             </div>
           </div>
         </section>

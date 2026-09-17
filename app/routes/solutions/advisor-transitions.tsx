@@ -14,4 +14,7 @@ export function meta(): MetaDescriptor[] {
   return seoMeta(seo);
 }
 
+// Note: per the W2 scope decision, suggested/related articles live on /blog
+// only — no solution or ICP page carries a "Further reading" module, so this
+// route has no supporting-posts loader.
 export default SolAdvisorTransitions;

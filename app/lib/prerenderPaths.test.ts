@@ -3,6 +3,9 @@ import {
   buildPrerenderPaths,
   readBlogSlugs,
   readNewsSlugs,
+  readGlossarySlugs,
+  readCategorySlugs,
+  readAuthorSlugs,
 } from './prerenderPaths';
 import { readBlogIndex } from './blogData.server';
 import { readNewsIndex } from './newsData.server';
@@ -61,6 +64,44 @@ describe('buildPrerenderPaths — zero-touch (driven off a fixture index)', () =
       newsSlugs: ['fresh-release'],
     });
     expect(paths).toContain('/resources/news/fresh-release');
+  });
+
+  it('enumerates one /glossary/<slug> per curated glossary term (W3)', () => {
+    const glossarySlugs = readGlossarySlugs();
+    expect(glossarySlugs.length).toBeGreaterThan(0);
+    const paths = buildPrerenderPaths({
+      staticPaths: ['/glossary'],
+      blogSlugs: [],
+      newsSlugs: [],
+      glossarySlugs,
+    });
+    for (const slug of glossarySlugs) expect(paths).toContain(`/glossary/${slug}`);
+  });
+
+  it('enumerates one /blog/category/<slug> per canonical category (W4)', () => {
+    const categorySlugs = readCategorySlugs();
+    expect(categorySlugs.length).toBeGreaterThan(0);
+    // The advisor-transitions hub must exist — it is the acceptance-check URL.
+    expect(categorySlugs).toContain('advisor-transitions-and-repapering');
+    const paths = buildPrerenderPaths({
+      staticPaths: ['/resources/blog'],
+      blogSlugs: [],
+      newsSlugs: [],
+      categorySlugs,
+    });
+    for (const slug of categorySlugs) expect(paths).toContain(`/blog/category/${slug}`);
+  });
+
+  it('enumerates one /authors/<slug> per author in the roster (W5)', () => {
+    const authorSlugs = readAuthorSlugs();
+    expect(authorSlugs.length).toBeGreaterThan(0);
+    const paths = buildPrerenderPaths({
+      staticPaths: ['/resources/blog'],
+      blogSlugs: [],
+      newsSlugs: [],
+      authorSlugs,
+    });
+    for (const slug of authorSlugs) expect(paths).toContain(`/authors/${slug}`);
   });
 });
 

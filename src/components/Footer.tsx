@@ -20,12 +20,14 @@ const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
+  { label: 'Glossary', href: '/glossary' }, // W3 definitional hub
   { label: 'Case Studies', href: '/case-study' },
   { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
 ];
 
 const companyLinks = [
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Cost of Transition', href: '/cost-of-repapering' },
   { label: 'Contact', href: '/contact' },
   { label: 'Book a Demo', href: '/contact' },
 ];
@@ -87,8 +89,9 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
                 className="h-9 w-auto"
               />
             </Link>
+            {/* REVIEW (W0c): tagline "weeks" → "days" for months-to-days consistency. */}
             <p className="text-sm text-textSecondary italic">
-              Advisor transitions, finally built right.<br/>Move advisor books in weeks, not months.
+              Advisor transitions, finally built right.<br/>Move advisor books in days, not months.
             </p>
           </div>
 

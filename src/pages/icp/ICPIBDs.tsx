@@ -13,7 +13,7 @@ export default function ICPIBDs() {
     },
     {
       q: "How does this integrate with our home office systems?",
-      a: "We integrate with common CRMs, e-signature platforms, and the custodial relationships you already have. Setup is a matter of configuration, not platform replacement."
+      a: "FastTrackr works alongside your existing CRM, e-signature, and the custodial relationships you already have — pulling data in and pushing signature-ready docs back out. Setup is a matter of configuration, not platform replacement."
     },
     {
       q: "What about advisors with complex book structures?",
@@ -44,6 +44,9 @@ export default function ICPIBDs() {
               <h1 className="text-5xl md:text-6xl font-display font-bold text-textPrimary leading-tight mb-6">
                 Win the advisors. <br/>Win their books. <br/><span className="text-gray-400">Win them faster.</span>
               </h1>
+              <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
+                Broker-dealer advisor transition and recruiting, in one workflow.
+              </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 Your transition experience is part of your recruiting pitch. Make it the part that closes the deal.
               </p>

@@ -44,8 +44,14 @@ export default function ICPBreakawayAdvisors() {
               <h1 className="text-5xl md:text-6xl font-display font-bold text-textPrimary leading-tight mb-6">
                 Bring your book with you. <br/><span className="text-gray-400">Without breaking your team.</span>
               </h1>
+              <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
+                The repapering engine for breakaway advisor transitions.
+              </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 You decided to move to build something better. Don't let the repapering be the thing that breaks you on the way there.
+              </p>
+              <p className="text-xl text-textSecondary leading-relaxed mb-8">
+                Still weighing offers? A move you can promise in days, not months, changes the conversation, with the firm recruiting you and with the clients deciding whether to follow.
               </p>
             </m.div>
             
@@ -150,13 +156,69 @@ export default function ICPBreakawayAdvisors() {
           </div>
         </section>
 
+        {/* NEW — deeper content: betting on yourself */}
+        <section className="py-24 bg-bgCanvas border-y border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-display font-bold text-textPrimary mb-6 text-center">Independence shouldn't cost you your book</h2>
+            <p className="text-lg text-textSecondary leading-relaxed mb-12 text-center max-w-2xl mx-auto">
+              Going independent is a growth decision. The transition is the one part that can quietly undo it, if clients drift while you're buried in paperwork. FastTrackr is built so the move reinforces the reason you made it.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { icon: <TrendingUp className="w-6 h-6" />, title: 'Your book moves with you', desc: 'Repapering across your new custodian is handled end to end, so more of your AUM actually makes the trip, faster.' },
+                { icon: <Users className="w-6 h-6" />, title: 'Your team stays standing', desc: 'The grind is automated instead of dumped on your assistant, so the people who came with you aren\'t burned out by day 30.' },
+                { icon: <ShieldCheck className="w-6 h-6" />, title: 'Your clients stay calm', desc: 'One organized experience instead of seven emails asking for the same thing, so the move confirms why they followed you.' },
+              ].map((c, i) => (
+                <div key={i} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-glass text-center">
+                  <div className="w-14 h-14 bg-bgCanvas rounded-2xl flex items-center justify-center text-brandMint mx-auto mb-5">
+                    {c.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-textPrimary mb-2">{c.title}</h3>
+                  <p className="text-textSecondary leading-relaxed">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* NEW — small / solo RIA setting up fresh */}
+        <section className="py-24">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl font-display font-bold text-textPrimary mb-4 leading-tight">
+                  Setting up on your own? You don't need a transition team to do it right.
+                </h2>
+                <p className="text-lg text-textSecondary leading-relaxed">
+                  Whether you're leaving a wirehouse or spinning out of a larger RIA or platform to build your own firm, the repapering is the same mountain, just without a back office to climb it for you. FastTrackr is that back office.
+                </p>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { title: 'No ops department required', desc: 'The system runs the data collection, form-filling, and tracking a big firm would staff a whole team for.' },
+                  { title: 'Bring us in directly', desc: 'You don\'t need a custodian or a consultant to sponsor it. Work with FastTrackr directly for your move.' },
+                  { title: 'Enterprise-grade on your first move', desc: 'Built so a solo advisor or a small team gets the same clean transition as a firm that\'s done fifty.' },
+                ].map((c, i) => (
+                  <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-brandMint shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-textPrimary mb-1">{c.title}</h3>
+                      <p className="text-textSecondary leading-relaxed">{c.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Outcomes */}
         <section className="py-24 bg-brandDeep text-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
                 <Calendar className="w-8 h-8 text-brandMint mx-auto mb-4" />
-                <div className="text-2xl font-bold font-display mb-2">Move in weeks, not months</div>
+                <div className="text-2xl font-bold font-display mb-2">Move in days, not months</div>
                 <div className="text-white/80">get to revenue faster</div>
               </div>
               <div className="text-center">

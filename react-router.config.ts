@@ -4,6 +4,9 @@ import {
   readBlogSlugs,
   readNewsSlugs,
   readPodcastSlugs,
+  readGlossarySlugs,
+  readCategorySlugs,
+  readAuthorSlugs,
 } from './app/lib/prerenderPaths';
 
 // React Router v7 framework mode, configured as a static-site generator.
@@ -33,6 +36,9 @@ export default {
       blogSlugs: readBlogSlugs(),
       newsSlugs: readNewsSlugs(),
       podcastSlugs: readPodcastSlugs(),
+      glossarySlugs: readGlossarySlugs(),
+      categorySlugs: readCategorySlugs(),
+      authorSlugs: readAuthorSlugs(),
     });
   },
 } satisfies Config;

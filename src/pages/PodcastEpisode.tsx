@@ -11,6 +11,7 @@ import {
   youtubeWatchUrl,
   type PodcastEpisode as PodcastEpisodeType,
 } from '../lib/podcasts';
+import { DEFAULT_CTA_TARGET } from '../../app/lib/ctaTarget';
 
 // `episode` comes from the route `loader` (build-time disk read) via useLoaderData
 // in app/routes/podcast-episode.tsx — no client fetch. A missing slug is handled
@@ -154,6 +155,14 @@ export default function PodcastEpisode({ episode }: { episode: PodcastEpisodeTyp
                   More episodes →
                 </Link>
               </div>
+              <p className="mt-6 text-white/90">
+                <Link
+                  to={DEFAULT_CTA_TARGET.href}
+                  className="font-semibold text-brandMint underline underline-offset-4 hover:text-white transition-colors"
+                >
+                  {DEFAULT_CTA_TARGET.label} →
+                </Link>
+              </p>
             </div>
           </div>
         </section>

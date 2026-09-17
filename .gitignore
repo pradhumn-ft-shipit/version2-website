@@ -51,3 +51,9 @@ desktop.ini
 Thumbs.db
 **/desktop.ini
 **/Thumbs.db
+
+# Internal review/working docs — not part of the site
+guideline-copy/
+
+# Local measurement/report data exports (GSC, GA4) — keep out of git
+content/reports/

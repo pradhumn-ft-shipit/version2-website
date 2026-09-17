@@ -11,6 +11,11 @@ interface ContactPayload {
   interest?: string;
   message?: string;
   source?: string;
+  // 'download' when the submission is a gated-asset download (vs a demo request),
+  // so the Slack notification reads as a download rather than a lead for sales.
+  kind?: string;
+  // Name of the downloaded asset, shown in the Slack message for download submissions.
+  assetName?: string;
   // Honeypot field. Bots fill this; real users never see it.
   website?: string;
 }
@@ -74,6 +79,8 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
   const messageText = payload.message!.trim();
   const companyType = payload.companyType || 'Not provided';
   const source = payload.source || '';
+  const isDownload = payload.kind === 'download';
+  const assetName = payload.assetName || 'a resource';
 
   // Render the freeform message as a Slack quote block (each line prefixed with `>`).
   const quotedMessage = escapeMrkdwn(messageText)
@@ -81,14 +88,24 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
     .map((line) => `> ${line}`)
     .join('\n');
 
+  const headerText = isDownload
+    ? `📥 New checklist download: ${escapeMrkdwn(assetName)}`
+    : `🚀 New demo request: ${interestLabel}`;
+  const fallbackText = isDownload
+    ? `New checklist download: ${assetName} (${fullName})`
+    : `New demo request: ${interestLabel} (${fullName})`;
+  const contextField = isDownload
+    ? { type: 'mrkdwn', text: `*Downloaded*\n${escapeMrkdwn(assetName)}` }
+    : { type: 'mrkdwn', text: `*Interested in*\n${interestLabel}` };
+
   const slackBody = {
-    text: `New demo request: ${interestLabel} (${fullName})`, // notification fallback
+    text: fallbackText, // notification fallback
     blocks: [
       {
         type: 'header',
         text: {
           type: 'plain_text',
-          text: `🚀 New demo request: ${interestLabel}`,
+          text: headerText,
           emoji: true,
         },
       },
@@ -98,7 +115,7 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
           { type: 'mrkdwn', text: `*Name*\n${escapeMrkdwn(fullName)}` },
           { type: 'mrkdwn', text: `*Email*\n<mailto:${email}|${escapeMrkdwn(email)}>` },
           { type: 'mrkdwn', text: `*Company type*\n${escapeMrkdwn(companyType)}` },
-          { type: 'mrkdwn', text: `*Interested in*\n${interestLabel}` },
+          contextField,
         ],
       },
       { type: 'divider' },

@@ -9,12 +9,13 @@ import { SITE_ORIGIN, seoMeta, type SeoConfig } from '../../src/lib/seo';
 // Values mirror the homepage <head> that index.html shipped pre-migration: the
 // full meta description, the shorter OG/Twitter hook, canonical "/", and the
 // site's Organization JSON-LD.
+// REVIEW (W0c): "weeks" → "days" in description + ogDescription (was "in weeks, not months").
 const seo: SeoConfig = {
   title: 'FastTrackr AI | Advisor transitions, finally built right.',
   description:
-    'FastTrackr AI is the AI transition engine for wealth management. Move advisor books in weeks, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.',
+    'FastTrackr AI is the AI transition engine for wealth management. Move advisor books in days, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.',
   ogDescription:
-    'Move advisor books in weeks, not months. Purpose-built for advisor transitions.',
+    'Move advisor books in days, not months. Purpose-built for advisor transitions.',
   canonical: '/',
   ogType: 'website',
   ogImage: '/logomark.png',

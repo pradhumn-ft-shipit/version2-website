@@ -73,7 +73,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl text-textSecondary max-w-2xl leading-relaxed mb-10">
-              Move advisor books in weeks, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.
+              Move advisor books in days, not months. Purpose-built for advisor transitions and shaped by consultants, operators, and RIA founders who move billions in client assets every year.
             </p>
 
             <div className="flex flex-wrap items-center gap-6 mb-16">

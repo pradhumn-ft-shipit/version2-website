@@ -20,6 +20,8 @@ export interface LeadCaptureModalProps {
   leadLabel: string;
   /** Button label in the idle state. */
   submitLabel?: string;
+  /** Heading on the success state; the first name is appended when known. */
+  successTitle?: string;
 }
 
 /**
@@ -41,6 +43,7 @@ export default function LeadCaptureModal({
   interest = 'advisor-transitions',
   leadLabel,
   submitLabel = 'Get the PDF',
+  successTitle = 'Your checklist is ready',
 }: LeadCaptureModalProps) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -151,7 +154,7 @@ export default function LeadCaptureModal({
               <CheckCircle2 size={28} />
             </div>
             <h3 className="text-xl font-display font-bold text-textPrimary mb-2">
-              Your checklist is ready{firstName ? `, ${firstName}` : ''}.
+              {successTitle}{firstName ? `, ${firstName}` : ''}.
             </h3>
             <p className="text-textSecondary text-sm mb-6">
               The download should start automatically. If it doesn&apos;t, use the button below.

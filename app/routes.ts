@@ -45,6 +45,10 @@ export default [
   route('transition-checklist', 'routes/transition-checklist.tsx'),
   route('cost-of-repapering', 'routes/cost-of-repapering.tsx'),
 
+  // FastTrackr Research reports: full report as indexable on-page content, with
+  // the PDF soft-gated behind LeadCaptureModal.
+  route('research/fidelity-100m-custody-minimum', 'routes/research/fidelity-100m-custody-minimum.tsx'),
+
   // Blog (ticket 004): build-time loaders read the committed JSON off disk so the
   // full index + article bodies ship in prerendered HTML.
   route('resources/blog', 'routes/blog-index.tsx'),

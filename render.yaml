@@ -288,6 +288,10 @@ services:
       - type: rewrite
         source: /cost-of-repapering
         destination: /cost-of-repapering/index.html
+      # FastTrackr Research report pages (prerendered static routes).
+      - type: rewrite
+        source: /research/*
+        destination: /research/*/index.html
       # W3 glossary hub + entries, and W5 author archive pages. Prerendered
       # static routes that likewise need their own rewrite before the catch-all.
       - type: rewrite

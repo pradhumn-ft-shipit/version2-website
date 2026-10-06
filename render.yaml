@@ -40,6 +40,13 @@ services:
       - type: redirect
         source: /downloads/fasttrackr-fidelity-100m-line-methodology.pdf
         destination: /research/fidelity-100m-custody-minimum
+      # No /research hub yet; send the bare path to the one report (used in social posts).
+      - type: redirect
+        source: /research
+        destination: /research/fidelity-100m-custody-minimum
+      - type: redirect
+        source: /research/
+        destination: /research/fidelity-100m-custody-minimum
       - type: redirect
         source: /aon
         destination: /contact

@@ -34,6 +34,12 @@ services:
     # Redirect rules MUST come before the SPA catch-all rewrite so they win.
     routes:
       # /fpa is a real page now (FPA-member Meeting Assistant landing), not a redirect.
+      # Methodology appendix PDF was withdrawn (2026-10-06). Render keeps files from
+      # earlier deploys, so deleting it from public/ alone left it reachable;
+      # send old links to the report page instead.
+      - type: redirect
+        source: /downloads/fasttrackr-fidelity-100m-line-methodology.pdf
+        destination: /research/fidelity-100m-custody-minimum
       - type: redirect
         source: /aon
         destination: /contact

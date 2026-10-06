@@ -9,7 +9,6 @@
  */
 
 export const REPORT_PDF = '/downloads/fasttrackr-fidelity-100m-line-report.pdf';
-export const METHODOLOGY_PDF = '/downloads/fasttrackr-fidelity-100m-line-methodology.pdf';
 
 export const DEADLINE_ISO = '2027-06-30';
 export const PUBLISHED_ISO = '2026-10-05';

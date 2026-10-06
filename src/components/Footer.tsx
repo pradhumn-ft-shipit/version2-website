@@ -20,6 +20,7 @@ const resourcesLinks = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
+  { label: 'Research', href: '/research/fidelity-100m-custody-minimum' },
   { label: 'Glossary', href: '/glossary' }, // W3 definitional hub
   { label: 'Case Studies', href: '/case-study' },
   { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },

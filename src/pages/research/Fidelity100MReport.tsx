@@ -22,7 +22,6 @@ import {
   FAQS,
   HEADLINE_STATS,
   KNOWN_UNKNOWNS,
-  METHODOLOGY_PDF,
   PAPERWORK,
   PATHS,
   PERSONAS,
@@ -50,7 +49,7 @@ import {
  * "The $100M Line" — FastTrackr Research report on Fidelity's $100M custody
  * minimum, rebuilt as a web page from the Edition 2.1 PDF
  * (reports/research/versions/v2.1_2026-10-05). The full text and every chart is
- * real, indexable on-page content; the PDF and methodology appendix are soft-gated
+ * real, indexable on-page content; the report PDF is soft-gated
  * behind LeadCaptureModal (files in /downloads/, kept out of the index by robots.txt).
  */
 
@@ -66,7 +65,7 @@ const CHAPTERS = [
   { id: 'what-to-do', label: 'What to do' },
 ] as const;
 
-type Asset = 'report' | 'methodology' | null;
+type Asset = 'report' | null;
 
 export default function Fidelity100MReport() {
   const [asset, setAsset] = useState<Asset>(null);
@@ -403,7 +402,7 @@ export default function Fidelity100MReport() {
 
         <MoveCTA onDownload={openReport} />
 
-        <Methods onMethodology={() => setAsset('methodology')} onDownload={openReport} />
+        <Methods onDownload={openReport} />
       </main>
 
       <LeadCaptureModal
@@ -417,18 +416,6 @@ export default function Fidelity100MReport() {
         leadLabel="Fidelity $100M Line Report PDF"
         submitLabel="Download the report"
         successTitle="Your report is ready"
-      />
-      <LeadCaptureModal
-        open={asset === 'methodology'}
-        onClose={() => setAsset(null)}
-        title="Download the methodology appendix"
-        description="Full methods, assumptions, limitations and every source behind “The $100M Line”, as a PDF."
-        assetUrl={METHODOLOGY_PDF}
-        assetFilename="FastTrackr-The-100M-Line-Methodology.pdf"
-        interest="advisor-transitions"
-        leadLabel="Fidelity $100M Line Methodology PDF"
-        submitLabel="Download the appendix"
-        successTitle="Your appendix is ready"
       />
 
       <Footer />
@@ -1194,7 +1181,7 @@ function MoveCTA({ onDownload }: { onDownload: () => void }) {
   );
 }
 
-function Methods({ onMethodology, onDownload }: { onMethodology: () => void; onDownload: () => void }) {
+function Methods({ onDownload }: { onDownload: () => void }) {
   return (
     <section id="methods" className="py-16 md:py-20 bg-bgCanvas border-t border-gray-100 scroll-mt-36">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16">
@@ -1218,13 +1205,6 @@ function Methods({ onMethodology, onDownload }: { onMethodology: () => void; onD
             </p>
           </div>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={onMethodology}
-              className="inline-flex items-center justify-center gap-2 border border-gray-200 bg-white hover:border-brandMint/50 text-textPrimary px-5 py-3 rounded-xl font-semibold transition-colors"
-            >
-              <FileText size={18} /> Methodology appendix (PDF)
-            </button>
             <button
               type="button"
               onClick={onDownload}
@@ -1252,8 +1232,7 @@ function Methods({ onMethodology, onDownload }: { onMethodology: () => void; onD
             ))}
           </ol>
           <p className="mt-5 text-xs text-textTertiary">
-            Primary data: SEC Form ADV (SEC monthly roster, 2026-09-01; IAPD state feed, 2026-10-01). The appendix lists
-            all 158 sources consulted.
+            Primary data: SEC Form ADV (SEC monthly roster, 2026-09-01; IAPD state feed, 2026-10-01).
           </p>
         </div>
       </div>

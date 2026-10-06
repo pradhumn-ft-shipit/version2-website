@@ -415,6 +415,7 @@ export default function Fidelity100MReport() {
         leadLabel="Fidelity $100M Line Report PDF"
         submitLabel="Download the report"
         successTitle="Your report is ready"
+        askFirmAndFit
       />
 
       <Footer />

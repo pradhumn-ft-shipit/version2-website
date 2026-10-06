@@ -22,7 +22,14 @@ export interface LeadCaptureModalProps {
   submitLabel?: string;
   /** Heading on the success state; the first name is appended when known. */
   successTitle?: string;
+  /** Also ask for firm name and which situation fits the reader (sent in the message body). */
+  askFirmAndFit?: boolean;
 }
+
+const FIT_OPTIONS = ['Acquiring books', 'Moving my own book', 'Just want to read', 'Other'] as const;
+
+const INPUT_CLASS =
+  'w-full px-4 py-3 bg-bgCanvas border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandMint/50 focus:border-brandMint transition-all';
 
 /**
  * Reusable lead-capture popup. Collects name + email, posts to the same Cloudflare
@@ -44,10 +51,14 @@ export default function LeadCaptureModal({
   leadLabel,
   submitLabel = 'Get the PDF',
   successTitle = 'Your checklist is ready',
+  askFirmAndFit = false,
 }: LeadCaptureModalProps) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [firm, setFirm] = useState('');
+  const [fit, setFit] = useState('');
+  const [fitOther, setFitOther] = useState('');
   const [website, setWebsite] = useState(''); // honeypot
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -79,6 +90,18 @@ export default function LeadCaptureModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (website) return; // honeypot tripped — silently ignore
+    if (askFirmAndFit && !fit) {
+      setStatus('error');
+      setErrorMessage('Please choose what fits you.');
+      return;
+    }
+    // The contact worker has no dedicated fields for these, so they ride in the
+    // message body, which reaches Slack and the Loops email verbatim.
+    const fitText = fit === 'Other' && fitOther.trim() ? `Other: ${fitOther.trim()}` : fit;
+    const message = [
+      `Requested the ${leadLabel} download.`,
+      ...(askFirmAndFit ? [`Firm: ${firm.trim()}`, `What fits: ${fitText}`] : []),
+    ].join('\n');
     setStatus('submitting');
     setErrorMessage('');
     try {
@@ -92,7 +115,7 @@ export default function LeadCaptureModal({
           interest,
           kind: 'download',
           assetName: leadLabel,
-          message: `Requested the ${leadLabel} download.`,
+          message,
           website,
           source: typeof window !== 'undefined' ? window.location.href : '',
         }),
@@ -138,7 +161,7 @@ export default function LeadCaptureModal({
         download
       </a>
 
-      <div className="relative z-10 w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 md:p-8">
+      <div className="relative z-10 w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white rounded-3xl shadow-2xl p-6 md:p-8">
         <button
           type="button"
           onClick={onClose}
@@ -213,6 +236,61 @@ export default function LeadCaptureModal({
                 placeholder="john@firm.com"
               />
             </div>
+
+            {askFirmAndFit && (
+              <>
+                <div className="space-y-1.5">
+                  <label className="text-sm font-bold text-textPrimary">Firm name</label>
+                  <input
+                    required
+                    type="text"
+                    value={firm}
+                    onChange={(e) => setFirm(e.target.value)}
+                    className={INPUT_CLASS}
+                    placeholder="Acme Wealth Partners"
+                  />
+                </div>
+
+                <fieldset className="space-y-1.5">
+                  <legend className="text-sm font-bold text-textPrimary mb-1.5">What fits you?</legend>
+                  <div className="grid grid-cols-2 gap-2">
+                    {FIT_OPTIONS.map((opt) => (
+                      <label
+                        key={opt}
+                        className={`cursor-pointer rounded-xl border px-3 py-2.5 text-sm transition-colors ${
+                          fit === opt
+                            ? 'border-brandDeep bg-brandDeep text-white font-semibold'
+                            : 'border-gray-200 bg-bgCanvas text-textPrimary hover:border-brandDeep/40'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="fit"
+                          value={opt}
+                          checked={fit === opt}
+                          onChange={() => {
+                            setFit(opt);
+                            if (status === 'error') setStatus('idle');
+                          }}
+                          className="sr-only"
+                        />
+                        {opt}
+                      </label>
+                    ))}
+                  </div>
+                  {fit === 'Other' && (
+                    <input
+                      type="text"
+                      value={fitOther}
+                      onChange={(e) => setFitOther(e.target.value)}
+                      className={`${INPUT_CLASS} mt-2`}
+                      placeholder="Tell us briefly (optional)"
+                      aria-label="Other: tell us briefly"
+                    />
+                  )}
+                </fieldset>
+              </>
+            )}
 
             {/* honeypot */}
             <div aria-hidden="true" className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden">

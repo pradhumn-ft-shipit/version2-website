@@ -74,6 +74,10 @@ export const FUNNEL = [
   { label: 'Hold under $100M at Fidelity', value: 1087, emphasis: true },
 ] as const;
 
+/** Fig 4a — share of the 2,286 Fidelity users below the line (one dot = 1%). */
+export const FIDELITY_USERS = 2286;
+export const AFFECTED_FIRMS = 1087;
+
 /** Fig 4b — affected firms by dollars held at Fidelity. */
 export const DOLLAR_BANDS = [
   { band: 'Under $10M', firms: 332, usdPct: 0.0297 },
@@ -96,6 +100,15 @@ export const TOP_STATES = [
   { state: 'Colorado', firms: 32 },
   { state: 'Virginia', firms: 31 },
 ] as const;
+
+/** Fig 4c — affected firms by main office state (panel p4c; 1,036 mapped, 51 with no state). */
+export const FIRMS_BY_STATE: Record<string, number> = {
+  AK: 0, ME: 3, VT: 7, NH: 9, WA: 20, ID: 6, MT: 1, ND: 1, MN: 19, IL: 28, WI: 8, MI: 41, NY: 68, RI: 6,
+  MA: 53, OR: 17, NV: 8, WY: 4, SD: 1, IA: 3, IN: 11, OH: 40, PA: 32, NJ: 26, CT: 20, CA: 132, UT: 13,
+  CO: 32, NE: 2, MO: 11, KY: 4, WV: 0, VA: 31, MD: 25, DE: 18, AZ: 25, NM: 3, KS: 9, AR: 2, TN: 19,
+  NC: 20, SC: 4, DC: 1, OK: 11, LA: 4, MS: 2, AL: 7, GA: 29, HI: 1, TX: 108, FL: 91,
+};
+export const NO_STATE_FIRMS = 51;
 
 /** Fig 5a — medians by segment. */
 export const SEGMENTS = [
@@ -163,6 +176,34 @@ export const DESTINATIONS = [
   { name: 'Schwab, via a host firm', usdB: 1.1 },
   { name: 'SEI', usdB: 0.6 },
   { name: 'Goldman Sachs Advisor Solutions', usdB: 0.06, display: '<$0.1B' },
+] as const;
+
+/**
+ * Fig 7a flows — base case, $B, from data/ws4_sankey_edges_base.csv grouped the
+ * same way as panel p7a (Raymond James, Axos, Pershing, LPL, AssetMark folded
+ * into "Other existing custodians"). `to` matches a DESTINATIONS name.
+ */
+export const FLOW_ORIGINS = [
+  { key: 'fidelityOnly', label: ['Fidelity-only', 'firms'], sub: '$18.0B · 393 firms', usdB: 17.97 },
+  { key: 'secondCustodian', label: ['Firms with a', 'second custodian'], sub: '$22.5B · 694 firms', usdB: 22.52 },
+] as const;
+
+export const FLOWS = [
+  { from: 'fidelityOnly', to: 'Schwab', usdB: 10.383 },
+  { from: 'secondCustodian', to: 'Schwab', usdB: 15.535 },
+  { from: 'fidelityOnly', to: 'Schwab, via a host firm', usdB: 0.755 },
+  { from: 'secondCustodian', to: 'Schwab, via a host firm', usdB: 0.315 },
+  { from: 'fidelityOnly', to: 'Altruist (Vanguard)', usdB: 3.643 },
+  { from: 'secondCustodian', to: 'Altruist (Vanguard)', usdB: 0.613 },
+  { from: 'fidelityOnly', to: 'Interactive Brokers', usdB: 1.499 },
+  { from: 'secondCustodian', to: 'Interactive Brokers', usdB: 0.466 },
+  { from: 'fidelityOnly', to: 'SEI', usdB: 0.244 },
+  { from: 'secondCustodian', to: 'SEI', usdB: 0.351 },
+  { from: 'fidelityOnly', to: 'Goldman Sachs Advisor Solutions', usdB: 0.044 },
+  { from: 'secondCustodian', to: 'Goldman Sachs Advisor Solutions', usdB: 0.019 },
+  { from: 'secondCustodian', to: 'Other existing custodians', usdB: 4.635 },
+  { from: 'fidelityOnly', to: 'Stays at Fidelity via a host firm', usdB: 1.402 },
+  { from: 'secondCustodian', to: 'Stays at Fidelity via a host firm', usdB: 0.586 },
 ] as const;
 
 /** Fig 7b — leaves vs stays by scenario, $B (Estimated). */
@@ -254,6 +295,9 @@ export const PAPERWORK = {
   accounts: '~146,000',
   documents: '~376,000',
   range: '244,000–564,000',
+  low: 244216,
+  base: 376128,
+  high: 564167,
   conversations: '~151,000',
   byMove: [
     { move: 'Open a new custodian', docs: 203655 },

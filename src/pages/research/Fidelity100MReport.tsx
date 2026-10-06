@@ -39,10 +39,11 @@ import {
   DocsPerAccountChart,
   JordanGantt,
   JordanPathsChart,
+  FidelityShareWaffle,
   MoveTypeChart,
+  PaperworkBreakdown,
   ScenariosChart,
-  SizingFunnel,
-  TopStates,
+  StateTileMap,
 } from './fidelity100m/charts';
 
 /*
@@ -141,7 +142,7 @@ export default function Fidelity100MReport() {
             </p>
           </Prose>
           <Pair>
-            <SizingFunnel />
+            <FidelityShareWaffle />
             <DistanceBands />
           </Pair>
           <Prose>
@@ -151,7 +152,7 @@ export default function Fidelity100MReport() {
               will feel something.
             </p>
           </Prose>
-          <TopStates />
+          <StateTileMap />
           <Callout title="Why 1,087 is a floor">
             <p>
               Form ADV lists a custodian only if it holds 10% or more of a firm’s separately managed assets. A small
@@ -266,6 +267,7 @@ export default function Fidelity100MReport() {
               clear second at ~$4.3B.
             </p>
           </Prose>
+          <DestinationsChart />
           <Prose>
             <p>
               We tested three other scenarios: more firms joining larger firms, an early Savvy route, and larger firms
@@ -273,10 +275,7 @@ export default function Fidelity100MReport() {
               receives ~$24–27B.
             </p>
           </Prose>
-          <Pair>
-            <DestinationsChart />
-            <ScenariosChart />
-          </Pair>
+          <ScenariosChart />
           <Callout title="What could keep money at Fidelity">
             <ul className="space-y-3">
               <li>
@@ -684,7 +683,7 @@ function Body({ children }: { children: ReactNode }) {
 
 /** Two related charts side by side on large screens. */
 function Pair({ children }: { children: ReactNode }) {
-  return <div className="wide grid lg:grid-cols-2 gap-6 items-start">{children}</div>;
+  return <div className="wide grid lg:grid-cols-2 gap-6 items-stretch">{children}</div>;
 }
 
 function ChapterHeading({
@@ -739,17 +738,13 @@ function Cite({ n }: { n: number }) {
 
 function Callout({ title, children, jordan }: { title: string; children: ReactNode; jordan?: boolean }) {
   return (
-    <aside
-      className={`rounded-3xl p-6 md:p-8 border-l-4 ${jordan ? 'bg-[#F7F0E1] border-[#C9A866]' : 'bg-brandMint/10 border-brandMint'}`}
-    >
-      <div className="flex items-center gap-2 mb-3">
-        {jordan && (
-          <span className="text-[11px] font-semibold uppercase tracking-wider bg-white/70 text-[#7A5B1E] rounded-full px-2.5 py-1">
-            Composite firm
-          </span>
-        )}
-        <h3 className="font-display font-bold text-lg text-textPrimary">{title}</h3>
-      </div>
+    <aside className={`rounded-3xl p-6 md:p-8 ${jordan ? 'bg-[#F7F0E1]' : 'bg-brandMint/10'}`}>
+      {jordan && (
+        <span className="inline-block text-[11px] font-semibold uppercase tracking-wider bg-white/70 text-[#7A5B1E] rounded-full px-2.5 py-1 mb-3">
+          Composite firm
+        </span>
+      )}
+      <h3 className="font-display font-bold text-xl text-textPrimary mb-3">{title}</h3>
       <div className="space-y-3 text-textSecondary leading-relaxed">{children}</div>
     </aside>
   );
@@ -948,7 +943,8 @@ function PaperworkWall() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-white/50 mt-3">
+              <PaperworkBreakdown />
+              <p className="text-xs text-white/50 mt-4">
                 Estimated, base case, all 1,087 firms. Document range {PAPERWORK.range}. Source: SEC Form ADV;
                 FastTrackr estimates.
               </p>
@@ -980,7 +976,7 @@ function PaperworkWall() {
           <JordanGantt />
 
           <FastTrackrNote dark>
-            FastTrackr covers the dashed span above: it collects household and account data once, prepares every
+            FastTrackr covers the highlighted span above: it collects household and account data once, prepares every
             custodian and firm form in bulk, sends them for e-signature and carries each account through to transfer
             initiation.
           </FastTrackrNote>

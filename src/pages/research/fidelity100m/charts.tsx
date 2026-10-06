@@ -1,22 +1,31 @@
-import type { ReactNode } from 'react';
+import { useSyncExternalStore, type ReactNode } from 'react';
 import {
+  AFFECTED_FIRMS,
   BACKUP_CUSTODIAN,
   CUSTODIANS,
   DESTINATIONS,
   DOCS_PER_ACCOUNT,
   DOLLAR_BANDS,
+  FIDELITY_USERS,
+  FIRMS_BY_STATE,
+  FLOW_ORIGINS,
+  FLOWS,
   FUNNEL,
   JORDAN_PATHS,
   JORDAN_PLAN,
   MOVE_TYPES,
+  NO_STATE_FIRMS,
+  PAPERWORK,
   SCENARIOS,
   TIMELINE,
   TOP_STATES,
 } from './data';
 
 /*
- * Charts for "The $100M Line", built as plain HTML/CSS bars so they reflow to any
+ * Charts for "The $100M Line". Most are plain HTML/CSS so they reflow to any
  * width (the PDF's SVG panels were sized for print and don't shrink on phones).
+ * The one exception is the Fig 7a flow diagram: an inline SVG on sm+ screens,
+ * with the bar list as its phone fallback.
  *
  * Palette (validated with the dataviz CVD checker against a white surface):
  *   PRIMARY  #0B7A55 — the main series
@@ -29,7 +38,11 @@ import {
 const PRIMARY = '#0B7A55';
 const SECONDARY = '#3FC79A';
 
+const FIDELITY_RED = '#C4452F';
+const MUTED = '#9CA3AF';
+
 const fmt = (n: number) => n.toLocaleString('en-US');
+const fmtK = (n: number) => `${Math.round(n / 1000)}k`;
 
 function dayIndex(iso: string) {
   return Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)) / 86_400_000;
@@ -37,6 +50,28 @@ function dayIndex(iso: string) {
 function pctBetween(iso: string, start: string, end: string) {
   const s = dayIndex(start);
   return ((dayIndex(iso) - s) / (dayIndex(end) - s)) * 100;
+}
+
+const noSubscribe = () => () => {};
+const localIso = () => {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+};
+
+/**
+ * Today's date, client-only (null during prerender and hydration) so the static
+ * HTML never disagrees with the client. Same day count as the hero's "days left".
+ */
+function useToday() {
+  const iso = useSyncExternalStore(noSubscribe, localIso, () => null);
+  return iso ? { iso, daysLeft: Math.max(0, Math.round(dayIndex(TIMELINE.end) - dayIndex(iso))) } : null;
+}
+
+/** Position of today inside a start–end window, or null when outside it. */
+function todayPct(today: { iso: string } | null, start: string, end: string) {
+  if (!today) return null;
+  const p = pctBetween(today.iso, start, end);
+  return p < 0 || p > 100 ? null : p;
 }
 
 const MONTHS = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
@@ -77,7 +112,7 @@ export function Figure({
   return (
     <figure
       id={id}
-      className={`wide rounded-3xl p-5 sm:p-7 scroll-mt-28 ${
+      className={`wide flex flex-col rounded-3xl p-5 sm:p-7 scroll-mt-28 ${
         dark ? 'bg-white/[0.04] border border-white/10' : 'bg-white border border-gray-100 shadow-sm'
       }`}
     >
@@ -95,7 +130,8 @@ export function Figure({
           </span>
         )}
       </div>
-      {children}
+      {/* flex-1 keeps the caption at the bottom when a Pair stretches two cards to one height */}
+      <div className="flex-1">{children}</div>
       <figcaption className={`mt-5 text-xs leading-relaxed ${muted}`}>
         {note && <span>{note} </span>}
         <span>{source}</span>
@@ -204,6 +240,8 @@ export function DeadlineTimeline() {
   const taxL = pctBetween(taxSeason[0], start, end);
   const taxW = pctBetween(taxSeason[1], start, end) - taxL;
   const adv = pctBetween('2027-03-31', start, end);
+  const today = useToday();
+  const now = todayPct(today, start, end);
   return (
     <Figure
       id="fig-timeline"
@@ -220,29 +258,39 @@ export function DeadlineTimeline() {
         ],
       }}
     >
-      <div className="relative pt-10 pb-2">
-        <div className="absolute top-0 left-0 text-[11px]">
-          <div className="font-semibold text-textPrimary">Oct 1</div>
-          <div className="text-textTertiary">Letters arrive</div>
+      <div className="relative pt-11 pb-2">
+        <div className="absolute top-0 left-0 text-[11px] sm:text-xs">
+          <div className="font-semibold text-textPrimary">Oct 1, 2026</div>
+          <div className="text-textTertiary">Fidelity letters arrive</div>
         </div>
-        <div className="absolute top-0 right-0 text-[11px] text-right">
-          <div className="font-semibold text-[#C4452F]">Jun 30</div>
-          <div className="text-textTertiary">Custody ends</div>
+        <div className="absolute top-0 right-0 text-[11px] sm:text-xs text-right">
+          <div className="font-bold" style={{ color: FIDELITY_RED }}>
+            Jun 30, 2027 · Deadline
+          </div>
+          <div className="text-textTertiary">Custody ends below $100M</div>
         </div>
 
-        <div className="relative h-8 rounded-lg bg-gray-100 overflow-hidden">
+        <div className="relative h-10 rounded-lg bg-gray-100 overflow-hidden">
+          {/* elapsed time, from the letter to today */}
+          {now !== null && (
+            <div className="absolute inset-y-0 left-0 bg-brandDeep/10" style={{ width: `${now}%` }} />
+          )}
           <div
-            className="absolute inset-y-0 flex items-center justify-center text-[11px] font-semibold text-amber-900"
+            className="absolute inset-y-0 flex flex-col items-center justify-center leading-tight text-amber-900"
             style={{
               left: `${taxL}%`,
               width: `${taxW}%`,
               background: 'repeating-linear-gradient(45deg, #FDE7B0, #FDE7B0 6px, #FBDA8C 6px, #FBDA8C 12px)',
             }}
           >
-            Tax season
+            <span className="text-[11px] font-bold">Tax season</span>
+            <span className="hidden sm:block text-[10px]">Feb – Apr 15</span>
           </div>
           <div className="absolute inset-y-0 w-0.5 bg-textPrimary/70" style={{ left: `${adv}%` }} />
-          <div className="absolute inset-y-0 right-0 w-1 bg-[#C4452F]" />
+          <div className="absolute inset-y-0 right-0 w-1.5" style={{ background: FIDELITY_RED }} />
+          {now !== null && (
+            <div className="absolute inset-y-0 w-0.5 bg-brandDeep" style={{ left: `${now}%` }} />
+          )}
         </div>
         <div className="relative h-5 mt-1.5">
           {MONTH_STARTS.map((d, i) => (
@@ -265,33 +313,73 @@ export function DeadlineTimeline() {
             <span className="font-semibold text-textPrimary">Mar 31</span> Form ADV update due
           </span>
         </div>
+        {/* Today marker gets its own row so it can't collide with the ADV label
+            as it slides right over the season. Rendered client-side only. */}
+        <div className="relative h-5 mt-1">
+          {now !== null && today && (
+            <span
+              className={`absolute text-[11px] whitespace-nowrap font-semibold text-brandDeep ${
+                now > 60 ? '-translate-x-full pr-1.5 border-r-2' : 'pl-1.5 border-l-2'
+              } border-brandDeep`}
+              style={{ left: `${now}%` }}
+            >
+              Today · {today.daysLeft} days left
+            </span>
+          )}
+        </div>
       </div>
     </Figure>
   );
 }
 
-// ── Fig 4a: funnel ─────────────────────────────────────────────────────────────
+// ── Fig 4a: one dot per 1% of Fidelity's small-firm users ─────────────────────
 
-export function SizingFunnel() {
-  const max = FUNNEL[0].value;
+export function FidelityShareWaffle() {
+  const share = Math.round((AFFECTED_FIRMS / FIDELITY_USERS) * 100);
   return (
     <Figure
       id="fig-funnel"
       title="Nearly half of Fidelity's small-firm users fall below the line"
-      note="Retail RIAs under $1B that report a custodian. 1,087 of 2,286 Fidelity users (48%)."
+      note={`Retail RIAs under $1B that report a custodian (n=${fmt(FUNNEL[0].value)}); ${fmt(FIDELITY_USERS)} list Fidelity; ${fmt(AFFECTED_FIRMS)} hold under $100M there (${share}%).`}
       table={{ head: ['Step', 'Firms'], rows: FUNNEL.map((f) => [f.label, fmt(f.value)]) }}
     >
-      <div className="space-y-4">
-        {FUNNEL.map((f) => (
-          <BarRow
-            key={f.label}
-            label={f.label}
-            value={fmt(f.value)}
-            pct={(f.value / max) * 100}
-            color={'emphasis' in f ? '#C4452F' : PRIMARY}
+      <div className="flex items-end gap-3 mb-4">
+        <span className="font-display font-bold text-5xl leading-none tabular-nums" style={{ color: FIDELITY_RED }}>
+          {fmt(AFFECTED_FIRMS)}
+        </span>
+        <span className="text-sm text-textSecondary leading-snug pb-0.5">
+          of {fmt(FIDELITY_USERS)} Fidelity-using firms hold under $100M there ({share}%)
+        </span>
+      </div>
+      {/* 20 × 5, filled column by column so the 48 read as one block on the left */}
+      <div
+        className="grid grid-rows-5 grid-flow-col gap-1 sm:gap-1.5"
+        style={{ gridTemplateColumns: 'repeat(20, minmax(0, 1fr))' }}
+        role="img"
+        aria-label={`${share} of 100 dots filled: ${share}% of Fidelity's small-firm users are below the line`}
+      >
+        {Array.from({ length: 100 }, (_, i) => (
+          <span
+            key={i}
+            className="aspect-square rounded-full"
+            style={{ background: i < share ? FIDELITY_RED : '#E5E7EB' }}
           />
         ))}
       </div>
+      <div className="mt-4 -mb-2">
+        <Legend
+          items={[
+            { label: 'Below the line', color: FIDELITY_RED, round: true },
+            { label: 'At or above $100M at Fidelity', color: '#E5E7EB', round: true },
+          ]}
+        />
+      </div>
+      <p className="text-xs text-textTertiary">Each dot = 1% of the {fmt(FIDELITY_USERS)} firms.</p>
+      <p className="mt-4 pt-3 border-t border-gray-100 text-xs text-textSecondary tabular-nums">
+        {fmt(FUNNEL[0].value)} retail RIAs <span className="text-textTertiary">→</span> {fmt(FIDELITY_USERS)} use
+        Fidelity <span className="text-textTertiary">→</span>{' '}
+        <strong style={{ color: FIDELITY_RED }}>{fmt(AFFECTED_FIRMS)} below the line</strong>
+      </p>
     </Figure>
   );
 }
@@ -338,27 +426,86 @@ function BandRow({ band, firms, firmsPct, usdPct }: { band: string; firms: numbe
   );
 }
 
-// ── Fig 4c: states ────────────────────────────────────────────────────────────
+// ── Fig 4c: state tile map ────────────────────────────────────────────────────
 
-export function TopStates() {
-  const max = TOP_STATES[0].firms;
+/** Equal-area tile grid: [state, column, row] on an 11 × 8 grid. */
+const STATE_TILES: [string, number, number][] = [
+  ['AK', 0, 0], ['ME', 10, 0],
+  ['VT', 9, 1], ['NH', 10, 1],
+  ['WA', 0, 2], ['ID', 1, 2], ['MT', 2, 2], ['ND', 3, 2], ['MN', 4, 2], ['IL', 5, 2], ['WI', 6, 2], ['MI', 7, 2], ['NY', 8, 2], ['RI', 9, 2], ['MA', 10, 2],
+  ['OR', 0, 3], ['NV', 1, 3], ['WY', 2, 3], ['SD', 3, 3], ['IA', 4, 3], ['IN', 5, 3], ['OH', 6, 3], ['PA', 7, 3], ['NJ', 8, 3], ['CT', 9, 3],
+  ['CA', 0, 4], ['UT', 1, 4], ['CO', 2, 4], ['NE', 3, 4], ['MO', 4, 4], ['KY', 5, 4], ['WV', 6, 4], ['VA', 7, 4], ['MD', 8, 4], ['DE', 9, 4],
+  ['AZ', 1, 5], ['NM', 2, 5], ['KS', 3, 5], ['AR', 4, 5], ['TN', 5, 5], ['NC', 6, 5], ['SC', 7, 5], ['DC', 8, 5],
+  ['OK', 3, 6], ['LA', 4, 6], ['MS', 5, 6], ['AL', 6, 6], ['GA', 7, 6],
+  ['HI', 0, 7], ['TX', 3, 7], ['FL', 8, 7],
+];
+
+/** Sequential buckets, light → dark (same cut points as the PDF panel). */
+const STATE_BUCKETS = [
+  { label: '0', min: 0, bg: '#F3F4F6', fg: '#9CA3AF' },
+  { label: '1–9', min: 1, bg: '#DDF5EC', fg: '#0A3D2E' },
+  { label: '10–24', min: 10, bg: '#A7E6CF', fg: '#0A3D2E' },
+  { label: '25–49', min: 25, bg: '#3FC79A', fg: '#0A3D2E' },
+  { label: '50–99', min: 50, bg: '#0B7A55', fg: '#FFFFFF' },
+  { label: '100+', min: 100, bg: '#0A3D2E', fg: '#FFFFFF' },
+];
+const bucketFor = (n: number) => [...STATE_BUCKETS].reverse().find((b) => n >= b.min)!;
+
+export function StateTileMap() {
+  const top5 = TOP_STATES.slice(0, 5);
+  const ranked = Object.entries(FIRMS_BY_STATE).sort((a, b) => b[1] - a[1]);
   return (
     <Figure
       id="fig-states"
       title="Affected firms in 48 states and DC; five hold 42%"
-      note="Affected firms by main office state, top ten (n=1,087). No single city has more than 18."
-      table={{ head: ['State', 'Affected firms'], rows: TOP_STATES.map((s) => [s.state, s.firms]) }}
+      note={`Affected firms by main office state (n=1,087; ${NO_STATE_FIRMS} firms have no mapped state). No single city has more than 18.`}
+      table={{ head: ['State', 'Affected firms'], rows: ranked.map(([s, n]) => [s, n]) }}
     >
-      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-        {TOP_STATES.map((s, i) => (
-          <BarRow
-            key={s.state}
-            label={s.state}
-            value={String(s.firms)}
-            pct={(s.firms / max) * 100}
-            color={i < 5 ? PRIMARY : SECONDARY}
-          />
-        ))}
+      <div className="max-w-2xl mx-auto">
+        <div
+          className="grid grid-cols-11 gap-[3px] sm:gap-1"
+          role="img"
+          aria-label="Tile map of affected firms by state. California 132, Texas 108, Florida 91, New York 68, Massachusetts 53; every state except Alaska and West Virginia has at least one."
+        >
+          {STATE_TILES.map(([st, col, row]) => {
+            const n = FIRMS_BY_STATE[st];
+            const b = bucketFor(n);
+            return (
+              <div
+                key={st}
+                className="aspect-square rounded-[4px] sm:rounded-md flex flex-col items-center justify-center leading-none"
+                style={{ gridColumnStart: col + 1, gridRowStart: row + 1, background: b.bg, color: b.fg }}
+                title={`${st}: ${n} affected firm${n === 1 ? '' : 's'}`}
+              >
+                <span className="text-[9px] sm:text-xs font-bold">{st}</span>
+                <span className="hidden sm:block text-[10px] mt-0.5 tabular-nums opacity-80">{n}</span>
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <div className="text-[11px] font-semibold uppercase tracking-wider text-textTertiary mb-1.5">
+              Affected firms
+            </div>
+            <div className="flex">
+              {STATE_BUCKETS.map((b) => (
+                <div key={b.label} className="w-10 sm:w-12">
+                  <div className="h-2.5" style={{ background: b.bg }} />
+                  <div className="text-[10px] text-textTertiary mt-1">{b.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="text-sm text-textPrimary font-semibold tabular-nums">
+            {top5.map((s, i) => (
+              <span key={s.state}>
+                {i > 0 && <span className="text-textTertiary font-normal"> · </span>}
+                {s.state} {s.firms}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </Figure>
   );
@@ -436,7 +583,160 @@ export function BackupCustodianChart() {
   );
 }
 
-// ── Fig 7a: destinations ──────────────────────────────────────────────────────
+// ── Fig 7a: where the $40.5B goes (flow diagram) ──────────────────────────────
+
+const destLabel = (d: (typeof DESTINATIONS)[number]) => ('display' in d ? d.display : `~$${d.usdB.toFixed(1)}B`);
+
+/** Sankey order on the right: Schwab first, the small destinations, then what stays. */
+const FLOW_RIGHT = [
+  'Schwab',
+  'Schwab, via a host firm',
+  'Altruist (Vanguard)',
+  'Interactive Brokers',
+  'SEI',
+  'Goldman Sachs Advisor Solutions',
+  'Other existing custodians',
+  'Stays at Fidelity via a host firm',
+] as const;
+
+const ORIGIN_COLOR = { fidelityOnly: PRIMARY, secondCustodian: SECONDARY } as const;
+
+function FlowSankey() {
+  const W = 780;
+  const top = 12;
+  const avail = 262;
+  const rGap = 7;
+  const lGap = 16;
+  const nodeW = 10;
+  const lx = 168;
+  const rx = 508;
+  const total = FLOW_ORIGINS.reduce((s, o) => s + o.usdB, 0);
+  const sc = (avail - rGap * (FLOW_RIGHT.length - 1)) / total;
+
+  const right = FLOW_RIGHT.map((name) => {
+    const d = DESTINATIONS.find((x) => x.name === name)!;
+    return { name, d, usdB: FLOWS.filter((f) => f.to === name).reduce((s, f) => s + f.usdB, 0) };
+  });
+  const rY: Record<string, number> = {};
+  let y = top;
+  for (const r of right) {
+    rY[r.name] = y;
+    y += r.usdB * sc + rGap;
+  }
+  const H = y - rGap + top;
+
+  const lY: Record<string, number> = {};
+  y = top + (avail - (total * sc + lGap)) / 2;
+  for (const o of FLOW_ORIGINS) {
+    lY[o.key] = y;
+    y += o.usdB * sc + lGap;
+  }
+
+  // Stack ribbons: leaving each origin in destination order, arriving at each
+  // destination in origin order, so no two ribbons cross at a node.
+  const outCursor: Record<string, number> = { ...lY };
+  const inCursor: Record<string, number> = { ...rY };
+  const links = FLOW_RIGHT.flatMap((to) =>
+    FLOW_ORIGINS.map((o) => FLOWS.find((f) => f.from === o.key && f.to === to)).filter((f) => f !== undefined),
+  ).map((f) => {
+    const h = f.usdB * sc;
+    const y0 = outCursor[f.from];
+    outCursor[f.from] += h;
+    return { f, h, y0, y1: 0 };
+  });
+  for (const to of FLOW_RIGHT) {
+    for (const o of FLOW_ORIGINS) {
+      const l = links.find((x) => x.f.to === to && x.f.from === o.key);
+      if (!l) continue;
+      l.y1 = inCursor[to];
+      inCursor[to] += l.h;
+    }
+  }
+
+  // Right labels: centred on their node, pushed down to keep 15 units apart.
+  const labelY: number[] = [];
+  right.forEach((r, i) => {
+    const centre = rY[r.name] + (r.usdB * sc) / 2;
+    labelY.push(i === 0 ? centre : Math.max(centre, labelY[i - 1] + 15));
+  });
+
+  const x0 = lx + nodeW;
+  const x1 = rx;
+  const xm = (x0 + x1) / 2;
+  const originName = (key: string) => FLOW_ORIGINS.find((o) => o.key === key)!.label.join(' ');
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      className="w-full h-auto"
+      role="img"
+      aria-label="Flow of the $40.5B now at Fidelity. Fidelity-only firms ($18.0B) and firms with a second custodian ($22.5B) flow mostly to Schwab (~$25.9B), then other existing custodians (~$4.6B), Altruist (~$4.3B), Interactive Brokers (~$2.0B); ~$2.0B stays at Fidelity via a host firm."
+    >
+      {links.map(({ f, h, y0, y1 }) => (
+        <path
+          key={`${f.from}-${f.to}`}
+          d={`M${x0},${y0} C${xm},${y0} ${xm},${y1} ${x1},${y1} L${x1},${y1 + h} C${xm},${y1 + h} ${xm},${y0 + h} ${x0},${y0 + h} Z`}
+          fill={ORIGIN_COLOR[f.from]}
+          className="opacity-35 hover:opacity-70 transition-opacity"
+        >
+          <title>{`${originName(f.from)} → ${f.to}: ~$${f.usdB.toFixed(1)}B`}</title>
+        </path>
+      ))}
+
+      {FLOW_ORIGINS.map((o) => {
+        const h = o.usdB * sc;
+        const cy = lY[o.key] + h / 2;
+        return (
+          <g key={o.key}>
+            <rect x={lx} y={lY[o.key]} width={nodeW} height={h} rx={2} fill={ORIGIN_COLOR[o.key]} />
+            <text x={lx - 12} y={cy - 12} textAnchor="end" className="fill-textPrimary" fontSize={14} fontWeight={700}>
+              <tspan x={lx - 12}>{o.label[0]}</tspan>
+              <tspan x={lx - 12} dy={16}>
+                {o.label[1]}
+              </tspan>
+            </text>
+            <text x={lx - 12} y={cy + 24} textAnchor="end" fontSize={11.5} className="fill-textTertiary">
+              {o.sub}
+            </text>
+          </g>
+        );
+      })}
+
+      {right.map((r, i) => {
+        const h = Math.max(r.usdB * sc, 1.5);
+        const stays = 'stays' in r.d;
+        const big = i === 0;
+        return (
+          <g key={r.name}>
+            <rect x={rx} y={rY[r.name]} width={nodeW} height={h} rx={1.5} fill={stays ? MUTED : '#0A3D2E'} />
+            <text
+              x={rx + nodeW + 10}
+              y={labelY[i]}
+              dominantBaseline="middle"
+              fontSize={big ? 17 : 12.5}
+              fontWeight={big || stays ? 700 : 500}
+              className="fill-textPrimary"
+            >
+              {r.name === 'Goldman Sachs Advisor Solutions' ? 'Goldman Sachs' : r.name}
+            </text>
+            <text
+              x={W - 2}
+              y={labelY[i]}
+              dominantBaseline="middle"
+              textAnchor="end"
+              fontSize={big ? 17 : 12.5}
+              fontWeight={700}
+              className="tabular-nums"
+              fill={big ? PRIMARY : '#0B1220'}
+            >
+              {destLabel(r.d)}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
 
 export function DestinationsChart() {
   const max = DESTINATIONS[0].usdB;
@@ -444,21 +744,33 @@ export function DestinationsChart() {
     <Figure
       id="fig-destinations"
       title="About two-thirds of the money lands at Schwab"
-      note="Base case. Where the $40.5B now at Fidelity goes, by destination. Altruist and Vanguard shown combined (deal pending). ~$15.5B of Schwab's total comes from firms that already custody there."
+      note="Base case. Where the $40.5B now at Fidelity goes, by starting point and destination. Altruist and Vanguard shown combined (deal pending). ~$15.5B of Schwab's total comes from firms that already custody there; other existing custodians include Raymond James, Axos, Pershing, LPL and AssetMark."
       source="Source: SEC Form ADV; FastTrackr estimates"
       estimated
       table={{
-        head: ['Destination', '$B (base case)'],
-        rows: DESTINATIONS.map((d) => [d.name, 'display' in d ? d.display : `~$${d.usdB.toFixed(1)}B`]),
+        head: ['From', 'To', '$B (base case)'],
+        rows: FLOWS.map((f) => [
+          FLOW_ORIGINS.find((o) => o.key === f.from)!.label.join(' '),
+          f.to,
+          f.usdB < 0.1 ? '<$0.1B' : `~$${f.usdB.toFixed(1)}B`,
+        ]),
       }}
     >
-      <div className="space-y-3.5">
+      <div className="hidden sm:block">
+        <div className="flex justify-between text-[11px] font-semibold uppercase tracking-wider text-textTertiary mb-2">
+          <span>From: $40.5B at Fidelity</span>
+          <span>To (base case)</span>
+        </div>
+        <FlowSankey />
+      </div>
+      {/* Phones: the same destinations as a bar list. */}
+      <div className="sm:hidden space-y-3.5">
         {DESTINATIONS.map((d) => (
           <BarRow
             key={d.name}
             label={d.name}
             sub={'note' in d ? d.note : undefined}
-            value={'display' in d ? d.display : `~$${d.usdB.toFixed(1)}B`}
+            value={destLabel(d)}
             pct={(d.usdB / max) * 100}
             color={'stays' in d ? SECONDARY : PRIMARY}
           />
@@ -472,6 +784,8 @@ export function DestinationsChart() {
 
 export function ScenariosChart() {
   const total = 40.5;
+  const bandL = (33 / total) * 100;
+  const bandW = ((39 - 33) / total) * 100;
   return (
     <Figure
       id="fig-scenarios"
@@ -490,29 +804,47 @@ export function ScenariosChart() {
           { label: 'Stays at Fidelity', color: SECONDARY },
         ]}
       />
-      <div className="space-y-4">
-        {SCENARIOS.map((s) => (
-          <div key={s.name}>
-            <div className="flex items-baseline justify-between gap-3 text-sm mb-1.5">
-              <span className="text-textPrimary">{s.name}</span>
-              <span className="text-xs text-textSecondary tabular-nums shrink-0">~${s.stays.toFixed(1)}B stays</span>
-            </div>
-            <div className="flex h-7 gap-[2px]">
-              <div
-                className="rounded-l-md flex items-center pl-2 text-[11px] font-semibold text-white"
-                style={{ width: `${(s.leaves / total) * 100}%`, background: PRIMARY }}
-                title={`${s.name}: ~$${s.leaves.toFixed(1)}B leaves`}
-              >
-                ~${s.leaves.toFixed(1)}B
+      <div className="relative pt-9">
+        {/* the range every scenario lands in: a bracket above the bars and a light
+            tint behind them (no vertical rules, so labels stay readable) */}
+        <div
+          className="absolute top-8 bottom-0 bg-[#0B7A55]/[0.08] rounded-sm"
+          style={{ left: `${bandL}%`, width: `${bandW}%` }}
+        />
+        <div
+          className="absolute top-6 h-2 border-x-2 border-t-2"
+          style={{ left: `${bandL}%`, width: `${bandW}%`, borderColor: PRIMARY }}
+        />
+        <div
+          className="absolute top-0 -translate-x-full text-xs font-bold whitespace-nowrap"
+          style={{ left: `${bandL + bandW}%`, color: PRIMARY }}
+        >
+          ~$33–39B leaves in all four
+        </div>
+        <div className="relative space-y-4">
+          {SCENARIOS.map((s) => (
+            <div key={s.name}>
+              <div className="flex items-baseline justify-between gap-3 text-sm mb-1.5">
+                <span className="text-textPrimary">{s.name}</span>
+                <span className="text-xs text-textSecondary tabular-nums shrink-0">~${s.stays.toFixed(1)}B stays</span>
               </div>
-              <div
-                className="rounded-r-md flex items-center justify-center text-[11px] font-semibold text-brandDeep"
-                style={{ width: `${(s.stays / total) * 100}%`, background: SECONDARY }}
-                title={`${s.name}: ~$${s.stays.toFixed(1)}B stays`}
-              ></div>
+              <div className="flex h-7 gap-[2px]">
+                <div
+                  className="rounded-l-md flex items-center pl-2 text-[11px] font-semibold text-white"
+                  style={{ width: `${(s.leaves / total) * 100}%`, background: PRIMARY }}
+                  title={`${s.name}: ~$${s.leaves.toFixed(1)}B leaves`}
+                >
+                  ~${s.leaves.toFixed(1)}B
+                </div>
+                <div
+                  className="rounded-r-md"
+                  style={{ width: `${(s.stays / total) * 100}%`, background: SECONDARY }}
+                  title={`${s.name}: ~$${s.stays.toFixed(1)}B stays`}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Figure>
   );
@@ -523,6 +855,9 @@ export function ScenariosChart() {
 export function CohortChart() {
   const rows = CUSTODIANS.filter((c) => !c.name.startsWith('Betterment'));
   const axisMax = 70;
+  // Two rows carry the story: Altruist's jump and Fidelity's slide. The rest stay grey.
+  const tone = (name: string) =>
+    name.startsWith('Altruist') ? PRIMARY : name === 'Fidelity' ? FIDELITY_RED : MUTED;
   return (
     <Figure
       id="fig-cohort"
@@ -535,36 +870,53 @@ export function CohortChart() {
     >
       <Legend
         items={[
-          { label: '2021 and earlier', color: PRIMARY, hollow: true, round: true },
-          { label: '2024–26', color: PRIMARY, round: true },
+          { label: '2021 and earlier', color: '#6B7280', hollow: true, round: true },
+          { label: '2024–26', color: '#6B7280', round: true },
         ]}
       />
       <div className="space-y-4">
         {rows.map((c) => {
           const a = (c.cohortFrom / axisMax) * 100;
           const b = (c.cohortTo / axisMax) * 100;
-          const up = c.cohortTo > c.cohortFrom;
+          const color = tone(c.name);
+          const altruist = c.name.startsWith('Altruist');
+          const focus = color !== MUTED;
           return (
             <div key={c.name} title={`${c.name}: ${c.cohort}`}>
-              <div className="flex items-baseline justify-between text-sm mb-1">
-                <span className="text-textPrimary">{c.name.replace(' (Vanguard)', '')}</span>
-                <span className={`text-xs font-semibold tabular-nums ${up ? 'text-[#0B7A55]' : 'text-textSecondary'}`}>
+              <div className="flex items-baseline justify-between gap-3 text-sm mb-1">
+                <span className={focus ? 'font-bold text-textPrimary' : 'text-textSecondary'}>
+                  {c.name.replace(' (Vanguard)', '')}
+                  {altruist && (
+                    <span
+                      className="ml-2 text-[11px] font-semibold rounded-full px-2 py-0.5 text-white"
+                      style={{ background: PRIMARY }}
+                    >
+                      more than doubled
+                    </span>
+                  )}
+                </span>
+                <span
+                  className={`text-xs tabular-nums shrink-0 ${focus ? 'font-bold' : 'font-semibold text-textSecondary'}`}
+                  style={focus ? { color } : undefined}
+                >
                   {c.cohort}
                 </span>
               </div>
               <div className="relative h-4">
                 <div className="absolute top-1/2 inset-x-0 h-px bg-gray-200" />
                 <div
-                  className="absolute top-1/2 h-0.5 -translate-y-1/2"
-                  style={{ left: `${Math.min(a, b)}%`, width: `${Math.abs(b - a)}%`, background: PRIMARY }}
+                  className={`absolute top-1/2 -translate-y-1/2 ${altruist ? 'h-1.5 rounded-full' : 'h-0.5'}`}
+                  style={{ left: `${Math.min(a, b)}%`, width: `${Math.abs(b - a)}%`, background: color }}
                 />
                 <span
                   className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
-                  style={{ left: `${a}%`, border: `2px solid ${PRIMARY}` }}
+                  style={{ left: `${a}%`, border: `2px solid ${color}` }}
                 />
                 <span
-                  className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white"
-                  style={{ left: `${b}%`, background: PRIMARY }}
+                  className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white ${
+                    altruist ? 'w-4 h-4' : 'w-3 h-3'
+                  }`}
+                  style={{ left: `${b}%`, background: color }}
                 />
               </div>
             </div>
@@ -637,7 +989,81 @@ export function DocsPerAccountChart() {
   );
 }
 
+// ── Fig 9b: total paperwork, range and mix (dark section) ─────────────────────
+
+const MOVE_TONES = ['bg-brandMint', 'bg-brandMint/50', 'bg-white/35'];
+
+export function PaperworkBreakdown() {
+  const { low, base, high, byMove } = PAPERWORK;
+  const axisMax = 600_000;
+  const at = (n: number) => `${(n / axisMax) * 100}%`;
+  const sum = byMove.reduce((s, m) => s + m.docs, 0);
+  return (
+    <div className="mt-5 space-y-5">
+      <div>
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-white/60 mb-2">
+          Documents, low to high estimate
+        </div>
+        <div className="relative h-4" title={`Range ${fmt(low)}–${fmt(high)}; base ${fmt(base)}`}>
+          <div className="absolute top-1/2 inset-x-0 h-px bg-white/15" />
+          <div
+            className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-white/25"
+            style={{ left: at(low), width: `${((high - low) / axisMax) * 100}%` }}
+          />
+          <span
+            className="absolute top-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brandMint ring-2 ring-brandDeep"
+            style={{ left: at(base) }}
+          />
+        </div>
+        <div className="relative h-4 mt-1 text-[11px] tabular-nums text-white/60">
+          <span className="absolute -translate-x-1/2" style={{ left: at(low) }}>
+            {fmtK(low)}
+          </span>
+          <span className="absolute -translate-x-1/2 font-bold text-brandMint" style={{ left: at(base) }}>
+            ~{fmtK(base)}
+          </span>
+          <span className="absolute -translate-x-1/2" style={{ left: at(high) }}>
+            {fmtK(high)}
+          </span>
+        </div>
+      </div>
+      <div>
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-white/60 mb-2">
+          Base case, by type of move
+        </div>
+        <div className="flex h-3 gap-[2px]">
+          {byMove.map((m, i) => (
+            <div
+              key={m.move}
+              className={`${MOVE_TONES[i]} ${i === 0 ? 'rounded-l-md' : ''} ${i === byMove.length - 1 ? 'rounded-r-md' : ''}`}
+              style={{ width: `${(m.docs / sum) * 100}%` }}
+              title={`${m.move}: ~${fmtK(m.docs)} documents`}
+            />
+          ))}
+        </div>
+        <ul className="mt-2 space-y-1 text-xs text-white/80">
+          {byMove.map((m, i) => (
+            <li key={m.move} className="flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-1.5">
+                <span className={`inline-block w-2.5 h-2.5 rounded-sm ${MOVE_TONES[i]}`} />
+                {m.move}
+              </span>
+              <span className="font-semibold tabular-nums">~{fmtK(m.docs)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 // ── Fig 9c: Jordan's nine months (dark section) ───────────────────────────────
+
+/** Workload callouts printed inside the step bars on sm+ screens. */
+const GANTT_TAGS: Record<string, string> = {
+  'Client meetings and signatures': '~386 documents · 51 households',
+  'Transfers in waves': '~128 accounts',
+};
 
 export function JordanGantt() {
   const { start, end, steps, fasttrackrSpan, taxSeason } = JORDAN_PLAN;
@@ -646,6 +1072,8 @@ export function JordanGantt() {
   const taxW = p(taxSeason[1]) - taxL;
   const ftL = p(fasttrackrSpan[0]);
   const ftW = p(fasttrackrSpan[1]) - ftL;
+  const today = useToday();
+  const now = todayPct(today, start, end);
   return (
     <Figure
       id="fig-jordan-plan"
@@ -660,11 +1088,18 @@ export function JordanGantt() {
       }}
     >
       <div className="relative">
-        {/* tax season + FastTrackr span overlays */}
+        {/* tax season overlay, today marker and the June 30 deadline line */}
         <div
           className="absolute inset-y-0 pointer-events-none"
           style={{ left: `${taxL}%`, width: `${taxW}%`, background: 'rgba(253, 231, 176, 0.10)' }}
         />
+        {now !== null && (
+          <div
+            className="absolute inset-y-0 border-l border-dashed border-white/40 pointer-events-none"
+            style={{ left: `${now}%` }}
+          />
+        )}
+        <div className="absolute inset-y-0 right-0 w-0.5 bg-[#F08A75] pointer-events-none" />
         <div className="relative space-y-3 pt-7">
           <div
             className="absolute top-0 text-[10px] font-semibold uppercase tracking-wider text-amber-200/80"
@@ -672,17 +1107,32 @@ export function JordanGantt() {
           >
             Tax season
           </div>
+          {now !== null && now < 75 && (
+            <div className="absolute top-0 pl-1.5 text-[10px] font-semibold text-white/70" style={{ left: `${now}%` }}>
+              Today
+            </div>
+          )}
+          <div className="absolute top-0 right-0 pr-2 text-[10px] font-bold uppercase tracking-wider text-[#F08A75]">
+            Jun 30<span className="hidden sm:inline"> deadline</span>
+          </div>
           {steps.map((s) => {
             const l = p(s.start);
             const w = p(s.end) - l;
             const rightSide = l > 50;
+            const tag = GANTT_TAGS[s.label];
             return (
               <div key={s.label} className="relative h-8">
                 <div
-                  className="absolute inset-y-1 rounded-md bg-brandMint/85"
+                  className="absolute inset-y-1 rounded-md bg-brandMint/85 flex items-center justify-center overflow-hidden"
                   style={{ left: `${l}%`, width: `${w}%` }}
-                  title={`${s.label}: ${s.start} to ${s.end}`}
-                />
+                  title={`${s.label}: ${s.start} to ${s.end}${tag ? ` (${tag})` : ''}`}
+                >
+                  {tag && (
+                    <span className="hidden md:inline px-1.5 text-[10px] font-bold text-brandDeep whitespace-nowrap">
+                      {tag}
+                    </span>
+                  )}
+                </div>
                 <span
                   className="absolute top-1/2 -translate-y-1/2 text-[11px] sm:text-xs text-white whitespace-nowrap"
                   style={rightSide ? { right: `${100 - l + 1}%` } : { left: `${l + w + 1}%` }}
@@ -692,13 +1142,13 @@ export function JordanGantt() {
               </div>
             );
           })}
-          <div className="relative h-7">
+          <div className="relative h-8">
             <div
-              className="absolute inset-y-1 rounded-md border border-dashed border-brandMint flex items-center justify-center text-[10px] sm:text-[11px] font-semibold text-brandMint"
+              className="absolute inset-y-0.5 rounded-md bg-white text-brandDeep flex items-center justify-center text-[10px] sm:text-[11px] font-bold shadow-sm"
               style={{ left: `${ftL}%`, width: `${ftW}%` }}
             >
-              <span className="sm:hidden">FastTrackr span</span>
-              <span className="hidden sm:inline">FastTrackr: data → forms → e-sign → transfer</span>
+              <span className="sm:hidden">FastTrackr</span>
+              <span className="hidden sm:inline whitespace-nowrap">FastTrackr: data → forms → e-sign → transfer</span>
             </div>
           </div>
         </div>

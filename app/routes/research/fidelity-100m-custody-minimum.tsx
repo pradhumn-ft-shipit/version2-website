@@ -42,7 +42,17 @@ const jsonLd = {
       isBasedOn: {
         '@type': 'Dataset',
         name: 'SEC Form ADV (SEC monthly roster 2026-09-01; IAPD state feed 2026-10-01)',
-        creator: { '@type': 'GovernmentOrganization', name: 'U.S. Securities and Exchange Commission' },
+        description:
+          'Form ADV filings for SEC- and state-registered investment advisers: the SEC monthly registered-adviser roster (2026-09-01) and the IAPD state-registered adviser feed (2026-10-01), including regulatory AUM and custodian disclosures.',
+        url: 'https://www.sec.gov/data-research/sec-markets-data/information-about-registered-investment-advisers-exempt-reporting-advisers',
+        // US government work, public domain (17 U.S.C. § 105).
+        license: 'https://www.usa.gov/government-works',
+        // Google's Dataset rich result only accepts Person or Organization here.
+        creator: {
+          '@type': 'Organization',
+          name: 'U.S. Securities and Exchange Commission',
+          url: 'https://www.sec.gov/',
+        },
       },
     },
     breadcrumbList([

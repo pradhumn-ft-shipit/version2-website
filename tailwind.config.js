@@ -21,8 +21,8 @@ export default {
         textTertiary: '#64748B',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Outfit', 'Inter', 'sans-serif'],
+        sans: ['Inter', 'Inter Fallback', 'Inter Fallback Roboto', 'sans-serif'],
+        display: ['Outfit', 'Outfit Fallback', 'Outfit Fallback Roboto', 'sans-serif'],
       },
       boxShadow: {
         'glow-mint': '0 0 0 1px rgba(45,212,160,0.4), 0 0 24px rgba(45,212,160,0.15)',

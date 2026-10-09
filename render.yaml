@@ -31,6 +31,17 @@ services:
       # The contact form lives on the Cloudflare worker (*.pages.dev), not Render.
       - key: VITE_CONTACT_API_URL
         value: https://version2-website.pages.dev/api/contact
+    # Long-lived browser caching for files whose URL changes when their content
+    # does: Vite's content-hashed bundles under /assets, and the self-hosted
+    # fonts (rename the file if a font is ever replaced). HTML is left on
+    # Render's default so new deploys show up immediately.
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /fonts/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
     # Redirect rules MUST come before the SPA catch-all rewrite so they win.
     routes:
       # /fpa is a real page now (FPA-member Meeting Assistant landing), not a redirect.
@@ -316,6 +327,15 @@ services:
       - type: rewrite
         source: /authors/*
         destination: /authors/*/index.html
+      # We publish nothing under /.well-known/. Without this rule the catch-all
+      # below answered e.g. /.well-known/ai-catalog.json with the homepage HTML
+      # (200), which Lighthouse's Agentic Browsing audit reports as a malformed
+      # manifest. Pointing it at a file that doesn't exist should return a 404 —
+      # curl-check after deploy. Real files added under public/.well-known/
+      # still win: Render doesn't apply rules where a file exists.
+      - type: rewrite
+        source: /.well-known/*
+        destination: /.well-known/__not-found
       # SPA deep-link fallback — every other path serves the app shell so
       # React Router can handle it (and hard refreshes on /blog/<post> work).
       - type: rewrite

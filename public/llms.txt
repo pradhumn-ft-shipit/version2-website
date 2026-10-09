@@ -20,21 +20,22 @@
 Note: these are the figures FastTrackr publishes on its marketing pages; independent verification is ongoing.
 
 ## Solutions
-- Advisor Transitions: https://fasttrackr.ai/solutions/advisor-transitions
-- Client Onboarding: https://fasttrackr.ai/solutions/client-onboarding
-- Meeting Assistant: https://fasttrackr.ai/solutions/meeting-assistant
-- Document Intelligence: https://fasttrackr.ai/solutions/document-intelligence
+- [Advisor Transitions](https://fasttrackr.ai/solutions/advisor-transitions)
+- [Client Onboarding](https://fasttrackr.ai/solutions/client-onboarding)
+- [Meeting Assistant](https://fasttrackr.ai/solutions/meeting-assistant)
+- [Document Intelligence](https://fasttrackr.ai/solutions/document-intelligence)
 
 ## Who we serve
-- Transition Consultants: https://fasttrackr.ai/who-we-serve/transition-consultants
-- Breakaway Advisors: https://fasttrackr.ai/who-we-serve/breakaway-advisors
-- Acquisitive RIAs: https://fasttrackr.ai/who-we-serve/acquisitive-rias
-- Independent Broker-Dealers: https://fasttrackr.ai/who-we-serve/independent-broker-dealers
-- Custodians: https://fasttrackr.ai/who-we-serve/custodians
+- [Transition Consultants](https://fasttrackr.ai/who-we-serve/transition-consultants)
+- [Breakaway Advisors](https://fasttrackr.ai/who-we-serve/breakaway-advisors)
+- [Acquisitive RIAs](https://fasttrackr.ai/who-we-serve/acquisitive-rias)
+- [Independent Broker-Dealers](https://fasttrackr.ai/who-we-serve/independent-broker-dealers)
+- [Custodians](https://fasttrackr.ai/who-we-serve/custodians)
 
 ## Reference
-- Glossary (NIGO, ACATS, repapering, Broker Protocol, Reg BI, TOA, PTE 2020-02, OSJ, tuck-in): https://fasttrackr.ai/glossary
-- Pricing: https://fasttrackr.ai/pricing
-- Case studies: https://fasttrackr.ai/case-study
-- Blog: https://fasttrackr.ai/resources/blog
-- Contact / book a demo: https://fasttrackr.ai/contact
+- [Glossary](https://fasttrackr.ai/glossary): NIGO, ACATS, repapering, Broker Protocol, Reg BI, TOA, PTE 2020-02, OSJ, tuck-in
+- [Pricing](https://fasttrackr.ai/pricing)
+- [Case studies](https://fasttrackr.ai/case-study)
+- [The $100M Line (research report)](https://fasttrackr.ai/research/fidelity-100m-custody-minimum)
+- [Blog](https://fasttrackr.ai/resources/blog)
+- [Contact / book a demo](https://fasttrackr.ai/contact)

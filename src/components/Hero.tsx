@@ -45,7 +45,8 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
               <div className="flex items-center gap-3">
                 <img
-                  src="/logos/soc2-type-ii.png"
+                  src="/logos/soc2-type-ii-112.webp"
+                  srcSet="/logos/soc2-type-ii-112.webp 2x, /logos/soc2-type-ii-168.webp 3x"
                   alt="SOC 2 Type II compliant"
                   width={56}
                   height={56}

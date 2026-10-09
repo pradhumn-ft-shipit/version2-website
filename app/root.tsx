@@ -25,20 +25,25 @@ export function Layout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
-        {/* Google tag (gtag.js) — GA4 property G-JK6XW881LK. Placed high in the
-            head so it ships in every prerendered page. In-app (client-side)
-            navigations are counted by GA4 Enhanced Measurement via browser
-            history events (on by default), so we do NOT also fire manual
+        {/* Google tag (gtag.js) — GA4 property G-JK6XW881LK. The dataLayer stub
+            runs immediately so gtag() calls queue from first paint, but the
+            ~180 KB gtag.js itself is injected only after window load (on idle),
+            so on slow mobile it doesn't compete with our CSS/JS for bandwidth or
+            the main thread. Queued events replay once it arrives. In-app
+            (client-side) navigations are counted by GA4 Enhanced Measurement via
+            browser history events (on by default), so we do NOT also fire manual
             page_view events here — doing both would double-count every SPA nav.
             dangerouslySetInnerHTML is required because React does not serialize
             inline script bodies otherwise. */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK6XW881LK" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-JK6XW881LK');`,
+gtag('config', 'G-JK6XW881LK');
+(function(){function l(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-JK6XW881LK';document.head.appendChild(s);}
+function i(){'requestIdleCallback' in window?requestIdleCallback(l,{timeout:2000}):setTimeout(l,1);}
+document.readyState==='complete'?i():addEventListener('load',i);})();`,
           }}
         />
         {/* OnlyAEO (AEO analytics) — tracks human visitors and which AI platform
@@ -62,24 +67,16 @@ gtag('config', 'G-JK6XW881LK');`,
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#0A3D2E" />
 
-        {/* Fonts: preconnect + preload, then a plain stylesheet. The old
-            media="print" + onLoad swap trick does NOT survive prerendering —
-            React drops the onLoad handler when serializing to static HTML, so
-            the stylesheet stays media="print" and the fonts never apply. A
-            normal <link rel="stylesheet"> with display=swap in the URL is
-            non-blocking at first paint (fallback text shows, then swaps) and
-            works identically with or without JS. */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preload" as="image" href="/logo.png" />
+        {/* Fonts are self-hosted (@font-face in src/index.css). Preload Outfit —
+            the headline face, i.e. the LCP text on most pages — so it's fetched
+            in parallel with the stylesheet rather than discovered after it.
+            crossOrigin is required for font preloads even on the same origin. */}
         <link
           rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+          as="font"
+          type="font/woff2"
+          href="/fonts/outfit-latin-var.woff2"
+          crossOrigin="anonymous"
         />
 
         <Meta />

@@ -82,6 +82,7 @@ export default function BlogPost({
                 <img
                   src={post.image}
                   alt={post.imageAlt}
+                  fetchPriority="high"
                   className="w-full h-full object-cover"
                 />
               </div>

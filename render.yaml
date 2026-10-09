@@ -45,19 +45,27 @@ services:
     # Redirect rules MUST come before the SPA catch-all rewrite so they win.
     routes:
       # /fpa is a real page now (FPA-member Meeting Assistant landing), not a redirect.
-      # Methodology appendix PDF was withdrawn (2026-10-06). Render keeps files from
-      # earlier deploys, so deleting it from public/ alone left it reachable;
-      # send old links to the report page instead.
+      # "The $100M Line" Fidelity report and the /research section were withdrawn
+      # (2026-10-09). Render keeps files from earlier deploys, so deleting them from
+      # public/ alone would leave them reachable; send every old link home.
       - type: redirect
         source: /downloads/fasttrackr-fidelity-100m-line-methodology.pdf
-        destination: /research/fidelity-100m-custody-minimum
-      # No /research hub yet; send the bare path to the one report (used in social posts).
+        destination: /
+      - type: redirect
+        source: /downloads/fasttrackr-fidelity-100m-line-report.pdf
+        destination: /
+      - type: redirect
+        source: /research-images/*
+        destination: /
       - type: redirect
         source: /research
-        destination: /research/fidelity-100m-custody-minimum
+        destination: /
       - type: redirect
         source: /research/
-        destination: /research/fidelity-100m-custody-minimum
+        destination: /
+      - type: redirect
+        source: /research/*
+        destination: /
       - type: redirect
         source: /aon
         destination: /contact
@@ -312,10 +320,6 @@ services:
       - type: rewrite
         source: /cost-of-repapering
         destination: /cost-of-repapering/index.html
-      # FastTrackr Research report pages (prerendered static routes).
-      - type: rewrite
-        source: /research/*
-        destination: /research/*/index.html
       # W3 glossary hub + entries, and W5 author archive pages. Prerendered
       # static routes that likewise need their own rewrite before the catch-all.
       - type: rewrite

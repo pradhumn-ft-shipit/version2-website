@@ -25,8 +25,6 @@ const resourcesItems = [
   { label: 'Blog', href: '/resources/blog' },
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
-  // FastTrackr Research — goes straight to the current flagship report.
-  { label: 'Research', href: '/research/fidelity-100m-custody-minimum' },
   // W3: definitional hub — surfaced in nav + footer.
   { label: 'Glossary', href: '/glossary' },
   // W2: un-bury the crawlable resource library — the only page that prerenders a

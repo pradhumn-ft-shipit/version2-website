@@ -73,7 +73,6 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/resources/podcasts', priority: '0.6' },
   { path: '/resources-for-financial-advisors', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
-  { path: '/research/fidelity-100m-custody-minimum', priority: '0.8' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
   // Intentionally NOT listed, though they are real routes in src/App.tsx:

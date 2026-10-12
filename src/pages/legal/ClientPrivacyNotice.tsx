@@ -63,7 +63,7 @@ export default function ClientPrivacyNotice() {
       <p>Your data is retained only for as long as it is needed for your account transition. Once the project is closed:</p>
       <ul>
         <li>Your data is deleted from active systems within <strong>30 days</strong></li>
-        <li>Backup copies are fully purged within <strong>60 days</strong></li>
+        <li>Backup copies are fully purged within <strong>30 days</strong></li>
       </ul>
       <p>You may request deletion at any time by contacting your advisor or emailing us directly at <a href="mailto:contact@fasttrackr.ai">contact@fasttrackr.ai</a>.</p>
 

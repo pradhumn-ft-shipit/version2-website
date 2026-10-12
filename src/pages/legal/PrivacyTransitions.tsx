@@ -11,6 +11,9 @@ export default function PrivacyTransitions() {
       <p>This Privacy Policy applies specifically to the FastTrackr Transition Platform. For our general website and other services, please refer to the applicable privacy policy at <a href="/privacy-policy">fasttrackr.ai/privacy-policy</a>.</p>
       <p>By using the Platform, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
 
+      <h2>Order of Precedence</h2>
+      <p>If FastTrackr AI has entered into a written agreement with a User or the User's organization (such as a master services agreement, data processing agreement, or order form), and that agreement conflicts with this Privacy Policy, the terms of that agreement take precedence to the extent of the conflict. Such agreements may provide shorter deletion, notification, or other timelines than those described in this Privacy Policy.</p>
+
       <h2>1. Definitions</h2>
       <p><strong>&ldquo;User&rdquo;</strong> means any individual who accesses or uses the Platform, including financial advisors, transition consultants, firm administrators, and support staff.</p>
       <p><strong>&ldquo;Advisor&rdquo;</strong> means any licensed or registered financial professional transitioning between financial services firms, or whose book of business is being acquired by, transferred to, or consolidated with another firm. This includes individuals affiliated with wirehouses, broker-dealers, RIAs, hybrid RIAs, bank trust departments, insurance-affiliated advisory platforms, and independent contractors.</p>
@@ -127,7 +130,7 @@ export default function PrivacyTransitions() {
       <p><strong>7.1 Client Data</strong> — Retained for the duration of the active Project. Following Project closure or receipt of a deletion request:</p>
       <ul>
         <li>Active Client Data is deleted from production systems within <strong>30 days</strong> of Project closure;</li>
-        <li>Backup copies are purged within <strong>60 days</strong> following deletion from active systems.</li>
+        <li>Backup copies expire automatically and are purged within <strong>30 days</strong> following deletion from active systems.</li>
       </ul>
       <p><strong>7.2 Document Uploads</strong> — Retained for the duration of the active Project and deleted within 30 days of Project closure or upon receipt of a deletion request.</p>
       <p><strong>7.3 Audio Recordings and Transcripts</strong> — Retained for the duration of the active Project and for up to <strong>30 days</strong> after project closure or upon receipt of a deletion request, after which they are permanently deleted.</p>

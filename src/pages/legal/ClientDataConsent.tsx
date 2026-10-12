@@ -34,7 +34,7 @@ export default function ClientDataConsent() {
       <p>In the unlikely event of a data security incident affecting your information, your advisor will be notified and will communicate with you directly.</p>
 
       <h2>5. Retention and deletion</h2>
-      <p>Your data will be held only for as long as needed for your account transition. It will be deleted from active systems within 30 days of your project closing, and from all backup systems within 60 days. You may request earlier deletion by contacting your financial advisor or emailing <a href="mailto:contact@fasttrackr.ai">contact@fasttrackr.ai</a>.</p>
+      <p>Your data will be held only for as long as needed for your account transition. It will be deleted from active systems within 30 days of your project closing, and from all backup systems within 30 days. You may request earlier deletion by contacting your financial advisor or emailing <a href="mailto:contact@fasttrackr.ai">contact@fasttrackr.ai</a>.</p>
 
       <h2>6. Your rights</h2>
       <p>At any time, you may:</p>

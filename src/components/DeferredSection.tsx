@@ -1,57 +1,35 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
   minHeight: string;
-  rootMargin?: string;
   id?: string;
 };
 
-export default function DeferredSection({
-  children,
-  minHeight,
-  rootMargin = '300px',
-  id,
-}: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shouldMount, setShouldMount] = useState(false);
-
-  useEffect(() => {
-    if (shouldMount) return;
-
-    const node = ref.current;
-    if (!node) return;
-
-    if (typeof IntersectionObserver === 'undefined') {
-      setShouldMount(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setShouldMount(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [shouldMount, rootMargin]);
-
+/**
+ * Below-the-fold section wrapper. Children are ALWAYS rendered, so they land in
+ * the prerendered HTML: visitors see real content while JS is still loading, and
+ * crawlers that don't run JS can read it.
+ *
+ * (It used to mount children only after an IntersectionObserver fired, which
+ * left ~9,500px of empty placeholder in the static HTML. On slow phones that
+ * meant scrolling into blank space until hydration finished.)
+ *
+ * `content-visibility: auto` still lets the browser skip style/layout/paint for
+ * off-screen sections. `contain-intrinsic-size: auto <h>` reserves an estimated
+ * height until the section has rendered once, then remembers its real size, so
+ * the scrollbar doesn't jump.
+ */
+export default function DeferredSection({ children, minHeight, id }: Props) {
   return (
     <div
       id={id}
-      ref={ref}
       style={{
-        minHeight: shouldMount ? undefined : minHeight,
-        contentVisibility: shouldMount ? undefined : 'auto',
-        containIntrinsicSize: shouldMount ? undefined : `1px ${minHeight}`,
+        contentVisibility: 'auto',
+        containIntrinsicSize: `auto ${minHeight}`,
       }}
     >
-      {shouldMount ? children : null}
+      {children}
     </div>
   );
 }

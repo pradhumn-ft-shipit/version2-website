@@ -34,7 +34,9 @@ export default function SocialProof() {
                     alt={logo.alt}
                     width={logo.width}
                     height={logo.height}
-                    loading="lazy"
+                    // First copy is on screen at load on phones; only the
+                    // marquee's duplicate copy can wait.
+                    loading={i === 0 ? 'eager' : 'lazy'}
                     decoding="async"
                     className="h-10 w-auto max-w-none object-contain shrink-0 grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
                   />

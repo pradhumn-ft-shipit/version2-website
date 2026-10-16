@@ -1,5 +1,16 @@
 import { m } from '../lib/motion';
-const featured = {
+// Featured quote — heads the left column
+const featured: { quote: string[]; author: string; role?: string; company?: string } = {
+  quote: [
+    "Before FastTrackr, so much of every transition was manual; document generation, DocuSign uploads, and all the steps in between. FastTrackr takes that work off our plate and lets our team focus on the parts of the transition that actually need us. We don't want to do another transition without it."
+  ],
+  author: "Grier Rubeling",
+  role: "Director",
+  company: "ROffice"
+};
+
+// Secondary emphasis quote — heads the right column
+const secondary = {
   quote: [
     "FastTrackr saved me a tremendous amount of time and frustration throughout this process. Out of 411 accounts, we only had two NIGOs (neither due to FastTrackr), which is remarkable given the volume and complexity of the project.",
     "Their team is brilliant and the platform did an excellent job organizing and managing a significant amount of data. The efficiency, accuracy, and time savings were extremely valuable to me."
@@ -7,14 +18,6 @@ const featured = {
   author: "Douglas Vowels",
   role: "Managing Partner",
   company: "Intentional Wealth Planning"
-};
-
-// Secondary emphasis quote — heads the right column
-const secondary = {
-  quote: "Transitioning was the most stressful month I've had in my career. Working with FastTrackr allowed me to focus on contacting clients and devote very little mental energy to the details around completion of paperwork.",
-  author: "Jason Carter, CFA®, MBA",
-  role: "Managing Partner | Wealth Advisor",
-  company: "Cana Wealth Management"
 };
 
 // Sits under the featured quote, in the left column
@@ -35,6 +38,12 @@ const leftColumnSecond = {
 
 const testimonials = [
   {
+    quote: "Transitioning was the most stressful month I've had in my career. Working with FastTrackr allowed me to focus on contacting clients and devote very little mental energy to the details around completion of paperwork.",
+    author: "Jason Carter, CFA®, MBA",
+    role: "Managing Partner | Wealth Advisor",
+    company: "Cana Wealth Management"
+  },
+  {
     quote: "Using FastTrackr AI has been a key enhancement to my client meeting process. It's remarkably easy to use... Most importantly, the quality of the meeting notes is far better than what I would capture manually. The summaries are clear, detailed, and actionable.",
     author: "Gregg D. Jensen",
     role: "CCO & Head of Financial Planning",
@@ -51,8 +60,8 @@ const testimonials = [
 type Quote = {
   quote: string;
   author: string;
-  role: string;
-  company: string;
+  role?: string;
+  company?: string;
 };
 
 function QuoteCard({ t, delay = 0, from = 20 }: { t: Quote; delay?: number; from?: number }) {
@@ -73,7 +82,9 @@ function QuoteCard({ t, delay = 0, from = 20 }: { t: Quote; delay?: number; from
         </div>
         <div>
           <div className="font-semibold text-textPrimary">{t.author}</div>
-          <div className="text-sm text-textTertiary">{t.role}, {t.company}</div>
+          {(t.role || t.company) && (
+            <div className="text-sm text-textTertiary">{[t.role, t.company].filter(Boolean).join(', ')}</div>
+          )}
         </div>
       </div>
     </m.div>
@@ -104,24 +115,25 @@ export default function Testimonials() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-panel bg-bgCanvas rounded-3xl p-10 md:p-12 border border-gray-100 flex flex-col justify-between flex-1"
+            className="glass-panel bg-bgCanvas rounded-3xl p-10 md:p-12 border border-gray-100 flex flex-col"
           >
             <div>
               <span className="text-8xl text-brandMint/30 leading-none font-display block -mb-8">"</span>
               <p className="text-lg md:text-xl font-display font-semibold text-textPrimary leading-snug relative z-10">
-                {featured.quote[0]}
-                <br />
-                <br />
-                {featured.quote[1]}
+                {featured.quote.map((para, i) => (
+                  <span key={i}>{i > 0 && <><br /><br /></>}{para}</span>
+                ))}
               </p>
             </div>
-            <div className="mt-12 flex items-center gap-4">
+            <div className="mt-8 flex items-center gap-4">
               <div className="w-14 h-14 flex-shrink-0 rounded-full bg-brandDeep flex items-center justify-center text-brandMint font-display font-bold text-xl">
                 {featured.author.charAt(0)}
               </div>
               <div>
                 <div className="font-bold text-textPrimary text-lg">{featured.author}</div>
-                <div className="text-textSecondary">{featured.role}, {featured.company}</div>
+                {(featured.role || featured.company) && (
+                  <div className="text-textSecondary">{[featured.role, featured.company].filter(Boolean).join(', ')}</div>
+                )}
               </div>
             </div>
           </m.div>
@@ -141,7 +153,9 @@ export default function Testimonials() {
               className="bg-bgCanvas rounded-3xl p-8 md:p-10 border border-gray-100"
             >
               <p className="text-lg md:text-xl font-display font-semibold text-textPrimary leading-snug mb-8">
-                "{secondary.quote}"
+                {secondary.quote.map((para, i) => (
+                  <span key={i}>{i > 0 && <><br /><br /></>}{i === 0 && '"'}{para}{i === secondary.quote.length - 1 && '"'}</span>
+                ))}
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 flex-shrink-0 rounded-full bg-brandMint/15 flex items-center justify-center text-brandDeep font-display font-bold text-lg">

@@ -3,10 +3,12 @@ import React from 'react';
 const logos: { src: string; alt: string; width: number; height: number }[] = [
   { src: '/logos/fidelity.png', alt: 'Fidelity Investments', width: 65, height: 40 },
   { src: '/logos/charles-schwab.svg', alt: 'Charles Schwab', width: 140, height: 40 },
+  { src: '/logos/rossby.webp', alt: 'Rossby', width: 149, height: 40 },
   { src: '/logos/lpl-financial.svg', alt: 'LPL Financial', width: 120, height: 40 },
   { src: '/logos/edward-jones.png', alt: 'Edward Jones', width: 244, height: 40 },
   { src: '/logos/cetera.png', alt: 'Cetera Financial Group', width: 136, height: 40 },
   { src: '/logos/newedge-advisors.jpg', alt: 'NewEdge Advisors', width: 140, height: 40 },
+  { src: '/logos/r-office.png', alt: 'ROffice', width: 152, height: 40 },
   { src: '/logos/advizorstack.svg', alt: 'Advizorstack', width: 150, height: 40 },
   { src: '/logos/cana-wealth.png', alt: 'Cana Wealth Management', width: 100, height: 40 },
   { src: '/logos/intentional-wealth-planning.svg', alt: 'Intentional Wealth Planning', width: 112, height: 40 },

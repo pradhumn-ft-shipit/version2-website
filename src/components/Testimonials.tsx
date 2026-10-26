@@ -96,7 +96,7 @@ function FeaturedCard({ t, from }: { t: FeaturedQuote; from: number }) {
     >
       <div>
         <span className="text-8xl text-brandMint/30 leading-none font-display block -mb-8">"</span>
-        <div className="text-lg md:text-xl font-display font-semibold text-textPrimary leading-snug relative z-10 space-y-4">
+        <div className="text-lg md:text-xl text-textPrimary leading-snug relative z-10 space-y-4">
           {t.quote.map((para, i) => (
             <p key={i}>{i === 0 && '"'}{para}{i === t.quote.length - 1 && '"'}</p>
           ))}
@@ -147,7 +147,7 @@ export default function Testimonials() {
               transition={{ delay: 0.1 }}
               className="bg-bgCanvas rounded-3xl p-8 md:p-10 border border-gray-100"
             >
-              <p className="text-lg md:text-xl font-display font-semibold text-textPrimary leading-snug mb-8">
+              <p className="text-lg md:text-xl text-textPrimary leading-snug mb-8">
                 {secondary.quote.map((para, i) => (
                   <span key={i}>{i > 0 && <><br /><br /></>}{i === 0 && '"'}{para}{i === secondary.quote.length - 1 && '"'}</span>
                 ))}

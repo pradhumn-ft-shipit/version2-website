@@ -262,6 +262,12 @@ services:
       - type: redirect
         source: /blog/future-advisor-transition-technology-trends-2026-humanized
         destination: /blog/future-advisor-transition-technology-trends-2026
+      # PR3-03 (2026-11-04): the 2025-07-15 SOC 2 announcement post is retired;
+      # its one reusable part (what SOC 2 Type II is) now lives on /security.
+      # After deploy, prune any old dashboard rule for this path by hand.
+      - type: redirect
+        source: /blog/fasttrackr-ai-achieves-soc-2-type-ii-certification-a-milestone-in-security-and-trust
+        destination: /security
       # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
       # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
       # real page.
@@ -863,9 +869,6 @@ services:
       - type: rewrite
         source: /blog/executive-deck-transition-technology-cost-benefit
         destination: /blog/executive-deck-transition-technology-cost-benefit/index.html
-      - type: rewrite
-        source: /blog/fasttrackr-ai-achieves-soc-2-type-ii-certification-a-milestone-in-security-and-trust
-        destination: /blog/fasttrackr-ai-achieves-soc-2-type-ii-certification-a-milestone-in-security-and-trust/index.html
       - type: rewrite
         source: /blog/fasttrackr-ai-at-wealth-management-edge
         destination: /blog/fasttrackr-ai-at-wealth-management-edge/index.html

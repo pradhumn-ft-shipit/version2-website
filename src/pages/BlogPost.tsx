@@ -29,8 +29,9 @@ export default function BlogPost({
   // human author with an author page + Person schema.
   const author = resolveAuthor(post);
   const authorHref = `/authors/${author.slug}`;
-  // No edit history is tracked, so "Last updated" == the publish date.
-  const lastUpdated = formatBlogDate(post.date);
+  // "Last updated" is the post's `updated` date when it has been revised
+  // (PR2-07), else the publish date.
+  const lastUpdated = formatBlogDate(post.updated ?? post.date);
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />

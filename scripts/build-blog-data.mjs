@@ -284,6 +284,8 @@ function renderTejasFile(filePath, dateFolder, canonicalTopics) {
       image: imageField || null,
       imageAlt: (data.imageAlt || '').trim() || title,
       date: safeDate(data.date) || safeDate(dateFolder),
+      // PR2-07: date of the last real content revision, if any (frontmatter `updated:`).
+      updated: safeDate(data.updated),
       author: (data.author || '').trim() || 'FastTrackr AI Team',
       description,
       excerpt: makeExcerpt(description, html),
@@ -317,6 +319,7 @@ function renderMarkdownFile(filePath) {
     image: (data.image || '').trim() || null,
     imageAlt: (data.imageAlt || '').trim() || title,
     date: safeDate(data.date),
+    updated: safeDate(data.updated),
     author: (data.author || '').trim() || 'FastTrackr AI Team',
     description,
     excerpt: makeExcerpt(description, html),

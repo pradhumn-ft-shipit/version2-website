@@ -69,7 +69,8 @@ export function meta({ data }: MetaArgs<typeof loader>): MetaDescriptor[] {
   // W5: no per-post edit history is tracked, so dateModified == the publish date
   // (an honest "not revised since publish"). Surfaced so answer engines that
   // weight recency have the field to read.
-  const dateModified = post.date ?? undefined;
+  // PR2-07: a revised post carries `updated` (frontmatter / legacy JSON).
+  const dateModified = post.updated ?? post.date ?? undefined;
 
   const blogPosting: Record<string, unknown> = {
     '@type': 'BlogPosting',

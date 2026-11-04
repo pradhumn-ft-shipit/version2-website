@@ -21,6 +21,8 @@ export type BlogIndexEntry = {
 export type BlogPost = BlogIndexEntry & {
   description: string;
   content: string;
+  /** ISO date of the last real content revision (frontmatter `updated:`). */
+  updated?: string | null;
 };
 
 export type BlogIndexFile = { count: number; posts: BlogIndexEntry[] };

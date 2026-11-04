@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageFAQ from '../components/PageFAQ';
 import { m } from '../lib/motion';
-import { CheckCircle2, ArrowRight, Mic, FileSearch, UserPlus } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const transitionScopeBlocks = [
@@ -26,42 +26,10 @@ const scopingSteps = [
   },
 ];
 
-const moduleCards = [
-  {
-    icon: <Mic className="w-6 h-6 text-brandDeep" />,
-    title: 'Meeting Assistant',
-    description: 'Per-seat, free tier to start. For advisors and teams who want meeting prep, notes, and follow-ups handled. Start free, scale up as your team grows.',
-    href: '/solutions/meeting-assistant',
-    interest: 'meeting-assistant',
-  },
-  {
-    icon: <FileSearch className="w-6 h-6 text-brandDeep" />,
-    title: 'Document Intelligence',
-    description: 'Per-seat, pay for what you use. For advisors and teams turning brokerage statements, tax docs, and equity comp into clean, structured data. Free tier to start.',
-    href: '/solutions/document-intelligence',
-    interest: 'document-intelligence',
-  },
-  {
-    icon: <UserPlus className="w-6 h-6 text-brandDeep" />,
-    title: 'Client Onboarding',
-    description: 'Per-seat for advisors. Custom for firms. For advisors onboarding new clients faster, and firms running onboarding at volume. Pricing flexes to either.',
-    href: '/solutions/client-onboarding',
-    interest: 'client-onboarding',
-  },
-];
-
 const faqs = [
-  {
-    q: 'Can we start with one module and add others?',
-    a: 'Yes. Most firms do.',
-  },
   {
     q: 'Do you offer enterprise contracts?',
     a: 'Yes. For BDs, custodians, and large RIAs, we structure enterprise agreements tied to advisor and household volume.',
-  },
-  {
-    q: 'Is there a free trial?',
-    a: 'The Meeting Assistant and Document Intelligence modules have free tiers. Advisor Transitions starts with a paid pilot.',
   },
 ];
 
@@ -88,7 +56,7 @@ export default function Pricing() {
         </section>
 
         {/* Advisor Transitions, full-width hero card */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
           <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,39 +103,6 @@ export default function Pricing() {
               </div>
             </div>
           </m.div>
-        </section>
-
-        {/* Other modules row */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-textPrimary mb-3">
-              Industry-best pricing on every module. Talk to us separately.
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {moduleCards.map((card, i) => (
-              <m.div
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-100 rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-lg transition-shadow flex flex-col"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-bgCanvas flex items-center justify-center mb-6">
-                  {card.icon}
-                </div>
-                <h3 className="text-2xl font-display font-bold text-textPrimary mb-4">{card.title}</h3>
-                <p className="text-textSecondary leading-relaxed mb-8 flex-grow">{card.description}</p>
-                <Link to={`/contact?interest=${card.interest}`}>
-                  <button className="w-full bg-brandDeep text-white hover:bg-brandMint hover:text-brandDeep px-6 py-3 rounded-xl font-bold transition-colors">
-                    Talk to Us
-                  </button>
-                </Link>
-              </m.div>
-            ))}
-          </div>
         </section>
 
         <PageFAQ faqs={faqs} />

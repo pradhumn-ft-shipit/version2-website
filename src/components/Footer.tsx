@@ -90,6 +90,23 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
             <p className="text-sm text-textSecondary italic">
               Advisor transitions, finally built right.<br/>Move advisor books in days, not months.
             </p>
+            {/* PR3-02: SOC 2 badge on every page, linked to the security page. */}
+            <Link
+              to="/security"
+              aria-label="SOC 2 Type II. See our security page"
+              className="mt-6 inline-flex items-center gap-3 border border-gray-200 rounded-xl px-3 py-2 hover:border-brandMint transition-colors"
+            >
+              <img
+                src="/logos/soc2-type-ii-112.webp"
+                srcSet="/logos/soc2-type-ii-112.webp 2x, /logos/soc2-type-ii-168.webp 3x"
+                alt=""
+                width={40}
+                height={40}
+                loading="lazy"
+                className="w-10 h-10 object-contain"
+              />
+              <span className="text-sm font-bold text-textPrimary">SOC 2 Type II</span>
+            </Link>
           </div>
 
           <FooterColumn title="Solutions" links={solutionsLinks} />

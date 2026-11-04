@@ -43,7 +43,8 @@ export default function Hero() {
               prior animation delay (0.8s + 0.6s) blocked LCP for ~2.7s. */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
-              <div className="flex items-center gap-3">
+              {/* PR3-02: the SOC 2 badge links to the security page. */}
+              <Link to="/security" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                 <img
                   src="/logos/soc2-type-ii-112.webp"
                   srcSet="/logos/soc2-type-ii-112.webp 2x, /logos/soc2-type-ii-168.webp 3x"
@@ -57,7 +58,7 @@ export default function Hero() {
                   <span className="text-sm font-bold text-textPrimary">SOC 2 Type II</span>
                   <span className="text-sm text-textSecondary">Compliant</span>
                 </div>
-              </div>
+              </Link>
 
               <span className="hidden sm:block w-px h-10 bg-gray-300" />
 

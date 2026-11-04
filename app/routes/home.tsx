@@ -7,8 +7,7 @@ import { SITE_ORIGIN, seoMeta, type SeoConfig } from '../../src/lib/seo';
 // the route, then `return seoMeta(config)` from the module's `meta` export.
 //
 // Values mirror the homepage <head> that index.html shipped pre-migration: the
-// full meta description, the shorter OG/Twitter hook, canonical "/", and the
-// site's Organization JSON-LD.
+// meta description, canonical "/", and the site's Organization + WebSite JSON-LD.
 // REVIEW (W0c): "weeks" → "days" in description + ogDescription (was "in weeks, not months").
 const seo: SeoConfig = {
   title: 'FastTrackr AI | Advisor transitions, finally built right.',
@@ -19,12 +18,35 @@ const seo: SeoConfig = {
   canonical: '/',
   ogType: 'website',
   ogImage: '/logomark.png',
+  // PR3-06 (2026-11-04): Organization + WebSite in one @graph. sameAs are the
+  // footer's social links (LinkedIn, YouTube, X; no Crunchbase). /about points
+  // at #organization. The homepage FAQPage JSON-LD stays a separate block.
   jsonLd: {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'FastTrackr AI',
-    url: SITE_ORIGIN,
-    logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${SITE_ORIGIN}/#organization`,
+        name: 'FastTrackr AI',
+        url: `${SITE_ORIGIN}/`,
+        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
+        description:
+          "FastTrackr AI is software for advisor transitions. It works out which custodian and firm forms a move needs, then fills them from the advisor's data and sends them out.",
+        founder: { '@type': 'Person', name: 'Vineet Mohan', jobTitle: 'Founder and CEO' },
+        sameAs: [
+          'https://www.linkedin.com/company/fasttrackr-ai/',
+          'https://www.youtube.com/channel/UCnzPn4iuHJwjTj9bM_1FcbA',
+          'https://x.com/Fasttrackr_AI',
+        ],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_ORIGIN}/#website`,
+        name: 'FastTrackr AI',
+        url: `${SITE_ORIGIN}/`,
+        publisher: { '@id': `${SITE_ORIGIN}/#organization` },
+      },
+    ],
   },
 };
 

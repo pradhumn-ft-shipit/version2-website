@@ -25,9 +25,6 @@ const resourcesItems = [
   { label: 'News', href: '/resources/news' },
   // W3: definitional hub — surfaced in nav + footer.
   { label: 'Glossary', href: '/glossary' },
-  // W2: un-bury the crawlable resource library — the only page that prerenders a
-  // link to every post. Footer-only before; now surfaced in the nav dropdown too.
-  { label: 'Resource Library', href: '/resources-for-financial-advisors' },
 ];
 
 export default function Navbar() {

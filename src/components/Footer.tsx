@@ -20,7 +20,6 @@ const resourcesLinks = [
   { label: 'News', href: '/resources/news' },
   { label: 'Glossary', href: '/glossary' }, // W3 definitional hub
   { label: 'Case Studies', href: '/case-study' },
-  { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
 ];
 
 const companyLinks = [

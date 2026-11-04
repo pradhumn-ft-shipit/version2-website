@@ -89,6 +89,13 @@ services:
       - type: redirect
         source: /solutions/client-onboarding
         destination: /solutions/advisor-transitions
+      # PR1-09 (2026-11-04): the /resources-for-financial-advisors hub is retired
+      # (most of its sections were off-topic). /resources/blog still prerenders a
+      # link to every post. Re-point to the transitions hub when it exists (PR6).
+      # After deploy, prune its old rewrite rule in the dashboard by hand.
+      - type: redirect
+        source: /resources-for-financial-advisors
+        destination: /blog/category/advisor-transitions-and-repapering
       # /blog is a redirect-only route (canonical blog index is /resources/blog).
       # Serve a real 301 here instead of the catch-all homepage shell.
       - type: redirect
@@ -298,9 +305,6 @@ services:
       - type: rewrite
         source: /fpa
         destination: /fpa/index.html
-      - type: rewrite
-        source: /resources-for-financial-advisors
-        destination: /resources-for-financial-advisors/index.html
       - type: rewrite
         source: /privacy-policy
         destination: /privacy-policy/index.html

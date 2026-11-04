@@ -68,7 +68,6 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/resources/blog', priority: '0.5' },
   { path: '/resources/news', priority: '0.6' },
   { path: '/resources/podcasts', priority: '0.6' },
-  { path: '/resources-for-financial-advisors', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },

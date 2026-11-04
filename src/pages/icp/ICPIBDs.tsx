@@ -66,7 +66,7 @@ export default function ICPIBDs() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 opacity-50">
                       <div className="w-5 h-5 rounded-full border-2 border-gray-300" />
-                      <span className="line-through">90-day transition timeline</span>
+                      <span className="line-through">Months-long transition timeline</span>
                     </div>
                     <div className="flex items-center gap-3 opacity-50">
                       <div className="w-5 h-5 rounded-full border-2 border-gray-300" />

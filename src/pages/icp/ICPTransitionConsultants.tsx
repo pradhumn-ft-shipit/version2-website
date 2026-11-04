@@ -3,7 +3,7 @@ import Footer from '../../components/Footer';
 import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
 import { m } from '../../lib/motion';
-import { CheckCircle2, TrendingUp, Users, Zap, Clock } from 'lucide-react';
+import { CheckCircle2, TrendingUp, Users, Zap } from 'lucide-react';
 
 export default function ICPTransitionConsultants() {
   const faqs = [
@@ -186,12 +186,7 @@ export default function ICPTransitionConsultants() {
         {/* Outcomes */}
         <section className="py-24 bg-brandDeep text-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <Clock className="w-8 h-8 text-brandMint mx-auto mb-4" />
-                <div className="text-4xl font-bold font-display mb-2">75%</div>
-                <div className="text-white/80">less admin per deal</div>
-              </div>
+            <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <Users className="w-8 h-8 text-brandMint mx-auto mb-4" />
                 <div className="text-4xl font-bold font-display mb-2">Higher CSAT</div>

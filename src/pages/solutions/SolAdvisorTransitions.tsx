@@ -4,7 +4,7 @@ import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
 import { m } from '../../lib/motion';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, TrendingUp, Clock, FileWarning, Smile, Database, LayoutList, FileText, X } from 'lucide-react';
+import { CheckCircle2, TrendingUp, FileWarning, Smile, Database, LayoutList, FileText, X } from 'lucide-react';
 
 export default function SolAdvisorTransitions() {
   const faqs = [
@@ -83,31 +83,19 @@ export default function SolAdvisorTransitions() {
                 Repapering hasn't been redesigned in decades.
               </p>
               <p>
-                A typical transition takes 90 days. Some take longer. Each household generates dozens of forms, account applications, transfer-of-asset forms, feature forms, multiplied across every account in the book. Tracked in spreadsheets. Chased across email threads. One missing field sends a form back, and the cycle resets.
+                A typical transition takes months. Each household generates dozens of forms, account applications, transfer-of-asset forms, feature forms, multiplied across every account in the book. Tracked in spreadsheets. Chased across email threads. One missing field sends a form back, and the cycle resets.
               </p>
               <p>
                 For the advisor, it's months of operational work that has nothing to do with why they got into the business. For the team, it's overtime season. For clients, it's a stretch of silence that some don't wait through.
               </p>
-              <p className="font-semibold text-brandDeep text-2xl">
-                The industry loses an estimated $19B in client assets every year to transitions that didn't go smoothly enough.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-6 mt-2">
+              <div className="max-w-md mx-auto mt-2">
                   <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-glass text-center">
                     <div className="w-14 h-14 bg-bgCanvas rounded-2xl flex items-center justify-center text-brandMint mx-auto mb-5">
                       <FileWarning className="w-6 h-6" />
                     </div>
-                    <div className="text-5xl font-display font-bold text-brandDeep mb-2">30–50%</div>
+                    <div className="text-5xl font-display font-bold text-brandDeep mb-2">15%</div>
                     <p className="text-textSecondary leading-relaxed">
                       Industry estimate for the not-in-good-order (NIGO) rate on transition paperwork. Every rejection sends forms back and resets the clock.
-                    </p>
-                  </div>
-                  <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-glass text-center">
-                    <div className="w-14 h-14 bg-bgCanvas rounded-2xl flex items-center justify-center text-brandMint mx-auto mb-5">
-                      <Clock className="w-6 h-6" />
-                    </div>
-                    <div className="text-5xl font-display font-bold text-brandDeep mb-2">~$40K<span className="text-2xl font-bold">/week</span></div>
-                    <p className="text-textSecondary leading-relaxed">
-                      What every week a transition drags costs on a $200M book, at a ~1% advisory fee, before any client attrition.
                     </p>
                   </div>
                 </div>
@@ -342,12 +330,7 @@ export default function SolAdvisorTransitions() {
             <div className="text-center mb-16">
               <h2 className="text-4xl font-display font-bold text-white mb-4">The Outcomes</h2>
             </div>
-            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
-              <div className="text-center">
-                <Clock className="w-6 h-6 text-brandMint mx-auto mb-4" />
-                <div className="font-bold mb-2">75% faster</div>
-                <div className="text-white/80 text-sm">more books moved</div>
-              </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
                 <TrendingUp className="w-6 h-6 text-brandMint mx-auto mb-4" />
                 <div className="font-bold mb-2">Months → days</div>

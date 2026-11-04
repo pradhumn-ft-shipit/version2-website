@@ -89,7 +89,7 @@ const DEFAULTS: Record<string, string> = {
   avgAum: '200',
   feeBillingRate: '1',
   daysToRepaper: '45',
-  nigoRate: '10',
+  nigoRate: '15', // PR2-06: the site's NIGO baseline is 15% (user, 2026-11-04)
   opsHoursPerAccount: '3',
   loadedHourlyCost: '50',
 };

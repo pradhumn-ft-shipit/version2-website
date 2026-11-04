@@ -13,10 +13,11 @@
 - Custodians processing inbound transfers at scale.
 
 ## Proof points (as stated on-site)
-- The industry loses an estimated $19B in client assets each year to transitions that don't go smoothly.
-- Transition paperwork carries an industry-estimated 30–50% NIGO rate; every rejection resets the clock.
-- Firms using FastTrackr report moving books ~75% faster — timelines compressing from months to weeks.
-Note: these are the figures FastTrackr publishes on its marketing pages; independent verification is ongoing.
+- An advisor team moved $100M across 150 households in two weeks, with zero repapering NIGOs, starting from zero client data ([case study](https://fasttrackr.ai/case-study/advisor-transition)).
+- A solo advisor going independent sent the paperwork for all 411 accounts before noon on day one ([case study](https://fasttrackr.ai/case-study/independent-breakaway-setup)).
+- A team of four advisors moved $400M and 1,000+ accounts from a broker-dealer to their own RIA in nine days ([case study](https://fasttrackr.ai/case-study/bd-to-ria-400m-transition)).
+- Industry estimate for the NIGO rate on transition paperwork: 15%.
+Note: client results come from FastTrackr's published case studies.
 
 ## Solutions
 - [Advisor Transitions](https://fasttrackr.ai/solutions/advisor-transitions)

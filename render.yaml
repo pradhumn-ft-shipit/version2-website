@@ -208,7 +208,7 @@ services:
         destination: /blog/transition-due-diligence-critical-questions-to-evaluate-a-new-firm-before-moving-your-book
       - type: redirect
         source: /blog/meeting-assistant-financial-advisors-ai-note-taking-humanized
-        destination: /blog/meeting-assistant-financial-advisors-ai-note-taking
+        destination: /solutions/advisor-transitions
       - type: redirect
         source: /blog/advisor-transition-technology-ecosystem-integrations-humanized
         destination: /blog/advisor-transition-technology-ecosystem-integrations
@@ -223,7 +223,7 @@ services:
         destination: /blog/how-recruiting-firms-use-technology-retain-advisor-assets
       - type: redirect
         source: /blog/client-onboarding-automation-ria-cut-hours-humanized
-        destination: /blog/client-onboarding-automation-ria-cut-hours
+        destination: /solutions/advisor-transitions
       - type: redirect
         source: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice
         destination: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year
@@ -235,7 +235,7 @@ services:
         destination: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year
       - type: redirect
         source: /blog/why-client-onboarding-is-broken-in-wealth-management-and-what-ai-is-doing-about-it
-        destination: /blog/client-onboarding-broken-wealth-management-ai
+        destination: /solutions/advisor-transitions
       - type: redirect
         source: /blog/what-is-osj-wealth-management-technology-broken
         destination: /blog/what-is-an-osj-in-wealth-management-and-why-their-technology-is-broken
@@ -284,6 +284,79 @@ services:
       - type: redirect
         source: /en
         destination: /
+      # PR4-02 (2026-11-04): blog batch 1. 15 old podcast write-ups 301 to the
+      # podcast hub; 6 module-era and 2 off-topic posts that had clicks or AI
+      # mentions 301 to /solutions/advisor-transitions. Sources removed from
+      # content/. Targets per aeo-seo/tickets/data/PR4-02-301.csv.
+      - type: redirect
+        source: /blog/list-of-must-watch-podcasts-for-financial-advisors
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/how-ai-document-processing-is-transforming-wealth-management
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/how-financial-advisor-are-using-ai-for-document-processing
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/meeting-assistant-financial-advisors-ai-note-taking
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/wealth-management-ai-automation-complete-guide-ria-operations
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/client-onboarding-broken-wealth-management-ai
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/building-a-800m-advisory-firm
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/carbon-collective-climate-focused-investing
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/from-iit-bombay-to-wall-street-to-starting-an-ria
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/from-gold-mines-to-wealth-management
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/client-onboarding-automation-ria-cut-hours
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/democratizing-financial-advice-ethan-jung-vineet-mohan-advisor-ally-podcast-10
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/tech-and-the-transformation-of-wealth-planning
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/the-rise-of-advice-only-planning-a-conversation-with-steven-fox
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/advisory-3-0-tech-trust-and-tailored-financial-planning
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/ai-automation-compliance-and-the-ria-time-trap
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/the-journalist-every-financial-advisor-reads-oisin-breen-vineet-mohan-advisor-ally-podcast-09
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/the-fun-financial-planner-for-ambitious-misfits
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/a-standout-young-advisor-s-journey-brittany-brinckerhoff-vineet-mohan-advisor-ally-podcast-08
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/financial-planning-for-the-next-generation
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/why-financial-advice-is-more-than-just-money-management
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/the-data-gap-in-wealth-management
+        destination: /resources/podcasts
+      - type: redirect
+        source: /blog/fasttrackr-ai-meeting-assistant-financial-advisors
+        destination: /solutions/advisor-transitions
       # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
       # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
       # real page.
@@ -360,9 +433,6 @@ services:
       - type: rewrite
         source: /blog/8-types-documents-automate-advisor-transition
         destination: /blog/8-types-documents-automate-advisor-transition/index.html
-      - type: rewrite
-        source: /blog/a-standout-young-advisor-s-journey-brittany-brinckerhoff-vineet-mohan-advisor-ally-podcast-08
-        destination: /blog/a-standout-young-advisor-s-journey-brittany-brinckerhoff-vineet-mohan-advisor-ally-podcast-08/index.html
       - type: rewrite
         source: /blog/acats-form-processing-rejection-causes-fixes
         destination: /blog/acats-form-processing-rejection-causes-fixes/index.html
@@ -484,9 +554,6 @@ services:
         source: /blog/advisors-lose-clients-transitions-warning-signs
         destination: /blog/advisors-lose-clients-transitions-warning-signs/index.html
       - type: rewrite
-        source: /blog/advisory-3-0-tech-trust-and-tailored-financial-planning
-        destination: /blog/advisory-3-0-tech-trust-and-tailored-financial-planning/index.html
-      - type: rewrite
         source: /blog/advisory-fee-billing-during-a-transition-proration-billing-gaps-and-the-revenue-lost-in-a-slow-repaper
         destination: /blog/advisory-fee-billing-during-a-transition-proration-billing-gaps-and-the-revenue-lost-in-a-slow-repaper/index.html
       - type: rewrite
@@ -501,9 +568,6 @@ services:
       - type: rewrite
         source: /blog/ai-and-technology-guide-for-the-new-rias-how-to-build-your-perfect-tech-stack
         destination: /blog/ai-and-technology-guide-for-the-new-rias-how-to-build-your-perfect-tech-stack/index.html
-      - type: rewrite
-        source: /blog/ai-automation-compliance-and-the-ria-time-trap
-        destination: /blog/ai-automation-compliance-and-the-ria-time-trap/index.html
       - type: rewrite
         source: /blog/ai-client-communication-tools-financial-advisors
         destination: /blog/ai-client-communication-tools-financial-advisors/index.html
@@ -694,17 +758,11 @@ services:
         source: /blog/build-vs-buy-transition-consulting-firm-own-tech
         destination: /blog/build-vs-buy-transition-consulting-firm-own-tech/index.html
       - type: rewrite
-        source: /blog/building-a-800m-advisory-firm
-        destination: /blog/building-a-800m-advisory-firm/index.html
-      - type: rewrite
         source: /blog/building-transition-operations-team-five-roles-mid-size-ria
         destination: /blog/building-transition-operations-team-five-roles-mid-size-ria/index.html
       - type: rewrite
         source: /blog/business-case-advisor-transition-automation-templates
         destination: /blog/business-case-advisor-transition-automation-templates/index.html
-      - type: rewrite
-        source: /blog/carbon-collective-climate-focused-investing
-        destination: /blog/carbon-collective-climate-focused-investing/index.html
       - type: rewrite
         source: /blog/cash-sweep-and-money-market-balances-that-do-not-travel-through-acats-in-a-book-move
         destination: /blog/cash-sweep-and-money-market-balances-that-do-not-travel-through-acats-in-a-book-move/index.html
@@ -744,12 +802,6 @@ services:
       - type: rewrite
         source: /blog/client-data-migration-security-architecture-broker-dealer-transition-reference
         destination: /blog/client-data-migration-security-architecture-broker-dealer-transition-reference/index.html
-      - type: rewrite
-        source: /blog/client-onboarding-automation-ria-cut-hours
-        destination: /blog/client-onboarding-automation-ria-cut-hours/index.html
-      - type: rewrite
-        source: /blog/client-onboarding-broken-wealth-management-ai
-        destination: /blog/client-onboarding-broken-wealth-management-ai/index.html
       - type: rewrite
         source: /blog/client-questions-advisor-transition-answers
         destination: /blog/client-questions-advisor-transition-answers/index.html
@@ -838,9 +890,6 @@ services:
         source: /blog/data-security-advisor-transitions-soc2-finra-bd-liability
         destination: /blog/data-security-advisor-transitions-soc2-finra-bd-liability/index.html
       - type: rewrite
-        source: /blog/democratizing-financial-advice-ethan-jung-vineet-mohan-advisor-ally-podcast-10
-        destination: /blog/democratizing-financial-advice-ethan-jung-vineet-mohan-advisor-ally-podcast-10/index.html
-      - type: rewrite
         source: /blog/document-intelligence-replacing-data-entry-broker-dealer-back-office
         destination: /blog/document-intelligence-replacing-data-entry-broker-dealer-back-office/index.html
       - type: rewrite
@@ -889,9 +938,6 @@ services:
         source: /blog/executive-deck-transition-technology-cost-benefit
         destination: /blog/executive-deck-transition-technology-cost-benefit/index.html
       - type: rewrite
-        source: /blog/fasttrackr-ai-meeting-assistant-financial-advisors
-        destination: /blog/fasttrackr-ai-meeting-assistant-financial-advisors/index.html
-      - type: rewrite
         source: /blog/fasttrackr-ai-vs-docupace-vs-skience-30-concurrent-transitions
         destination: /blog/fasttrackr-ai-vs-docupace-vs-skience-30-concurrent-transitions/index.html
       - type: rewrite
@@ -915,9 +961,6 @@ services:
       - type: rewrite
         source: /blog/fidelity-vendor-approval-process-guide
         destination: /blog/fidelity-vendor-approval-process-guide/index.html
-      - type: rewrite
-        source: /blog/financial-planning-for-the-next-generation
-        destination: /blog/financial-planning-for-the-next-generation/index.html
       - type: rewrite
         source: /blog/finra-books-records-advisor-transitions-2026-operations-guide
         destination: /blog/finra-books-records-advisor-transitions-2026-operations-guide/index.html
@@ -958,12 +1001,6 @@ services:
         source: /blog/from-form-to-fund-advisor-transition-paperwork-2026
         destination: /blog/from-form-to-fund-advisor-transition-paperwork-2026/index.html
       - type: rewrite
-        source: /blog/from-gold-mines-to-wealth-management
-        destination: /blog/from-gold-mines-to-wealth-management/index.html
-      - type: rewrite
-        source: /blog/from-iit-bombay-to-wall-street-to-starting-an-ria
-        destination: /blog/from-iit-bombay-to-wall-street-to-starting-an-ria/index.html
-      - type: rewrite
         source: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission
         destination: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission/index.html
       - type: rewrite
@@ -994,9 +1031,6 @@ services:
         source: /blog/how-200m-500m-rias-reduce-new-advisor-time-to-productivity
         destination: /blog/how-200m-500m-rias-reduce-new-advisor-time-to-productivity/index.html
       - type: rewrite
-        source: /blog/how-ai-document-processing-is-transforming-wealth-management
-        destination: /blog/how-ai-document-processing-is-transforming-wealth-management/index.html
-      - type: rewrite
         source: /blog/how-ai-reduces-advisor-transition-time-90-days-technical
         destination: /blog/how-ai-reduces-advisor-transition-time-90-days-technical/index.html
       - type: rewrite
@@ -1017,9 +1051,6 @@ services:
       - type: rewrite
         source: /blog/how-fast-can-you-repaper-a-book-a-throughput-model-for-transition-teams-and-the-ai-levers-that-raise-it
         destination: /blog/how-fast-can-you-repaper-a-book-a-throughput-model-for-transition-teams-and-the-ai-levers-that-raise-it/index.html
-      - type: rewrite
-        source: /blog/how-financial-advisor-are-using-ai-for-document-processing
-        destination: /blog/how-financial-advisor-are-using-ai-for-document-processing/index.html
       - type: rewrite
         source: /blog/how-machine-learning-is-improving-form-accuracy-in-wealth-management-transitions
         destination: /blog/how-machine-learning-is-improving-form-accuracy-in-wealth-management-transitions/index.html
@@ -1105,9 +1136,6 @@ services:
         source: /blog/legal-consultant-guide-finra-rule-4511-client-record-transfers
         destination: /blog/legal-consultant-guide-finra-rule-4511-client-record-transfers/index.html
       - type: rewrite
-        source: /blog/list-of-must-watch-podcasts-for-financial-advisors
-        destination: /blog/list-of-must-watch-podcasts-for-financial-advisors/index.html
-      - type: rewrite
         source: /blog/ma-integration-timelines-wealth-management-close-faster
         destination: /blog/ma-integration-timelines-wealth-management-close-faster/index.html
       - type: rewrite
@@ -1134,9 +1162,6 @@ services:
       - type: rewrite
         source: /blog/marketing-and-client-prospecting-using-ai
         destination: /blog/marketing-and-client-prospecting-using-ai/index.html
-      - type: rewrite
-        source: /blog/meeting-assistant-financial-advisors-ai-note-taking
-        destination: /blog/meeting-assistant-financial-advisors-ai-note-taking/index.html
       - type: rewrite
         source: /blog/mega-ria-advisor-transitions-ma-growth-phase
         destination: /blog/mega-ria-advisor-transitions-ma-growth-phase/index.html
@@ -1453,9 +1478,6 @@ services:
         source: /blog/systematizing-crms-to-power-lean-tech-for-scalable-growth
         destination: /blog/systematizing-crms-to-power-lean-tech-for-scalable-growth/index.html
       - type: rewrite
-        source: /blog/tech-and-the-transformation-of-wealth-planning
-        destination: /blog/tech-and-the-transformation-of-wealth-planning/index.html
-      - type: rewrite
         source: /blog/tech-buyers-miss-evaluating-advisor-transition-platforms
         destination: /blog/tech-buyers-miss-evaluating-advisor-transition-platforms/index.html
       - type: rewrite
@@ -1492,9 +1514,6 @@ services:
         source: /blog/the-client-signature-burden-in-a-repaper-how-paperwork-fatigue-drives-attrition-and-how-to-cut-it
         destination: /blog/the-client-signature-burden-in-a-repaper-how-paperwork-fatigue-drives-attrition-and-how-to-cut-it/index.html
       - type: rewrite
-        source: /blog/the-data-gap-in-wealth-management
-        destination: /blog/the-data-gap-in-wealth-management/index.html
-      - type: rewrite
         source: /blog/the-e-signature-stack-for-a-repaper-what-custodians-accept-and-where-nigo-hides
         destination: /blog/the-e-signature-stack-for-a-repaper-what-custodians-accept-and-where-nigo-hides/index.html
       - type: rewrite
@@ -1504,14 +1523,8 @@ services:
         source: /blog/the-five-pillars-of-client-retention-using-ai
         destination: /blog/the-five-pillars-of-client-retention-using-ai/index.html
       - type: rewrite
-        source: /blog/the-fun-financial-planner-for-ambitious-misfits
-        destination: /blog/the-fun-financial-planner-for-ambitious-misfits/index.html
-      - type: rewrite
         source: /blog/the-human-in-the-loop-repaper-where-to-place-review-checkpoints-in-an-automated-transition
         destination: /blog/the-human-in-the-loop-repaper-where-to-place-review-checkpoints-in-an-automated-transition/index.html
-      - type: rewrite
-        source: /blog/the-journalist-every-financial-advisor-reads-oisin-breen-vineet-mohan-advisor-ally-podcast-09
-        destination: /blog/the-journalist-every-financial-advisor-reads-oisin-breen-vineet-mohan-advisor-ally-podcast-09/index.html
       - type: rewrite
         source: /blog/the-medallion-signature-guarantee-bottleneck-the-one-stamp-that-stalls-trust-and-re-registration-transfers-in-a-book-move
         destination: /blog/the-medallion-signature-guarantee-bottleneck-the-one-stamp-that-stalls-trust-and-re-registration-transfers-in-a-book-move/index.html
@@ -1542,9 +1555,6 @@ services:
       - type: rewrite
         source: /blog/the-restraining-order-that-stops-a-book-move-what-happens-to-a-repaper-when-the-former-firm-sues-to-enforce-a-non-solicit
         destination: /blog/the-restraining-order-that-stops-a-book-move-what-happens-to-a-repaper-when-the-former-firm-sues-to-enforce-a-non-solicit/index.html
-      - type: rewrite
-        source: /blog/the-rise-of-advice-only-planning-a-conversation-with-steven-fox
-        destination: /blog/the-rise-of-advice-only-planning-a-conversation-with-steven-fox/index.html
       - type: rewrite
         source: /blog/the-settle-date-trap-why-unsettled-trades-and-pending-activity-freeze-an-acats-transfer
         destination: /blog/the-settle-date-trap-why-unsettled-trades-and-pending-activity-freeze-an-acats-transfer/index.html
@@ -1663,9 +1673,6 @@ services:
         source: /blog/voice-memo-to-crm-note-pipeline-90-seconds-advisor-workflow
         destination: /blog/voice-memo-to-crm-note-pipeline-90-seconds-advisor-workflow/index.html
       - type: rewrite
-        source: /blog/wealth-management-ai-automation-complete-guide-ria-operations
-        destination: /blog/wealth-management-ai-automation-complete-guide-ria-operations/index.html
-      - type: rewrite
         source: /blog/wealth-management-ai-hype-vs-reality-operations
         destination: /blog/wealth-management-ai-hype-vs-reality-operations/index.html
       - type: rewrite
@@ -1752,9 +1759,6 @@ services:
       - type: rewrite
         source: /blog/why-advisors-abandon-transitions-five-breakdowns
         destination: /blog/why-advisors-abandon-transitions-five-breakdowns/index.html
-      - type: rewrite
-        source: /blog/why-financial-advice-is-more-than-just-money-management
-        destination: /blog/why-financial-advice-is-more-than-just-money-management/index.html
       - type: rewrite
         source: /blog/why-fractional-shares-and-drip-positions-break-acats-transfers-and-how-to-handle-them
         destination: /blog/why-fractional-shares-and-drip-positions-break-acats-transfers-and-how-to-handle-them/index.html

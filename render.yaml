@@ -276,6 +276,14 @@ services:
       - type: redirect
         source: /blog/fasttrackr-ai-at-wealth-management-edge
         destination: /resources/news/fasttrackr-ai-at-wealth-management-edge
+      # PR3-09 (2026-11-04): /vineet and /en used to get the homepage from the old
+      # catch-all. Without it they'd 404, so they 301 instead. Ships with PR2-10.
+      - type: redirect
+        source: /vineet
+        destination: /about
+      - type: redirect
+        source: /en
+        destination: /
       # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
       # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
       # real page.

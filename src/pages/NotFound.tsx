@@ -51,18 +51,8 @@ export default function NotFound() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/solutions/client-onboarding" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Client Onboarding
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/solutions/meeting-assistant" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Meeting Assistant
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/solutions/document-intelligence" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Document Intelligence
+                  <Link to="/custodians" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
+                    → Custodians
                   </Link>
                 </li>
                 <li>

@@ -20,19 +20,13 @@ export const DEFAULT_CTA_TARGET: CtaTarget = {
 };
 
 // category id → money page. Only categories with a clear commercial home are
-// mapped; everything else falls through to DEFAULT_CTA_TARGET.
+// mapped; everything else falls through to DEFAULT_CTA_TARGET. (PR1-06: the
+// document-processing and notetaking categories used to point at the retired
+// module pages; they now fall through to the advisor-transitions default.)
 const TOPIC_TO_TARGET: Record<string, CtaTarget> = {
   'advisor-transitions-and-repapering': {
     href: '/solutions/advisor-transitions',
     label: 'See how our advisor transition platform works',
-  },
-  'document-processing-and-back-office-automation': {
-    href: '/solutions/document-intelligence',
-    label: 'See how FastTrackr automates document processing',
-  },
-  'ai-in-client-communication-and-notetaking': {
-    href: '/solutions/meeting-assistant',
-    label: 'See how our AI meeting assistant works',
   },
 };
 

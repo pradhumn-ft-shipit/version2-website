@@ -72,6 +72,23 @@ services:
       - type: redirect
         source: /onepagecrm
         destination: /contact
+      # PR1-06 (2026-11-04): the Meeting Assistant, Document Intelligence and
+      # Client Onboarding module pages are retired; the site covers advisor
+      # transitions only. Their useful parts live in the "How the data gets in"
+      # section (#data-collection) of /solutions/advisor-transitions. The
+      # destination has no #fragment because Render's docs don't say fragments
+      # are kept; switch to /solutions/advisor-transitions#data-collection once
+      # that's confirmed live. These MUST precede the /solutions/* rewrite below.
+      # After deploy, prune any old dashboard rules for these paths by hand.
+      - type: redirect
+        source: /solutions/meeting-assistant
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /solutions/document-intelligence
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /solutions/client-onboarding
+        destination: /solutions/advisor-transitions
       # /blog is a redirect-only route (canonical blog index is /resources/blog).
       # Serve a real 301 here instead of the catch-all homepage shell.
       - type: redirect

@@ -55,9 +55,6 @@ const SITE_ORIGIN = 'https://fasttrackr.ai';
 const STATIC_SITEMAP_PAGES = [
   { path: '/', priority: '1.0' },
   { path: '/solutions/advisor-transitions', priority: '0.9' },
-  { path: '/solutions/client-onboarding', priority: '0.8' },
-  { path: '/solutions/meeting-assistant', priority: '0.8' },
-  { path: '/solutions/document-intelligence', priority: '0.8' },
   { path: '/who-we-serve/transition-consultants', priority: '0.8' },
   { path: '/who-we-serve/breakaway-advisors', priority: '0.8' },
   { path: '/who-we-serve/acquisitive-rias', priority: '0.8' },

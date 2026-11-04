@@ -66,10 +66,6 @@ const ICP_IBD: GlossaryPillar = {
   label: 'For Independent Broker-Dealers',
   href: '/who-we-serve/independent-broker-dealers',
 };
-const SOL_ONBOARDING: GlossaryPillar = {
-  label: 'Client Onboarding',
-  href: '/solutions/client-onboarding',
-};
 
 export const glossaryTerms: GlossaryTerm[] = [
   {
@@ -212,7 +208,7 @@ export const glossaryTerms: GlossaryTerm[] = [
       'This entry is a plain-language summary, not legal, tax, or compliance advice. The DOL’s exemption text and a firm’s own compliance program govern how PTE 2020-02 applies in practice.',
     ],
     related: ['reg-bi'],
-    pillar: SOL_ONBOARDING,
+    pillar: SOL_TRANSITIONS,
   },
   {
     slug: 'tuck-in',

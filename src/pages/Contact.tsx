@@ -7,9 +7,6 @@ import { Mail, Send, CheckCircle2 } from 'lucide-react';
 
 const INTERESTS: Record<string, string> = {
   'advisor-transitions': 'Advisor Transitions',
-  'client-onboarding': 'Client Onboarding',
-  'document-intelligence': 'Document Intelligence',
-  'meeting-assistant': 'Meeting Assistant',
 };
 
 const COMPANY_TYPES_BY_KEY: Record<string, string> = {

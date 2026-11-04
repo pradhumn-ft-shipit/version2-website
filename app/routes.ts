@@ -16,9 +16,6 @@ export default [
 
   // Solutions
   route('solutions/advisor-transitions', 'routes/solutions/advisor-transitions.tsx'),
-  route('solutions/client-onboarding', 'routes/solutions/client-onboarding.tsx'),
-  route('solutions/meeting-assistant', 'routes/solutions/meeting-assistant.tsx'),
-  route('solutions/document-intelligence', 'routes/solutions/document-intelligence.tsx'),
 
   // Custodian transition landing pages (W6 · T2-3) — advisors repapering ONTO a
   // custodian (distinct from the /who-we-serve/custodians ICP page). Hub + one

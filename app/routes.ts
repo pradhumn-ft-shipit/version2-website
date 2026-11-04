@@ -30,7 +30,8 @@ export default [
   // Core / marketing
   route('pricing', 'routes/pricing.tsx'),
   route('contact', 'routes/contact.tsx'),
-  route('case-study', 'routes/case-study-index.tsx'),
+  // PR2-10: no /case-study hub route until PR6 builds one; the bare path is a
+  // true 404 meanwhile (the old unlinked index page is in git history, a001fcb).
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
   route('case-study/independent-breakaway-setup', 'routes/case-study-breakaway.tsx'),
   route('case-study/bd-to-ria-400m-transition', 'routes/case-study-bd-to-ria.tsx'),

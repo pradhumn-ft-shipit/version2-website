@@ -5,7 +5,7 @@ import NotFound from '../../src/pages/NotFound';
 // don't run JS still see it (the component also adds it on the client via
 // useEffect for SPA-fallback hits). No canonical/OG — this page isn't indexable.
 export function meta(): MetaDescriptor[] {
-  return [{ title: 'Page Not Found | FastTrackr AI' }, { name: 'robots', content: 'noindex' }];
+  return [{ title: 'Page not found | FastTrackr AI' }, { name: 'robots', content: 'noindex' }];
 }
 
 export default NotFound;

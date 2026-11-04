@@ -7,6 +7,7 @@ import {
   readGlossarySlugs,
   readCategorySlugs,
   readAuthorSlugs,
+  NOT_FOUND_PRERENDER_PATH,
 } from './app/lib/prerenderPaths';
 
 // React Router v7 framework mode, configured as a static-site generator.
@@ -31,7 +32,7 @@ import {
 export default {
   ssr: false,
   async prerender({ getStaticPaths }) {
-    return buildPrerenderPaths({
+    const paths = buildPrerenderPaths({
       staticPaths: getStaticPaths(),
       blogSlugs: readBlogSlugs(),
       newsSlugs: readNewsSlugs(),
@@ -40,5 +41,9 @@ export default {
       categorySlugs: readCategorySlugs(),
       authorSlugs: readAuthorSlugs(),
     });
+    // PR2-10: prerender the `*` not-found route once. scripts/stage-dist.mjs
+    // moves it to dist/404.html, which Render serves (status 404) for any path
+    // with no file and no rule. /404 itself is not a real URL.
+    return [...paths, NOT_FOUND_PRERENDER_PATH];
   },
 } satisfies Config;

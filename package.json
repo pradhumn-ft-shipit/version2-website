@@ -7,6 +7,7 @@
     "dev": "npm run blog:build && vite",
     "dev:cf": "npm run build && wrangler dev",
     "blog:build": "node scripts/build-blog-data.mjs",
+    "routes:sync": "node scripts/render-routes.mjs --write",
     "build": "npm run blog:build && tsc -b && react-router build && node scripts/stage-dist.mjs",
     "pretest": "npm run blog:build",
     "test": "vitest run",

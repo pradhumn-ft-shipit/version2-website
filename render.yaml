@@ -42,7 +42,7 @@ services:
       - path: /fonts/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
-    # Redirect rules MUST come before the SPA catch-all rewrite so they win.
+    # Redirect rules come first, then the generated exact rewrites (PR2-10).
     routes:
       # "The $100M Line" Fidelity report and the /research section were withdrawn
       # (2026-10-09). Render keeps files from earlier deploys, so deleting them from
@@ -258,55 +258,1591 @@ services:
       - type: redirect
         source: /blog/10-questions-advisor-transition-software-vendor-humanized
         destination: /blog/10-questions-advisor-transition-software-vendor
-      # Prerendered content pages. `react-router build` writes a full-content
-      # dist/<route>/index.html per article (framework-mode SSG). These rewrites
-      # MUST come before the catch-all below: a bare SPA rewrite swallows the
-      # prerendered file and serves the generic shell instead, which is exactly
-      # what we're avoiding — verified locally, `serve -s` returns the shell for
-      # these paths without the explicit rewrite.
-      - type: rewrite
-        source: /resources/news
-        destination: /resources/news/index.html
-      - type: rewrite
-        source: /resources/news/*
-        destination: /resources/news/*/index.html
-      - type: rewrite
-        source: /resources/blog
-        destination: /resources/blog/index.html
-      - type: rewrite
-        source: /blog/*
-        destination: /blog/*/index.html
-      - type: rewrite
-        source: /resources/podcasts
-        destination: /resources/podcasts/index.html
-      - type: rewrite
-        source: /resources/podcasts/*
-        destination: /resources/podcasts/*/index.html
-      # Static marketing / solutions / ICP / legal routes are ALSO prerendered
-      # (dist/<route>/index.html) and must be served as their own file, not the
-      # SPA shell — same reason as blog/news above. The catch-all `/*` below
-      # would otherwise swallow every one of these and serve the homepage,
-      # which defeats the SSG crawlability goal for these pages.
+      # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
+      # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
+      # real page.
+      - type: redirect
+        source: /custodians/goldman
+        destination: /custodians/goldman-sachs
+      # Prerendered pages. `react-router build` writes dist/<route>/index.html for
+      # every page, and Render doesn't map /<route> to it by itself, so each page
+      # needs its own exact rewrite.
       #
-      # NOTE: this list mirrors the fully-static routes enumerated by
-      # getStaticPaths() (app/routes.ts). If you add a new static marketing
-      # route, add a rewrite here too (or it will silently serve the homepage
-      # shell to crawlers). Prefix wildcards cover multi-child sections.
+      # PR2-10 (2026-11-04): there are NO wildcard rewrites and NO SPA catch-all
+      # any more. A rewrite whose destination file is missing answers 200 with an
+      # empty body, and the old `/*` -> `/index.html` catch-all served the
+      # homepage for every unknown URL; both were soft 404s. Now any path without
+      # a file or a rule gets dist/404.html with a 404 status.
+      #
+      # The block below is GENERATED from the build output by
+      # scripts/render-routes.mjs (`npm run routes:sync`), and the build fails if
+      # it is out of date. Add a page or post -> build -> routes:sync -> commit.
+      #
+      # After deploy, delete the old wildcard rewrites and the `/*` catch-all by
+      # hand in the dashboard (Blueprint sync doesn't remove rules): /resources/news/*,
+      # /blog/*, /resources/podcasts/*, /solutions/*, /who-we-serve/*, /case-study/*,
+      # /custodians/*, /glossary/*, /authors/*, /.well-known/*, /*.
+      # BEGIN generated clean-URL rewrites (scripts/render-routes.mjs). Do not edit by hand.
       - type: rewrite
-        source: /solutions/*
-        destination: /solutions/*/index.html
+        source: /
+        destination: /index.html
       - type: rewrite
-        source: /who-we-serve/*
-        destination: /who-we-serve/*/index.html
+        source: /authors/pradhumn-vijayvargiya
+        destination: /authors/pradhumn-vijayvargiya/index.html
       - type: rewrite
-        source: /case-study/*
-        destination: /case-study/*/index.html
+        source: /authors/tejas-patil
+        destination: /authors/tejas-patil/index.html
       - type: rewrite
-        source: /pricing
-        destination: /pricing/index.html
+        source: /authors/vineet-mohan
+        destination: /authors/vineet-mohan/index.html
+      - type: rewrite
+        source: /blog/10-advisor-acquisitions-per-year-aggregator-transition
+        destination: /blog/10-advisor-acquisitions-per-year-aggregator-transition/index.html
+      - type: rewrite
+        source: /blog/10-questions-advisor-transition-software-vendor
+        destination: /blog/10-questions-advisor-transition-software-vendor/index.html
+      - type: rewrite
+        source: /blog/100000-advisors-retiring-succession-planning-technology-gap
+        destination: /blog/100000-advisors-retiring-succession-planning-technology-gap/index.html
+      - type: rewrite
+        source: /blog/18000-advisors-19-billion-lost-assets
+        destination: /blog/18000-advisors-19-billion-lost-assets/index.html
+      - type: rewrite
+        source: /blog/19-billion-problem-advisor-transitions-fail
+        destination: /blog/19-billion-problem-advisor-transitions-fail/index.html
+      - type: rewrite
+        source: /blog/20-percent-error-rate-manual-data-entry-advisor-transitions
+        destination: /blog/20-percent-error-rate-manual-data-entry-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/21-day-transition-sprint-cadence-advisor-book-move
+        destination: /blog/21-day-transition-sprint-cadence-advisor-book-move/index.html
+      - type: rewrite
+        source: /blog/3-week-advisor-transition-evidence
+        destination: /blog/3-week-advisor-transition-evidence/index.html
+      - type: rewrite
+        source: /blog/5-step-framework-stress-free-transition
+        destination: /blog/5-step-framework-stress-free-transition/index.html
+      - type: rewrite
+        source: /blog/72-hour-breakaway-operations-window
+        destination: /blog/72-hour-breakaway-operations-window/index.html
+      - type: rewrite
+        source: /blog/8-million-accounts-transferred-annually-scale-advisor-transitions
+        destination: /blog/8-million-accounts-transferred-annually-scale-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/8-types-documents-automate-advisor-transition
+        destination: /blog/8-types-documents-automate-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/a-standout-young-advisor-s-journey-brittany-brinckerhoff-vineet-mohan-advisor-ally-podcast-08
+        destination: /blog/a-standout-young-advisor-s-journey-brittany-brinckerhoff-vineet-mohan-advisor-ally-podcast-08/index.html
+      - type: rewrite
+        source: /blog/acats-form-processing-rejection-causes-fixes
+        destination: /blog/acats-form-processing-rejection-causes-fixes/index.html
+      - type: rewrite
+        source: /blog/acats-reject-codes-decoded-nigo-pre-validation
+        destination: /blog/acats-reject-codes-decoded-nigo-pre-validation/index.html
+      - type: rewrite
+        source: /blog/acats-reject-reason-codes-eliminate-before-submission
+        destination: /blog/acats-reject-reason-codes-eliminate-before-submission/index.html
+      - type: rewrite
+        source: /blog/acats-rejection-categories-decoded-14-reasons-ranked-by-frequency
+        destination: /blog/acats-rejection-categories-decoded-14-reasons-ranked-by-frequency/index.html
+      - type: rewrite
+        source: /blog/acats-vs-non-acats-custodial-transfer-requirements
+        destination: /blog/acats-vs-non-acats-custodial-transfer-requirements/index.html
+      - type: rewrite
+        source: /blog/account-migration-technology-move-10000-accounts
+        destination: /blog/account-migration-technology-move-10000-accounts/index.html
+      - type: rewrite
+        source: /blog/account-transfer-timeline-acats-by-asset-type
+        destination: /blog/account-transfer-timeline-acats-by-asset-type/index.html
+      - type: rewrite
+        source: /blog/advisor-book-migration-checklist-100-households
+        destination: /blog/advisor-book-migration-checklist-100-households/index.html
+      - type: rewrite
+        source: /blog/advisor-book-of-business-transfer-legal-frameworks-and-technology-infrastructure
+        destination: /blog/advisor-book-of-business-transfer-legal-frameworks-and-technology-infrastructure/index.html
+      - type: rewrite
+        source: /blog/advisor-recruiting-toolkit-promise-48-hour-repapering-deliver
+        destination: /blog/advisor-recruiting-toolkit-promise-48-hour-repapering-deliver/index.html
+      - type: rewrite
+        source: /blog/advisor-recruitment-package-technology-differentiator
+        destination: /blog/advisor-recruitment-package-technology-differentiator/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-ai-strategy-2026
+        destination: /blog/advisor-transition-ai-strategy-2026/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-aum-attrition-benchmarks-by-move-type
+        destination: /blog/advisor-transition-aum-attrition-benchmarks-by-move-type/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-automation-platform-comparison-2026
+        destination: /blog/advisor-transition-automation-platform-comparison-2026/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-battle-card-recruiting-director
+        destination: /blog/advisor-transition-battle-card-recruiting-director/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-burnout-ops-team
+        destination: /blog/advisor-transition-burnout-ops-team/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-checklist-47-things-operations-teams
+        destination: /blog/advisor-transition-checklist-47-things-operations-teams/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-client-communication-templates
+        destination: /blog/advisor-transition-client-communication-templates/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-failure-modes
+        destination: /blog/advisor-transition-failure-modes/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-faq
+        destination: /blog/advisor-transition-faq/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-glossary-50-terms-operations
+        destination: /blog/advisor-transition-glossary-50-terms-operations/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-kickoff-first-48-hours
+        destination: /blog/advisor-transition-kickoff-first-48-hours/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-kpis-operations-tracking
+        destination: /blog/advisor-transition-kpis-operations-tracking/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-ops-scorecard-metrics
+        destination: /blog/advisor-transition-ops-scorecard-metrics/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-platform-comparison-fasttrackr-docupace-skience
+        destination: /blog/advisor-transition-platform-comparison-fasttrackr-docupace-skience/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-platform-fit-fasttrackr-docupace-skience-by-firm-type
+        destination: /blog/advisor-transition-platform-fit-fasttrackr-docupace-skience-by-firm-type/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-platform-metrics
+        destination: /blog/advisor-transition-platform-metrics/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-project-plan-template-operations-teams
+        destination: /blog/advisor-transition-project-plan-template-operations-teams/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-roi-calculator-quantify-automation
+        destination: /blog/advisor-transition-roi-calculator-quantify-automation/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-software-comparison-fasttrackr-docupace
+        destination: /blog/advisor-transition-software-comparison-fasttrackr-docupace/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-software-compliance-department-buy-in
+        destination: /blog/advisor-transition-software-compliance-department-buy-in/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-stakeholder-management
+        destination: /blog/advisor-transition-stakeholder-management/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-story-business-development-asset
+        destination: /blog/advisor-transition-story-business-development-asset/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-technology-ecosystem-integrations
+        destination: /blog/advisor-transition-technology-ecosystem-integrations/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-technology-procurement-guide
+        destination: /blog/advisor-transition-technology-procurement-guide/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-technology-roi-cost-per-transition-benchmark
+        destination: /blog/advisor-transition-technology-roi-cost-per-transition-benchmark/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-timeline-week-by-week
+        destination: /blog/advisor-transition-timeline-week-by-week/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-vendor-scorecard-evaluation
+        destination: /blog/advisor-transition-vendor-scorecard-evaluation/index.html
+      - type: rewrite
+        source: /blog/advisor-transition-whiteboard-client-data-privacy
+        destination: /blog/advisor-transition-whiteboard-client-data-privacy/index.html
+      - type: rewrite
+        source: /blog/advisors-lose-clients-transitions-warning-signs
+        destination: /blog/advisors-lose-clients-transitions-warning-signs/index.html
+      - type: rewrite
+        source: /blog/advisory-3-0-tech-trust-and-tailored-financial-planning
+        destination: /blog/advisory-3-0-tech-trust-and-tailored-financial-planning/index.html
+      - type: rewrite
+        source: /blog/advisory-fee-billing-during-a-transition-proration-billing-gaps-and-the-revenue-lost-in-a-slow-repaper
+        destination: /blog/advisory-fee-billing-during-a-transition-proration-billing-gaps-and-the-revenue-lost-in-a-slow-repaper/index.html
+      - type: rewrite
+        source: /blog/advisory-vs-brokerage-accounts-transition-repaper
+        destination: /blog/advisory-vs-brokerage-accounts-transition-repaper/index.html
+      - type: rewrite
+        source: /blog/aggregate-analytics-benchmark-reports-transition-consulting-firms
+        destination: /blog/aggregate-analytics-benchmark-reports-transition-consulting-firms/index.html
+      - type: rewrite
+        source: /blog/ai-advisor-transition-workflows-where-automation-works
+        destination: /blog/ai-advisor-transition-workflows-where-automation-works/index.html
+      - type: rewrite
+        source: /blog/ai-and-technology-guide-for-the-new-rias-how-to-build-your-perfect-tech-stack
+        destination: /blog/ai-and-technology-guide-for-the-new-rias-how-to-build-your-perfect-tech-stack/index.html
+      - type: rewrite
+        source: /blog/ai-automation-compliance-and-the-ria-time-trap
+        destination: /blog/ai-automation-compliance-and-the-ria-time-trap/index.html
+      - type: rewrite
+        source: /blog/ai-client-communication-tools-financial-advisors
+        destination: /blog/ai-client-communication-tools-financial-advisors/index.html
+      - type: rewrite
+        source: /blog/ai-compliance-finra-sec-advisor-transitions
+        destination: /blog/ai-compliance-finra-sec-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/ai-first-wealth-management-firm-2026
+        destination: /blog/ai-first-wealth-management-firm-2026/index.html
+      - type: rewrite
+        source: /blog/ai-for-financial-advisors-using-ai-to-automate-optimize-and-elevate
+        destination: /blog/ai-for-financial-advisors-using-ai-to-automate-optimize-and-elevate/index.html
+      - type: rewrite
+        source: /blog/ai-for-ria-s-and-financial-advisors
+        destination: /blog/ai-for-ria-s-and-financial-advisors/index.html
+      - type: rewrite
+        source: /blog/ai-form-completion-wealth-management-accuracy
+        destination: /blog/ai-form-completion-wealth-management-accuracy/index.html
+      - type: rewrite
+        source: /blog/ai-in-wealth-management-delivering-superior-client-experiences
+        destination: /blog/ai-in-wealth-management-delivering-superior-client-experiences/index.html
+      - type: rewrite
+        source: /blog/ai-meeting-notes-finra-suitability-documentation
+        destination: /blog/ai-meeting-notes-finra-suitability-documentation/index.html
+      - type: rewrite
+        source: /blog/ai-notetaking-for-financial-advisors
+        destination: /blog/ai-notetaking-for-financial-advisors/index.html
+      - type: rewrite
+        source: /blog/ai-notetaking-wealth-management-client-meeting-automation
+        destination: /blog/ai-notetaking-wealth-management-client-meeting-automation/index.html
+      - type: rewrite
+        source: /blog/ai-notetaking-wealth-management-compliance-records
+        destination: /blog/ai-notetaking-wealth-management-compliance-records/index.html
+      - type: rewrite
+        source: /blog/ai-powered-client-acquisition-for-rias
+        destination: /blog/ai-powered-client-acquisition-for-rias/index.html
+      - type: rewrite
+        source: /blog/ai-reads-brokerage-statement-prefill-account-forms-cut-nigo
+        destination: /blog/ai-reads-brokerage-statement-prefill-account-forms-cut-nigo/index.html
+      - type: rewrite
+        source: /blog/ai-tools-vs-spreadsheets-real-time-savings-breakaway-advisors
+        destination: /blog/ai-tools-vs-spreadsheets-real-time-savings-breakaway-advisors/index.html
+      - type: rewrite
+        source: /blog/ai-transition-platform-inside-crm-architecture-decision-framework
+        destination: /blog/ai-transition-platform-inside-crm-architecture-decision-framework/index.html
+      - type: rewrite
+        source: /blog/ai-vs-manual-spreadsheets-advisor-transitions
+        destination: /blog/ai-vs-manual-spreadsheets-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/ai-vs-traditional-practice-management-software-ria
+        destination: /blog/ai-vs-traditional-practice-management-software-ria/index.html
+      - type: rewrite
+        source: /blog/ai-vs-traditional-transition-support-business-case-ria-recruiting
+        destination: /blog/ai-vs-traditional-transition-support-business-case-ria-recruiting/index.html
+      - type: rewrite
+        source: /blog/anatomy-failed-advisor-transition
+        destination: /blog/anatomy-failed-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/announcement-vs-solicitation-breakaway-advisor-client-contact
+        destination: /blog/announcement-vs-solicitation-breakaway-advisor-client-contact/index.html
+      - type: rewrite
+        source: /blog/annuities-in-an-advisor-transition-the-carrier-paperwork-and-1035-steps-acats-cannot-move-and-where-ai-validates-them
+        destination: /blog/annuities-in-an-advisor-transition-the-carrier-paperwork-and-1035-steps-acats-cannot-move-and-where-ai-validates-them/index.html
+      - type: rewrite
+        source: /blog/assets-that-never-move-through-acats-residual-cleanup
+        destination: /blog/assets-that-never-move-through-acats-residual-cleanup/index.html
+      - type: rewrite
+        source: /blog/audit-trail-200-advisor-broker-dealer-transition
+        destination: /blog/audit-trail-200-advisor-broker-dealer-transition/index.html
+      - type: rewrite
+        source: /blog/audit-trail-documentation-advisor-transitions-regulators
+        destination: /blog/audit-trail-documentation-advisor-transitions-regulators/index.html
+      - type: rewrite
+        source: /blog/audit-trail-requirements-advisor-transitions-finra-examiners
+        destination: /blog/audit-trail-requirements-advisor-transitions-finra-examiners/index.html
+      - type: rewrite
+        source: /blog/aum-retention-benchmark-advisor-transition-data
+        destination: /blog/aum-retention-benchmark-advisor-transition-data/index.html
+      - type: rewrite
+        source: /blog/aum-retention-client-communication-sequence-transition
+        destination: /blog/aum-retention-client-communication-sequence-transition/index.html
+      - type: rewrite
+        source: /blog/aum-retention-during-advisor-transition
+        destination: /blog/aum-retention-during-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/aum-retention-math-21-day-vs-90-day-advisor-transitions
+        destination: /blog/aum-retention-math-21-day-vs-90-day-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/automate-client-data-collection-advisor-transitions
+        destination: /blog/automate-client-data-collection-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/automate-form-population-multiple-custodians
+        destination: /blog/automate-form-population-multiple-custodians/index.html
+      - type: rewrite
+        source: /blog/automate-repapering-500-accounts-no-manual-entry
+        destination: /blog/automate-repapering-500-accounts-no-manual-entry/index.html
+      - type: rewrite
+        source: /blog/automating-content-and-communitcation-for-financial-advisors
+        destination: /blog/automating-content-and-communitcation-for-financial-advisors/index.html
+      - type: rewrite
+        source: /blog/automation-solves-three-biggest-problems-advisor-transitions
+        destination: /blog/automation-solves-three-biggest-problems-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/bd-ma-teams-calculate-transition-risk-before-loi
+        destination: /blog/bd-ma-teams-calculate-transition-risk-before-loi/index.html
+      - type: rewrite
+        source: /blog/bd-recruiting-advisor-transition-platform-fasttrackr-docupace-skience-onbord
+        destination: /blog/bd-recruiting-advisor-transition-platform-fasttrackr-docupace-skience-onbord/index.html
+      - type: rewrite
+        source: /blog/bd-to-own-ria
+        destination: /blog/bd-to-own-ria/index.html
+      - type: rewrite
+        source: /blog/bd-to-ria
+        destination: /blog/bd-to-ria/index.html
+      - type: rewrite
+        source: /blog/beneficiary-and-tod-designations-in-a-repaper-the-registration-detail-that-silently-fails
+        destination: /blog/beneficiary-and-tod-designations-in-a-repaper-the-registration-detail-that-silently-fails/index.html
+      - type: rewrite
+        source: /blog/beyond-the-usual-how-ria-firms-are-reimagining-their-tech-stack-for-efficiency-and-growth
+        destination: /blog/beyond-the-usual-how-ria-firms-are-reimagining-their-tech-stack-for-efficiency-and-growth/index.html
+      - type: rewrite
+        source: /blog/board-deck-data-case-studies-investing-transition-tech
+        destination: /blog/board-deck-data-case-studies-investing-transition-tech/index.html
+      - type: rewrite
+        source: /blog/book-landed-but-not-billable-the-revenue-recognition-gap-that-follows-every-advisor-transition
+        destination: /blog/book-landed-but-not-billable-the-revenue-recognition-gap-that-follows-every-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/boutique-consultant-systematize-finra-broker-protocol
+        destination: /blog/boutique-consultant-systematize-finra-broker-protocol/index.html
+      - type: rewrite
+        source: /blog/boutique-consultant-systematizing-finra-broker-protocol
+        destination: /blog/boutique-consultant-systematizing-finra-broker-protocol/index.html
+      - type: rewrite
+        source: /blog/branch-managers-data-predict-advisor-departure-risk-90-days
+        destination: /blog/branch-managers-data-predict-advisor-departure-risk-90-days/index.html
+      - type: rewrite
+        source: /blog/breakaway-advisor-200m-ria-3-weeks
+        destination: /blog/breakaway-advisor-200m-ria-3-weeks/index.html
+      - type: rewrite
+        source: /blog/breakaway-advisor-30-60-90-day-repapering-timeline
+        destination: /blog/breakaway-advisor-30-60-90-day-repapering-timeline/index.html
+      - type: rewrite
+        source: /blog/breakaway-advisor-aum-retention-95-percent-transition-window
+        destination: /blog/breakaway-advisor-aum-retention-95-percent-transition-window/index.html
+      - type: rewrite
+        source: /blog/breakaway-advisor-compliance-checklist-before-resign
+        destination: /blog/breakaway-advisor-compliance-checklist-before-resign/index.html
+      - type: rewrite
+        source: /blog/breakaway-tro-mechanics-finra-15-day-clock
+        destination: /blog/breakaway-tro-mechanics-finra-15-day-clock/index.html
+      - type: rewrite
+        source: /blog/breakaway-vs-recruited-advisor-transition-technology
+        destination: /blog/breakaway-vs-recruited-advisor-transition-technology/index.html
+      - type: rewrite
+        source: /blog/broker-dealer-ma-playbook-post-acquisition-advisor-integration
+        destination: /blog/broker-dealer-ma-playbook-post-acquisition-advisor-integration/index.html
+      - type: rewrite
+        source: /blog/broker-dealer-reduce-advisor-onboarding-time-under-3-weeks
+        destination: /blog/broker-dealer-reduce-advisor-onboarding-time-under-3-weeks/index.html
+      - type: rewrite
+        source: /blog/broker-dealer-transition-operations-benchmark
+        destination: /blog/broker-dealer-transition-operations-benchmark/index.html
+      - type: rewrite
+        source: /blog/broker-dealer-transition-readiness-scorecard-12-metrics
+        destination: /blog/broker-dealer-transition-readiness-scorecard-12-metrics/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-2025-membership-verification
+        destination: /blog/broker-protocol-2025-membership-verification/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-automate-vs-securities-attorney
+        destination: /blog/broker-protocol-automate-vs-securities-attorney/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-compliance-checklist-what-you-can-take
+        destination: /blog/broker-protocol-compliance-checklist-what-you-can-take/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-compliance-finra-breakaway-2026-edition
+        destination: /blog/broker-protocol-compliance-finra-breakaway-2026-edition/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-does-not-cover-ria-to-ria-move
+        destination: /blog/broker-protocol-does-not-cover-ria-to-ria-move/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-eligibility-checklist-how-to-confirm-both-firms-are-members-befo
+        destination: /blog/broker-protocol-eligibility-checklist-how-to-confirm-both-firms-are-members-befo/index.html
+      - type: rewrite
+        source: /blog/broker-protocol-what-it-covers-and-your-repapering-workflow
+        destination: /blog/broker-protocol-what-it-covers-and-your-repapering-workflow/index.html
+      - type: rewrite
+        source: /blog/build-vs-buy-transition-consulting-firm-own-tech
+        destination: /blog/build-vs-buy-transition-consulting-firm-own-tech/index.html
+      - type: rewrite
+        source: /blog/building-a-800m-advisory-firm
+        destination: /blog/building-a-800m-advisory-firm/index.html
+      - type: rewrite
+        source: /blog/building-transition-operations-team-five-roles-mid-size-ria
+        destination: /blog/building-transition-operations-team-five-roles-mid-size-ria/index.html
+      - type: rewrite
+        source: /blog/business-case-advisor-transition-automation-templates
+        destination: /blog/business-case-advisor-transition-automation-templates/index.html
+      - type: rewrite
+        source: /blog/carbon-collective-climate-focused-investing
+        destination: /blog/carbon-collective-climate-focused-investing/index.html
+      - type: rewrite
+        source: /blog/cash-sweep-and-money-market-balances-that-do-not-travel-through-acats-in-a-book-move
+        destination: /blog/cash-sweep-and-money-market-balances-that-do-not-travel-through-acats-in-a-book-move/index.html
+      - type: rewrite
+        source: /blog/category/advisor-transitions-and-repapering
+        destination: /blog/category/advisor-transitions-and-repapering/index.html
+      - type: rewrite
+        source: /blog/category/advisor-trends-behavior-and-industry-commentary
+        destination: /blog/category/advisor-trends-behavior-and-industry-commentary/index.html
+      - type: rewrite
+        source: /blog/category/ai-for-client-prospecting-and-growth
+        destination: /blog/category/ai-for-client-prospecting-and-growth/index.html
+      - type: rewrite
+        source: /blog/category/ai-for-compliance-security-and-data-management
+        destination: /blog/category/ai-for-compliance-security-and-data-management/index.html
+      - type: rewrite
+        source: /blog/category/ai-in-client-communication-and-notetaking
+        destination: /blog/category/ai-in-client-communication-and-notetaking/index.html
+      - type: rewrite
+        source: /blog/category/document-processing-and-back-office-automation
+        destination: /blog/category/document-processing-and-back-office-automation/index.html
+      - type: rewrite
+        source: /blog/category/fasttrackr-ai-in-action
+        destination: /blog/category/fasttrackr-ai-in-action/index.html
+      - type: rewrite
+        source: /blog/category/more-resources
+        destination: /blog/category/more-resources/index.html
+      - type: rewrite
+        source: /blog/category/the-role-of-ai-in-wealth-management-strategy
+        destination: /blog/category/the-role-of-ai-in-wealth-management-strategy/index.html
+      - type: rewrite
+        source: /blog/client-communication-playbook-advisor-transitions-aum-retention
+        destination: /blog/client-communication-playbook-advisor-transitions-aum-retention/index.html
+      - type: rewrite
+        source: /blog/client-data-and-advisor-transitions-a-regulatory-compliance-guide-for-data-transfer
+        destination: /blog/client-data-and-advisor-transitions-a-regulatory-compliance-guide-for-data-transfer/index.html
+      - type: rewrite
+        source: /blog/client-data-migration-security-architecture-broker-dealer-transition-reference
+        destination: /blog/client-data-migration-security-architecture-broker-dealer-transition-reference/index.html
+      - type: rewrite
+        source: /blog/client-onboarding-automation-ria-cut-hours
+        destination: /blog/client-onboarding-automation-ria-cut-hours/index.html
+      - type: rewrite
+        source: /blog/client-onboarding-broken-wealth-management-ai
+        destination: /blog/client-onboarding-broken-wealth-management-ai/index.html
+      - type: rewrite
+        source: /blog/client-questions-advisor-transition-answers
+        destination: /blog/client-questions-advisor-transition-answers/index.html
+      - type: rewrite
+        source: /blog/client-sentiment-90-day-transition
+        destination: /blog/client-sentiment-90-day-transition/index.html
+      - type: rewrite
+        source: /blog/client-trust-advisor-transition
+        destination: /blog/client-trust-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/compliance-documentation-ai-advisor-transitions
+        destination: /blog/compliance-documentation-ai-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/compliance-officer-transition-audit-checklist-40-controls
+        destination: /blog/compliance-officer-transition-audit-checklist-40-controls/index.html
+      - type: rewrite
+        source: /blog/compliance-review-transition-workflow-bottlenecks
+        destination: /blog/compliance-review-transition-workflow-bottlenecks/index.html
+      - type: rewrite
+        source: /blog/compliance-team-fasttrackr-ai-47-steps-to-four-clicks
+        destination: /blog/compliance-team-fasttrackr-ai-47-steps-to-four-clicks/index.html
+      - type: rewrite
+        source: /blog/concurrency-math-why-moving-20-books-at-once-finishes-faster-than-moving-them-one-after-another
+        destination: /blog/concurrency-math-why-moving-20-books-at-once-finishes-faster-than-moving-them-one-after-another/index.html
+      - type: rewrite
+        source: /blog/concurrent-advisor-onboarding-repapering-workflow-blueprint
+        destination: /blog/concurrent-advisor-onboarding-repapering-workflow-blueprint/index.html
+      - type: rewrite
+        source: /blog/connecting-compliance-review-transition-workflow-without-bottlenecks
+        destination: /blog/connecting-compliance-review-transition-workflow-without-bottlenecks/index.html
+      - type: rewrite
+        source: /blog/cost-basis-and-tax-lots-in-a-repaper
+        destination: /blog/cost-basis-and-tax-lots-in-a-repaper/index.html
+      - type: rewrite
+        source: /blog/crm-integration-advisor-transitions-best-systems
+        destination: /blog/crm-integration-advisor-transitions-best-systems/index.html
+      - type: rewrite
+        source: /blog/crm-migrations-advisor-transitions-three-stage-workflow
+        destination: /blog/crm-migrations-advisor-transitions-three-stage-workflow/index.html
+      - type: rewrite
+        source: /blog/crm-side-advisor-transition-client-data-wire-into-repapering
+        destination: /blog/crm-side-advisor-transition-client-data-wire-into-repapering/index.html
+      - type: rewrite
+        source: /blog/custodial-integration-fidelity-schwab-pershing-repapering
+        destination: /blog/custodial-integration-fidelity-schwab-pershing-repapering/index.html
+      - type: rewrite
+        source: /blog/custodial-rejection-rates-advisor-transitions-2026
+        destination: /blog/custodial-rejection-rates-advisor-transitions-2026/index.html
+      - type: rewrite
+        source: /blog/custodian-empanelment-transition-technology-guide
+        destination: /blog/custodian-empanelment-transition-technology-guide/index.html
+      - type: rewrite
+        source: /blog/custodian-form-field-standardization-nigo-pattern-analysis
+        destination: /blog/custodian-form-field-standardization-nigo-pattern-analysis/index.html
+      - type: rewrite
+        source: /blog/custodian-integration-readiness-scorecard-transition
+        destination: /blog/custodian-integration-readiness-scorecard-transition/index.html
+      - type: rewrite
+        source: /blog/custodian-integration-schwab-fidelity-pershing-repapering
+        destination: /blog/custodian-integration-schwab-fidelity-pershing-repapering/index.html
+      - type: rewrite
+        source: /blog/custodian-not-in-good-order-rejection-patterns-2026
+        destination: /blog/custodian-not-in-good-order-rejection-patterns-2026/index.html
+      - type: rewrite
+        source: /blog/custodian-portal-vs-your-crm-reconciling-transition-status-without-double-entry
+        destination: /blog/custodian-portal-vs-your-crm-reconciling-transition-status-without-double-entry/index.html
+      - type: rewrite
+        source: /blog/custodian-specific-transition-requirements-operations-teams
+        destination: /blog/custodian-specific-transition-requirements-operations-teams/index.html
+      - type: rewrite
+        source: /blog/cut-advisor-transition-time-60-percent-no-extra-headcount
+        destination: /blog/cut-advisor-transition-time-60-percent-no-extra-headcount/index.html
+      - type: rewrite
+        source: /blog/dark-period-after-resignation-windows-you-can-compress
+        destination: /blog/dark-period-after-resignation-windows-you-can-compress/index.html
+      - type: rewrite
+        source: /blog/dark-period-wirehouse-resignation-tools-to-compress
+        destination: /blog/dark-period-wirehouse-resignation-tools-to-compress/index.html
+      - type: rewrite
+        source: /blog/data-privacy-in-advisor-transitions-how-to-ensure-client-information-never-trains-ai-models
+        destination: /blog/data-privacy-in-advisor-transitions-how-to-ensure-client-information-never-trains-ai-models/index.html
+      - type: rewrite
+        source: /blog/data-reconciliation-in-an-advisor-transition-the-match-and-merge-problem-ai-solves-across-systems
+        destination: /blog/data-reconciliation-in-an-advisor-transition-the-match-and-merge-problem-ai-solves-across-systems/index.html
+      - type: rewrite
+        source: /blog/data-security-advisor-transitions-soc2-finra-bd-liability
+        destination: /blog/data-security-advisor-transitions-soc2-finra-bd-liability/index.html
+      - type: rewrite
+        source: /blog/democratizing-financial-advice-ethan-jung-vineet-mohan-advisor-ally-podcast-10
+        destination: /blog/democratizing-financial-advice-ethan-jung-vineet-mohan-advisor-ally-podcast-10/index.html
+      - type: rewrite
+        source: /blog/document-intelligence-replacing-data-entry-broker-dealer-back-office
+        destination: /blog/document-intelligence-replacing-data-entry-broker-dealer-back-office/index.html
+      - type: rewrite
+        source: /blog/document-intelligence-wealth-management-brokerage-statements
+        destination: /blog/document-intelligence-wealth-management-brokerage-statements/index.html
+      - type: rewrite
+        source: /blog/document-management-for-advisor-transitions-why-off-the-shelf-dms-platforms-fall-short
+        destination: /blog/document-management-for-advisor-transitions-why-off-the-shelf-dms-platforms-fall-short/index.html
+      - type: rewrite
+        source: /blog/due-diligence-checklist-advisors-changing-platforms-27-questions
+        destination: /blog/due-diligence-checklist-advisors-changing-platforms-27-questions/index.html
+      - type: rewrite
+        source: /blog/due-diligence-checklist-wealth-management-ma-technology
+        destination: /blog/due-diligence-checklist-wealth-management-ma-technology/index.html
+      - type: rewrite
+        source: /blog/economics-advisor-transition-failure
+        destination: /blog/economics-advisor-transition-failure/index.html
+      - type: rewrite
+        source: /blog/eliminating-person-dependence-when-transition-specialists-leave
+        destination: /blog/eliminating-person-dependence-when-transition-specialists-leave/index.html
+      - type: rewrite
+        source: /blog/enterprise-pricing-50-plus-transitions-beyond-per-seat-saas
+        destination: /blog/enterprise-pricing-50-plus-transitions-beyond-per-seat-saas/index.html
+      - type: rewrite
+        source: /blog/enterprise-pricing-models-50-plus-transitions-per-year
+        destination: /blog/enterprise-pricing-models-50-plus-transitions-per-year/index.html
+      - type: rewrite
+        source: /blog/enterprise-vs-smb-advisor-transition-technology
+        destination: /blog/enterprise-vs-smb-advisor-transition-technology/index.html
+      - type: rewrite
+        source: /blog/error-rate-automation-data-entry
+        destination: /blog/error-rate-automation-data-entry/index.html
+      - type: rewrite
+        source: /blog/evaluate-transition-vendor-finra-broker-protocol-expertise
+        destination: /blog/evaluate-transition-vendor-finra-broker-protocol-expertise/index.html
+      - type: rewrite
+        source: /blog/every-path-out-pillar
+        destination: /blog/every-path-out-pillar/index.html
+      - type: rewrite
+        source: /blog/exception-management-advisor-transitions
+        destination: /blog/exception-management-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/executive-committee-deck-template-cost-benefit-transition-technology
+        destination: /blog/executive-committee-deck-template-cost-benefit-transition-technology/index.html
+      - type: rewrite
+        source: /blog/executive-deck-transition-technology-cost-benefit
+        destination: /blog/executive-deck-transition-technology-cost-benefit/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-ai-achieves-soc-2-type-ii-certification-a-milestone-in-security-and-trust
+        destination: /blog/fasttrackr-ai-achieves-soc-2-type-ii-certification-a-milestone-in-security-and-trust/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-ai-at-wealth-management-edge
+        destination: /blog/fasttrackr-ai-at-wealth-management-edge/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-ai-meeting-assistant-financial-advisors
+        destination: /blog/fasttrackr-ai-meeting-assistant-financial-advisors/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-ai-vs-docupace-vs-skience-30-concurrent-transitions
+        destination: /blog/fasttrackr-ai-vs-docupace-vs-skience-30-concurrent-transitions/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-fidelity-integration-architecture-roi-deep-dive
+        destination: /blog/fasttrackr-fidelity-integration-architecture-roi-deep-dive/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-implementation-playbook-broker-dealer-6-week-rollout
+        destination: /blog/fasttrackr-implementation-playbook-broker-dealer-6-week-rollout/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-vs-docupace-comparison
+        destination: /blog/fasttrackr-vs-docupace-comparison/index.html
+      - type: rewrite
+        source: /blog/fasttrackr-vs-practifi-vs-redtail-enterprise-transition-comparison
+        destination: /blog/fasttrackr-vs-practifi-vs-redtail-enterprise-transition-comparison/index.html
+      - type: rewrite
+        source: /blog/fee-structures-transition-consultants-charge-and-benchmarks
+        destination: /blog/fee-structures-transition-consultants-charge-and-benchmarks/index.html
+      - type: rewrite
+        source: /blog/fidelity-vendor-approval-advisory-technology
+        destination: /blog/fidelity-vendor-approval-advisory-technology/index.html
+      - type: rewrite
+        source: /blog/fidelity-vendor-approval-process-guide
+        destination: /blog/fidelity-vendor-approval-process-guide/index.html
+      - type: rewrite
+        source: /blog/financial-planning-for-the-next-generation
+        destination: /blog/financial-planning-for-the-next-generation/index.html
+      - type: rewrite
+        source: /blog/finra-books-records-advisor-transitions-2026-operations-guide
+        destination: /blog/finra-books-records-advisor-transitions-2026-operations-guide/index.html
+      - type: rewrite
+        source: /blog/finra-broker-protocol-expertise-evaluate-transition-vendor
+        destination: /blog/finra-broker-protocol-expertise-evaluate-transition-vendor/index.html
+      - type: rewrite
+        source: /blog/finra-compliance-advisor-transitions-broker-dealer-automation
+        destination: /blog/finra-compliance-advisor-transitions-broker-dealer-automation/index.html
+      - type: rewrite
+        source: /blog/finra-compliance-ai-automation-attorney-still-needed
+        destination: /blog/finra-compliance-ai-automation-attorney-still-needed/index.html
+      - type: rewrite
+        source: /blog/finra-rule-2273-educational-communication-advisor-transition
+        destination: /blog/finra-rule-2273-educational-communication-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/finra-rule-3210-advisor-breakaway-outside-accounts-compliance
+        destination: /blog/finra-rule-3210-advisor-breakaway-outside-accounts-compliance/index.html
+      - type: rewrite
+        source: /blog/first-72-hours-advisor-transition-operations-checklist
+        destination: /blog/first-72-hours-advisor-transition-operations-checklist/index.html
+      - type: rewrite
+        source: /blog/first-72-hours-after-resignation-breakaway-timeline
+        destination: /blog/first-72-hours-after-resignation-breakaway-timeline/index.html
+      - type: rewrite
+        source: /blog/first-90-days-after-acats-completion-client-retention-playbook
+        destination: /blog/first-90-days-after-acats-completion-client-retention-playbook/index.html
+      - type: rewrite
+        source: /blog/form-crs-and-reg-bi-timing-when-a-rep-changes-firms-what-ai-can-stage-and-what-a-principal-must-approve
+        destination: /blog/form-crs-and-reg-bi-timing-when-a-rep-changes-firms-what-ai-can-stage-and-what-a-principal-must-approve/index.html
+      - type: rewrite
+        source: /blog/form-population-automation-zero-error-advisor-transitions
+        destination: /blog/form-population-automation-zero-error-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/from-100m-to-1b-aum-ria-growth-transition-operations
+        destination: /blog/from-100m-to-1b-aum-ria-growth-transition-operations/index.html
+      - type: rewrite
+        source: /blog/from-form-to-fund-advisor-transition-paperwork-2026
+        destination: /blog/from-form-to-fund-advisor-transition-paperwork-2026/index.html
+      - type: rewrite
+        source: /blog/from-gold-mines-to-wealth-management
+        destination: /blog/from-gold-mines-to-wealth-management/index.html
+      - type: rewrite
+        source: /blog/from-iit-bombay-to-wall-street-to-starting-an-ria
+        destination: /blog/from-iit-bombay-to-wall-street-to-starting-an-ria/index.html
+      - type: rewrite
+        source: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission
+        destination: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission/index.html
+      - type: rewrite
+        source: /blog/full-vs-partial-acats-transfers-when-splitting-a-book-move-speeds-the-repaper
+        destination: /blog/full-vs-partial-acats-transfers-when-splitting-a-book-move-speeds-the-repaper/index.html
+      - type: rewrite
+        source: /blog/future-advisor-transition-technology-trends-2026-humanized
+        destination: /blog/future-advisor-transition-technology-trends-2026-humanized/index.html
+      - type: rewrite
+        source: /blog/generational-wealth-transfer-advisor-transitions
+        destination: /blog/generational-wealth-transfer-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/held-away-assets-are-a-retention-risk-not-just-an-ops-cleanup-task
+        destination: /blog/held-away-assets-are-a-retention-risk-not-just-an-ops-cleanup-task/index.html
+      - type: rewrite
+        source: /blog/hidden-cost-staff-overtime-advisor-transitions
+        destination: /blog/hidden-cost-staff-overtime-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/high-volume-broker-dealers-replacing-manual-transition-workflows-ai
+        destination: /blog/high-volume-broker-dealers-replacing-manual-transition-workflows-ai/index.html
+      - type: rewrite
+        source: /blog/hire-train-transition-operations-team
+        destination: /blog/hire-train-transition-operations-team/index.html
+      - type: rewrite
+        source: /blog/how-15-years-of-bull-market-euphoria-has-created-a-generation-of-overconfident-investors
+        destination: /blog/how-15-years-of-bull-market-euphoria-has-created-a-generation-of-overconfident-investors/index.html
+      - type: rewrite
+        source: /blog/how-200m-500m-rias-reduce-new-advisor-time-to-productivity
+        destination: /blog/how-200m-500m-rias-reduce-new-advisor-time-to-productivity/index.html
+      - type: rewrite
+        source: /blog/how-ai-document-processing-is-transforming-wealth-management
+        destination: /blog/how-ai-document-processing-is-transforming-wealth-management/index.html
+      - type: rewrite
+        source: /blog/how-ai-reduces-advisor-transition-time-90-days-technical
+        destination: /blog/how-ai-reduces-advisor-transition-time-90-days-technical/index.html
+      - type: rewrite
+        source: /blog/how-ai-triages-the-repaper-exceptions-that-break-straight-through-automation
+        destination: /blog/how-ai-triages-the-repaper-exceptions-that-break-straight-through-automation/index.html
+      - type: rewrite
+        source: /blog/how-back-office-automation-is-transforming-financial-advisory-firms
+        destination: /blog/how-back-office-automation-is-transforming-financial-advisory-firms/index.html
+      - type: rewrite
+        source: /blog/how-batching-client-signatures-by-household-compresses-a-repaper-timeline
+        destination: /blog/how-batching-client-signatures-by-household-compresses-a-repaper-timeline/index.html
+      - type: rewrite
+        source: /blog/how-compliance-officers-automated-audit-trails-finra-examinations
+        destination: /blog/how-compliance-officers-automated-audit-trails-finra-examinations/index.html
+      - type: rewrite
+        source: /blog/how-custodian-processing-queues-add-hidden-days-to-every-concurrent-repaper
+        destination: /blog/how-custodian-processing-queues-add-hidden-days-to-every-concurrent-repaper/index.html
+      - type: rewrite
+        source: /blog/how-fast-can-you-repaper-a-book-a-throughput-model-for-transition-teams-and-the-ai-levers-that-raise-it
+        destination: /blog/how-fast-can-you-repaper-a-book-a-throughput-model-for-transition-teams-and-the-ai-levers-that-raise-it/index.html
+      - type: rewrite
+        source: /blog/how-financial-advisor-are-using-ai-for-document-processing
+        destination: /blog/how-financial-advisor-are-using-ai-for-document-processing/index.html
+      - type: rewrite
+        source: /blog/how-machine-learning-is-improving-form-accuracy-in-wealth-management-transitions
+        destination: /blog/how-machine-learning-is-improving-form-accuracy-in-wealth-management-transitions/index.html
+      - type: rewrite
+        source: /blog/how-many-concurrent-repapers-one-transition-specialist-can-actually-handle
+        destination: /blog/how-many-concurrent-repapers-one-transition-specialist-can-actually-handle/index.html
+      - type: rewrite
+        source: /blog/how-recruiting-firms-use-technology-retain-advisor-assets
+        destination: /blog/how-recruiting-firms-use-technology-retain-advisor-assets/index.html
+      - type: rewrite
+        source: /blog/how-smart-wealth-management-firms-are-using-data-to-win-clients-stay-compliant-and-scale-profitably
+        destination: /blog/how-smart-wealth-management-firms-are-using-data-to-win-clients-stay-compliant-and-scale-profitably/index.html
+      - type: rewrite
+        source: /blog/how-to-automate-compliance-reporting-rias
+        destination: /blog/how-to-automate-compliance-reporting-rias/index.html
+      - type: rewrite
+        source: /blog/how-to-build-a-transition-project-management-system-for-100-client-households
+        destination: /blog/how-to-build-a-transition-project-management-system-for-100-client-households/index.html
+      - type: rewrite
+        source: /blog/how-to-build-transition-ops-team-scales-50-advisors
+        destination: /blog/how-to-build-transition-ops-team-scales-50-advisors/index.html
+      - type: rewrite
+        source: /blog/how-to-give-a-transitioning-client-a-real-date-their-account-will-finish-moving
+        destination: /blog/how-to-give-a-transitioning-client-a-real-date-their-account-will-finish-moving/index.html
+      - type: rewrite
+        source: /blog/how-to-model-an-advisor-transition-before-you-commit-a-feasibility-and-cost-model-for-the-breakaway-decision
+        destination: /blog/how-to-model-an-advisor-transition-before-you-commit-a-feasibility-and-cost-model-for-the-breakaway-decision/index.html
+      - type: rewrite
+        source: /blog/how-to-move-150m-client-assets-new-ria-technology-guide
+        destination: /blog/how-to-move-150m-client-assets-new-ria-technology-guide/index.html
+      - type: rewrite
+        source: /blog/how-to-order-a-repaper-by-aum-at-risk-instead-of-account-number
+        destination: /blog/how-to-order-a-repaper-by-aum-at-risk-instead-of-account-number/index.html
+      - type: rewrite
+        source: /blog/how-to-prevent-duplicate-acats-submissions-when-running-concurrent-transitions
+        destination: /blog/how-to-prevent-duplicate-acats-submissions-when-running-concurrent-transitions/index.html
+      - type: rewrite
+        source: /blog/how-to-run-50-advisor-transitions-3-person-ops-team
+        destination: /blog/how-to-run-50-advisor-transitions-3-person-ops-team/index.html
+      - type: rewrite
+        source: /blog/how-to-sequence-a-multi-custodian-book-when-an-advisor-transitions-across-three-custodians
+        destination: /blog/how-to-sequence-a-multi-custodian-book-when-an-advisor-transitions-across-three-custodians/index.html
+      - type: rewrite
+        source: /blog/how-to-staff-and-structure-an-advisor-transition-desk-at-a-growing-ria
+        destination: /blog/how-to-staff-and-structure-an-advisor-transition-desk-at-a-growing-ria/index.html
+      - type: rewrite
+        source: /blog/how-transition-data-moves-from-custodian-statements-to-your-crm-during-a-repaper
+        destination: /blog/how-transition-data-moves-from-custodian-statements-to-your-crm-during-a-repaper/index.html
+      - type: rewrite
+        source: /blog/implementation-guide-advisor-transition-software-multi-office
+        destination: /blog/implementation-guide-advisor-transition-software-multi-office/index.html
+      - type: rewrite
+        source: /blog/in-kind-transfer-vs-liquidate-and-rebuy-in-a-repaper-the-decision-that-drives-taxes-and-reg-bi
+        destination: /blog/in-kind-transfer-vs-liquidate-and-rebuy-in-a-repaper-the-decision-that-drives-taxes-and-reg-bi/index.html
+      - type: rewrite
+        source: /blog/inbound-recruiting-funnel-rias-wirehouse-advisor-loi-60-days
+        destination: /blog/inbound-recruiting-funnel-rias-wirehouse-advisor-loi-60-days/index.html
+      - type: rewrite
+        source: /blog/independent-advisor-rise-technology-recruiting-landscape-2026
+        destination: /blog/independent-advisor-rise-technology-recruiting-landscape-2026/index.html
+      - type: rewrite
+        source: /blog/independent-advisor-technology-guide-10-tools-solo-rias
+        destination: /blog/independent-advisor-technology-guide-10-tools-solo-rias/index.html
+      - type: rewrite
+        source: /blog/independent-advisors-automation-over-manual-transitions
+        destination: /blog/independent-advisors-automation-over-manual-transitions/index.html
+      - type: rewrite
+        source: /blog/independent-broker-dealers-beat-wirehouse-internal-transition-teams
+        destination: /blog/independent-broker-dealers-beat-wirehouse-internal-transition-teams/index.html
+      - type: rewrite
+        source: /blog/industry-consolidation-ops-crisis
+        destination: /blog/industry-consolidation-ops-crisis/index.html
+      - type: rewrite
+        source: /blog/intelligent-logic-layer-ai-data-validation-transitions
+        destination: /blog/intelligent-logic-layer-ai-data-validation-transitions/index.html
+      - type: rewrite
+        source: /blog/iras-in-a-repaper-why-a-transfer-is-not-a-rollover-and-the-pte-2020-02-file-you-still-owe
+        destination: /blog/iras-in-a-repaper-why-a-transfer-is-not-a-rollover-and-the-pte-2020-02-file-you-still-owe/index.html
+      - type: rewrite
+        source: /blog/large-ria-transition-technology-buying-criteria
+        destination: /blog/large-ria-transition-technology-buying-criteria/index.html
+      - type: rewrite
+        source: /blog/legal-consultant-guide-finra-rule-4511-client-record-transfers
+        destination: /blog/legal-consultant-guide-finra-rule-4511-client-record-transfers/index.html
+      - type: rewrite
+        source: /blog/list-of-must-watch-podcasts-for-financial-advisors
+        destination: /blog/list-of-must-watch-podcasts-for-financial-advisors/index.html
+      - type: rewrite
+        source: /blog/ma-integration-timelines-wealth-management-close-faster
+        destination: /blog/ma-integration-timelines-wealth-management-close-faster/index.html
+      - type: rewrite
+        source: /blog/ma-operations-playbook-absorb-10-acquired-advisors-60-days
+        destination: /blog/ma-operations-playbook-absorb-10-acquired-advisors-60-days/index.html
+      - type: rewrite
+        source: /blog/ma-technology-due-diligence-checklist-ria-acquisitions
+        destination: /blog/ma-technology-due-diligence-checklist-ria-acquisitions/index.html
+      - type: rewrite
+        source: /blog/managing-10-concurrent-transitions-without-headcount-ria
+        destination: /blog/managing-10-concurrent-transitions-without-headcount-ria/index.html
+      - type: rewrite
+        source: /blog/managing-50-concurrent-advisor-onboardings-bd-recruiting
+        destination: /blog/managing-50-concurrent-advisor-onboardings-bd-recruiting/index.html
+      - type: rewrite
+        source: /blog/managing-client-anxiety-advisor-transitions
+        destination: /blog/managing-client-anxiety-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/manual-vs-automated-advisor-transition-cost-breakdown
+        destination: /blog/manual-vs-automated-advisor-transition-cost-breakdown/index.html
+      - type: rewrite
+        source: /blog/margin-and-options-accounts-in-a-transition-the-extra-agreements-that-go-nigo-and-where-ai-validates-them
+        destination: /blog/margin-and-options-accounts-in-a-transition-the-extra-agreements-that-go-nigo-and-where-ai-validates-them/index.html
+      - type: rewrite
+        source: /blog/marketing-and-client-prospecting-using-ai
+        destination: /blog/marketing-and-client-prospecting-using-ai/index.html
+      - type: rewrite
+        source: /blog/meeting-assistant-financial-advisors-ai-note-taking
+        destination: /blog/meeting-assistant-financial-advisors-ai-note-taking/index.html
+      - type: rewrite
+        source: /blog/mega-ria-advisor-transitions-ma-growth-phase
+        destination: /blog/mega-ria-advisor-transitions-ma-growth-phase/index.html
+      - type: rewrite
+        source: /blog/merrill-lynch-breakaway-finra-compliance-2026
+        destination: /blog/merrill-lynch-breakaway-finra-compliance-2026/index.html
+      - type: rewrite
+        source: /blog/merrill-lynch-breakaway-finra-compliance-checklist
+        destination: /blog/merrill-lynch-breakaway-finra-compliance-checklist/index.html
+      - type: rewrite
+        source: /blog/morgan-stanley-ria-broker-protocol-walkthrough
+        destination: /blog/morgan-stanley-ria-broker-protocol-walkthrough/index.html
+      - type: rewrite
+        source: /blog/morgan-stanley-to-ria-broker-protocol-walkthrough
+        destination: /blog/morgan-stanley-to-ria-broker-protocol-walkthrough/index.html
+      - type: rewrite
+        source: /blog/move-200m-client-assets-21-days-breakaway-advisor-playbook
+        destination: /blog/move-200m-client-assets-21-days-breakaway-advisor-playbook/index.html
+      - type: rewrite
+        source: /blog/multi-advisor-team-rjs-to-lpl-coordination-playbook
+        destination: /blog/multi-advisor-team-rjs-to-lpl-coordination-playbook/index.html
+      - type: rewrite
+        source: /blog/multi-state-licensing-ria-acquisitions-operations-teams
+        destination: /blog/multi-state-licensing-ria-acquisitions-operations-teams/index.html
+      - type: rewrite
+        source: /blog/multi-state-regulatory-complexity-advisor-transitions
+        destination: /blog/multi-state-regulatory-complexity-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/mutual-fund-networking-and-nscc-fund-serv-why-fund-positions-reject-in-an-acats-transfer
+        destination: /blog/mutual-fund-networking-and-nscc-fund-serv-why-fund-positions-reject-in-an-acats-transfer/index.html
+      - type: rewrite
+        source: /blog/native-crm-integrations-advisor-transitions-wealthbox-salesforce-redtail
+        destination: /blog/native-crm-integrations-advisor-transitions-wealthbox-salesforce-redtail/index.html
+      - type: rewrite
+        source: /blog/negative-consent-does-not-move-accounts-ria-tuck-in
+        destination: /blog/negative-consent-does-not-move-accounts-ria-tuck-in/index.html
+      - type: rewrite
+        source: /blog/negative-consent-letters-the-bulk-repaper-shortcut-and-when-it-fails
+        destination: /blog/negative-consent-letters-the-bulk-repaper-shortcut-and-when-it-fails/index.html
+      - type: rewrite
+        source: /blog/nigo-faq-not-in-good-order-prevention
+        destination: /blog/nigo-faq-not-in-good-order-prevention/index.html
+      - type: rewrite
+        source: /blog/nigo-rate-benchmarks-repapering-consultants-what-good-looks-like
+        destination: /blog/nigo-rate-benchmarks-repapering-consultants-what-good-looks-like/index.html
+      - type: rewrite
+        source: /blog/nigo-reason-code-playbook-which-rejections-ai-prevents-before-submission
+        destination: /blog/nigo-reason-code-playbook-which-rejections-ai-prevents-before-submission/index.html
+      - type: rewrite
+        source: /blog/nigo-root-cause-analysis-finding-the-repaper-fields-that-cause-most-of-your-acats-rejects
+        destination: /blog/nigo-root-cause-analysis-finding-the-repaper-fields-that-cause-most-of-your-acats-rejects/index.html
+      - type: rewrite
+        source: /blog/nigos-hidden-revenue-killer-advisor-transitions
+        destination: /blog/nigos-hidden-revenue-killer-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/non-protocol-breakaway-compliant-transition
+        destination: /blog/non-protocol-breakaway-compliant-transition/index.html
+      - type: rewrite
+        source: /blog/non-transferable-and-proprietary-assets-what-stalls-an-acats-book-move-and-where-ai-flags-it-early
+        destination: /blog/non-transferable-and-proprietary-assets-what-stalls-an-acats-book-move-and-where-ai-flags-it-early/index.html
+      - type: rewrite
+        source: /blog/onboard-10-concurrent-advisor-books-without-adding-headcount
+        destination: /blog/onboard-10-concurrent-advisor-books-without-adding-headcount/index.html
+      - type: rewrite
+        source: /blog/orion-advisor-transitions-problem
+        destination: /blog/orion-advisor-transitions-problem/index.html
+      - type: rewrite
+        source: /blog/osj-compliance-checklist-advisor-transitions-supervisor
+        destination: /blog/osj-compliance-checklist-advisor-transitions-supervisor/index.html
+      - type: rewrite
+        source: /blog/osj-growth-playbook-advisor-onboarding-technology
+        destination: /blog/osj-growth-playbook-advisor-onboarding-technology/index.html
+      - type: rewrite
+        source: /blog/osj-onboard-10-advisors-per-quarter
+        destination: /blog/osj-onboard-10-advisors-per-quarter/index.html
+      - type: rewrite
+        source: /blog/osj-repapering-at-scale-operating-model-50-books-quarterly
+        destination: /blog/osj-repapering-at-scale-operating-model-50-books-quarterly/index.html
+      - type: rewrite
+        source: /blog/osj-standardized-advisor-onboarding-technology-stack
+        destination: /blog/osj-standardized-advisor-onboarding-technology-stack/index.html
+      - type: rewrite
+        source: /blog/osj-technology-and-advisor-transitions-a-complete-automation-guide-for-office-of-supervisory-jurisdiction
+        destination: /blog/osj-technology-and-advisor-transitions-a-complete-automation-guide-for-office-of-supervisory-jurisdiction/index.html
+      - type: rewrite
+        source: /blog/osj-win-advisor-recruiting-better-technology-wirehouses
+        destination: /blog/osj-win-advisor-recruiting-better-technology-wirehouses/index.html
+      - type: rewrite
+        source: /blog/paperless-advisor-transition-possible-2026
+        destination: /blog/paperless-advisor-transition-possible-2026/index.html
+      - type: rewrite
+        source: /blog/pe-backed-wealth-platforms-technology-compress-integration-timelines
+        destination: /blog/pe-backed-wealth-platforms-technology-compress-integration-timelines/index.html
+      - type: rewrite
+        source: /blog/pe-portfolio-operators-5-simultaneous-advisor-firm-integrations
+        destination: /blog/pe-portfolio-operators-5-simultaneous-advisor-firm-integrations/index.html
+      - type: rewrite
+        source: /blog/pe-wealth-management-rollups-transition-operations-model-at-scale
+        destination: /blog/pe-wealth-management-rollups-transition-operations-model-at-scale/index.html
+      - type: rewrite
+        source: /blog/per-account-pricing-wealth-management-tech-transitions
+        destination: /blog/per-account-pricing-wealth-management-tech-transitions/index.html
+      - type: rewrite
+        source: /blog/per-transition-pricing-consulting-firms-vs-per-seat-saas
+        destination: /blog/per-transition-pricing-consulting-firms-vs-per-seat-saas/index.html
+      - type: rewrite
+        source: /blog/post-acquisition-repapering-90-day-timeline-aum-retention
+        destination: /blog/post-acquisition-repapering-90-day-timeline-aum-retention/index.html
+      - type: rewrite
+        source: /blog/post-merger-transition-playbook-ria-acquirers-10-advisors
+        destination: /blog/post-merger-transition-playbook-ria-acquirers-10-advisors/index.html
+      - type: rewrite
+        source: /blog/post-transition-integration-standardize-client-records
+        destination: /blog/post-transition-integration-standardize-client-records/index.html
+      - type: rewrite
+        source: /blog/pre-move-attrition-risk-score-household-triage
+        destination: /blog/pre-move-attrition-risk-score-household-triage/index.html
+      - type: rewrite
+        source: /blog/pre-resignation-playbook-wirehouse-advisors-clean-exit
+        destination: /blog/pre-resignation-playbook-wirehouse-advisors-clean-exit/index.html
+      - type: rewrite
+        source: /blog/predicting-nigo-before-form-submission-ai-models
+        destination: /blog/predicting-nigo-before-form-submission-ai-models/index.html
+      - type: rewrite
+        source: /blog/prepare-clients-before-day-one
+        destination: /blog/prepare-clients-before-day-one/index.html
+      - type: rewrite
+        source: /blog/prevent-asset-leakage-10-percent-problem
+        destination: /blog/prevent-asset-leakage-10-percent-problem/index.html
+      - type: rewrite
+        source: /blog/promissory-notes-and-unvested-deferred-comp-what-a-wirehouse-claws-back-when-you-break-away
+        destination: /blog/promissory-notes-and-unvested-deferred-comp-what-a-wirehouse-claws-back-when-you-break-away/index.html
+      - type: rewrite
+        source: /blog/protecting-client-assets-during-advisor-transitions-a-regulatory-perspective
+        destination: /blog/protecting-client-assets-during-advisor-transitions-a-regulatory-perspective/index.html
+      - type: rewrite
+        source: /blog/protocol-data-guide
+        destination: /blog/protocol-data-guide/index.html
+      - type: rewrite
+        source: /blog/pte-2020-02-rollover-documentation-in-a-breakaway-what-ai-can-draft-and-what-a-human-must-sign
+        destination: /blog/pte-2020-02-rollover-documentation-in-a-breakaway-what-ai-can-draft-and-what-a-human-must-sign/index.html
+      - type: rewrite
+        source: /blog/read-your-contract
+        destination: /blog/read-your-contract/index.html
+      - type: rewrite
+        source: /blog/real-cost-slow-advisor-transition-revenue-math
+        destination: /blog/real-cost-slow-advisor-transition-revenue-math/index.html
+      - type: rewrite
+        source: /blog/real-time-transition-tracking-for-500-client-accounts-building-end-to-end-visibility
+        destination: /blog/real-time-transition-tracking-for-500-client-accounts-building-end-to-end-visibility/index.html
+      - type: rewrite
+        source: /blog/realistic-timeline-250m-wirehouse-book-to-new-ria-6-months
+        destination: /blog/realistic-timeline-250m-wirehouse-book-to-new-ria-6-months/index.html
+      - type: rewrite
+        source: /blog/recruiter-20-point-checklist-clean-advisor-transition
+        destination: /blog/recruiter-20-point-checklist-clean-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/recruiting-differentiator-transition-tech-pitch-advantage
+        destination: /blog/recruiting-differentiator-transition-tech-pitch-advantage/index.html
+      - type: rewrite
+        source: /blog/recruiting-managers-transition-speed-competitive-differentiator
+        destination: /blog/recruiting-managers-transition-speed-competitive-differentiator/index.html
+      - type: rewrite
+        source: /blog/recruiting-playbook-win-advisor-transitions-speed
+        destination: /blog/recruiting-playbook-win-advisor-transitions-speed/index.html
+      - type: rewrite
+        source: /blog/reduce-nigo-rejections-95-percent-broker-dealer
+        destination: /blog/reduce-nigo-rejections-95-percent-broker-dealer/index.html
+      - type: rewrite
+        source: /blog/reducing-mid-transition-drop-off-recruited-advisors-reverse-decision
+        destination: /blog/reducing-mid-transition-drop-off-recruited-advisors-reverse-decision/index.html
+      - type: rewrite
+        source: /blog/reducing-time-to-productivity-for-advisors-at-new-firms-a-90-day-technology-roadmap
+        destination: /blog/reducing-time-to-productivity-for-advisors-at-new-firms-a-90-day-technology-roadmap/index.html
+      - type: rewrite
+        source: /blog/referral-reseller-or-white-label-choosing-a-partner-model-for-advisor-transition-software
+        destination: /blog/referral-reseller-or-white-label-choosing-a-partner-model-for-advisor-transition-software/index.html
+      - type: rewrite
+        source: /blog/reg-bi-17a4-obligations-survive-advisor-departure
+        destination: /blog/reg-bi-17a4-obligations-survive-advisor-departure/index.html
+      - type: rewrite
+        source: /blog/reg-bi-during-a-breakaway-the-best-interest-gaps-ai-flags-before-a-form-reaches-the-custodian
+        destination: /blog/reg-bi-during-a-breakaway-the-best-interest-gaps-ai-flags-before-a-form-reaches-the-custodian/index.html
+      - type: rewrite
+        source: /blog/reg-bi-rule-17a4-advisor-transition-documentation
+        destination: /blog/reg-bi-rule-17a4-advisor-transition-documentation/index.html
+      - type: rewrite
+        source: /blog/registrations-that-break-a-repaper-trusts-entities-life-events
+        destination: /blog/registrations-that-break-a-repaper-trusts-entities-life-events/index.html
+      - type: rewrite
+        source: /blog/rep-vs-firm-owned
+        destination: /blog/rep-vs-firm-owned/index.html
+      - type: rewrite
+        source: /blog/repapering-best-practices-operations-teams
+        destination: /blog/repapering-best-practices-operations-teams/index.html
+      - type: rewrite
+        source: /blog/repapering-complete-guide-500-accounts
+        destination: /blog/repapering-complete-guide-500-accounts/index.html
+      - type: rewrite
+        source: /blog/repapering-consultant-guide-20-simultaneous-transitions
+        destination: /blog/repapering-consultant-guide-20-simultaneous-transitions/index.html
+      - type: rewrite
+        source: /blog/repapering-faq-operations-teams
+        destination: /blog/repapering-faq-operations-teams/index.html
+      - type: rewrite
+        source: /blog/repapering-quality-checklist-custodian-submission
+        destination: /blog/repapering-quality-checklist-custodian-submission/index.html
+      - type: rewrite
+        source: /blog/repapering-sop-any-custodian-without-custom-workflows
+        destination: /blog/repapering-sop-any-custodian-without-custom-workflows/index.html
+      - type: rewrite
+        source: /blog/repapering-timeline-benchmark-under-30-days
+        destination: /blog/repapering-timeline-benchmark-under-30-days/index.html
+      - type: rewrite
+        source: /blog/reseller-partner-programs-wealth-transition-tech-consulting-firms
+        destination: /blog/reseller-partner-programs-wealth-transition-tech-consulting-firms/index.html
+      - type: rewrite
+        source: /blog/restricted-and-control-stock-in-a-repaper-rule-144-legends-and-the-transfer-agent-step-acats-skips
+        destination: /blog/restricted-and-control-stock-in-a-repaper-rule-144-legends-and-the-transfer-agent-step-acats-skips/index.html
+      - type: rewrite
+        source: /blog/ria-growth-playbook-technology-stack-2026
+        destination: /blog/ria-growth-playbook-technology-stack-2026/index.html
+      - type: rewrite
+        source: /blog/ria-operations-benchmarking-acquired-advisor-onboarding-speed
+        destination: /blog/ria-operations-benchmarking-acquired-advisor-onboarding-speed/index.html
+      - type: rewrite
+        source: /blog/ria-ops-director-guide-evaluating-transition-technology-vendors
+        destination: /blog/ria-ops-director-guide-evaluating-transition-technology-vendors/index.html
+      - type: rewrite
+        source: /blog/ria-ops-director-transition-intake-checklist
+        destination: /blog/ria-ops-director-transition-intake-checklist/index.html
+      - type: rewrite
+        source: /blog/ria-ops-directors-cutting-transition-costs-60-percent-automation
+        destination: /blog/ria-ops-directors-cutting-transition-costs-60-percent-automation/index.html
+      - type: rewrite
+        source: /blog/ria-tech-spend-2026-top-100-operations-budget-investments
+        destination: /blog/ria-tech-spend-2026-top-100-operations-budget-investments/index.html
+      - type: rewrite
+        source: /blog/ria-transition-90-days-to-18-fasttrackr-ai-real-numbers
+        destination: /blog/ria-transition-90-days-to-18-fasttrackr-ai-real-numbers/index.html
+      - type: rewrite
+        source: /blog/rias-excel-transitions-costing
+        destination: /blog/rias-excel-transitions-costing/index.html
+      - type: rewrite
+        source: /blog/roi-framework-transition-automation-cfo-coo
+        destination: /blog/roi-framework-transition-automation-cfo-coo/index.html
+      - type: rewrite
+        source: /blog/rule-17a-4-retention-worm-audit-trail-advisor-transition
+        destination: /blog/rule-17a-4-retention-worm-audit-trail-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/rule-3210-private-securities-transactions-advisor-transitions
+        destination: /blog/rule-3210-private-securities-transactions-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/running-a-repaper-in-parallel-instead-of-waves-the-concurrency-math-that-compresses-a-book-move
+        destination: /blog/running-a-repaper-in-parallel-instead-of-waves-the-concurrency-math-that-compresses-a-book-move/index.html
+      - type: rewrite
+        source: /blog/running-concurrent-advisor-transitions-how-a-recruiting-desk-sequences-overlapping-repapers-without-missing-slas
+        destination: /blog/running-concurrent-advisor-transitions-how-a-recruiting-desk-sequences-overlapping-repapers-without-missing-slas/index.html
+      - type: rewrite
+        source: /blog/salesforce-for-wealth-management-why-it-needs-a-transition-layer-to-actually-work
+        destination: /blog/salesforce-for-wealth-management-why-it-needs-a-transition-layer-to-actually-work/index.html
+      - type: rewrite
+        source: /blog/salesforce-schwab-fidelity-pershing-native-transition-integrations
+        destination: /blog/salesforce-schwab-fidelity-pershing-native-transition-integrations/index.html
+      - type: rewrite
+        source: /blog/same-day-repapering-rias-cut-transition-time
+        destination: /blog/same-day-repapering-rias-cut-transition-time/index.html
+      - type: rewrite
+        source: /blog/scalable-transition-process-500-moves
+        destination: /blog/scalable-transition-process-500-moves/index.html
+      - type: rewrite
+        source: /blog/scale-ria-practice-without-hiring
+        destination: /blog/scale-ria-practice-without-hiring/index.html
+      - type: rewrite
+        source: /blog/scaling-advisor-onboarding-large-ria-lean-back-office
+        destination: /blog/scaling-advisor-onboarding-large-ria-lean-back-office/index.html
+      - type: rewrite
+        source: /blog/schwab-advisor-services-integration-breakaway-transitions
+        destination: /blog/schwab-advisor-services-integration-breakaway-transitions/index.html
+      - type: rewrite
+        source: /blog/schwab-fidelity-pershing-form-acats-reject-comparison
+        destination: /blog/schwab-fidelity-pershing-form-acats-reject-comparison/index.html
+      - type: rewrite
+        source: /blog/sec-marketing-rule-2026-ai-disclosure-wealth-advisors
+        destination: /blog/sec-marketing-rule-2026-ai-disclosure-wealth-advisors/index.html
+      - type: rewrite
+        source: /blog/sec-or-state-ria-registration-path-gates-breakaway-launch-date
+        destination: /blog/sec-or-state-ria-registration-path-gates-breakaway-launch-date/index.html
+      - type: rewrite
+        source: /blog/sec-rule-17a-4-and-ai-generated-transition-forms-when-a-pre-filled-document-becomes-a-book-and-record
+        destination: /blog/sec-rule-17a-4-and-ai-generated-transition-forms-when-a-pre-filled-document-becomes-a-book-and-record/index.html
+      - type: rewrite
+        source: /blog/seven-documents-that-delay-advisor-transitions
+        destination: /blog/seven-documents-that-delay-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/signs-transition-losing-clients
+        destination: /blog/signs-transition-losing-clients/index.html
+      - type: rewrite
+        source: /blog/single-dashboard-15-20-concurrent-advisor-transitions-quarterly
+        destination: /blog/single-dashboard-15-20-concurrent-advisor-transitions-quarterly/index.html
+      - type: rewrite
+        source: /blog/standardize-advisor-onboarding-large-ria-without-back-office-hires
+        destination: /blog/standardize-advisor-onboarding-large-ria-without-back-office-hires/index.html
+      - type: rewrite
+        source: /blog/successful-advisor-transition-10000-accounts
+        destination: /blog/successful-advisor-transition-10000-accounts/index.html
+      - type: rewrite
+        source: /blog/supervision-during-a-repaper-the-reviews-a-home-office-cannot-hand-to-ai
+        destination: /blog/supervision-during-a-repaper-the-reviews-a-home-office-cannot-hand-to-ai/index.html
+      - type: rewrite
+        source: /blog/systematic-withdrawals-and-rmds-in-a-repaper-the-retiree-income-that-breaks-when-a-book-moves
+        destination: /blog/systematic-withdrawals-and-rmds-in-a-repaper-the-retiree-income-that-breaks-when-a-book-moves/index.html
+      - type: rewrite
+        source: /blog/systematizing-crms-to-power-lean-tech-for-scalable-growth
+        destination: /blog/systematizing-crms-to-power-lean-tech-for-scalable-growth/index.html
+      - type: rewrite
+        source: /blog/tech-and-the-transformation-of-wealth-planning
+        destination: /blog/tech-and-the-transformation-of-wealth-planning/index.html
+      - type: rewrite
+        source: /blog/tech-buyers-miss-evaluating-advisor-transition-platforms
+        destination: /blog/tech-buyers-miss-evaluating-advisor-transition-platforms/index.html
+      - type: rewrite
+        source: /blog/technology-changing-transition-consultants
+        destination: /blog/technology-changing-transition-consultants/index.html
+      - type: rewrite
+        source: /blog/technology-enabling-independent-advisor-growth
+        destination: /blog/technology-enabling-independent-advisor-growth/index.html
+      - type: rewrite
+        source: /blog/technology-evaluation-criteria-for-wealth-management-operations-leaders-the-2026-rfp-guide
+        destination: /blog/technology-evaluation-criteria-for-wealth-management-operations-leaders-the-2026-rfp-guide/index.html
+      - type: rewrite
+        source: /blog/technology-training-for-operations-teams-how-to-roll-out-advisor-transition-software
+        destination: /blog/technology-training-for-operations-teams-how-to-roll-out-advisor-transition-software/index.html
+      - type: rewrite
+        source: /blog/technology-vendor-selection-wealth-management-lessons-100-firms
+        destination: /blog/technology-vendor-selection-wealth-management-lessons-100-firms/index.html
+      - type: rewrite
+        source: /blog/ten-things-not-protocol
+        destination: /blog/ten-things-not-protocol/index.html
+      - type: rewrite
+        source: /blog/the-90-day-problem-advisor-transitions-2026
+        destination: /blog/the-90-day-problem-advisor-transitions-2026/index.html
+      - type: rewrite
+        source: /blog/the-acats-resubmission-loop-how-many-days-each-reject-costs-and-where-ai-breaks-the-cycle
+        destination: /blog/the-acats-resubmission-loop-how-many-days-each-reject-costs-and-where-ai-breaks-the-cycle/index.html
+      - type: rewrite
+        source: /blog/the-account-features-that-do-not-carry-in-acats-margin-options-discretion-and-standing-instructions
+        destination: /blog/the-account-features-that-do-not-carry-in-acats-margin-options-discretion-and-standing-instructions/index.html
+      - type: rewrite
+        source: /blog/the-advisor-transition-runbook-turning-every-repaper-into-a-documented-repeatable-sop
+        destination: /blog/the-advisor-transition-runbook-turning-every-repaper-into-a-documented-repeatable-sop/index.html
+      - type: rewrite
+        source: /blog/the-client-signature-burden-in-a-repaper-how-paperwork-fatigue-drives-attrition-and-how-to-cut-it
+        destination: /blog/the-client-signature-burden-in-a-repaper-how-paperwork-fatigue-drives-attrition-and-how-to-cut-it/index.html
+      - type: rewrite
+        source: /blog/the-data-gap-in-wealth-management
+        destination: /blog/the-data-gap-in-wealth-management/index.html
+      - type: rewrite
+        source: /blog/the-e-signature-stack-for-a-repaper-what-custodians-accept-and-where-nigo-hides
+        destination: /blog/the-e-signature-stack-for-a-repaper-what-custodians-accept-and-where-nigo-hides/index.html
+      - type: rewrite
+        source: /blog/the-evolving-role-of-financial-advisors-in-the-age-of-ai
+        destination: /blog/the-evolving-role-of-financial-advisors-in-the-age-of-ai/index.html
+      - type: rewrite
+        source: /blog/the-five-pillars-of-client-retention-using-ai
+        destination: /blog/the-five-pillars-of-client-retention-using-ai/index.html
+      - type: rewrite
+        source: /blog/the-fun-financial-planner-for-ambitious-misfits
+        destination: /blog/the-fun-financial-planner-for-ambitious-misfits/index.html
+      - type: rewrite
+        source: /blog/the-human-in-the-loop-repaper-where-to-place-review-checkpoints-in-an-automated-transition
+        destination: /blog/the-human-in-the-loop-repaper-where-to-place-review-checkpoints-in-an-automated-transition/index.html
+      - type: rewrite
+        source: /blog/the-journalist-every-financial-advisor-reads-oisin-breen-vineet-mohan-advisor-ally-podcast-09
+        destination: /blog/the-journalist-every-financial-advisor-reads-oisin-breen-vineet-mohan-advisor-ally-podcast-09/index.html
+      - type: rewrite
+        source: /blog/the-medallion-signature-guarantee-bottleneck-the-one-stamp-that-stalls-trust-and-re-registration-transfers-in-a-book-move
+        destination: /blog/the-medallion-signature-guarantee-bottleneck-the-one-stamp-that-stalls-trust-and-re-registration-transfers-in-a-book-move/index.html
+      - type: rewrite
+        source: /blog/the-medallion-signature-guarantee-bottleneck-the-repaper-step-no-software-removes
+        destination: /blog/the-medallion-signature-guarantee-bottleneck-the-repaper-step-no-software-removes/index.html
+      - type: rewrite
+        source: /blog/the-negative-consent-letter-automated-when-bulk-repapering-can-use-it-and-when-it-cannot
+        destination: /blog/the-negative-consent-letter-automated-when-bulk-repapering-can-use-it-and-when-it-cannot/index.html
+      - type: rewrite
+        source: /blog/the-parallel-repaper-how-to-overlap-transition-tasks-that-teams-usually-run-in-sequence
+        destination: /blog/the-parallel-repaper-how-to-overlap-transition-tasks-that-teams-usually-run-in-sequence/index.html
+      - type: rewrite
+        source: /blog/the-post-close-retention-audit-how-to-confirm-a-moved-book-actually-landed
+        destination: /blog/the-post-close-retention-audit-how-to-confirm-a-moved-book-actually-landed/index.html
+      - type: rewrite
+        source: /blog/the-real-breakeven
+        destination: /blog/the-real-breakeven/index.html
+      - type: rewrite
+        source: /blog/the-reg-bi-gaps-a-departing-advisor-hits-and-which-ones-ai-can-flag-before-submission
+        destination: /blog/the-reg-bi-gaps-a-departing-advisor-hits-and-which-ones-ai-can-flag-before-submission/index.html
+      - type: rewrite
+        source: /blog/the-repaper-critical-path-which-single-task-actually-determines-when-a-book-finishes-moving
+        destination: /blog/the-repaper-critical-path-which-single-task-actually-determines-when-a-book-finishes-moving/index.html
+      - type: rewrite
+        source: /blog/the-repaper-delay-ledger-the-six-waiting-periods-that-stretch-a-book-move-and-which-ones-ai-can-compress
+        destination: /blog/the-repaper-delay-ledger-the-six-waiting-periods-that-stretch-a-book-move-and-which-ones-ai-can-compress/index.html
+      - type: rewrite
+        source: /blog/the-restraining-order-that-stops-a-book-move-what-happens-to-a-repaper-when-the-former-firm-sues-to-enforce-a-non-solicit
+        destination: /blog/the-restraining-order-that-stops-a-book-move-what-happens-to-a-repaper-when-the-former-firm-sues-to-enforce-a-non-solicit/index.html
+      - type: rewrite
+        source: /blog/the-rise-of-advice-only-planning-a-conversation-with-steven-fox
+        destination: /blog/the-rise-of-advice-only-planning-a-conversation-with-steven-fox/index.html
+      - type: rewrite
+        source: /blog/the-settle-date-trap-why-unsettled-trades-and-pending-activity-freeze-an-acats-transfer
+        destination: /blog/the-settle-date-trap-why-unsettled-trades-and-pending-activity-freeze-an-acats-transfer/index.html
+      - type: rewrite
+        source: /blog/the-straight-through-processing-rate-in-advisor-repapering-how-to-measure-it-and-push-it-higher
+        destination: /blog/the-straight-through-processing-rate-in-advisor-repapering-how-to-measure-it-and-push-it-higher/index.html
+      - type: rewrite
+        source: /blog/the-transfer-initiation-form-field-by-field-what-a-tif-must-match-for-acats-to-accept-a-book
+        destination: /blog/the-transfer-initiation-form-field-by-field-what-a-tif-must-match-for-acats-to-accept-a-book/index.html
+      - type: rewrite
+        source: /blog/the-transition-consultant-s-sla-committing-to-a-repaper-timeline-across-many-clients-at-once
+        destination: /blog/the-transition-consultant-s-sla-committing-to-a-repaper-timeline-across-many-clients-at-once/index.html
+      - type: rewrite
+        source: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year
+        destination: /blog/the-transition-consultant-s-toolkit-technology-that-scales-your-practice-from-10-to-50-transitions-per-year/index.html
+      - type: rewrite
+        source: /blog/the-transition-control-tower-tracking-acats-status-across-many-concurrent-advisor-moves
+        destination: /blog/the-transition-control-tower-tracking-acats-status-across-many-concurrent-advisor-moves/index.html
+      - type: rewrite
+        source: /blog/the-transition-data-room-what-documents-to-collect-and-how-ai-extracts-them-before-u4-drop-day
+        destination: /blog/the-transition-data-room-what-documents-to-collect-and-how-ai-extracts-them-before-u4-drop-day/index.html
+      - type: rewrite
+        source: /blog/the-u5-language-fight-how-a-departing-advisor-filing-can-stall-your-next-registration
+        destination: /blog/the-u5-language-fight-how-a-departing-advisor-filing-can-stall-your-next-registration/index.html
+      - type: rewrite
+        source: /blog/the-wealth-management-ops-tech-stack-every-tool-your-operations-team-actually-uses
+        destination: /blog/the-wealth-management-ops-tech-stack-every-tool-your-operations-team-actually-uses/index.html
+      - type: rewrite
+        source: /blog/three-big-opportunities-for-wealth-advisors
+        destination: /blog/three-big-opportunities-for-wealth-advisors/index.html
+      - type: rewrite
+        source: /blog/three-questions-compliance-officer-new-custodial-workflow
+        destination: /blog/three-questions-compliance-officer-new-custodial-workflow/index.html
+      - type: rewrite
+        source: /blog/top-10-wealth-management-platforms-ria-2026
+        destination: /blog/top-10-wealth-management-platforms-ria-2026/index.html
+      - type: rewrite
+        source: /blog/top-advisors-ai-free-prospecting-time-eight-hours-weekly
+        destination: /blog/top-advisors-ai-free-prospecting-time-eight-hours-weekly/index.html
+      - type: rewrite
+        source: /blog/top-transition-consultants-what-they-do-differently
+        destination: /blog/top-transition-consultants-what-they-do-differently/index.html
+      - type: rewrite
+        source: /blog/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast
+        destination: /blog/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast/index.html
+      - type: rewrite
+        source: /blog/transition-client-experience-loyalty
+        destination: /blog/transition-client-experience-loyalty/index.html
+      - type: rewrite
+        source: /blog/transition-consultant-playbook-50-annual-transitions
+        destination: /blog/transition-consultant-playbook-50-annual-transitions/index.html
+      - type: rewrite
+        source: /blog/transition-due-diligence-critical-questions-to-evaluate-a-new-firm-before-moving-your-book
+        destination: /blog/transition-due-diligence-critical-questions-to-evaluate-a-new-firm-before-moving-your-book/index.html
+      - type: rewrite
+        source: /blog/transition-management-firm-vs-diy-technology
+        destination: /blog/transition-management-firm-vs-diy-technology/index.html
+      - type: rewrite
+        source: /blog/transition-management-technology-for-ria-aggregators-how-to-handle-50-annual-acquisitions
+        destination: /blog/transition-management-technology-for-ria-aggregators-how-to-handle-50-annual-acquisitions/index.html
+      - type: rewrite
+        source: /blog/transition-modeling-tools-the-inputs-that-predict-a-repaper-s-timeline-and-cost-before-you-move
+        destination: /blog/transition-modeling-tools-the-inputs-that-predict-a-repaper-s-timeline-and-cost-before-you-move/index.html
+      - type: rewrite
+        source: /blog/transition-ops-team-burnout-12-months
+        destination: /blog/transition-ops-team-burnout-12-months/index.html
+      - type: rewrite
+        source: /blog/transition-slas-setting-repaper-turnaround-times-a-recruiting-team-can-actually-commit-to
+        destination: /blog/transition-slas-setting-repaper-turnaround-times-a-recruiting-team-can-actually-commit-to/index.html
+      - type: rewrite
+        source: /blog/transition-tech-recruiting-pitch-differentiator
+        destination: /blog/transition-tech-recruiting-pitch-differentiator/index.html
+      - type: rewrite
+        source: /blog/transition-technology-roi-calculator-cfo-justification
+        destination: /blog/transition-technology-roi-calculator-cfo-justification/index.html
+      - type: rewrite
+        source: /blog/transition-timeline-killers-five-delays-that-add-weeks-where-ai-removes-each
+        destination: /blog/transition-timeline-killers-five-delays-that-add-weeks-where-ai-removes-each/index.html
+      - type: rewrite
+        source: /blog/transition-velocity-how-fast-advisor-transition
+        destination: /blog/transition-velocity-how-fast-advisor-transition/index.html
+      - type: rewrite
+        source: /blog/transition-wirehouse-to-ria-30-days-instead-90
+        destination: /blog/transition-wirehouse-to-ria-30-days-instead-90/index.html
+      - type: rewrite
+        source: /blog/transitioning-1b-book-of-business-technology-requirements
+        destination: /blog/transitioning-1b-book-of-business-technology-requirements/index.html
+      - type: rewrite
+        source: /blog/true-roi-advisor-transition-automation
+        destination: /blog/true-roi-advisor-transition-automation/index.html
+      - type: rewrite
+        source: /blog/trust-estate-and-entity-accounts-the-registrations-that-always-go-nigo-in-a-transition-and-where-ai-catches-them
+        destination: /blog/trust-estate-and-entity-accounts-the-registrations-that-always-go-nigo-in-a-transition-and-where-ai-catches-them/index.html
+      - type: rewrite
+        source: /blog/u4-drop-day-48-hour-pre-resignation-checklist
+        destination: /blog/u4-drop-day-48-hour-pre-resignation-checklist/index.html
+      - type: rewrite
+        source: /blog/u4-u5-filing-timeline-breakaway-crd-delays
+        destination: /blog/u4-u5-filing-timeline-breakaway-crd-delays/index.html
+      - type: rewrite
+        source: /blog/u4-u5-registration-sequence-repapering-clock
+        destination: /blog/u4-u5-registration-sequence-repapering-clock/index.html
+      - type: rewrite
+        source: /blog/under-100m
+        destination: /blog/under-100m/index.html
+      - type: rewrite
+        source: /blog/unlocking-the-modern-crm-transforming-financial-advisory-firms-from-systems-of-record-to-systems-of-action
+        destination: /blog/unlocking-the-modern-crm-transforming-financial-advisory-firms-from-systems-of-record-to-systems-of-action/index.html
+      - type: rewrite
+        source: /blog/using-agentic-ai-to-reclaim-time-and-transform-client-relationships
+        destination: /blog/using-agentic-ai-to-reclaim-time-and-transform-client-relationships/index.html
+      - type: rewrite
+        source: /blog/vendor-sla-enterprise-references-bd-transitions-evaluation
+        destination: /blog/vendor-sla-enterprise-references-bd-transitions-evaluation/index.html
+      - type: rewrite
+        source: /blog/vertical-ai-vs-general-purpose-wealth-management
+        destination: /blog/vertical-ai-vs-general-purpose-wealth-management/index.html
+      - type: rewrite
+        source: /blog/voice-memo-to-crm-note-pipeline-90-seconds-advisor-workflow
+        destination: /blog/voice-memo-to-crm-note-pipeline-90-seconds-advisor-workflow/index.html
+      - type: rewrite
+        source: /blog/wealth-management-ai-automation-complete-guide-ria-operations
+        destination: /blog/wealth-management-ai-automation-complete-guide-ria-operations/index.html
+      - type: rewrite
+        source: /blog/wealth-management-ai-hype-vs-reality-operations
+        destination: /blog/wealth-management-ai-hype-vs-reality-operations/index.html
+      - type: rewrite
+        source: /blog/wealth-management-ai-what-works-vs-hype-operations
+        destination: /blog/wealth-management-ai-what-works-vs-hype-operations/index.html
+      - type: rewrite
+        source: /blog/wealth-management-back-office-automation-2026
+        destination: /blog/wealth-management-back-office-automation-2026/index.html
+      - type: rewrite
+        source: /blog/wealth-management-compliance-advisor-transitions
+        destination: /blog/wealth-management-compliance-advisor-transitions/index.html
+      - type: rewrite
+        source: /blog/wealth-management-ma-consolidation-300-deals-ops-crisis
+        destination: /blog/wealth-management-ma-consolidation-300-deals-ops-crisis/index.html
+      - type: rewrite
+        source: /blog/wealth-management-opportunity-challenges-and-top-use-cases
+        destination: /blog/wealth-management-opportunity-challenges-and-top-use-cases/index.html
+      - type: rewrite
+        source: /blog/wealth-management-tech-buyers-evaluate-transition-platforms
+        destination: /blog/wealth-management-tech-buyers-evaluate-transition-platforms/index.html
+      - type: rewrite
+        source: /blog/wealth-management-technology-small-independent-practices
+        destination: /blog/wealth-management-technology-small-independent-practices/index.html
+      - type: rewrite
+        source: /blog/wealthbox-integrated-transition-platforms-ria-operations
+        destination: /blog/wealthbox-integrated-transition-platforms-ria-operations/index.html
+      - type: rewrite
+        source: /blog/wealthbox-native-transition-platforms-ria-recruiting
+        destination: /blog/wealthbox-native-transition-platforms-ria-recruiting/index.html
+      - type: rewrite
+        source: /blog/wet-signature-holdout-forms-which-custodian-documents-still-refuse-e-sign-and-how-ai-routes-around-them
+        destination: /blog/wet-signature-holdout-forms-which-custodian-documents-still-refuse-e-sign-and-how-ai-routes-around-them/index.html
+      - type: rewrite
+        source: /blog/what-a-compliance-officer-reviews-on-an-ai-prefilled-account-form-before-it-reaches-the-custodian
+        destination: /blog/what-a-compliance-officer-reviews-on-an-ai-prefilled-account-form-before-it-reaches-the-custodian/index.html
+      - type: rewrite
+        source: /blog/what-a-home-office-needs-from-an-ai-repapering-tool-to-move-many-reps-at-once
+        destination: /blog/what-a-home-office-needs-from-an-ai-repapering-tool-to-move-many-reps-at-once/index.html
+      - type: rewrite
+        source: /blog/what-advisors-want-new-firm-first-30-days-technology
+        destination: /blog/what-advisors-want-new-firm-first-30-days-technology/index.html
+      - type: rewrite
+        source: /blog/what-client-information-can-you-take-when-you-leave-wirehouse
+        destination: /blog/what-client-information-can-you-take-when-you-leave-wirehouse/index.html
+      - type: rewrite
+        source: /blog/what-is-advisor-transition-repapering-19b-problem
+        destination: /blog/what-is-advisor-transition-repapering-19b-problem/index.html
+      - type: rewrite
+        source: /blog/what-is-an-advisor-transition-platform-buyers-guide
+        destination: /blog/what-is-an-advisor-transition-platform-buyers-guide/index.html
+      - type: rewrite
+        source: /blog/what-is-an-osj-in-wealth-management-and-why-their-technology-is-broken
+        destination: /blog/what-is-an-osj-in-wealth-management-and-why-their-technology-is-broken/index.html
+      - type: rewrite
+        source: /blog/what-is-protocol-for-broker-recruiting-advisor-independence
+        destination: /blog/what-is-protocol-for-broker-recruiting-advisor-independence/index.html
+      - type: rewrite
+        source: /blog/what-is-workflow-automation-wealth-management
+        destination: /blog/what-is-workflow-automation-wealth-management/index.html
+      - type: rewrite
+        source: /blog/what-to-automate-first-in-an-advisor-transition-sequencing-repaper-tasks-by-payback
+        destination: /blog/what-to-automate-first-in-an-advisor-transition-sequencing-repaper-tasks-by-payback/index.html
+      - type: rewrite
+        source: /blog/when-a-repaper-is-not-a-recommendation-the-reg-bi-best-interest-file-a-breakaway-advisor-still-has-to-build
+        destination: /blog/when-a-repaper-is-not-a-recommendation-the-reg-bi-best-interest-file-a-breakaway-advisor-still-has-to-build/index.html
+      - type: rewrite
+        source: /blog/when-should-broker-dealer-centralize-repapering-instead-of-each-advisor
+        destination: /blog/when-should-broker-dealer-centralize-repapering-instead-of-each-advisor/index.html
+      - type: rewrite
+        source: /blog/where-ai-helps-advisor-transition-workflow-breakdown
+        destination: /blog/where-ai-helps-advisor-transition-workflow-breakdown/index.html
+      - type: rewrite
+        source: /blog/where-ai-removes-real-work-in-an-advisor-repaper-and-where-it-quietly-adds-risk
+        destination: /blog/where-ai-removes-real-work-in-an-advisor-repaper-and-where-it-quietly-adds-risk/index.html
+      - type: rewrite
+        source: /blog/where-the-repaper-clock-actually-stops-the-bottlenecks-ai-can-compress-to-land-a-book-sooner
+        destination: /blog/where-the-repaper-clock-actually-stops-the-bottlenecks-ai-can-compress-to-land-a-book-sooner/index.html
+      - type: rewrite
+        source: /blog/who-pays-advisor-transition-costs-fee-structure
+        destination: /blog/who-pays-advisor-transition-costs-fee-structure/index.html
+      - type: rewrite
+        source: /blog/why-a-transition-slips-its-deadline-the-five-bottlenecks-that-turn-a-six-week-book-move-into-six-months
+        destination: /blog/why-a-transition-slips-its-deadline-the-five-bottlenecks-that-turn-a-six-week-book-move-into-six-months/index.html
+      - type: rewrite
+        source: /blog/why-advisors-abandon-transitions-five-breakdowns
+        destination: /blog/why-advisors-abandon-transitions-five-breakdowns/index.html
+      - type: rewrite
+        source: /blog/why-financial-advice-is-more-than-just-money-management
+        destination: /blog/why-financial-advice-is-more-than-just-money-management/index.html
+      - type: rewrite
+        source: /blog/why-fractional-shares-and-drip-positions-break-acats-transfers-and-how-to-handle-them
+        destination: /blog/why-fractional-shares-and-drip-positions-break-acats-transfers-and-how-to-handle-them/index.html
+      - type: rewrite
+        source: /blog/why-most-advisor-transitions-fail-at-the-90-day-mark
+        destination: /blog/why-most-advisor-transitions-fail-at-the-90-day-mark/index.html
+      - type: rewrite
+        source: /blog/why-repapering-consultants-switching-docupace-to-fasttrackr
+        destination: /blog/why-repapering-consultants-switching-docupace-to-fasttrackr/index.html
+      - type: rewrite
+        source: /blog/wirehouse-branch-manager-preventing-aum-bleed-advisor-departure
+        destination: /blog/wirehouse-branch-manager-preventing-aum-bleed-advisor-departure/index.html
+      - type: rewrite
+        source: /blog/wirehouse-breakaway-class-2026-billion-dollar-advisors-independence-trends
+        destination: /blog/wirehouse-breakaway-class-2026-billion-dollar-advisors-independence-trends/index.html
+      - type: rewrite
+        source: /blog/wirehouse-to-independent
+        destination: /blog/wirehouse-to-independent/index.html
+      - type: rewrite
+        source: /blog/wirehouse-to-ria-90-day-timeline
+        destination: /blog/wirehouse-to-ria-90-day-timeline/index.html
+      - type: rewrite
+        source: /blog/wirehouse-to-ria-compliance-checklist-advisor-independence
+        destination: /blog/wirehouse-to-ria-compliance-checklist-advisor-independence/index.html
+      - type: rewrite
+        source: /blog/wirehouse-to-ria-day-one-technology-stack
+        destination: /blog/wirehouse-to-ria-day-one-technology-stack/index.html
+      - type: rewrite
+        source: /blog/zero-nigo-advisor-transition-300m-book
+        destination: /blog/zero-nigo-advisor-transition-300m-book/index.html
+      - type: rewrite
+        source: /case-study/advisor-transition
+        destination: /case-study/advisor-transition/index.html
+      - type: rewrite
+        source: /case-study/bd-to-ria-400m-transition
+        destination: /case-study/bd-to-ria-400m-transition/index.html
+      - type: rewrite
+        source: /case-study/independent-breakaway-setup
+        destination: /case-study/independent-breakaway-setup/index.html
+      - type: rewrite
+        source: /client-data-consent-acknowledgment
+        destination: /client-data-consent-acknowledgment/index.html
+      - type: rewrite
+        source: /client-privacy-notice
+        destination: /client-privacy-notice/index.html
       - type: rewrite
         source: /contact
         destination: /contact/index.html
+      - type: rewrite
+        source: /cost-of-repapering
+        destination: /cost-of-repapering/index.html
+      - type: rewrite
+        source: /custodians
+        destination: /custodians/index.html
+      - type: rewrite
+        source: /custodians/fidelity
+        destination: /custodians/fidelity/index.html
+      - type: rewrite
+        source: /custodians/goldman-sachs
+        destination: /custodians/goldman-sachs/index.html
+      - type: rewrite
+        source: /custodians/pershing
+        destination: /custodians/pershing/index.html
+      - type: rewrite
+        source: /custodians/schwab
+        destination: /custodians/schwab/index.html
+      - type: rewrite
+        source: /custodians/sei
+        destination: /custodians/sei/index.html
+      - type: rewrite
+        source: /glossary
+        destination: /glossary/index.html
+      - type: rewrite
+        source: /glossary/acats
+        destination: /glossary/acats/index.html
+      - type: rewrite
+        source: /glossary/breakaway-advisor
+        destination: /glossary/breakaway-advisor/index.html
+      - type: rewrite
+        source: /glossary/broker-protocol
+        destination: /glossary/broker-protocol/index.html
+      - type: rewrite
+        source: /glossary/nigo
+        destination: /glossary/nigo/index.html
+      - type: rewrite
+        source: /glossary/osj
+        destination: /glossary/osj/index.html
+      - type: rewrite
+        source: /glossary/pte-2020-02
+        destination: /glossary/pte-2020-02/index.html
+      - type: rewrite
+        source: /glossary/reg-bi
+        destination: /glossary/reg-bi/index.html
+      - type: rewrite
+        source: /glossary/repapering
+        destination: /glossary/repapering/index.html
+      - type: rewrite
+        source: /glossary/tif
+        destination: /glossary/tif/index.html
+      - type: rewrite
+        source: /glossary/toa
+        destination: /glossary/toa/index.html
+      - type: rewrite
+        source: /glossary/tuck-in
+        destination: /glossary/tuck-in/index.html
+      - type: rewrite
+        source: /pricing
+        destination: /pricing/index.html
       - type: rewrite
         source: /privacy-policy
         destination: /privacy-policy/index.html
@@ -314,11 +1850,65 @@ services:
         source: /privacy-policy-transitions
         destination: /privacy-policy-transitions/index.html
       - type: rewrite
-        source: /client-privacy-notice
-        destination: /client-privacy-notice/index.html
+        source: /resources/blog
+        destination: /resources/blog/index.html
       - type: rewrite
-        source: /client-data-consent-acknowledgment
-        destination: /client-data-consent-acknowledgment/index.html
+        source: /resources/news
+        destination: /resources/news/index.html
+      - type: rewrite
+        source: /resources/news/fasttrackr-ai-introduces-first-ai-native-platform-built-to-run-advisor-transitions
+        destination: /resources/news/fasttrackr-ai-introduces-first-ai-native-platform-built-to-run-advisor-transitions/index.html
+      - type: rewrite
+        source: /resources/news/financex-magazine-when-a-hundred-thousand-books-change-hands
+        destination: /resources/news/financex-magazine-when-a-hundred-thousand-books-change-hands/index.html
+      - type: rewrite
+        source: /resources/podcasts
+        destination: /resources/podcasts/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep12-jason-branning
+        destination: /resources/podcasts/advisor-ally-ep12-jason-branning/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep13-steven-fox
+        destination: /resources/podcasts/advisor-ally-ep13-steven-fox/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep15-stephanie-shepherd
+        destination: /resources/podcasts/advisor-ally-ep15-stephanie-shepherd/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep16-allie-beckmann
+        destination: /resources/podcasts/advisor-ally-ep16-allie-beckmann/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep17-jeff-fuhrman
+        destination: /resources/podcasts/advisor-ally-ep17-jeff-fuhrman/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep18-purva-sule
+        destination: /resources/podcasts/advisor-ally-ep18-purva-sule/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep19-nico-demaio
+        destination: /resources/podcasts/advisor-ally-ep19-nico-demaio/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep20-robert-noe
+        destination: /resources/podcasts/advisor-ally-ep20-robert-noe/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep21-andy-burgess
+        destination: /resources/podcasts/advisor-ally-ep21-andy-burgess/index.html
+      - type: rewrite
+        source: /resources/podcasts/advisor-ally-ep22-grier-rubeling
+        destination: /resources/podcasts/advisor-ally-ep22-grier-rubeling/index.html
+      - type: rewrite
+        source: /resources/podcasts/vineet-mohan-ai-for-rias-and-financial-advisors
+        destination: /resources/podcasts/vineet-mohan-ai-for-rias-and-financial-advisors/index.html
+      - type: rewrite
+        source: /resources/podcasts/vineet-mohan-building-the-ai-brain-of-wealth-management
+        destination: /resources/podcasts/vineet-mohan-building-the-ai-brain-of-wealth-management/index.html
+      - type: rewrite
+        source: /resources/podcasts/vineet-mohan-why-ai-adoption-fails
+        destination: /resources/podcasts/vineet-mohan-why-ai-adoption-fails/index.html
+      - type: rewrite
+        source: /resources/podcasts/webinar-ai-automation-for-rias
+        destination: /resources/podcasts/webinar-ai-automation-for-rias/index.html
+      - type: rewrite
+        source: /solutions/advisor-transitions
+        destination: /solutions/advisor-transitions/index.html
       - type: rewrite
         source: /tos
         destination: /tos/index.html
@@ -326,45 +1916,24 @@ services:
         source: /tos-transitions
         destination: /tos-transitions/index.html
       - type: rewrite
-        source: /zoom-help-documentation
-        destination: /zoom-help-documentation/index.html
-      # W6 flagship assets + custodian landing pages. New prerendered static
-      # routes — each needs its own rewrite before the catch-all or Render serves
-      # the homepage shell to crawlers (project_render_static_route_rewrites).
-      - type: rewrite
-        source: /custodians
-        destination: /custodians/index.html
-      - type: rewrite
-        source: /custodians/*
-        destination: /custodians/*/index.html
-      - type: rewrite
         source: /transition-checklist
         destination: /transition-checklist/index.html
       - type: rewrite
-        source: /cost-of-repapering
-        destination: /cost-of-repapering/index.html
-      # W3 glossary hub + entries, and W5 author archive pages. Prerendered
-      # static routes that likewise need their own rewrite before the catch-all.
+        source: /who-we-serve/acquisitive-rias
+        destination: /who-we-serve/acquisitive-rias/index.html
       - type: rewrite
-        source: /glossary
-        destination: /glossary/index.html
+        source: /who-we-serve/breakaway-advisors
+        destination: /who-we-serve/breakaway-advisors/index.html
       - type: rewrite
-        source: /glossary/*
-        destination: /glossary/*/index.html
+        source: /who-we-serve/custodians
+        destination: /who-we-serve/custodians/index.html
       - type: rewrite
-        source: /authors/*
-        destination: /authors/*/index.html
-      # We publish nothing under /.well-known/. Without this rule the catch-all
-      # below answered e.g. /.well-known/ai-catalog.json with the homepage HTML
-      # (200), which Lighthouse's Agentic Browsing audit reports as a malformed
-      # manifest. Pointing it at a file that doesn't exist should return a 404 —
-      # curl-check after deploy. Real files added under public/.well-known/
-      # still win: Render doesn't apply rules where a file exists.
+        source: /who-we-serve/independent-broker-dealers
+        destination: /who-we-serve/independent-broker-dealers/index.html
       - type: rewrite
-        source: /.well-known/*
-        destination: /.well-known/__not-found
-      # SPA deep-link fallback — every other path serves the app shell so
-      # React Router can handle it (and hard refreshes on /blog/<post> work).
+        source: /who-we-serve/transition-consultants
+        destination: /who-we-serve/transition-consultants/index.html
       - type: rewrite
-        source: /*
-        destination: /index.html
+        source: /zoom-help-documentation
+        destination: /zoom-help-documentation/index.html
+      # END generated clean-URL rewrites

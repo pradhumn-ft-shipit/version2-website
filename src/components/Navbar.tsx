@@ -8,9 +8,7 @@ import AnnouncementRibbon from './AnnouncementRibbon';
 
 const solutionsItems = [
   { label: 'Advisor Transitions', href: '/solutions/advisor-transitions' },
-  { label: 'Client Onboarding', href: '/solutions/client-onboarding' },
-  { label: 'Meeting Assistant', href: '/solutions/meeting-assistant' },
-  { label: 'Document Intelligence', href: '/solutions/document-intelligence' },
+  { label: 'Custodians', href: '/custodians' },
 ];
 
 const whoWeServeItems = [

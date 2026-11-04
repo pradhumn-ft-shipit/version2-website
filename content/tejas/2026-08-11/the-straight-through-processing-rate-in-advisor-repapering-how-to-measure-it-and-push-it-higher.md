@@ -33,7 +33,7 @@ The metric is simple to define and easy to game. Measure it as accounts that req
 
 **Fix the window and the stage.** Decide whether you are measuring straight-through to submission or straight-through to funded, and hold it constant. Submission-stage STP tells you about your intake and validation quality. Funded-stage STP tells you about the whole chain including custodian and ACATS behavior. Both are useful; mixing them is not.
 
-The [advisor transition scorecard of operational metrics](https://fasttrackr.ai/blog/advisor-transition-ops-scorecard-metrics) puts STP alongside the other numbers an ops director should track, so it is read in context rather than as a vanity figure.
+The [advisor transition scorecard of operational metrics](https://fasttrackr.ai/blog/breakaway-advisor-compliance-checklist-before-resign) puts STP alongside the other numbers an ops director should track, so it is read in context rather than as a vanity figure.
 
 ## Benchmarks: what a good rate looks like
 

@@ -68,7 +68,7 @@ Three practical consequences for anyone running the transition:
 
 **Residual handling is where transfer claims come from.** The rule gives members five business days to resolve a claim relating to a transfer once notice is received. Unresolved residuals become claims, and claims consume operations time long after everyone has moved on to the next transition.
 
-If you are tracking transition performance at all seriously, residual closure belongs in the metric set alongside the more familiar operational measures covered in the [advisor transition operations scorecard](https://fasttrackr.ai/blog/advisor-transition-ops-scorecard-metrics). Assets transferred is a milestone. Residuals closed is the completion.
+If you are tracking transition performance at all seriously, residual closure belongs in the metric set alongside the more familiar operational measures covered in the [advisor transition operations scorecard](https://fasttrackr.ai/blog/breakaway-advisor-compliance-checklist-before-resign). Assets transferred is a milestone. Residuals closed is the completion.
 
 ## Build the exception inventory before resignation, not after
 

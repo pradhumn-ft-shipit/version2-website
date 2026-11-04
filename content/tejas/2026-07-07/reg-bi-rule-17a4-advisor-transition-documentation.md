@@ -15,7 +15,7 @@ For a compliance officer, an advisor transition is one of the highest-risk recor
 
 The core tension is volume against evidence. Reg BI, effective since June 2020, added recordkeeping paragraphs under Rules 17a-3 and 17a-4 that require broker-dealers to document the recommendations they make and the information they collect from and provide to retail customers. During a transition, the number of recommendation and account events spikes, but the process is often improvised, which is exactly when documentation slips.
 
-Two failure modes recur. First, recommendation records made during repapering are thin or missing because the team is focused on getting accounts moved, not on evidencing the basis for each recommendation. Second, transition communications live in personal inboxes, texts, or ad hoc channels that never make it into the firm's preserved records. Both are ordinary-course obligations that a transition simply amplifies. The related question of what an advisor may hold in outside accounts, and the consents a compliance officer must verify, sits alongside this and is covered in our guide to [FINRA Rule 3210 and outside accounts during a breakaway](https://fasttrackr.ai/blog/finra-rule-3210-advisor-breakaway-outside-accounts-compliance).
+Two failure modes recur. First, recommendation records made during repapering are thin or missing because the team is focused on getting accounts moved, not on evidencing the basis for each recommendation. Second, transition communications live in personal inboxes, texts, or ad hoc channels that never make it into the firm's preserved records. Both are ordinary-course obligations that a transition simply amplifies. The related question of what an advisor may hold in outside accounts, and the consents a compliance officer must verify, sits alongside this and is covered in our guide to [FINRA Rule 3210 and outside accounts during a breakaway](https://fasttrackr.ai/blog/breakaway-advisor-compliance-checklist-before-resign).
 
 ## The three phases and what each requires
 
@@ -63,7 +63,7 @@ Automation reduces recordkeeping risk in specific, bounded ways: extracting accu
 
 ## Coordinating with the filing timeline
 
-Recordkeeping does not happen in isolation from the registration mechanics of the move. The U5 from the prior firm and the U4 at the new firm carry their own timing, and delays there can stretch the window during which recommendations and communications are being generated. Keeping the documentation aligned with that timeline is part of a clean transition, and the filing mechanics are detailed in our guide to [the U4 and U5 filing timeline during a breakaway](https://fasttrackr.ai/blog/u4-u5-filing-timeline-breakaway-crd-delays).
+Recordkeeping does not happen in isolation from the registration mechanics of the move. The U5 from the prior firm and the U4 at the new firm carry their own timing, and delays there can stretch the window during which recommendations and communications are being generated. Keeping the documentation aligned with that timeline is part of a clean transition, and the filing mechanics are detailed in our guide to [the U4 and U5 filing timeline during a breakaway](https://fasttrackr.ai/blog/breakaway-advisor-compliance-checklist-before-resign).
 
 Treat the transition as a heightened-recordkeeping period, capture the recommendation basis and communications as the work happens, and preserve everything in a form you can produce on demand. That posture turns a high-risk window into a documented one.
 

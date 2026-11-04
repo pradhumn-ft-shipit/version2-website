@@ -62,7 +62,7 @@ The day-30 meeting also formally resumes the planning relationship. During the t
 
 For multi-account households or complex transitions, this is also when to confirm that held-back assets — accounts the client chose not to move during the initial transition — are still on the table. Second-deposit capture rates rise significantly when the day-30 meeting explicitly surfaces them.
 
-The cadence here builds on the disciplines covered in our [advisor transition stakeholder management guide](https://fasttrackr.ai/blog/advisor-transition-stakeholder-management), which maps the full set of relationships the operations team has to manage during a move.
+The cadence here builds on the disciplines covered in our [advisor transition stakeholder management guide](https://fasttrackr.ai/blog/signs-transition-losing-clients), which maps the full set of relationships the operations team has to manage during a move.
 
 ## The day-60 milestone: planning resumption and second-deposit timing
 

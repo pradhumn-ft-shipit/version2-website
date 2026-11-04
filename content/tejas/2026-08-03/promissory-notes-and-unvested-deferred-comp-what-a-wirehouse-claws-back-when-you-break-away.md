@@ -69,7 +69,7 @@ Turn the abstract worry into a concrete worksheet. Before resigning, an advisor 
 2. **The unvested deferred comp** that will be forfeited, by award and vesting date.
 3. **The tax effect** of both, modeled with a CPA, not estimated.
 4. **The new firm's offset**, meaning how much of a new package is available to cover the old obligations.
-5. **The revenue at risk** if the transition runs slow, using a realistic [transition ROI and cost-per-transition model](https://fasttrackr.ai/blog/advisor-transition-technology-roi-cost-per-transition-benchmark).
+5. **The revenue at risk** if the transition runs slow, using a realistic [transition ROI and cost-per-transition model](https://fasttrackr.ai/blog/nigo-faq-not-in-good-order-prevention).
 
 That worksheet is what turns "I think I can afford to leave" into a defensible decision. It also feeds directly into the operational plan, because the departure date it produces is the fixed point that a [90-day wirehouse-to-RIA timeline](https://fasttrackr.ai/blog/wirehouse-to-ria-90-day-timeline) has to work backward from. Firms and [transition consultants](https://fasttrackr.ai/who-we-serve/transition-consultants) who guide advisors through this build the money model and the operational model together, and the [document intelligence](https://fasttrackr.ai/solutions/document-intelligence) that speeds the repaper is also what protects the AUM the whole decision depends on. A [real transition outcome](https://fasttrackr.ai/case-study/advisor-transition) shows what it looks like when both sides of the math work.
 

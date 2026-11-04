@@ -348,6 +348,106 @@ services:
       - type: redirect
         source: /blog/fasttrackr-ai-meeting-assistant-financial-advisors
         destination: /solutions/advisor-transitions
+      # PR5-01 (2026-11-04): blog batch 2. 32 posts that lost their search query
+      # to another of our pages 301 into that page; any section the target lacked
+      # was added to it first. Sources removed from content/. Targets per
+      # aeo-seo/tickets/data/PR5-01-merge.csv.
+      - type: redirect
+        source: /blog/exception-management-advisor-transitions
+        destination: /blog/nigo-faq-not-in-good-order-prevention
+      - type: redirect
+        source: /blog/ma-integration-timelines-wealth-management-close-faster
+        destination: /blog/account-migration-technology-move-10000-accounts
+      - type: redirect
+        source: /blog/advisor-transition-roi-calculator-quantify-automation
+        destination: /blog/advisor-transition-automation-platform-comparison-2026
+      - type: redirect
+        source: /blog/protecting-client-assets-during-advisor-transitions-a-regulatory-perspective
+        destination: /blog/signs-transition-losing-clients
+      - type: redirect
+        source: /blog/multi-state-licensing-ria-acquisitions-operations-teams
+        destination: /blog/multi-state-regulatory-complexity-advisor-transitions
+      - type: redirect
+        source: /blog/implementation-guide-advisor-transition-software-multi-office
+        destination: /blog/advisor-transition-automation-platform-comparison-2026
+      - type: redirect
+        source: /blog/client-trust-advisor-transition
+        destination: /blog/signs-transition-losing-clients
+      - type: redirect
+        source: /blog/broker-dealer-transition-operations-benchmark
+        destination: /blog/what-is-advisor-transition-repapering-19b-problem
+      - type: redirect
+        source: /blog/what-is-protocol-for-broker-recruiting-advisor-independence
+        destination: /glossary/broker-protocol
+      - type: redirect
+        source: /blog/automate-repapering-500-accounts-no-manual-entry
+        destination: /solutions/advisor-transitions
+      - type: redirect
+        source: /blog/post-acquisition-repapering-90-day-timeline-aum-retention
+        destination: /blog/account-migration-technology-move-10000-accounts
+      - type: redirect
+        source: /blog/managing-client-anxiety-advisor-transitions
+        destination: /blog/signs-transition-losing-clients
+      - type: redirect
+        source: /blog/transition-velocity-how-fast-advisor-transition
+        destination: /blog/signs-transition-losing-clients
+      - type: redirect
+        source: /blog/client-sentiment-90-day-transition
+        destination: /blog/signs-transition-losing-clients
+      - type: redirect
+        source: /blog/how-ai-reduces-advisor-transition-time-90-days-technical
+        destination: /blog/advisor-transition-automation-platform-comparison-2026
+      - type: redirect
+        source: /blog/prepare-clients-before-day-one
+        destination: /blog/advisor-transition-faq
+      - type: redirect
+        source: /blog/5-step-framework-stress-free-transition
+        destination: /blog/advisor-transition-faq
+      - type: redirect
+        source: /blog/osj-growth-playbook-advisor-onboarding-technology
+        destination: /blog/breakaway-advisor-compliance-checklist-before-resign
+      - type: redirect
+        source: /blog/advisor-transition-battle-card-recruiting-director
+        destination: /blog/advisor-transition-automation-platform-comparison-2026
+      - type: redirect
+        source: /blog/osj-standardized-advisor-onboarding-technology-stack
+        destination: /blog/breakaway-advisor-compliance-checklist-before-resign
+      - type: redirect
+        source: /blog/automation-solves-three-biggest-problems-advisor-transitions
+        destination: /blog/advisor-transition-automation-platform-comparison-2026
+      - type: redirect
+        source: /blog/independent-advisors-automation-over-manual-transitions
+        destination: /blog/advisor-transition-automation-platform-comparison-2026
+      - type: redirect
+        source: /blog/advisor-transition-stakeholder-management
+        destination: /blog/signs-transition-losing-clients
+      - type: redirect
+        source: /blog/when-should-broker-dealer-centralize-repapering-instead-of-each-advisor
+        destination: /blog/what-is-advisor-transition-repapering-19b-problem
+      - type: redirect
+        source: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission
+        destination: /blog/nigo-faq-not-in-good-order-prevention
+      - type: redirect
+        source: /blog/nigo-root-cause-analysis-finding-the-repaper-fields-that-cause-most-of-your-acats-rejects
+        destination: /blog/nigo-faq-not-in-good-order-prevention
+      - type: redirect
+        source: /blog/advisor-transition-technology-roi-cost-per-transition-benchmark
+        destination: /blog/nigo-faq-not-in-good-order-prevention
+      - type: redirect
+        source: /blog/transition-modeling-tools-the-inputs-that-predict-a-repaper-s-timeline-and-cost-before-you-move
+        destination: /blog/nigo-faq-not-in-good-order-prevention
+      - type: redirect
+        source: /blog/advisor-transition-ops-scorecard-metrics
+        destination: /blog/breakaway-advisor-compliance-checklist-before-resign
+      - type: redirect
+        source: /blog/finra-rule-3210-advisor-breakaway-outside-accounts-compliance
+        destination: /blog/breakaway-advisor-compliance-checklist-before-resign
+      - type: redirect
+        source: /blog/u4-u5-filing-timeline-breakaway-crd-delays
+        destination: /blog/breakaway-advisor-compliance-checklist-before-resign
+      - type: redirect
+        source: /blog/broker-protocol-automate-vs-securities-attorney
+        destination: /blog/broker-protocol-eligibility-checklist-how-to-confirm-both-firms-are-members-befo
       # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
       # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
       # real page.
@@ -413,9 +513,6 @@ services:
         source: /blog/3-week-advisor-transition-evidence
         destination: /blog/3-week-advisor-transition-evidence/index.html
       - type: rewrite
-        source: /blog/5-step-framework-stress-free-transition
-        destination: /blog/5-step-framework-stress-free-transition/index.html
-      - type: rewrite
         source: /blog/72-hour-breakaway-operations-window
         destination: /blog/72-hour-breakaway-operations-window/index.html
       - type: rewrite
@@ -467,9 +564,6 @@ services:
         source: /blog/advisor-transition-automation-platform-comparison-2026
         destination: /blog/advisor-transition-automation-platform-comparison-2026/index.html
       - type: rewrite
-        source: /blog/advisor-transition-battle-card-recruiting-director
-        destination: /blog/advisor-transition-battle-card-recruiting-director/index.html
-      - type: rewrite
         source: /blog/advisor-transition-burnout-ops-team
         destination: /blog/advisor-transition-burnout-ops-team/index.html
       - type: rewrite
@@ -494,9 +588,6 @@ services:
         source: /blog/advisor-transition-kpis-operations-tracking
         destination: /blog/advisor-transition-kpis-operations-tracking/index.html
       - type: rewrite
-        source: /blog/advisor-transition-ops-scorecard-metrics
-        destination: /blog/advisor-transition-ops-scorecard-metrics/index.html
-      - type: rewrite
         source: /blog/advisor-transition-platform-comparison-fasttrackr-docupace-skience
         destination: /blog/advisor-transition-platform-comparison-fasttrackr-docupace-skience/index.html
       - type: rewrite
@@ -509,17 +600,11 @@ services:
         source: /blog/advisor-transition-project-plan-template-operations-teams
         destination: /blog/advisor-transition-project-plan-template-operations-teams/index.html
       - type: rewrite
-        source: /blog/advisor-transition-roi-calculator-quantify-automation
-        destination: /blog/advisor-transition-roi-calculator-quantify-automation/index.html
-      - type: rewrite
         source: /blog/advisor-transition-software-comparison-fasttrackr-docupace
         destination: /blog/advisor-transition-software-comparison-fasttrackr-docupace/index.html
       - type: rewrite
         source: /blog/advisor-transition-software-compliance-department-buy-in
         destination: /blog/advisor-transition-software-compliance-department-buy-in/index.html
-      - type: rewrite
-        source: /blog/advisor-transition-stakeholder-management
-        destination: /blog/advisor-transition-stakeholder-management/index.html
       - type: rewrite
         source: /blog/advisor-transition-story-business-development-asset
         destination: /blog/advisor-transition-story-business-development-asset/index.html
@@ -529,9 +614,6 @@ services:
       - type: rewrite
         source: /blog/advisor-transition-technology-procurement-guide
         destination: /blog/advisor-transition-technology-procurement-guide/index.html
-      - type: rewrite
-        source: /blog/advisor-transition-technology-roi-cost-per-transition-benchmark
-        destination: /blog/advisor-transition-technology-roi-cost-per-transition-benchmark/index.html
       - type: rewrite
         source: /blog/advisor-transition-timeline-week-by-week
         destination: /blog/advisor-transition-timeline-week-by-week/index.html
@@ -620,12 +702,6 @@ services:
         source: /blog/automate-form-population-multiple-custodians
         destination: /blog/automate-form-population-multiple-custodians/index.html
       - type: rewrite
-        source: /blog/automate-repapering-500-accounts-no-manual-entry
-        destination: /blog/automate-repapering-500-accounts-no-manual-entry/index.html
-      - type: rewrite
-        source: /blog/automation-solves-three-biggest-problems-advisor-transitions
-        destination: /blog/automation-solves-three-biggest-problems-advisor-transitions/index.html
-      - type: rewrite
         source: /blog/bd-ma-teams-calculate-transition-risk-before-loi
         destination: /blog/bd-ma-teams-calculate-transition-risk-before-loi/index.html
       - type: rewrite
@@ -680,17 +756,11 @@ services:
         source: /blog/broker-dealer-reduce-advisor-onboarding-time-under-3-weeks
         destination: /blog/broker-dealer-reduce-advisor-onboarding-time-under-3-weeks/index.html
       - type: rewrite
-        source: /blog/broker-dealer-transition-operations-benchmark
-        destination: /blog/broker-dealer-transition-operations-benchmark/index.html
-      - type: rewrite
         source: /blog/broker-dealer-transition-readiness-scorecard-12-metrics
         destination: /blog/broker-dealer-transition-readiness-scorecard-12-metrics/index.html
       - type: rewrite
         source: /blog/broker-protocol-2025-membership-verification
         destination: /blog/broker-protocol-2025-membership-verification/index.html
-      - type: rewrite
-        source: /blog/broker-protocol-automate-vs-securities-attorney
-        destination: /blog/broker-protocol-automate-vs-securities-attorney/index.html
       - type: rewrite
         source: /blog/broker-protocol-compliance-checklist-what-you-can-take
         destination: /blog/broker-protocol-compliance-checklist-what-you-can-take/index.html
@@ -739,12 +809,6 @@ services:
       - type: rewrite
         source: /blog/client-questions-advisor-transition-answers
         destination: /blog/client-questions-advisor-transition-answers/index.html
-      - type: rewrite
-        source: /blog/client-sentiment-90-day-transition
-        destination: /blog/client-sentiment-90-day-transition/index.html
-      - type: rewrite
-        source: /blog/client-trust-advisor-transition
-        destination: /blog/client-trust-advisor-transition/index.html
       - type: rewrite
         source: /blog/compliance-documentation-ai-advisor-transitions
         destination: /blog/compliance-documentation-ai-advisor-transitions/index.html
@@ -851,9 +915,6 @@ services:
         source: /blog/every-path-out-pillar
         destination: /blog/every-path-out-pillar/index.html
       - type: rewrite
-        source: /blog/exception-management-advisor-transitions
-        destination: /blog/exception-management-advisor-transitions/index.html
-      - type: rewrite
         source: /blog/executive-committee-deck-template-cost-benefit-transition-technology
         destination: /blog/executive-committee-deck-template-cost-benefit-transition-technology/index.html
       - type: rewrite
@@ -896,9 +957,6 @@ services:
         source: /blog/finra-rule-2273-educational-communication-advisor-transition
         destination: /blog/finra-rule-2273-educational-communication-advisor-transition/index.html
       - type: rewrite
-        source: /blog/finra-rule-3210-advisor-breakaway-outside-accounts-compliance
-        destination: /blog/finra-rule-3210-advisor-breakaway-outside-accounts-compliance/index.html
-      - type: rewrite
         source: /blog/first-72-hours-advisor-transition-operations-checklist
         destination: /blog/first-72-hours-advisor-transition-operations-checklist/index.html
       - type: rewrite
@@ -919,9 +977,6 @@ services:
       - type: rewrite
         source: /blog/from-form-to-fund-advisor-transition-paperwork-2026
         destination: /blog/from-form-to-fund-advisor-transition-paperwork-2026/index.html
-      - type: rewrite
-        source: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission
-        destination: /blog/front-loading-the-repaper-the-pre-validation-math-that-beats-fixing-nigo-after-submission/index.html
       - type: rewrite
         source: /blog/full-vs-partial-acats-transfers-when-splitting-a-book-move-speeds-the-repaper
         destination: /blog/full-vs-partial-acats-transfers-when-splitting-a-book-move-speeds-the-repaper/index.html
@@ -946,9 +1001,6 @@ services:
       - type: rewrite
         source: /blog/how-200m-500m-rias-reduce-new-advisor-time-to-productivity
         destination: /blog/how-200m-500m-rias-reduce-new-advisor-time-to-productivity/index.html
-      - type: rewrite
-        source: /blog/how-ai-reduces-advisor-transition-time-90-days-technical
-        destination: /blog/how-ai-reduces-advisor-transition-time-90-days-technical/index.html
       - type: rewrite
         source: /blog/how-ai-triages-the-repaper-exceptions-that-break-straight-through-automation
         destination: /blog/how-ai-triages-the-repaper-exceptions-that-break-straight-through-automation/index.html
@@ -1004,9 +1056,6 @@ services:
         source: /blog/how-transition-data-moves-from-custodian-statements-to-your-crm-during-a-repaper
         destination: /blog/how-transition-data-moves-from-custodian-statements-to-your-crm-during-a-repaper/index.html
       - type: rewrite
-        source: /blog/implementation-guide-advisor-transition-software-multi-office
-        destination: /blog/implementation-guide-advisor-transition-software-multi-office/index.html
-      - type: rewrite
         source: /blog/in-kind-transfer-vs-liquidate-and-rebuy-in-a-repaper-the-decision-that-drives-taxes-and-reg-bi
         destination: /blog/in-kind-transfer-vs-liquidate-and-rebuy-in-a-repaper-the-decision-that-drives-taxes-and-reg-bi/index.html
       - type: rewrite
@@ -1018,9 +1067,6 @@ services:
       - type: rewrite
         source: /blog/independent-advisor-technology-guide-10-tools-solo-rias
         destination: /blog/independent-advisor-technology-guide-10-tools-solo-rias/index.html
-      - type: rewrite
-        source: /blog/independent-advisors-automation-over-manual-transitions
-        destination: /blog/independent-advisors-automation-over-manual-transitions/index.html
       - type: rewrite
         source: /blog/independent-broker-dealers-beat-wirehouse-internal-transition-teams
         destination: /blog/independent-broker-dealers-beat-wirehouse-internal-transition-teams/index.html
@@ -1040,9 +1086,6 @@ services:
         source: /blog/legal-consultant-guide-finra-rule-4511-client-record-transfers
         destination: /blog/legal-consultant-guide-finra-rule-4511-client-record-transfers/index.html
       - type: rewrite
-        source: /blog/ma-integration-timelines-wealth-management-close-faster
-        destination: /blog/ma-integration-timelines-wealth-management-close-faster/index.html
-      - type: rewrite
         source: /blog/ma-operations-playbook-absorb-10-acquired-advisors-60-days
         destination: /blog/ma-operations-playbook-absorb-10-acquired-advisors-60-days/index.html
       - type: rewrite
@@ -1054,9 +1097,6 @@ services:
       - type: rewrite
         source: /blog/managing-50-concurrent-advisor-onboardings-bd-recruiting
         destination: /blog/managing-50-concurrent-advisor-onboardings-bd-recruiting/index.html
-      - type: rewrite
-        source: /blog/managing-client-anxiety-advisor-transitions
-        destination: /blog/managing-client-anxiety-advisor-transitions/index.html
       - type: rewrite
         source: /blog/manual-vs-automated-advisor-transition-cost-breakdown
         destination: /blog/manual-vs-automated-advisor-transition-cost-breakdown/index.html
@@ -1085,9 +1125,6 @@ services:
         source: /blog/multi-advisor-team-rjs-to-lpl-coordination-playbook
         destination: /blog/multi-advisor-team-rjs-to-lpl-coordination-playbook/index.html
       - type: rewrite
-        source: /blog/multi-state-licensing-ria-acquisitions-operations-teams
-        destination: /blog/multi-state-licensing-ria-acquisitions-operations-teams/index.html
-      - type: rewrite
         source: /blog/multi-state-regulatory-complexity-advisor-transitions
         destination: /blog/multi-state-regulatory-complexity-advisor-transitions/index.html
       - type: rewrite
@@ -1112,9 +1149,6 @@ services:
         source: /blog/nigo-reason-code-playbook-which-rejections-ai-prevents-before-submission
         destination: /blog/nigo-reason-code-playbook-which-rejections-ai-prevents-before-submission/index.html
       - type: rewrite
-        source: /blog/nigo-root-cause-analysis-finding-the-repaper-fields-that-cause-most-of-your-acats-rejects
-        destination: /blog/nigo-root-cause-analysis-finding-the-repaper-fields-that-cause-most-of-your-acats-rejects/index.html
-      - type: rewrite
         source: /blog/nigos-hidden-revenue-killer-advisor-transitions
         destination: /blog/nigos-hidden-revenue-killer-advisor-transitions/index.html
       - type: rewrite
@@ -1133,17 +1167,11 @@ services:
         source: /blog/osj-compliance-checklist-advisor-transitions-supervisor
         destination: /blog/osj-compliance-checklist-advisor-transitions-supervisor/index.html
       - type: rewrite
-        source: /blog/osj-growth-playbook-advisor-onboarding-technology
-        destination: /blog/osj-growth-playbook-advisor-onboarding-technology/index.html
-      - type: rewrite
         source: /blog/osj-onboard-10-advisors-per-quarter
         destination: /blog/osj-onboard-10-advisors-per-quarter/index.html
       - type: rewrite
         source: /blog/osj-repapering-at-scale-operating-model-50-books-quarterly
         destination: /blog/osj-repapering-at-scale-operating-model-50-books-quarterly/index.html
-      - type: rewrite
-        source: /blog/osj-standardized-advisor-onboarding-technology-stack
-        destination: /blog/osj-standardized-advisor-onboarding-technology-stack/index.html
       - type: rewrite
         source: /blog/osj-technology-and-advisor-transitions-a-complete-automation-guide-for-office-of-supervisory-jurisdiction
         destination: /blog/osj-technology-and-advisor-transitions-a-complete-automation-guide-for-office-of-supervisory-jurisdiction/index.html
@@ -1169,9 +1197,6 @@ services:
         source: /blog/per-transition-pricing-consulting-firms-vs-per-seat-saas
         destination: /blog/per-transition-pricing-consulting-firms-vs-per-seat-saas/index.html
       - type: rewrite
-        source: /blog/post-acquisition-repapering-90-day-timeline-aum-retention
-        destination: /blog/post-acquisition-repapering-90-day-timeline-aum-retention/index.html
-      - type: rewrite
         source: /blog/post-merger-transition-playbook-ria-acquirers-10-advisors
         destination: /blog/post-merger-transition-playbook-ria-acquirers-10-advisors/index.html
       - type: rewrite
@@ -1187,17 +1212,11 @@ services:
         source: /blog/predicting-nigo-before-form-submission-ai-models
         destination: /blog/predicting-nigo-before-form-submission-ai-models/index.html
       - type: rewrite
-        source: /blog/prepare-clients-before-day-one
-        destination: /blog/prepare-clients-before-day-one/index.html
-      - type: rewrite
         source: /blog/prevent-asset-leakage-10-percent-problem
         destination: /blog/prevent-asset-leakage-10-percent-problem/index.html
       - type: rewrite
         source: /blog/promissory-notes-and-unvested-deferred-comp-what-a-wirehouse-claws-back-when-you-break-away
         destination: /blog/promissory-notes-and-unvested-deferred-comp-what-a-wirehouse-claws-back-when-you-break-away/index.html
-      - type: rewrite
-        source: /blog/protecting-client-assets-during-advisor-transitions-a-regulatory-perspective
-        destination: /blog/protecting-client-assets-during-advisor-transitions-a-regulatory-perspective/index.html
       - type: rewrite
         source: /blog/protocol-data-guide
         destination: /blog/protocol-data-guide/index.html
@@ -1481,9 +1500,6 @@ services:
         source: /blog/transition-management-technology-for-ria-aggregators-how-to-handle-50-annual-acquisitions
         destination: /blog/transition-management-technology-for-ria-aggregators-how-to-handle-50-annual-acquisitions/index.html
       - type: rewrite
-        source: /blog/transition-modeling-tools-the-inputs-that-predict-a-repaper-s-timeline-and-cost-before-you-move
-        destination: /blog/transition-modeling-tools-the-inputs-that-predict-a-repaper-s-timeline-and-cost-before-you-move/index.html
-      - type: rewrite
         source: /blog/transition-ops-team-burnout-12-months
         destination: /blog/transition-ops-team-burnout-12-months/index.html
       - type: rewrite
@@ -1499,9 +1515,6 @@ services:
         source: /blog/transition-timeline-killers-five-delays-that-add-weeks-where-ai-removes-each
         destination: /blog/transition-timeline-killers-five-delays-that-add-weeks-where-ai-removes-each/index.html
       - type: rewrite
-        source: /blog/transition-velocity-how-fast-advisor-transition
-        destination: /blog/transition-velocity-how-fast-advisor-transition/index.html
-      - type: rewrite
         source: /blog/transition-wirehouse-to-ria-30-days-instead-90
         destination: /blog/transition-wirehouse-to-ria-30-days-instead-90/index.html
       - type: rewrite
@@ -1516,9 +1529,6 @@ services:
       - type: rewrite
         source: /blog/u4-drop-day-48-hour-pre-resignation-checklist
         destination: /blog/u4-drop-day-48-hour-pre-resignation-checklist/index.html
-      - type: rewrite
-        source: /blog/u4-u5-filing-timeline-breakaway-crd-delays
-        destination: /blog/u4-u5-filing-timeline-breakaway-crd-delays/index.html
       - type: rewrite
         source: /blog/u4-u5-registration-sequence-repapering-clock
         destination: /blog/u4-u5-registration-sequence-repapering-clock/index.html
@@ -1571,17 +1581,11 @@ services:
         source: /blog/what-is-an-osj-in-wealth-management-and-why-their-technology-is-broken
         destination: /blog/what-is-an-osj-in-wealth-management-and-why-their-technology-is-broken/index.html
       - type: rewrite
-        source: /blog/what-is-protocol-for-broker-recruiting-advisor-independence
-        destination: /blog/what-is-protocol-for-broker-recruiting-advisor-independence/index.html
-      - type: rewrite
         source: /blog/what-to-automate-first-in-an-advisor-transition-sequencing-repaper-tasks-by-payback
         destination: /blog/what-to-automate-first-in-an-advisor-transition-sequencing-repaper-tasks-by-payback/index.html
       - type: rewrite
         source: /blog/when-a-repaper-is-not-a-recommendation-the-reg-bi-best-interest-file-a-breakaway-advisor-still-has-to-build
         destination: /blog/when-a-repaper-is-not-a-recommendation-the-reg-bi-best-interest-file-a-breakaway-advisor-still-has-to-build/index.html
-      - type: rewrite
-        source: /blog/when-should-broker-dealer-centralize-repapering-instead-of-each-advisor
-        destination: /blog/when-should-broker-dealer-centralize-repapering-instead-of-each-advisor/index.html
       - type: rewrite
         source: /blog/where-ai-helps-advisor-transition-workflow-breakdown
         destination: /blog/where-ai-helps-advisor-transition-workflow-breakdown/index.html

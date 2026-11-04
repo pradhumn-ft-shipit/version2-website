@@ -58,7 +58,7 @@ The things genuinely gated by registration going live are the regulated actions:
 
 That work is the bulk of the effort, and none of it requires a live U4. Running it during the gap is the difference between a clock that starts at zero and a clock that starts with the hard parts already done. This is exactly the case for pulling data forward with [document intelligence](https://fasttrackr.ai/solutions/document-intelligence) rather than waiting for registration to trigger a data-gathering scramble.
 
-The rule that governs the boundary is not a timing rule at all. What the advisor may take, keep, and use is governed by the Broker Protocol and by their contracts, and it is entirely separate from U4 and U5 mechanics. Do not let a registration timeline become a justification for touching data the advisor is not entitled to. That is a question for counsel, and we have written about [which parts of a Protocol breakaway need a securities attorney](https://fasttrackr.ai/blog/broker-protocol-automate-vs-securities-attorney) rather than software.
+The rule that governs the boundary is not a timing rule at all. What the advisor may take, keep, and use is governed by the Broker Protocol and by their contracts, and it is entirely separate from U4 and U5 mechanics. Do not let a registration timeline become a justification for touching data the advisor is not entitled to. That is a question for counsel, and we have written about [which parts of a Protocol breakaway need a securities attorney](https://fasttrackr.ai/blog/broker-protocol-eligibility-checklist-how-to-confirm-both-firms-are-members-befo) rather than software.
 
 ## The sequence, in the order it actually runs
 
@@ -86,7 +86,7 @@ The timeline risk is concentrated in one place, and it is not the regulator. It 
 
 That last point is where the sequencing conversation meets the operational one. The registration clock sets the earliest possible start. The quality of your data determines everything after it. Both of those are addressable, and only one of them is in your hands, which is a good argument for spending your attention there. That is what an [advisor transition platform](https://fasttrackr.ai/solutions/advisor-transitions) is for, and it is why firms running transitions at volume, including the [transition consultants](https://fasttrackr.ai/who-we-serve/transition-consultants) who do this as their whole business, tend to standardize the gap-period work rather than improvise it per deal. Our [advisor transition case study](https://fasttrackr.ai/case-study/advisor-transition) walks through what that looks like on a real book.
 
-For the CRD-side view of how filing delays turn into transition delays, we have covered [the U4 and U5 filing timeline and CRD delays](https://fasttrackr.ai/blog/u4-u5-filing-timeline-breakaway-crd-delays) in more depth.
+For the CRD-side view of how filing delays turn into transition delays, we have covered [the U4 and U5 filing timeline and CRD delays](https://fasttrackr.ai/blog/breakaway-advisor-compliance-checklist-before-resign) in more depth.
 
 ## Frequently asked questions
 

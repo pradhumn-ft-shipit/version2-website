@@ -13,7 +13,7 @@ Search "advisor due diligence checklist" and every result asks the same things: 
 
 ## Why the standard checklist misses the move
 
-The economics of a move are visible on a term sheet. The operational reality is not, and it is where books get stuck. A transition that should take weeks stretches to months when accounts reject, data is rekeyed three times, and nobody confirmed the destination platform's transfer behavior before signing. The [ROI of advisor transition technology](https://fasttrackr.ai/blog/advisor-transition-technology-roi-cost-per-transition-benchmark) shows how directly slow repapering translates into revenue at risk, which is exactly why the mechanical questions belong in due diligence, not in the first painful week after you commit.
+The economics of a move are visible on a term sheet. The operational reality is not, and it is where books get stuck. A transition that should take weeks stretches to months when accounts reject, data is rekeyed three times, and nobody confirmed the destination platform's transfer behavior before signing. The [ROI of advisor transition technology](https://fasttrackr.ai/blog/nigo-faq-not-in-good-order-prevention) shows how directly slow repapering translates into revenue at risk, which is exactly why the mechanical questions belong in due diligence, not in the first painful week after you commit.
 
 Here is the map of the six areas and what each set of questions protects.
 

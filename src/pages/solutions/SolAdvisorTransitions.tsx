@@ -14,7 +14,7 @@ export default function SolAdvisorTransitions() {
     },
     {
       q: "What happens when the custodian rejects a submission?",
-      a: "The system flags it, surfaces the cause, and guides the correction. Most NIGO patterns are caught before submission in the first place."
+      a: "We track it to the end. NIGO rejections and status updates are followed through until the account is done, and our in-house validation module checks each form before it goes out."
     },
     {
       q: "Do clients fill anything out manually?",
@@ -204,7 +204,7 @@ export default function SolAdvisorTransitions() {
                   { n: '1', title: 'Collect', desc: 'AI pulls client and account data from your existing systems, documents, and conversations, so nobody retypes a household from scratch.' },
                   { n: '2', title: 'Prepare', desc: 'The right custodian and firm forms are identified, mapped, and pre-filled, then validated to catch NIGO issues before they reach the custodian.' },
                   { n: '3', title: 'Sign & submit', desc: "Clients sign what's already filled in. Firm and custodian paperwork go to DocuSign in one click, or out as filled PDFs or Excel in the counterparty's template. API where the custodian supports it." },
-                  { n: '4', title: 'Track to done', desc: 'Every household, form, and status in one place, visible to you, your team, and your clients, until the last account lands.' },
+                  { n: '4', title: 'Track to done', desc: 'Every household and form stays tracked after signing, through NIGO fixes and status updates, until the last account lands.' },
                 ].map((step, i) => (
                   <div key={i} className="relative bg-white p-8 pt-10 rounded-3xl border border-gray-100 shadow-glass text-center">
                     <div className="relative z-10 -mt-16 mb-6 mx-auto w-16 h-16 rounded-full bg-brandDeep text-brandMint flex items-center justify-center font-display font-bold text-2xl shadow-lg ring-8 ring-bgCanvas">
@@ -271,7 +271,7 @@ export default function SolAdvisorTransitions() {
                 {[
                   { without: 'Data re-keyed from scratch for every household', with: 'Household data collected once, then reused automatically' },
                   { without: 'Forms hunted down and filled by hand across custodians', with: 'Right forms mapped and pre-filled automatically' },
-                  { without: 'NIGO rejections caught only after the custodian sends them back', with: 'Most NIGO patterns caught before submission' },
+                  { without: 'NIGO rejections caught only after the custodian sends them back', with: "Each form is checked against the custodian's and the firm's rules before it's submitted" },
                   { without: 'Status tracked in spreadsheets and email threads', with: 'Every household and status in one shared view' },
                   { without: 'Timelines measured in months', with: 'Timelines measured in days' },
                 ].map((row, i) => (

@@ -69,6 +69,18 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/resources/news', priority: '0.6' },
   { path: '/resources/podcasts', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
+  // PR2-11 (2026-11-04): real pages that returned 200 but weren't listed.
+  { path: '/case-study/bd-to-ria-400m-transition', priority: '0.7' },
+  { path: '/case-study/independent-breakaway-setup', priority: '0.7' },
+  { path: '/custodians', priority: '0.8' },
+  { path: '/custodians/fidelity', priority: '0.8' },
+  { path: '/custodians/schwab', priority: '0.8' },
+  { path: '/custodians/sei', priority: '0.8' },
+  { path: '/custodians/goldman-sachs', priority: '0.8' },
+  { path: '/custodians/pershing', priority: '0.6' },
+  { path: '/transition-checklist', priority: '0.7' },
+  { path: '/cost-of-repapering', priority: '0.7' },
+  { path: '/glossary', priority: '0.6' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
   // Intentionally NOT listed, though they are real routes in src/App.tsx:
@@ -146,6 +158,15 @@ function loadCategoryIds() {
   const cut = text.indexOf('UNCATEGORIZED_CATEGORY');
   const region = cut === -1 ? text : text.slice(0, cut);
   return [...region.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
+}
+
+// PR2-11: glossary term pages (/glossary/<slug>) and author pages
+// (/authors/<slug>), regex-read from their TS source lists like the categories.
+function loadSlugsFrom(relPath) {
+  const file = path.join(ROOT, relPath);
+  if (!fs.existsSync(file)) return [];
+  const text = fs.readFileSync(file, 'utf8');
+  return [...text.matchAll(/^\s*\{?\s*slug:\s*['"]([^'"]+)['"]/gm)].map((m) => m[1]);
 }
 
 function isLocalAsset(p) {
@@ -943,6 +964,14 @@ function writeSitemap(index, newsIndex = [], podcastIndex = []) {
     ...loadCategoryIds().map((id) => ({
       loc: `${SITE_ORIGIN}/blog/category/${id}`,
       priority: '0.5',
+    })),
+    ...loadSlugsFrom('src/lib/glossary.ts').map((slug) => ({
+      loc: `${SITE_ORIGIN}/glossary/${slug}`,
+      priority: '0.5',
+    })),
+    ...loadSlugsFrom('src/lib/authors.ts').map((slug) => ({
+      loc: `${SITE_ORIGIN}/authors/${slug}`,
+      priority: '0.4',
     })),
     ...index.map((post) => ({
       loc: `${SITE_ORIGIN}/blog/${post.slug}`,

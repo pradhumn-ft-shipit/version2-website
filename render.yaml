@@ -258,6 +258,10 @@ services:
       - type: redirect
         source: /blog/10-questions-advisor-transition-software-vendor-humanized
         destination: /blog/10-questions-advisor-transition-software-vendor
+      # PR2-11 (2026-11-04): the -humanized post is republished at its clean slug.
+      - type: redirect
+        source: /blog/future-advisor-transition-technology-trends-2026-humanized
+        destination: /blog/future-advisor-transition-technology-trends-2026
       # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
       # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
       # real page.
@@ -947,8 +951,8 @@ services:
         source: /blog/full-vs-partial-acats-transfers-when-splitting-a-book-move-speeds-the-repaper
         destination: /blog/full-vs-partial-acats-transfers-when-splitting-a-book-move-speeds-the-repaper/index.html
       - type: rewrite
-        source: /blog/future-advisor-transition-technology-trends-2026-humanized
-        destination: /blog/future-advisor-transition-technology-trends-2026-humanized/index.html
+        source: /blog/future-advisor-transition-technology-trends-2026
+        destination: /blog/future-advisor-transition-technology-trends-2026/index.html
       - type: rewrite
         source: /blog/generational-wealth-transfer-advisor-transitions
         destination: /blog/generational-wealth-transfer-advisor-transitions/index.html

@@ -160,6 +160,36 @@ export default function SolAdvisorTransitions() {
           </div>
         </section>
 
+        {/* How the data gets in. Anchor target for the retired module pages
+            (/solutions/meeting-assistant, /document-intelligence, /client-onboarding). */}
+        <section id="data-collection" className="py-24 scroll-mt-28">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-display font-bold text-textPrimary mb-4">How the data gets in</h2>
+              <p className="text-lg text-textSecondary max-w-3xl mx-auto">
+                What you can start with depends on the move. When you break away, the old firm doesn't hand over an export, so FastTrackr starts from whatever your data access rights let you bring and fills the gaps from there. In an acquisition, the old firm hands over its exports and FastTrackr reads each one.
+              </p>
+            </div>
+            <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { title: 'Start from what you can bring', desc: 'A protocol sheet, a flat list of household names, or full system exports when the move allows it. FastTrackr builds the households from it, and account shells where the data supports them.' },
+                { title: 'Documents read for you', desc: 'Upload client statements, bank and brokerage statements, driver\'s licenses, voided checks or spreadsheets at the household or project level. FastTrackr pulls out the fields each form needs.' },
+                { title: 'A client upload flow, not a long form', desc: 'Clients get a guided flow with a list of suggested documents. They upload what they have, see exactly what was filled in, and finish the rest themselves or send it back to you.' },
+                { title: 'A bot on the call', desc: 'Schedule a meeting and the FastTrackr bot joins it, then collects the household data from the transcript.' },
+                { title: 'Only the gaps', desc: 'The Pending view shows only the fields still missing, so nobody re-keys what\'s already there.' },
+              ].map((item, i) => (
+                <li key={item.title} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-brandDeep text-brandMint flex items-center justify-center font-display font-bold mb-5" aria-hidden="true">
+                    {i + 1}
+                  </div>
+                  <h3 className="text-xl font-bold text-textPrimary mb-3">{item.title}</h3>
+                  <p className="text-textSecondary leading-relaxed">{item.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         {/* How a transition runs, in four steps */}
           <section className="py-24 bg-bgCanvas border-y border-gray-100">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

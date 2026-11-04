@@ -32,6 +32,8 @@ export default [
   route('contact', 'routes/contact.tsx'),
   // PR3-01: security page (SOC 2 Type II facts, documentation on request).
   route('security', 'routes/security.tsx'),
+  // PR3-07: /about was a redirect to "/"; it is now a short page.
+  route('about', 'routes/about.tsx'),
   // PR2-10: no /case-study hub route until PR6 builds one; the bare path is a
   // true 404 meanwhile (the old unlinked index page is in git history, a001fcb).
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
@@ -91,7 +93,6 @@ export default [
   route('for-custodians', 'routes/redirects/for-custodians.tsx'),
   route('blog', 'routes/redirects/blog.tsx'),
   route('resources/podcast', 'routes/redirects/resources-podcast.tsx'),
-  route('about', 'routes/redirects/about.tsx'),
   route('aon', 'routes/redirects/aon.tsx'),
   route('onepagecrm', 'routes/redirects/onepagecrm.tsx'),
 

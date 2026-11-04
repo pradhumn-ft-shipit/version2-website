@@ -111,9 +111,8 @@ services:
       # prerendered redirect stub, which shows an ugly "Redirecting from X to Y"
       # page with a 2-second <meta refresh> delay before it moves the user.
       # A host 301 is instant and invisible (and correct for SEO).
-      - type: redirect
-        source: /about
-        destination: /
+      # PR3-07 (2026-11-04): the /about -> / redirect is gone; /about is a page.
+      # After deploy, delete the old /about -> / rule in the dashboard by hand.
       - type: redirect
         source: /resources/podcast
         destination: /resources/blog
@@ -296,6 +295,9 @@ services:
       - type: rewrite
         source: /
         destination: /index.html
+      - type: rewrite
+        source: /about
+        destination: /about/index.html
       - type: rewrite
         source: /authors/pradhumn-vijayvargiya
         destination: /authors/pradhumn-vijayvargiya/index.html

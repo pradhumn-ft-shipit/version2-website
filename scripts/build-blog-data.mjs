@@ -60,9 +60,7 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/who-we-serve/acquisitive-rias', priority: '0.8' },
   { path: '/who-we-serve/independent-broker-dealers', priority: '0.8' },
   { path: '/who-we-serve/custodians', priority: '0.8' },
-  // /about is deliberately absent: it redirects to "/" (see src/App.tsx), and a
-  // sitemap should list canonical destinations rather than redirects. It was
-  // carried over from the previous version of the site.
+  { path: '/about', priority: '0.6' }, // PR3-07: a real page now, not a redirect
   { path: '/pricing', priority: '0.7' },
   { path: '/contact', priority: '0.7' },
   { path: '/security', priority: '0.6' }, // PR3-01

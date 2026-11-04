@@ -4,6 +4,7 @@ import { Button } from './ui/Button';
 const solutionsLinks = [
   { label: 'Advisor Transitions', href: '/solutions/advisor-transitions' },
   { label: 'Custodians', href: '/custodians' },
+  { label: 'Security', href: '/security' }, // PR3-10
 ];
 
 const whoWeServeLinks = [
@@ -23,6 +24,7 @@ const resourcesLinks = [
 ];
 
 const companyLinks = [
+  { label: 'About', href: '/about' }, // PR3-10
   { label: 'Pricing', href: '/pricing' },
   { label: 'Cost of Transition', href: '/cost-of-repapering' },
   { label: 'Contact', href: '/contact' },

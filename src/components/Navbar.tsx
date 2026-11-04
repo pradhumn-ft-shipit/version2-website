@@ -9,6 +9,7 @@ import AnnouncementRibbon from './AnnouncementRibbon';
 const solutionsItems = [
   { label: 'Advisor Transitions', href: '/solutions/advisor-transitions' },
   { label: 'Custodians', href: '/custodians' },
+  { label: 'Security', href: '/security' }, // PR3-10
 ];
 
 const whoWeServeItems = [
@@ -71,6 +72,8 @@ export default function Navbar() {
             <Link to="/pricing" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Pricing</Link>
             {/* REVIEW (W0c): replaced "Contact" (→/contact) nav link with "Cost of Transition" (→/cost-of-repapering); Book a Demo button still covers /contact. Note: /cost-of-repapering goes live with WZ. */}
             <Link to="/cost-of-repapering" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Cost of Transition</Link>
+            {/* PR3-10: top-level About link (sitelink candidate). */}
+            <Link to="/about" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">About</Link>
           </nav>
 
           {/* CTA */}
@@ -143,6 +146,13 @@ export default function Navbar() {
                 className="block px-3 py-3 text-base font-medium text-textSecondary"
               >
                 Cost of Transition
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-3 text-base font-medium text-textSecondary"
+              >
+                About
               </Link>
               <div className="pt-4 px-3">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>

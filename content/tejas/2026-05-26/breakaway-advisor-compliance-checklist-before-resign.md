@@ -7,6 +7,7 @@ image: breakaway-advisor-compliance-checklist-before-resign.jpg
 imageAlt: Compliance checklist illustration showing the pre-resignation checklist for a breakaway advisor
 persona: Breakaway advisors planning a wirehouse-to-independence move
 author: FastTrackr AI Team
+updated: 2026-11-04
 ---
 # The Breakaway Advisor's Compliance Checklist: 18 Things to Do Before You Resign
 
@@ -100,6 +101,32 @@ Form ADV Part 1 must be filed 15 days *before* your RIA registration becomes eff
 ## Client Data & GLBA Compliance
 
 What can you legally take? Client contact information (names, phone, email), relationship history, AUM figures, and account custodian locations. You *cannot* take client account numbers, tax IDs, passwords, or internal firm notes on client preferences. GLBA (Gramm-Leach-Bliley Act) compliance requires you to handle client data securely during transition. Encrypt exports, store locally, and delete after client accounts transfer. Failure = civil liability under GLBA Section 505 and potential FTC enforcement.
+
+## Outside Accounts: Clearing FINRA Rule 3210 Before You Go
+
+[FINRA Rule 3210](https://www.finra.org/rules-guidance/rulebooks/finra-rules/3210) covers accounts you hold at another firm or financial institution where securities can be traded and you have a beneficial interest. Your employer had to give written consent before you opened each one. You had to tell the outside firm in writing that you work for your employer. And if your employer asks in writing, the outside firm has to send it duplicate confirmations and statements.
+
+These accounts rarely make a breakaway checklist. Your current firm's compliance team still has to account for them before your last day, so get ahead of it:
+
+- List every outside account. Include accounts held by your spouse or children. The rule presumes you have a beneficial interest in those unless you can show you get no economic benefit from the account and have no control over it.
+- Find the written consent for each account. A missing consent is easier to sort out while you still work there.
+- Ask compliance to confirm the duplicate statements actually arrived.
+- Tell your new firm about these accounts early. Under the rule, an account you already hold when you join a new firm needs that firm's written consent within 30 calendar days of joining.
+
+Some account types are excluded, such as 529 plans and accounts limited to mutual funds or variable contracts. Check edge cases against the current rule text, not a summary.
+
+## How the U4 and U5 Hand Off in CRD
+
+Your old firm files Form U5 to end your registration there. Your new firm files Form U4 to register you. Both go through FINRA's Central Registration Depository (CRD), and the two filings have to line up. The U5 runs on your old firm's schedule, not yours. Plan your transition window as if the firm takes all the time it's allowed.
+
+You do control the U4 side. Most avoidable delays come from a short list:
+
+- Disclosures on your record that need review. Items 8 and 9 exist so nothing on your CRD record surprises you after you resign.
+- Licenses or registration capacities at the new firm that don't match the ones you hold.
+- Errors or inconsistent data on the U4, including fingerprint problems, that send the filing back.
+- State filings left until after the U4. They run on their own clocks, so start them at the same time.
+
+Fill the U4 from source documents, not from memory. A clean first filing is the one part of the registration clock you can speed up.
 
 > **Key Takeaway:** The 18 items separate smooth transitions from ones that stall. Advisors who skip legal review face $500K+ litigation. Those who file Form ADV late miss RIA effective dates. Those who don't verify U5 filing watch ACATS transfers hang for 60 days. Those who skip post-departure verification discover filing errors when it's too late to fix. The 18 items are your insurance policy.
 

@@ -32,6 +32,6 @@ Note: these are the figures FastTrackr publishes on its marketing pages; indepen
 ## Reference
 - [Glossary](https://fasttrackr.ai/glossary): NIGO, ACATS, repapering, Broker Protocol, Reg BI, TOA, PTE 2020-02, OSJ, tuck-in
 - [Pricing](https://fasttrackr.ai/pricing)
-- [Case studies](https://fasttrackr.ai/case-study)
+- [Case study](https://fasttrackr.ai/case-study/advisor-transition)
 - [Blog](https://fasttrackr.ai/resources/blog)
 - [Contact / book a demo](https://fasttrackr.ai/contact)

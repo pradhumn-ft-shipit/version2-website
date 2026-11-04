@@ -67,7 +67,7 @@ export default function Navbar() {
             <NavItem label="Solutions" items={solutionsItems} />
             <NavItem label="Who We Serve" items={whoWeServeItems} />
             <NavItem label="Resources" items={resourcesItems} />
-            <Link to="/case-study" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Case Studies</Link>
+            <Link to="/case-study/advisor-transition" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Case Studies</Link>
             <Link to="/pricing" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Pricing</Link>
             {/* REVIEW (W0c): replaced "Contact" (→/contact) nav link with "Cost of Transition" (→/cost-of-repapering); Book a Demo button still covers /contact. Note: /cost-of-repapering goes live with WZ. */}
             <Link to="/cost-of-repapering" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Cost of Transition</Link>
@@ -123,7 +123,7 @@ export default function Navbar() {
                 onNavigate={() => setMobileMenuOpen(false)}
               />
               <Link
-                to="/case-study"
+                to="/case-study/advisor-transition"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block px-3 py-3 text-base font-medium text-textSecondary"
               >

@@ -1,7 +1,7 @@
 ---
 title: "RIA Operations Benchmarking: How Fast Are the Best Firms Onboarding Acquired Advisors?"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: The fastest RIA acquirers complete advisor onboarding in 21 to 45 days versus an industry average of 90 to 120. Here is what the benchmark data shows and what the fastest firms do differently.
 image: ria-operations-benchmarking-acquired-advisor-onboarding-speed.jpg
 imageAlt: RIA operations leader reviewing onboarding speed benchmarks across acquired advisor firms

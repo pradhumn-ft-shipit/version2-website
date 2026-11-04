@@ -1,7 +1,7 @@
 ---
 title: "Predicting NIGO Before You Submit: How AI Models Catch Errors Custodians Will Reject"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The cheapest NIGO to fix is the one that never gets submitted. This is how predictive AI models flag the forms a custodian will reject, before the submission, with the accuracy thresholds and the audit-trail implications."
 image: predicting-nigo-before-form-submission-ai-models.jpg
 imageAlt: "Diagram of an AI model scoring a form for NIGO risk before submission, with the audit-trail log of flagged fields."

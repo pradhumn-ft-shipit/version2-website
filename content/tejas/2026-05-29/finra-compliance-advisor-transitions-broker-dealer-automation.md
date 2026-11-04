@@ -1,7 +1,7 @@
 ---
 title: "FINRA Compliance for Advisor Transitions: What Broker-Dealers Need to Automate Now"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Manual transition processes are getting more expensive to defend under FINRA's current oversight posture. This guide covers which compliance steps broker-dealers must automate to meet 2026 standards."
 image: finra-compliance-advisor-transitions-broker-dealer-automation.jpg
 imageAlt: Compliance officer reviewing FINRA audit trail across multiple advisor transitions

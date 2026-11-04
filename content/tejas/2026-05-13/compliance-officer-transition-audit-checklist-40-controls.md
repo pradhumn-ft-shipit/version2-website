@@ -1,6 +1,6 @@
 ---
 title: "The Compliance Officer's Transition Audit Checklist: 40 Controls to Verify Before Any Advisor Transition"
-topic: "Compliance, Security & Data"
+topic: "Advisor Transitions & Repapering"
 description: "FINRA's 2026 oversight report flagged recordkeeping deficiencies over 50 times. Here are 40 compliance controls — organized by phase — that every compliance officer should verify before, during, and after an advisor transition."
 author: "FastTrackr AI Team"
 image: compliance-officer-transition-audit-checklist-40-controls.jpg

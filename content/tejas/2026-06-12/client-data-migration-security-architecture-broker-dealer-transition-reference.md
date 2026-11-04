@@ -1,7 +1,7 @@
 ---
 title: "Client Data Migration Security During Advisor Transitions: A Reference Architecture for Broker-Dealers"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A typical wirehouse-to-RIA transition moves PII, account numbers, and tax records for hundreds of households through 4 to 7 systems in roughly 21 days. This is the reference architecture security leaders need: data classification, encryption boundaries, key management, audit trail, and the regulatory mapping that holds up under SEC and FINRA review."
 image: client-data-migration-security-architecture-broker-dealer-transition-reference.jpg
 imageAlt: "Reference architecture diagram showing data classification zones, encryption boundaries, and audit-trail flow during an advisor transition."
@@ -93,7 +93,7 @@ These are not trick questions. A vendor running a defensible architecture has th
 
 One architectural pattern that is worth highlighting because it changes the security profile of the transition itself is the use of [document intelligence](/solutions/document-intelligence) to eliminate intermediate data handling. The traditional transition workflow involves operations staff manually re-keying client data from source documents into target forms, with the rekeyed data persisting in spreadsheets, emails, and shared drives along the way. Every persistence point is a control boundary that has to be reasoned about and a place where the architecture can fail.
 
-A document intelligence layer that extracts fields directly from source documents and writes them into the structured submission payload — without an intermediate human-handled persistence — collapses several control boundaries into one. The data goes from source document to encrypted store to submission, never landing in a spreadsheet, never appearing in an email attachment. The architecture is simpler and the security surface is smaller. For more on how that pattern works operationally, see our writeup on [document intelligence replacing data entry](https://fasttrackr.ai/blog/document-intelligence-replacing-data-entry-broker-dealer-back-office) in the broker-dealer back office.
+A document intelligence layer that extracts fields directly from source documents and writes them into the structured submission payload — without an intermediate human-handled persistence — collapses several control boundaries into one. The data goes from source document to encrypted store to submission, never landing in a spreadsheet, never appearing in an email attachment. The architecture is simpler and the security surface is smaller. For more on how that pattern works operationally, see our writeup on document intelligence replacing data entry in the broker-dealer back office.
 
 ## The architectural takeaway
 

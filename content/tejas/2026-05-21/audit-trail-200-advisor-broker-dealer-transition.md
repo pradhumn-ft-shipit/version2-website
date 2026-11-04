@@ -1,7 +1,7 @@
 ---
 title: How to Build a Full Audit Trail for a 200-Advisor Broker-Dealer Transition
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A defensible audit trail for a 200-advisor broker-dealer transition requires four things documented at every stage: authorization records, timestamped submission logs, NIGO resolution trails, and client notification receipts. Here is the framework FINRA examiners actually look for."
 image: audit-trail-200-advisor-broker-dealer-transition.jpg
 imageAlt: Compliance team reviewing transition audit trail dashboards in a broker-dealer operations center

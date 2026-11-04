@@ -1,7 +1,7 @@
 ---
 title: "AI vs Traditional Transition Support: The Business Case for RIA Recruiting Ops"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A line-by-line business case comparison of AI-driven advisor transition support versus traditional consultant or in-house operations for RIA recruiting — labor cost, NIGO economics, recruiting velocity, and the break-even volume."
 image: ai-vs-traditional-transition-support-business-case-ria-recruiting.jpg
 imageAlt: AI versus traditional transition support business case comparison for RIA recruiting operations

@@ -1,7 +1,7 @@
 ---
 title: "ACATS Rejections: 7 Causes of Custodian Pushback and How to Fix Each One"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "ACATS transfers fail for the same seven reasons over and over again. This is the operations team's reference for catching each one before submission and what to do when a custodian rejects anyway."
 image: acats-form-processing-rejection-causes-fixes.jpg
 imageAlt: Operations specialist reviewing an ACATS rejection report on a monitor with custodian logos visible

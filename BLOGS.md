@@ -30,7 +30,7 @@ Frontmatter for each post:
 ```markdown
 ---
 title: "My Post Title"
-topic: "AI in Wealth Management Strategy"
+topic: "Advisor Transitions & Repapering"
 description: "One- or two-sentence excerpt shown on Blog and Resources cards."
 author: "Tejas"
 image: chart.png
@@ -75,7 +75,7 @@ The filename (without `.md`) becomes the URL: `/blog/my-post-slug`. Use lowercas
 title: "My Post Title"
 date: 2026-05-11
 author: "Vineet Mohan"
-topic: "AI in Wealth Management Strategy"
+topic: "Advisor Transitions & Repapering"
 description: "One- or two-sentence excerpt shown on Blog and Resources cards."
 image: /blog-images/my-cover.jpg
 imageAlt: "Cover image description"
@@ -109,13 +109,7 @@ Wrap values in double-quotes if they contain colons, commas, or other punctuatio
 
 Set `topic` to **one of these exact strings** so the post appears in the right section on `/resources`:
 
-- `Client Communication & Notetaking`
-- `Document Processing & Back-Office`
-- `Prospecting & Growth`
-- `Compliance, Security & Data`
-- `AI in Wealth Management Strategy`
 - `Advisor Transitions & Repapering`
-- `Advisor Trends & Industry`
 - `FastTrackr AI in Action`
 
 Posts with a blank or unrecognized `topic` land in **More resources** at the bottom of `/resources` — they still appear, just uncategorized. To add a new top-level category, edit `src/lib/blogCategories.ts`.

@@ -1,7 +1,7 @@
 ---
 title: "Transition Consultant Playbook: How Top Operations Consultants Handle 50+ Annual Transitions"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The playbook top transition consultants use to deliver 50+ annual advisor transitions, including pipeline cadence, staffing model, vendor stack, and the operational metrics that win recruiting deals."
 image: transition-consultant-playbook-50-annual-transitions.jpg
 imageAlt: Transition consultant pipeline board showing 50+ advisor transitions in flight with status by custodian and projected go-live dates.

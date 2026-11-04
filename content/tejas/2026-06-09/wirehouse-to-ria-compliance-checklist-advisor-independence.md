@@ -1,7 +1,7 @@
 ---
 title: "From Wirehouse to RIA: The Compliance Checklist You Cannot Afford to Skip"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A regulator-aware compliance checklist for advisors moving from a wirehouse to an RIA, covering Broker Protocol, client-data handling, U4/U5 timing, state notice filings, and pre-resignation due diligence."
 image: wirehouse-to-ria-compliance-checklist-advisor-independence.jpg
 imageAlt: "Compliance checklist on a tablet showing Broker Protocol, Form ADV, state notice filings, and client-data handling items for a wirehouse-to-RIA transition."

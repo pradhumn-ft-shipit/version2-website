@@ -148,7 +148,7 @@ function loadCanonicalTopics() {
 }
 
 function loadCategoryIds() {
-  // W4 — the `id:` values from BLOG_CATEGORIES (the eight canonical topics, not
+  // W4 — the `id:` values from BLOG_CATEGORIES (the canonical topics, not
   // the "more resources" catch-all) so the category hub pages
   // (/blog/category/<id>) are listed in the sitemap. Same regex-read approach as
   // loadCanonicalTopics: no import, stays in sync with the single source list.
@@ -962,7 +962,7 @@ function writeSitemap(index, newsIndex = [], podcastIndex = []) {
       loc: `${SITE_ORIGIN}${p.path}`,
       priority: p.priority,
     })),
-    // W4 — category hub pages (/blog/category/<id>) for the eight canonical topics.
+    // W4 — category hub pages (/blog/category/<id>) for the canonical topics.
     ...loadCategoryIds().map((id) => ({
       loc: `${SITE_ORIGIN}/blog/category/${id}`,
       priority: '0.5',

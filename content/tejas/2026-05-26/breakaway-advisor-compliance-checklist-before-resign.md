@@ -1,7 +1,7 @@
 ---
 title: The Breakaway Advisor Compliance Checklist to Run Before You Resign
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Every compliance step a breakaway advisor should complete in the 30 days before resignation — Broker Protocol, U4 updates, client list handling, and CRD considerations."
 image: breakaway-advisor-compliance-checklist-before-resign.jpg
 imageAlt: Compliance checklist illustration showing the pre-resignation checklist for a breakaway advisor

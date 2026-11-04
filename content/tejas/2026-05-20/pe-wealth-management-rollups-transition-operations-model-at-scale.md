@@ -1,7 +1,7 @@
 ---
 title: "Private Equity Wealth Management Rollups: The Transition Operations Model That Works at Scale"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The PE-backed wealth management rollup strategy succeeds or fails on transition operations. Here is the model that scales beyond 10 deals per year — what works, what breaks, and what to build first."
 image: pe-wealth-management-rollups-transition-operations-model-at-scale.jpg
 imageAlt: Private equity operating partner reviewing a multi-deal advisor transition dashboard across screens

@@ -1,7 +1,7 @@
 ---
 title: Schwab Advisor Services Integration for Breakaway Transitions
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A practical guide to integrating advisor transition workflows with Schwab Advisor Services for breakaway transitions — including the data fields Schwab expects, the most common rejection reasons, and the integration patterns that compress ACATS-to-funded time by 40-60%."
 image: schwab-advisor-services-integration-breakaway-transitions.jpg
 imageAlt: Diagram of Schwab Advisor Services integration touchpoints across a breakaway advisor transition workflow

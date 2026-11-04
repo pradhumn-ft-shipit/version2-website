@@ -1,7 +1,7 @@
 ---
 title: How to Build a Business Case for Advisor Transition Automation (With Templates)
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A four-component ROI template for justifying advisor transition automation to a broker-dealer CFO — covering AUM retention, ops cost savings, NIGO reduction, and recruiting performance with worked numbers."
 image: business-case-advisor-transition-automation-templates.jpg
 imageAlt: Broker-dealer executive presenting a transition automation ROI template to a CFO

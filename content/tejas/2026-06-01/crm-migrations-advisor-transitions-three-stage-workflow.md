@@ -1,7 +1,7 @@
 ---
 title: "CRM Migrations in Advisor Transitions: Why They Fail and the 3-Stage Workflow That Works"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Most CRM migrations during advisor transitions either lose data or take 30+ days and still produce errors. A three-stage workflow — extract, transform, validate — cuts both problems by 80% or more."
 image: crm-migrations-advisor-transitions-three-stage-workflow.jpg
 imageAlt: "Three-stage CRM migration workflow showing extract, transform, and validate phases with data quality checkpoints"

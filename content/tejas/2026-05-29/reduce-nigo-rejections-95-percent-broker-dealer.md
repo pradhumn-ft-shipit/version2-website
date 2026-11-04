@@ -1,7 +1,7 @@
 ---
 title: "How to Reduce NIGO Rejections by 95%: A Practical Guide for Broker-Dealer Ops Teams"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Reducing NIGO rejections to near-zero is a data problem, not a forms problem. This guide breaks down the five root causes and the pre-submission validation workflow broker-dealer ops teams use to hit 95% reduction."
 image: reduce-nigo-rejections-95-percent-broker-dealer.jpg
 imageAlt: Operations analyst reviewing validated transition paperwork on a dashboard

@@ -1,7 +1,7 @@
 ---
 title: "The Advisor Transition Battle Card: What Every Recruiting Director Should Know"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A field-ready battle card recruiting directors can hand to candidates: the operational claims, proof points, and competitive comparisons that win advisor transition deals."
 image: advisor-transition-battle-card-recruiting-director.jpg
 imageAlt: Recruiting director reviewing an advisor transition battle card

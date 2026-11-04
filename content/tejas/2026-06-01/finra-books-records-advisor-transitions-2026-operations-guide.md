@@ -1,7 +1,7 @@
 ---
 title: "FINRA Books and Records Rules for Advisor Transitions: A 2026 Operations Guide"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: FINRA Rule 4511 and SEC Rule 17a-4 create specific record-retention obligations that get materially harder during advisor transitions. This is the operations-side playbook for staying audit-ready while you move a book.
 image: finra-books-records-advisor-transitions-2026-operations-guide.jpg
 imageAlt: Compliance documentation matrix mapping FINRA Rule 4511 obligations across the advisor transition lifecycle

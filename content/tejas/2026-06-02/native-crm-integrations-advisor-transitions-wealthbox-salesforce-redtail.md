@@ -1,7 +1,7 @@
 ---
 title: "Native CRM Integrations for Advisor Transitions: What Wealthbox, Salesforce, and Redtail Cover (and What They Don't)"
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "RIAs running advisor transitions on Wealthbox, Salesforce, or Redtail expect their CRM to handle the data layer of a transition. In practice the CRM covers the relationship data well and the transition workflow data poorly. Here is what each platform handles natively and where the gaps create integration work."
 image: native-crm-integrations-advisor-transitions-wealthbox-salesforce-redtail.jpg
 imageAlt: An RIA operations specialist toggles between her CRM dashboard and a transition workflow tool on a dual-monitor setup

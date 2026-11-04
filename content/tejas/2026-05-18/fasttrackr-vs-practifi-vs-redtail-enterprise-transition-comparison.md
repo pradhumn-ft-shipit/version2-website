@@ -1,7 +1,7 @@
 ---
 title: "FastTrackr AI vs. Practifi vs. Redtail: Transition Workflow Comparison for Enterprise Buyers"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Practifi and Redtail are CRMs; FastTrackr handles the transition paperwork. What each site says, and where a transition tool fits. Written by FastTrackr."
 image: fasttrackr-vs-practifi-vs-redtail-enterprise-transition-comparison.jpg
 imageAlt: Wealth management technology team evaluating platform options on a large conference room screen with comparison matrix

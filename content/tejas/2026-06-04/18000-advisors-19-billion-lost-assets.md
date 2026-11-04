@@ -1,7 +1,7 @@
 ---
 title: "18,000 Advisors Move Firms Every Year. Here's Where the $19 Billion in Lost Assets Goes"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Roughly 18,000 advisors change firms every year and an estimated $19 billion in client assets fail to follow them. Here is where that leakage occurs — and which transition technology choices recover the most."
 image: 18000-advisors-19-billion-lost-assets.jpg
 imageAlt: Industry chart of annual advisor moves and assets that fail to transfer

@@ -1,7 +1,7 @@
 ---
 title: "Eliminating Person-Dependence: When Transition Specialists Walk Out the Door"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: Independent broker-dealers running 20+ advisor transitions per year depend on a small number of transition specialists whose departure threatens the entire operation. Here is the operational playbook for turning person-dependent expertise into platform-dependent workflows.
 image: eliminating-person-dependence-when-transition-specialists-leave.jpg
 imageAlt: Process diagram showing how person-dependent transition expertise is encoded into platform workflows

@@ -1,7 +1,7 @@
 ---
 title: "Why Your AI Transition Platform Should Live Inside Your CRM, Not Beside It: An Architectural Decision Framework"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: Most firms install transition AI as a separate point tool that pulls from the CRM. The better-performing firms install it as a logic layer that lives inside the CRM. Here is the architectural decision framework — embedded vs adjacent vs orchestrated — and why architecture choice predicts 18-month ROI more than vendor choice.
 image: ai-transition-platform-inside-crm-architecture-decision-framework.jpg
 imageAlt: "Three-pattern architectural diagram comparing embedded, adjacent, and orchestrated AI placement around the wealth-management CRM."
@@ -113,7 +113,7 @@ If you're a CIO, CTO, or head of platform evaluating transition AI right now, th
 
 **What's the 36-month TCO including integration maintenance, not just licensing?** Adjacent deployments hide integration cost in headcount, not in vendor fees. Orchestrated deployments hide it in platform-team time.
 
-We covered the back-office side of this — what [document intelligence](/solutions/document-intelligence) does to data entry queues — in [document intelligence replacing data entry in broker-dealer back office](https://fasttrackr.ai/blog/document-intelligence-replacing-data-entry-broker-dealer-back-office), and the staffing implications of the architecture decision in [building a transition operations team — the five roles a mid-size RIA actually needs](https://fasttrackr.ai/blog/building-transition-operations-team-five-roles-mid-size-ria).
+We covered the back-office side of this — what [document intelligence](/solutions/document-intelligence) does to data entry queues — in document intelligence replacing data entry in broker-dealer back office, and the staffing implications of the architecture decision in [building a transition operations team — the five roles a mid-size RIA actually needs](https://fasttrackr.ai/blog/building-transition-operations-team-five-roles-mid-size-ria).
 
 The vendor decision matters. The architecture decision matters more. Get them in the right order.
 

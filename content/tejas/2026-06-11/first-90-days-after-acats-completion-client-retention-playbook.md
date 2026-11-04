@@ -1,7 +1,7 @@
 ---
 title: "The First 90 Days After ACATS Completion: A Client Retention Playbook"
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Once ACATS completes, the transition isn't over — it's actually when client confidence is most fragile. This is the 90-day client retention playbook: the communication cadence, the notetaking discipline, and the milestones that lock relationships in."
 image: first-90-days-after-acats-completion-client-retention-playbook.jpg
 imageAlt: 90-day post-transition client retention timeline showing communication touchpoints and milestones.

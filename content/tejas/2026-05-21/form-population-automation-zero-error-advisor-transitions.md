@@ -1,7 +1,7 @@
 ---
 title: "Form Population Automation: The Technology Behind Zero-Error Advisor Transitions"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Form population automation extracts verified client data from CRM, custodian feeds, and prior documentation, then populates transition forms with custodian-specific rules and real-time validation. The gap between a 60% manual NIGO rate and a 5% AI-native rate is the difference between a 30-day transition and a 90-day one."
 image: form-population-automation-zero-error-advisor-transitions.jpg
 imageAlt: Side-by-side view of manual paper form stacks and a clean AI-populated digital transition form

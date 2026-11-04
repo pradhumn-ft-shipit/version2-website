@@ -1,7 +1,7 @@
 ---
 title: How Independent Broker-Dealers Beat Wirehouse Internal Transition Teams (Without Building One)
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: Independent broker-dealers compete against wirehouses with 80-person internal transition teams. AI-powered transition platforms close the gap—and often beat it—without proportional headcount.
 image: independent-broker-dealers-beat-wirehouse-internal-transition-teams.jpg
 imageAlt: "Comparison illustration of an independent broker-dealer's lean ops team versus a wirehouse internal transition team"

@@ -1,7 +1,7 @@
 ---
 title: How to Handle Multi-State Regulatory Complexity in Advisor Transitions
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Multi-state advisor transitions require managing simultaneous SEC and state registration updates, jurisdiction-specific filings, and client notifications — all while keeping clients in good standing. Here is how technology cuts the compliance-window risk to near zero."
 image: multi-state-regulatory-complexity-advisor-transitions.jpg
 imageAlt: Compliance officer mapping SEC and state-by-state registration requirements on a planning whiteboard

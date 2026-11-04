@@ -1,7 +1,7 @@
 ---
 title: "Aggregate Analytics: How Transition Consulting Firms Capture Cross-Client Benchmark Reports"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Transition consulting firms sit on a unique pool of operational data — NIGO rates, custodian processing times, transition durations across dozens of clients. The firms that capture this data systematically can publish benchmark reports that become a competitive differentiator. Here is how to build that capability without violating client confidentiality."
 image: aggregate-analytics-benchmark-reports-transition-consulting-firms.jpg
 imageAlt: A senior transition consultant reviews aggregated benchmark dashboards on a large monitor while a junior colleague takes notes from a printed report

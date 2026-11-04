@@ -1,7 +1,7 @@
 ---
 title: "OSJ Repapering at Scale: An Operating Model for 50+ Advisor Books per Quarter"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The largest OSJs in the broker-dealer ecosystem onboard 50 to 200 advisor books per quarter. The operating model that makes this possible is structurally different from how mid-size OSJs run repapering — here's the architecture."
 image: osj-repapering-at-scale-operating-model-50-books-quarterly.jpg
 imageAlt: "OSJ operating model diagram showing pipelined intake, custodian routing, and exception management for high-volume repapering"

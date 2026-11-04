@@ -1,7 +1,7 @@
 ---
 title: "Multi-State Licensing in RIA Acquisitions: An Operations Team's Field Guide"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "How operations teams manage multi-state licensing during RIA acquisitions — IARD filings, state notice filings, ADV updates, and the timeline that prevents lapses."
 image: multi-state-licensing-ria-acquisitions-operations-teams.jpg
 imageAlt: Map of the United States representing multi-state licensing complexity in RIA acquisitions

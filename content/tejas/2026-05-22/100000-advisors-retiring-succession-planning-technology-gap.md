@@ -1,7 +1,7 @@
 ---
 title: "100,000 Advisors Are Retiring: The Succession Planning Technology Gap"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Roughly one-third of US financial advisors are expected to retire this decade — and the technology gap in succession transitions is the industry's biggest underdiscussed operational risk."
 image: 100000-advisors-retiring-succession-planning-technology-gap.jpg
 imageAlt: Bar chart showing the projected wave of US advisor retirements through 2030 and beyond

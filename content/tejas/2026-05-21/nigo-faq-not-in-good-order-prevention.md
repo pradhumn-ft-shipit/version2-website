@@ -1,7 +1,7 @@
 ---
 title: "NIGO FAQ: What Is Not In Good Order and How Do You Prevent It?"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "NIGO — Not In Good Order — is the most expensive two-word phrase in advisor transition operations. This FAQ covers what NIGOs are, why manual processes produce 30-50% rejection rates, the top five causes, and what broker-dealer ops teams can do to prevent them."
 image: nigo-faq-not-in-good-order-prevention.jpg
 imageAlt: Operations analyst reviewing custodian NIGO rejection notices on a dual-monitor workstation

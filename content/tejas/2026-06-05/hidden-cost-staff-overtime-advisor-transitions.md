@@ -1,7 +1,7 @@
 ---
 title: "The Hidden Cost of Staff Overtime During Advisor Transitions: $30K–$60K Per Replacement"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The visible cost of advisor transitions is the platform fee. The invisible cost is your operations team. Here is the math on overtime, NIGO rework, and the staff replacement bill no one budgets for."
 image: hidden-cost-staff-overtime-advisor-transitions.jpg
 imageAlt: Operations specialist working late during a peak advisor transition period

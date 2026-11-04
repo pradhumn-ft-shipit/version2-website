@@ -1,7 +1,7 @@
 ---
 title: "The OSJ Compliance Checklist for Advisor Transitions: A Supervisor's Field Guide"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The OSJ supervisor's compliance checklist for advisor transitions — FINRA Rule 3110, U4 reviews, branch examination prep, and the supervisory audit trail."
 image: osj-compliance-checklist-advisor-transitions-supervisor.jpg
 imageAlt: OSJ compliance officer reviewing transition documentation in a professional setting

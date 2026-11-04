@@ -1,7 +1,7 @@
 ---
 title: Per-Transition Pricing for Consulting Firms (vs Per-Seat SaaS)
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Transition consulting firms are increasingly negotiating per-transition pricing instead of per-seat SaaS. Here is when per-transition pricing wins, when per-seat is still better, and the hybrid models that align vendor incentives with the consulting firm's economics."
 image: per-transition-pricing-consulting-firms-vs-per-seat-saas.jpg
 imageAlt: Comparison chart showing per-transition pricing models versus per-seat SaaS for transition consulting firms

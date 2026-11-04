@@ -1,6 +1,6 @@
 ---
 title: "AI Strategy for Advisor Transitions: How Wealth Management Firms Are Using AI to Eliminate the 90-Day Problem"
-topic: "AI in Wealth Management Strategy"
+topic: "Advisor Transitions & Repapering"
 description: "AI is compressing advisor transition timelines from 90 days to under 30. Here's the strategic framework wealth management firms are using to implement AI across the transition workflow."
 author: "FastTrackr AI Team"
 image: advisor-transition-ai-strategy-2026.jpg

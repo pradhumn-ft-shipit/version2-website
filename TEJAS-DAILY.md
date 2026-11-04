@@ -107,7 +107,7 @@ Every post starts with a **frontmatter block** between two `---` lines. Then the
 ```markdown
 ---
 title: "Your Post Title Here"
-topic: "AI in Wealth Management Strategy"
+topic: "Advisor Transitions & Repapering"
 description: "One- or two-sentence summary that shows up on the blog index and Resources page cards."
 author: "Tejas"
 image: cover.png
@@ -139,17 +139,11 @@ numbered lists, `inline code`, and inline images: ![Chart](chart.png).
 
 You don't need a `date` field — the folder name (`2026-05-12`) becomes the date automatically.
 
-### The 8 valid topic values
+### The 2 valid topic values
 
 Copy one of these **exactly** (matching capitalization, spaces, punctuation):
 
-- `Client Communication & Notetaking`
-- `Document Processing & Back-Office`
-- `Prospecting & Growth`
-- `Compliance, Security & Data`
-- `AI in Wealth Management Strategy`
 - `Advisor Transitions & Repapering`
-- `Advisor Trends & Industry`
 - `FastTrackr AI in Action`
 
 If you typo one, the build will fail and tell you which value you used and the full list of valid options. No guessing.

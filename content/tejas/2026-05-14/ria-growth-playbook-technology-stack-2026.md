@@ -1,6 +1,6 @@
 ---
 title: "The RIA Growth Playbook: Building a Technology Stack That Scales to $1B and Beyond"
-topic: "Prospecting & Growth"
+topic: "Advisor Transitions & Repapering"
 description: "RIAs that grow past $500M without rebuilding their technology stack hit an invisible ceiling. Here's how growth-focused practices design tech infrastructure that scales without breaking."
 author: "FastTrackr AI Team"
 image: ria-growth-playbook-technology-stack-2026.jpg

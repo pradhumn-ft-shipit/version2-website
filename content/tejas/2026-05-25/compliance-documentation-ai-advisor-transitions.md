@@ -1,7 +1,7 @@
 ---
 title: Building Compliance Documentation for AI-Driven Advisor Transitions
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: What compliance documentation a firm needs when AI handles parts of the advisor transition workflow — including the specific artifacts regulators look for and how to produce them as a byproduct of the workflow rather than a separate exercise.
 image: compliance-documentation-ai-advisor-transitions.jpg
 imageAlt: Compliance documentation artifacts produced by an AI-driven advisor transition workflow

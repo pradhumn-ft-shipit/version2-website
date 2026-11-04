@@ -1,7 +1,7 @@
 ---
 title: "How Financial Advisors Build Client Trust Before, During, and After a Transition"
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Trust during transitions isn't a fixed quantity — it's phase-specific. This guide maps what builds and destroys client confidence at each stage: announcement, paperwork window, and the 30 days after the move."
 image: client-trust-advisor-transition.jpg
 imageAlt: Financial advisor on a video call with a client during a transition with paperwork visible

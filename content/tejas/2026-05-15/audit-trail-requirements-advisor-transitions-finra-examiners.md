@@ -1,7 +1,7 @@
 ---
 title: "Audit Trail Requirements for Advisor Transitions: What FINRA Examiners Actually Look For"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "When FINRA examines an advisor transition, they're not just checking boxes — they're reconstructing a timeline. Here's what a defensible audit trail looks like and how to build one before you need it."
 image: audit-trail-requirements-advisor-transitions-finra-examiners.jpg
 imageAlt: Compliance officer reviewing detailed records at a desk with regulatory documentation spread across the workspace

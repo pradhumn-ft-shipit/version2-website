@@ -1,7 +1,7 @@
 ---
 title: "Broker-Dealer Transition Readiness Scorecard: 12 Metrics That Predict AUM Leakage"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Most broker-dealers track fewer than 4 of the 12 metrics that actually predict AUM leakage during advisor transitions. Here's the complete scorecard and how to use it."
 image: broker-dealer-transition-readiness-scorecard-12-metrics.jpg
 imageAlt: Broker-dealer compliance executive reviewing transition readiness scorecard on a tablet in a modern financial office

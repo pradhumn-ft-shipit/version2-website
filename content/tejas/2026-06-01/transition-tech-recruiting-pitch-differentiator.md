@@ -1,7 +1,7 @@
 ---
 title: "Transition Tech as a Recruiting Pitch: The Differentiator Top RIAs Use"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: Why the firms winning advisor recruiting battles in 2026 are leading their pitch with transition technology rather than payout grids — and how to structure that conversation to convert.
 image: transition-tech-recruiting-pitch-differentiator.jpg
 imageAlt: Recruiting deck slide showing transition timeline compression as a competitive differentiator versus traditional payout-led pitches

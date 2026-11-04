@@ -1,7 +1,7 @@
 ---
 title: "OSJ Growth Playbook: How to Scale Your Network with Better Advisor Onboarding Technology"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "OSJs that grow faster do one thing differently: they onboard advisors in 21 days instead of 90. With 92% of advisors willing to switch firms over subpar technology, advisor onboarding tech is now the primary competitive differentiator for Office of Supervisory Jurisdiction networks."
 image: osj-growth-playbook-advisor-onboarding-technology.jpg
 imageAlt: OSJ business development leader presenting an advisor onboarding technology roadmap to a recruiting team

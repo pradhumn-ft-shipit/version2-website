@@ -1,7 +1,7 @@
 ---
 title: "AI-Powered Form Completion in Wealth Management: Accuracy, Speed, and What to Look For"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "AI form completion tools claim 99%+ accuracy, but the accuracy that matters is end-to-end — from intake to custodian acceptance. Here's what advisors should look for when evaluating these tools."
 image: ai-form-completion-wealth-management-accuracy.jpg
 imageAlt: AI assistant filling in account transfer forms with validated client data fields

@@ -1,7 +1,7 @@
 ---
 title: "Custodial Rejection Rates in Advisor Transitions: Industry Data and How to Improve Yours"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "2026 industry data on custodial rejection (NIGO) rates across the major custodians, with benchmark comparisons and the specific upstream process changes that move a firm from a 12–18 percent rejection rate to under 3 percent."
 image: custodial-rejection-rates-advisor-transitions-2026.jpg
 imageAlt: "Benchmark chart comparing custodial rejection rates across Schwab, Fidelity, Pershing, and Goldman Sachs Advisor Solutions over 2026."

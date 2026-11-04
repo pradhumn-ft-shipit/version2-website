@@ -1,7 +1,7 @@
 ---
 title: "Moving a Multi-Advisor Team from Raymond James to LPL: A Coordination Playbook"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Multi-advisor teams transitioning together face problems a single advisor never sees — synchronized resignations, shared client overlap, brand consolidation, partner compensation reconciliation. This is the coordination playbook for moving a team from Raymond James to LPL cleanly."
 image: multi-advisor-team-rjs-to-lpl-coordination-playbook.jpg
 imageAlt: Coordination timeline for a multi-advisor team transitioning from Raymond James to LPL showing parallel workstreams.

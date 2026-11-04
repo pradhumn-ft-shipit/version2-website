@@ -1,7 +1,7 @@
 ---
 title: "Boutique Consultant's Guide to Systematizing FINRA & Broker Protocol Work"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "How a boutique transition consulting firm can systematize FINRA compliance, Broker Protocol classification, and resignation-day choreography across many concurrent client transitions — without hiring more compliance specialists."
 image: boutique-consultant-systematizing-finra-broker-protocol.jpg
 imageAlt: Boutique transition consulting workflow systematizing FINRA and Broker Protocol compliance

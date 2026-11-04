@@ -1,7 +1,7 @@
 ---
 title: How to Manage Client Sentiment During a 90-Day Advisor Transition
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: Client anxiety builds in predictable waves across a 90-day transition. Here are the five communication moments that determine retention — and why compressing the timeline matters more than scripting the messages.
 image: client-sentiment-90-day-transition.jpg
 imageAlt: Advisor walking a client through a transition timeline on a tablet

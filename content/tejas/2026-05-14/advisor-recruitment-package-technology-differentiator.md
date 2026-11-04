@@ -1,6 +1,6 @@
 ---
 title: "The Technology Differentiator: How RIAs and Broker-Dealers Are Winning Advisor Recruitment With Platform Quality"
-topic: "Prospecting & Growth"
+topic: "Advisor Transitions & Repapering"
 description: "Advisor recruitment has become a technology competition. Firms that can show — not just claim — faster transitions, lower NIGO rates, and operational support are winning the best advisors."
 author: "FastTrackr AI Team"
 image: advisor-recruitment-package-technology-differentiator.jpg

@@ -14,7 +14,7 @@ const steps = [
   },
   {
     title: "Custodian forms, auto-filled",
-    description: "Push directly to your custodian via API where supported. Or get pre-filled forms ready for client signature. Either way, no retyping, no copy-paste between tabs.",
+    description: "Send everything to DocuSign in one click, download the filled PDFs for a wet signature, or give the custodian an Excel file in its own template. API where the custodian supports it. No retyping either way.",
     number: "03"
   },
   {

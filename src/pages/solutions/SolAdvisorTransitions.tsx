@@ -125,7 +125,7 @@ export default function SolAdvisorTransitions() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 { title: 'Data Collection', icon: <Database />, desc: 'AI extracts client and account data from documents, transcripts, and conversations. Pre-populated household records, ready for review, without another intake form.' },
-                { title: 'Documentation', icon: <FileText />, desc: 'Smart mapping across custodians and firms. The right forms identified, pre-filled, and ready for signature. Push to the custodian via API where supported, or generate signature-ready documents.' },
+                { title: 'Documentation', icon: <FileText />, desc: "The right custodian and firm forms are worked out up front and filled from the household record. They go out by one-click DocuSign, as filled PDFs, or as Excel in the counterparty's own template, with an API where the custodian supports it." },
                 { title: 'Project Management', icon: <LayoutList />, desc: 'Hundreds of households, every form, every status, in one place. Replaces the Excel war room. Visible to you, your team, and your clients.' }
               ].map((feature, i) => (
                 <m.div 
@@ -203,7 +203,7 @@ export default function SolAdvisorTransitions() {
                 {[
                   { n: '1', title: 'Collect', desc: 'AI pulls client and account data from your existing systems, documents, and conversations, so nobody retypes a household from scratch.' },
                   { n: '2', title: 'Prepare', desc: 'The right custodian and firm forms are identified, mapped, and pre-filled, then validated to catch NIGO issues before they reach the custodian.' },
-                  { n: '3', title: 'Sign & submit', desc: 'Clients confirm and sign what we already have. Documents push to the custodian via API where supported, or generate signature-ready.' },
+                  { n: '3', title: 'Sign & submit', desc: "Clients sign what's already filled in. Firm and custodian paperwork go to DocuSign in one click, or out as filled PDFs or Excel in the counterparty's template. API where the custodian supports it." },
                   { n: '4', title: 'Track to done', desc: 'Every household, form, and status in one place, visible to you, your team, and your clients, until the last account lands.' },
                 ].map((step, i) => (
                   <div key={i} className="relative bg-white p-8 pt-10 rounded-3xl border border-gray-100 shadow-glass text-center">
@@ -226,11 +226,12 @@ export default function SolAdvisorTransitions() {
               </div>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                  <h3 className="text-xl font-bold text-textPrimary mb-3">Three ways out</h3>
+                  <h3 className="text-xl font-bold text-textPrimary mb-3">DocuSign, PDFs or their template</h3>
                   <p className="text-textSecondary leading-relaxed">
                     One-click push to DocuSign for signature, filled PDFs you can download where a
                     wet signature is still required, or the household data mapped straight into a
                     custodian's or broker-dealer's own template when they'd rather do the filling.
+                    Plus an API where the custodian supports it.
                   </p>
                 </div>
                 <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">

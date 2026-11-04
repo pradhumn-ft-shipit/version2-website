@@ -16,7 +16,7 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
   },
   {
     q: "How does FastTrackr handle our firm's specific forms?",
-    a: "We map your firm's documentation into the workflow during onboarding. Once it's mapped, the system pre-fills it, validates it, and pushes it to wherever it needs to go. New forms or revisions are absorbed without re-platforming."
+    a: "We map your firm's documents into the workflow during setup. Once they're mapped, FastTrackr fills them, checks them and sends them out with the custodian paperwork: by DocuSign, as filled PDFs, or as Excel in the counterparty's own template, with an API where the custodian supports it. New forms or revisions are absorbed without re-platforming."
   },
   {
     q: "Do you train your AI on our client data?",

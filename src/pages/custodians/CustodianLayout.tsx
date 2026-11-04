@@ -44,9 +44,19 @@ export type CustodianLayoutProps = {
   h1: ReactNode;
   subhead: ReactNode;
   intro: ReactNode;
-  /** Optional status chip rendered under the "Custodian transitions" pill in the
-   *  hero — used to mark a custodian that isn't a live mapping yet (e.g. Pershing). */
+  /** Optional status label rendered directly under the H1 — used to mark a
+   *  custodian that isn't live on FastTrackr yet (Pershing: "Coming soon"). */
   statusBadge?: ReactNode;
+  /** Optional overrides for the "How FastTrackr …" section, for a custodian
+   *  that isn't live yet (Pershing), so its copy reads as future tense. */
+  helpsHeading?: ReactNode;
+  helpsIntro?: ReactNode;
+  handlesHeading?: ReactNode;
+  handlesItems?: InfoItem[];
+  handoffHeading?: ReactNode;
+  handoffBody?: ReactNode;
+  /** Hide the outcomes strip (Pershing: no outcome claims before it's live). */
+  hideOutcomes?: boolean;
   /** Intro paragraph above the process steps. */
   processIntro: ReactNode;
   processSteps: ProcessStep[];
@@ -69,6 +79,13 @@ export default function CustodianLayout({
   subhead,
   intro,
   statusBadge,
+  helpsHeading,
+  helpsIntro,
+  handlesHeading,
+  handlesItems,
+  handoffHeading,
+  handoffBody,
+  hideOutcomes = false,
   processIntro,
   processSteps,
   processNote,
@@ -96,10 +113,10 @@ export default function CustodianLayout({
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brandMint/10 text-brandDeep font-medium text-sm mb-6 border border-brandMint/20">
                 Custodian transitions
               </div>
-              {statusBadge ? <div className="mb-6">{statusBadge}</div> : null}
               <h1 className="text-4xl md:text-6xl font-display font-bold text-textPrimary leading-tight mb-4">
                 {h1}
               </h1>
+              {statusBadge ? <div className="mb-6">{statusBadge}</div> : null}
               <h2 className="text-xl md:text-2xl font-display font-semibold text-brandDeep mb-6">
                 {subhead}
               </h2>
@@ -192,12 +209,16 @@ export default function CustodianLayout({
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-4xl font-display font-bold text-textPrimary mb-4">
-                How FastTrackr repapers a book onto {shortName}
+                {helpsHeading ?? <>How FastTrackr repapers a book onto {shortName}</>}
               </h2>
               <p className="text-lg text-textSecondary leading-relaxed">
-                FastTrackr is the repapering platform purpose-built for advisor transitions. It
-                collects household data once, maps and pre-fills the paperwork, catches NIGO issues
-                before submission, and tracks every account to done.
+                {helpsIntro ?? (
+                  <>
+                    FastTrackr is the repapering platform purpose-built for advisor transitions. It
+                    collects household data once, maps and pre-fills the paperwork, catches NIGO issues
+                    before submission, and tracks every account to done.
+                  </>
+                )}
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8 mb-10">
@@ -238,10 +259,10 @@ export default function CustodianLayout({
             {/* What FastTrackr handles on this custodian's move */}
             <div className="max-w-3xl mx-auto mb-10 bg-white p-8 rounded-3xl border border-gray-100 shadow-glass">
               <h3 className="text-lg font-bold text-textPrimary mb-5">
-                What FastTrackr handles on a {shortName} move
+                {handlesHeading ?? <>What FastTrackr handles on a {shortName} move</>}
               </h3>
               <ul className="space-y-4">
-                {[
+                {(handlesItems ?? [
                   {
                     title: 'Sign the way the client will',
                     desc: 'One-click push to DocuSign for e-signature, or download the filled PDFs for a wet signature where a client or form still needs one.',
@@ -262,7 +283,7 @@ export default function CustodianLayout({
                     title: 'Nothing slips',
                     desc: 'Every household is tracked to done, with a pending view that surfaces only what is still missing.',
                   },
-                ].map((item, i) => (
+                ]).map((item, i) => (
                   <li key={i} className="flex gap-3">
                     <CheckCircle2 className="w-5 h-5 text-brandMint shrink-0 mt-1" />
                     <div>
@@ -278,14 +299,18 @@ export default function CustodianLayout({
               <div className="flex items-center gap-3 mb-3">
                 <ShieldCheck className="w-6 h-6 text-brandMint" />
                 <h3 className="text-lg font-bold text-textPrimary">
-                  FastTrackr and {custodian}: how the handoff works
+                  {handoffHeading ?? <>FastTrackr and {custodian}: how the handoff works</>}
                 </h3>
               </div>
               <p className="text-textSecondary leading-relaxed">
-                FastTrackr prepares everything a {custodian} move needs — the household data
-                collected once, and the new-account and transfer-of-account forms mapped, pre-filled,
-                and validated to be in good order — and hands it back as signature-ready document
-                packages. Talk to us about how the handoff would work for your book.
+                {handoffBody ?? (
+                  <>
+                    FastTrackr prepares everything a {custodian} move needs — the household data
+                    collected once, and the new-account and transfer-of-account forms mapped, pre-filled,
+                    and validated to be in good order — and hands it back as signature-ready document
+                    packages. Talk to us about how the handoff would work for your book.
+                  </>
+                )}
               </p>
             </div>
 
@@ -308,6 +333,7 @@ export default function CustodianLayout({
         </section>
 
         {/* Outcomes strip */}
+        {hideOutcomes ? null : (
         <section className="py-20 bg-brandDeep text-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-3 gap-8 text-center">
             {[
@@ -323,6 +349,7 @@ export default function CustodianLayout({
             ))}
           </div>
         </section>
+        )}
 
         <PageFAQ faqs={faqs} />
         <PageCTA headline={ctaHeadline} link={contactLink} />

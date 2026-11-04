@@ -36,9 +36,9 @@ const custodians = [
   {
     name: 'BNY Pershing',
     slug: 'pershing',
-    badge: 'In active development',
+    badge: 'Coming soon',
     blurb:
-      'Open accounts, capture eSignatures, and move assets through NetX360+ — with the not-in-good-order rework Pershing warns about caught before submission.',
+      'Coming soon to FastTrackr. How accounts open and assets move through NetX360+, and where Pershing paperwork goes not-in-good-order.',
   },
 ];
 

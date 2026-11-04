@@ -3,18 +3,18 @@ import PershingCustodian from '../../../src/pages/custodians/Pershing';
 import { seoMeta, type SeoConfig, absoluteUrl } from '../../../src/lib/seo';
 
 const seo: SeoConfig = {
-  title: 'Move Your Book to BNY Pershing | FastTrackr AI',
+  title: 'BNY Pershing (Coming Soon) | FastTrackr AI',
   description:
-    'Repaper an advisor book onto BNY Pershing in days. How NetX360+ onboarding and ACATS work, the NIGO rework to avoid, and how FastTrackr prepares the forms.',
+    'BNY Pershing is coming soon to FastTrackr. How NetX360+ onboarding and ACATS transfers work, where Pershing paperwork goes NIGO, and what we will prepare.',
   canonical: '/custodians/pershing',
   ogImage: '/logomark.png',
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Advisor transitions to BNY Pershing',
+    name: 'Advisor transitions to BNY Pershing (coming soon)',
     serviceType: 'Advisor transition and repapering',
     description:
-      'Repapering and advisor transition support for moving a book of business onto BNY Pershing, including NetX360+ onboarding and ACATS transfers.',
+      'Coming soon, not yet live: repapering and advisor transition support for moving a book of business onto BNY Pershing, including NetX360+ onboarding and ACATS transfers.',
     provider: { '@type': 'Organization', name: 'FastTrackr AI', url: absoluteUrl('/') },
     areaServed: 'US',
     url: absoluteUrl('/custodians/pershing'),

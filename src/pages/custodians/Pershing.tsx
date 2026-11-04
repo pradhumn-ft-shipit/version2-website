@@ -8,18 +8,52 @@ const props: CustodianLayoutProps = {
   custodian: 'BNY Pershing',
   shortName: 'Pershing',
   slug: 'pershing',
-  h1: 'Move your book to BNY Pershing, repapered in days',
+  h1: 'Moving a book to BNY Pershing (coming soon)',
   subhead: 'Advisor transitions and account onboarding onto BNY Pershing, without the rework.',
-  // D1 — Pershing is NOT a live mapping yet (Live today = Fidelity, Schwab, Goldman, SEI).
-  // Marks the present-tense page as in-progress so it doesn't read as fully supported.
+  // PR2-02 — Pershing is NOT live yet (live: Fidelity, Schwab, SEI, Goldman). The
+  // forms are mapped, so it's named with a "Coming soon" label and every line
+  // about what FastTrackr does here is future tense.
   statusBadge: (
-    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 font-medium text-sm border border-blue-200">
-      <span className="w-2 h-2 rounded-full bg-blue-400" />
-      Coverage in active development — talk to us
-    </span>
+    <p className="inline-flex items-start gap-2 px-4 py-2 rounded-2xl bg-blue-50 text-blue-800 font-medium text-base border border-blue-200 max-w-2xl text-left">
+      <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0 mt-2" />
+      <span>
+        Coming soon. We've mapped the BNY Pershing forms, but Pershing isn't live on FastTrackr
+        yet. If your book is moving there, talk to us about timing.
+      </span>
+    </p>
   ),
+  helpsHeading: 'How a Pershing move will run on FastTrackr (coming soon)',
+  helpsIntro:
+    'FastTrackr is built for advisor transitions. When Pershing goes live, it will collect household data once, fill and check the paperwork before submission, and track every account to done.',
+  handlesHeading: 'What FastTrackr will handle on a Pershing move',
+  handlesItems: [
+    {
+      title: 'Sign the way the client will',
+      desc: 'FastTrackr will send the paperwork to DocuSign in one click for e-signature, or let you download the filled PDFs where a client or form still needs a wet signature.',
+    },
+    {
+      title: 'Pershing-specific nuances, handled',
+      desc: 'FastTrackr will build the quirks that trip up a submission, such as carbon-copy requirements, SMS verification and second-signature outreach, into every package it prepares.',
+    },
+    {
+      title: 'The transfer forms, not just the account opening',
+      desc: 'FastTrackr will fill the ACAT / transfer-of-assets forms too, so the assets start moving with the account paperwork instead of being chased separately.',
+    },
+    {
+      title: 'Your firm paperwork, not just the custodian forms',
+      desc: 'Beyond the Pershing account and transfer forms, FastTrackr will also prepare your new firm paperwork (advisory agreement, fee schedule and disclosures), so every household is repapered on both the custodian and the firm side.',
+    },
+    {
+      title: 'Nothing slips',
+      desc: 'Every household will be tracked to done, with a pending view that shows only what is still missing.',
+    },
+  ],
+  handoffHeading: 'FastTrackr and BNY Pershing: where it stands',
+  handoffBody:
+    "Pershing is coming soon. We've mapped the forms. When it goes live, FastTrackr will collect the household data once and prepare the new-account, transfer and firm forms for signature. Talk to us about timing for your book.",
+  hideOutcomes: true,
   intro:
-    'Transitioning to BNY Pershing means opening accounts and moving assets for every household through NetX360+. Pershing itself calls out minimizing not-in-good-order rework as a core onboarding challenge. FastTrackr prepares the data and forms so households onboard without rework.',
+    'Transitioning to BNY Pershing means opening accounts and moving assets for every household through NetX360+. Pershing itself calls out minimizing not-in-good-order rework as a core onboarding challenge. Once Pershing is live on FastTrackr, we\'ll prepare the data and forms so households onboard without rework.',
   processIntro:
     'BNY Pershing accounts are opened and funded through its NetX360+ platform, with asset movement running over the ACATS rail operated by DTCC. The advisor-side repapering runs alongside account opening.',
   processSteps: [
@@ -80,7 +114,7 @@ const props: CustodianLayoutProps = {
     },
     {
       q: 'What causes NIGO rework at BNY Pershing?',
-      a: 'BNY Pershing specifically calls out not-in-good-order issues that require a second signature from the investor. Beyond that, registration mismatches, incomplete transfer details, and non-transferable assets are common causes. FastTrackr validates these before submission.',
+      a: 'BNY Pershing specifically calls out not-in-good-order issues that require a second signature from the investor. Beyond that, registration mismatches, incomplete transfer details, and non-transferable assets are common causes. Once Pershing is live on FastTrackr, it will check for these before submission.',
     },
     {
       q: 'What is ACATS?',
@@ -88,7 +122,7 @@ const props: CustodianLayoutProps = {
     },
     {
       q: 'How does FastTrackr work with BNY Pershing?',
-      a: 'FastTrackr collects the household data and prepares the forms a BNY Pershing transition needs so accounts onboard in good order, delivered as signature-ready packages. Talk to us about how the handoff would work for your book.',
+      a: "BNY Pershing is coming soon on FastTrackr. We've mapped the forms, but it isn't live yet. Talk to us about timing for your book.",
     },
   ],
   ctaHeadline: 'Planning a move to BNY Pershing? See exactly how your book would repaper.',

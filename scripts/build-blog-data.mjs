@@ -708,6 +708,60 @@ function buildPodcasts() {
   return index;
 }
 
+// PR2-12 (2026-11-04): body clean-up applied to every post JSON (markdown and
+// legacy) before the index is built.
+//   1. Leaked frontmatter: a few legacy bodies open with a heading or paragraph
+//      that prints the authoring metadata (title:, target_query:, queue_id:,
+//      status: humanized …). Drop that element.
+//   2. One H1 per page: the template already renders the post title as the H1.
+//      A leading body H1 that repeats the title is dropped; any other body H1
+//      is demoted to H2 so its text stays.
+const LEAKED_META_RE = /<(h[1-6]|p)\b[^>]*>\s*title:[\s\S]*?<\/\1>/gi;
+const LEAKED_META_KEYS = /(target_query|queue_id|priority_score|status):/i;
+
+function decodeEntities(s) {
+  return s
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&');
+}
+
+function normTitle(s) {
+  return decodeEntities(String(s || '').replace(/<[^>]+>/g, ''))
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function cleanPostBody(html, title) {
+  let out = String(html || '').replace(LEAKED_META_RE, (block) =>
+    LEAKED_META_KEYS.test(block) ? '' : block
+  );
+  const lead = out.match(/^\s*<h1\b[^>]*>([\s\S]*?)<\/h1>\s*/i);
+  if (lead && normTitle(lead[1]) === normTitle(title)) out = out.slice(lead[0].length);
+  return out.replace(/<h1(\b[^>]*)>/gi, '<h2$1>').replace(/<\/h1>/gi, '</h2>');
+}
+
+function cleanAllPostBodies() {
+  let changed = 0;
+  for (const f of fs.readdirSync(POSTS_DIR).filter((n) => n.toLowerCase().endsWith('.json'))) {
+    const file = path.join(POSTS_DIR, f);
+    const post = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const cleaned = cleanPostBody(post.content, post.title);
+    if (cleaned !== post.content) {
+      fs.writeFileSync(file, JSON.stringify({ ...post, content: cleaned }));
+      changed++;
+    }
+  }
+  console.log(`[blog] cleaned body H1s / leaked metadata in ${changed} post${changed === 1 ? '' : 's'}`);
+}
+
 function main() {
   // POSTS_DIR is pure build output: wipe it so a deleted/renamed source can
   // never leave a stale JSON behind to be picked up by the index scan below.
@@ -833,6 +887,8 @@ function main() {
       process.exit(1);
     }
   }
+
+  cleanAllPostBodies();
 
   const jsonFiles = fs
     .readdirSync(POSTS_DIR)

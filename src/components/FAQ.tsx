@@ -12,7 +12,7 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
   },
   {
     q: "Which custodians do you support?",
-    a: "We already support the major custodians. If you'd like to know whether yours is covered, drop us a note via the contact form and we'll share specifics. If you're a custodian and want to talk about partnership, write to us the same way."
+    a: "Fidelity, Charles Schwab and SEI, with full repapering. Goldman Sachs is live too: we deliver the data in Goldman's own format for its onboarding workflow, so nobody re-keys it. BNY Pershing is coming soon. If your custodian isn't listed, send us a note and we'll tell you where it stands. If you're a custodian and want to talk about partnership, write to us the same way."
   },
   {
     q: "How does FastTrackr handle our firm's specific forms?",

@@ -320,17 +320,15 @@ export default function SolAdvisorTransitions() {
                 <div>
                   <h3 className="text-xl font-bold text-brandDeep mb-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brandMint" /> Live today</h3>
                   <ul className="space-y-2 text-lg text-textSecondary">
-                    <li>Fidelity</li>
-                    <li>Charles Schwab</li>
-                    <li>Goldman Sachs</li>
-                    <li>SEI</li>
+                    <li>Fidelity, Charles Schwab and SEI: full repapering</li>
+                    <li>Goldman Sachs: we deliver the data in Goldman's own format, so nobody re-keys it</li>
                     <li className="text-textSecondary/70">…and more</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-500 mb-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-400" /> In active development</h3>
+                  <h3 className="text-xl font-bold text-gray-500 mb-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-400" /> Coming soon</h3>
                   <p className="text-textSecondary">
-                    We're adding new custodian mappings on a rolling basis, prioritized by customer roadmaps. If yours isn't listed, talk to us.
+                    BNY Pershing. If your custodian isn't listed, talk to us.
                   </p>
                 </div>
               </div>

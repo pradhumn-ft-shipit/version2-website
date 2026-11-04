@@ -1911,6 +1911,9 @@ services:
         source: /resources/podcasts/webinar-ai-automation-for-rias
         destination: /resources/podcasts/webinar-ai-automation-for-rias/index.html
       - type: rewrite
+        source: /security
+        destination: /security/index.html
+      - type: rewrite
         source: /solutions/advisor-transitions
         destination: /solutions/advisor-transitions/index.html
       - type: rewrite

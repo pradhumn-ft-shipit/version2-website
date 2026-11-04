@@ -65,6 +65,7 @@ const STATIC_SITEMAP_PAGES = [
   // carried over from the previous version of the site.
   { path: '/pricing', priority: '0.7' },
   { path: '/contact', priority: '0.7' },
+  { path: '/security', priority: '0.6' }, // PR3-01
   { path: '/resources/blog', priority: '0.5' },
   { path: '/resources/news', priority: '0.6' },
   { path: '/resources/podcasts', priority: '0.6' },

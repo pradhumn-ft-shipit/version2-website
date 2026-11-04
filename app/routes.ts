@@ -30,7 +30,6 @@ export default [
   // Core / marketing
   route('pricing', 'routes/pricing.tsx'),
   route('contact', 'routes/contact.tsx'),
-  route('fpa', 'routes/fpa.tsx'),
   route('case-study', 'routes/case-study-index.tsx'),
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
   route('case-study/independent-breakaway-setup', 'routes/case-study-breakaway.tsx'),

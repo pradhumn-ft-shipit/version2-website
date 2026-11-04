@@ -72,7 +72,7 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
   // Intentionally NOT listed, though they are real routes in src/App.tsx:
-  // /fpa (link-only co-marketing landing), /zoom-help-documentation,
+  // /zoom-help-documentation,
   // /privacy-policy-transitions, /tos-transitions, /client-privacy-notice and
   // /client-data-consent-acknowledgment. They stay crawlable and are still
   // prerendered with their own <head> — they are just not submitted for

@@ -6,7 +6,7 @@ import Solution from '../components/Solution';
 import HowItWorks from '../components/HowItWorks';
 import Outcomes from '../components/Outcomes';
 import ICP from '../components/ICP';
-import Beyond from '../components/Beyond';
+import WhatGoesOut from '../components/WhatGoesOut';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
@@ -24,7 +24,7 @@ export default function Home() {
         <DeferredSection id="how-it-works" minHeight="1500px"><HowItWorks /></DeferredSection>
         <DeferredSection minHeight="900px"><Outcomes /></DeferredSection>
         <DeferredSection minHeight="1200px"><ICP /></DeferredSection>
-        <DeferredSection minHeight="900px"><Beyond /></DeferredSection>
+        <DeferredSection minHeight="900px"><WhatGoesOut /></DeferredSection>
         <DeferredSection minHeight="1100px"><Testimonials /></DeferredSection>
         <DeferredSection minHeight="800px"><FAQ /></DeferredSection>
       </main>

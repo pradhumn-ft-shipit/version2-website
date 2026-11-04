@@ -267,6 +267,15 @@ services:
       - type: redirect
         source: /blog/fasttrackr-ai-achieves-soc-2-type-ii-certification-a-milestone-in-security-and-trust
         destination: /security
+      # PR3-08 (2026-11-04): two company posts moved from the blog to News (same
+      # slugs, now content/news/). After deploy, prune any old dashboard rule for
+      # these paths by hand.
+      - type: redirect
+        source: /blog/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast
+        destination: /resources/news/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast
+      - type: redirect
+        source: /blog/fasttrackr-ai-at-wealth-management-edge
+        destination: /resources/news/fasttrackr-ai-at-wealth-management-edge
       # PR2-10 (2026-11-04): /custodians/goldman answered 200 with an empty body
       # (the old /custodians/* rewrite pointed at a missing file). 301 it to the
       # real page.
@@ -871,9 +880,6 @@ services:
       - type: rewrite
         source: /blog/executive-deck-transition-technology-cost-benefit
         destination: /blog/executive-deck-transition-technology-cost-benefit/index.html
-      - type: rewrite
-        source: /blog/fasttrackr-ai-at-wealth-management-edge
-        destination: /blog/fasttrackr-ai-at-wealth-management-edge/index.html
       - type: rewrite
         source: /blog/fasttrackr-ai-meeting-assistant-financial-advisors
         destination: /blog/fasttrackr-ai-meeting-assistant-financial-advisors/index.html
@@ -1574,9 +1580,6 @@ services:
         source: /blog/top-transition-consultants-what-they-do-differently
         destination: /blog/top-transition-consultants-what-they-do-differently/index.html
       - type: rewrite
-        source: /blog/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast
-        destination: /blog/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast/index.html
-      - type: rewrite
         source: /blog/transition-client-experience-loyalty
         destination: /blog/transition-client-experience-loyalty/index.html
       - type: rewrite
@@ -1865,11 +1868,17 @@ services:
         source: /resources/news
         destination: /resources/news/index.html
       - type: rewrite
+        source: /resources/news/fasttrackr-ai-at-wealth-management-edge
+        destination: /resources/news/fasttrackr-ai-at-wealth-management-edge/index.html
+      - type: rewrite
         source: /resources/news/fasttrackr-ai-introduces-first-ai-native-platform-built-to-run-advisor-transitions
         destination: /resources/news/fasttrackr-ai-introduces-first-ai-native-platform-built-to-run-advisor-transitions/index.html
       - type: rewrite
         source: /resources/news/financex-magazine-when-a-hundred-thousand-books-change-hands
         destination: /resources/news/financex-magazine-when-a-hundred-thousand-books-change-hands/index.html
+      - type: rewrite
+        source: /resources/news/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast
+        destination: /resources/news/transforming-wealth-management-through-vertical-ai-fasttrackr-ai-on-gai-ventures-podcast/index.html
       - type: rewrite
         source: /resources/podcasts
         destination: /resources/podcasts/index.html

@@ -38,19 +38,8 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
     a: "For most firms, in a matter of days, not months. Setup happens in parallel with your first transition, so you start seeing time saved on day one."
   },
   {
-    q: "Can we use just the Meeting Assistant or Document Intelligence module?",
-    a: "Yes. The modules are independent. Many firms start with one and expand. Pricing is module-based, so you only pay for what you use."
-  },
-  {
     q: "How is FastTrackr priced?",
-    a: (
-      <>
-        For Advisor Transitions, we price based on the time saved and the additional revenue we help you capture. For other modules, pricing is per-seat. The{' '}
-        <Link to="/pricing" className="text-brandDeep font-semibold hover:text-brandMint transition-colors">Pricing</Link>
-        {' '}page has more, or we can walk through it on a call.
-      </>
-    ),
-    schemaAnswer: "For Advisor Transitions, we price based on the time saved and the additional revenue we help you capture. For other modules, pricing is per-seat. The Pricing page has more, or we can walk through it on a call."
+    a: "Advisor Transitions pricing isn't published. We can walk you through it on a call."
   }
 ];
 

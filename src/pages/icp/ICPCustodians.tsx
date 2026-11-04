@@ -9,7 +9,7 @@ export default function ICPCustodians() {
   const faqs = [
     {
       q: "How deep does the integration go?",
-      a: "As deep as you want. We can run alongside your existing onboarding tooling, embed within it, or extend it. Talk to us about your priorities."
+      a: "As deep as you want. We can run alongside your existing advisor onboarding tools, embed within them, or extend them. Talk to us about your priorities."
     },
     {
       q: "Can we white-label this for advisors moving to our platform?",
@@ -21,7 +21,7 @@ export default function ICPCustodians() {
     },
     {
       q: "How does pricing work for custodians?",
-      a: "Enterprise structures tied to volume of advisors and practices onboarded. We tailor it to your platform's economics."
+      a: "Enterprise structures tied to the number of advisors and practices you bring onto your platform. We tailor it to your platform's economics."
     }
   ];
 
@@ -45,10 +45,10 @@ export default function ICPCustodians() {
                 Be the on-ramp for every new RIA and advisory practice.
               </h1>
               <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
-                Custodian onboarding and ACATS transfers, owned by your platform.
+                Advisor onboarding and ACATS transfers, owned by your platform.
               </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
-                You want to attract more advisors and practices to your platform. Today, the onboarding experience is owned by everyone except you. FastTrackr puts it back in your hands.
+                You want to attract more advisors and practices to your platform. Today, the experience of bringing an advisor's book over is owned by everyone except you. FastTrackr puts it back in your hands.
               </p>
             </m.div>
             
@@ -72,11 +72,11 @@ export default function ICPCustodians() {
                   <div className="space-y-3 pt-4 border-t border-gray-100">
                     <div className="flex justify-between items-center text-sm">
                       <span className="font-medium text-textSecondary">RIA Alpha</span>
-                      <span className="text-brandMint font-bold">Onboarding</span>
+                      <span className="text-brandMint font-bold">In transition</span>
                     </div>
                     <div className="flex justify-between items-center text-sm">
                       <span className="font-medium text-textSecondary">Team Beta</span>
-                      <span className="text-brandMint font-bold">Onboarding</span>
+                      <span className="text-brandMint font-bold">In transition</span>
                     </div>
                     <div className="flex justify-between items-center text-sm">
                       <span className="font-medium text-textSecondary">Practice Gamma</span>
@@ -135,12 +135,12 @@ export default function ICPCustodians() {
         <section className="py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-display font-bold text-textPrimary mb-4">We help your advisors grow faster, acquire better, and onboard smoothly.</h2>
+              <h2 className="text-4xl font-display font-bold text-textPrimary mb-4">We help your advisors grow faster, acquire better, and bring their books over smoothly.</h2>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
               {[
-                { title: 'Embed in custodial onboarding', desc: 'FastTrackr becomes the operational layer for any RIA or practice moving to your platform.' },
+                { title: 'Embed in your advisor onboarding', desc: 'FastTrackr becomes the operational layer for any RIA or practice moving to your platform.' },
                 { title: 'Branded experience', desc: 'Co-branded or white-labeled, the move feels like your platform, not a third party.' },
                 { title: 'Help your advisors win their own deals', desc: 'Advisors and RIAs on your platform get the same transition tooling for their breakaways and acquisitions. They grow faster. So do you.' },
                 { title: 'Visibility into your incoming book', desc: 'See practices in transit, status by household, projected go-live dates, all in one place.' }
@@ -168,7 +168,7 @@ export default function ICPCustodians() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
                 <HeartHandshake className="w-8 h-8 text-brandMint mx-auto mb-4" />
-                <div className="text-2xl font-bold font-display mb-2">More practices onboarded</div>
+                <div className="text-2xl font-bold font-display mb-2">More practices brought over</div>
                 <div className="text-white/80">easier moves drive word-of-mouth</div>
               </div>
               <div className="text-center">

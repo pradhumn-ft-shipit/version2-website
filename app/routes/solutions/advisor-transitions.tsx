@@ -3,9 +3,11 @@ import SolAdvisorTransitions from '../../../src/pages/solutions/SolAdvisorTransi
 import { seoMeta, type SeoConfig } from '../../../src/lib/seo';
 
 const seo: SeoConfig = {
-  title: 'Advisor Transitions | FastTrackr AI',
+  // PR3-05 (2026-11-04): sitelink snippet matches the homepage and the live
+  // custodians. Pershing ("Coming soon") stays on the page, not in the snippet.
+  title: 'Advisor Transitions Software | FastTrackr AI',
   description:
-    'The AI transition engine for wealth management. Move advisor books in days, not months, with data collection, form-filling, and e-signature handled end to end.',
+    'Move advisor books in days, not months. Every form worked out up front, filled from your data and checked. Live for Fidelity, Schwab, SEI and Goldman Sachs.',
   canonical: '/solutions/advisor-transitions',
   ogImage: '/logomark.png',
 };

@@ -1,10 +1,9 @@
 # FastTrackr AI
 
-> FastTrackr AI is an AI platform for financial-advisor transitions and wealth-management operations. It automates the paperwork-heavy work of moving a book of business between firms or custodians — repapering, account applications, transfer-of-asset (ACATS) forms and client onboarding — so transitions that normally take ~90 days and run at a 30–50% not-in-good-order (NIGO) rejection rate move materially faster with fewer errors.
+> FastTrackr AI is an AI platform for financial-advisor transitions. It automates the paperwork-heavy work of moving a book of business between firms or custodians (repapering, account applications and transfer-of-asset (ACATS) forms) so books move in days, not months, with fewer not-in-good-order (NIGO) rejections.
 
 ## What FastTrackr is
 - An AI transition engine that reads, validates and pre-fills the forms a repapering generates, catches NIGO-triggering errors before submission, and tracks every household and account through the move.
-- Modules: Advisor Transitions, Client Onboarding, Meeting Assistant, and Document Intelligence.
 
 ## Who it serves
 - Transition consultants running repapering for advisors on the move.
@@ -21,9 +20,7 @@ Note: these are the figures FastTrackr publishes on its marketing pages; indepen
 
 ## Solutions
 - [Advisor Transitions](https://fasttrackr.ai/solutions/advisor-transitions)
-- [Client Onboarding](https://fasttrackr.ai/solutions/client-onboarding)
-- [Meeting Assistant](https://fasttrackr.ai/solutions/meeting-assistant)
-- [Document Intelligence](https://fasttrackr.ai/solutions/document-intelligence)
+- [Custodians](https://fasttrackr.ai/custodians)
 
 ## Who we serve
 - [Transition Consultants](https://fasttrackr.ai/who-we-serve/transition-consultants)

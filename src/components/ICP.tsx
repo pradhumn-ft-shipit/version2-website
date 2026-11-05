@@ -25,7 +25,7 @@ const audiences = [
     href: '/who-we-serve/independent-broker-dealers',
     title: 'Independent Broker-Dealers',
     icon: <Network className="w-6 h-6" />,
-    description: 'Win advisor recruits with a transition experience that actually works. Stop losing recruits to the firm with the smoother move.',
+    description: 'Win advisor recruits with a transition experience that actually works. Stop losing recruits to the firm with the smoother onboarding experience during the move.',
   },
   {
     href: '/who-we-serve/custodians',

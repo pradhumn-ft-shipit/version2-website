@@ -14,7 +14,7 @@ import { m } from '../lib/motion';
 const foundingTeam = [
   { name: 'Vineet Mohan', role: 'Founder and CEO' },
   { name: 'Pradhumn Vijayvargiya', role: 'Product and Growth' },
-  { name: 'Kartik Kumar', role: 'Tech' },
+  { name: 'Kartik Kumar', role: 'Head of Technology' },
 ];
 
 const links = [
@@ -40,10 +40,10 @@ export default function About() {
             </h1>
             <div className="space-y-5 text-xl text-textSecondary leading-relaxed">
               <p>
-                FastTrackr AI builds software for one job: moving an advisor's book of business. When an advisor changes firms or custodians, every household needs custodian paperwork and firm paperwork. FastTrackr works out which forms each account needs before data collection starts, fills them from whatever data the advisor is allowed to bring, checks them, and sends them out.
+                FastTrackr AI is built to do one job completely, end to end: advisor transitions. When an advisor changes firms or custodians, every household needs custodian paperwork and firm paperwork. The platform works out which forms each account needs before data collection starts, fills them from whatever data the advisor is allowed to bring, checks them, and sends them out.
               </p>
               <p>
-                We cover every kind of move: going independent, changing custodians, getting acquired and moving to a broker-dealer. It's software plus a done-for-you service, and we work with top-tier consultants where a move needs them.
+                We cover every kind of move: going independent, changing custodians, getting acquired and moving to a broker-dealer. FastTrackr is a purpose-built platform that helps you through the transition, with our experts on hand when you need them. Where a move needs them, we work alongside top-tier consultants.
               </p>
             </div>
           </m.div>

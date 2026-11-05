@@ -8,7 +8,7 @@ import { seoMeta, type SeoConfig } from '../../src/lib/seo';
 const seo: SeoConfig = {
   title: 'Security | FastTrackr AI',
   description:
-    "FastTrackr AI has a SOC 2 Type II report for security, confidentiality and availability. You and your clients own the data. We don't train models on it.",
+    "FastTrackr AI is SOC 2 Type II compliant. Data is encrypted in transit and at rest, you and your clients own it, and we don't train models on it.",
   canonical: '/security',
   ogImage: '/logomark.png',
 };

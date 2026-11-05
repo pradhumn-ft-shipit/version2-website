@@ -4,7 +4,7 @@ import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
 import { m } from '../../lib/motion';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, TrendingUp, FileWarning, Smile, Database, LayoutList, FileText, X } from 'lucide-react';
+import { CheckCircle2, TrendingUp, FileWarning, Smile, Database, LayoutList, FileText, X, Clock } from 'lucide-react';
 
 export default function SolAdvisorTransitions() {
   const faqs = [
@@ -26,7 +26,7 @@ export default function SolAdvisorTransitions() {
     },
     {
       q: "How does pricing work?",
-      a: "For Advisor Transitions, we price based on the time saved and the additional revenue we help capture. Talk to us, we'll work through what fits your situation."
+      a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
     }
   ];
 
@@ -44,13 +44,13 @@ export default function SolAdvisorTransitions() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-5xl md:text-7xl font-display font-bold text-textPrimary leading-tight mb-4">
-                AI-driven Advisor Transitions, from months to days.
+                AI-driven repapering, from months to days.
               </h1>
               <h2 className="text-2xl md:text-3xl font-display font-semibold text-brandDeep mb-6">
                 The AI transition engine for wealth management.
               </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-10 max-w-3xl mx-auto">
-                FastTrackr is the repapering platform purpose-built for advisor transitions, moving advisor books in days, not months. Shaped by the operators who do repapering and book movement every day.
+                FastTrackr is the platform purpose-built for advisor transitions, moving advisor books in days, not months. Shaped by the operators who do repapering and book movement every day.
               </p>
               <Link to="/contact?interest=advisor-transitions">
                 <button className="bg-brandDeep text-brandMint hover:bg-brandDeepHover px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300 shadow-xl">
@@ -88,7 +88,7 @@ export default function SolAdvisorTransitions() {
               <p>
                 For the advisor, it's months of operational work that has nothing to do with why they got into the business. For the team, it's overtime season. For clients, it's a stretch of silence that some don't wait through.
               </p>
-              <div className="max-w-md mx-auto mt-2">
+              <div className="grid sm:grid-cols-2 gap-6 mt-2">
                   <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-glass text-center">
                     <div className="w-14 h-14 bg-bgCanvas rounded-2xl flex items-center justify-center text-brandMint mx-auto mb-5">
                       <FileWarning className="w-6 h-6" />
@@ -96,6 +96,15 @@ export default function SolAdvisorTransitions() {
                     <div className="text-5xl font-display font-bold text-brandDeep mb-2">15%</div>
                     <p className="text-textSecondary leading-relaxed">
                       Industry estimate for the not-in-good-order (NIGO) rate on transition paperwork. Every rejection sends forms back and resets the clock.
+                    </p>
+                  </div>
+                  <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-glass text-center">
+                    <div className="w-14 h-14 bg-bgCanvas rounded-2xl flex items-center justify-center text-brandMint mx-auto mb-5">
+                      <Clock className="w-6 h-6" />
+                    </div>
+                    <div className="text-5xl font-display font-bold text-brandDeep mb-2">~$40K<span className="text-2xl font-bold">/week</span></div>
+                    <p className="text-textSecondary leading-relaxed">
+                      What every week a transition drags costs on a $200M book, at a ~1% advisory fee, before any client attrition.
                     </p>
                   </div>
                 </div>
@@ -113,7 +122,7 @@ export default function SolAdvisorTransitions() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 { title: 'Data Collection', icon: <Database />, desc: 'AI extracts client and account data from documents, transcripts, and conversations. Pre-populated household records, ready for review, without another intake form.' },
-                { title: 'Documentation', icon: <FileText />, desc: "The right custodian and firm forms are worked out up front and filled from the household record. They go out by one-click DocuSign, as filled PDFs, or as Excel in the counterparty's own template, with an API where the custodian supports it." },
+                { title: 'Documentation', icon: <FileText />, desc: "The right custodian and firm forms are worked out up front and filled from the household record. They go out by one-click DocuSign, as filled PDFs, as Excel in the counterparty's own template, or straight to the custodian by API where it's supported. No retyping either way." },
                 { title: 'Project Management', icon: <LayoutList />, desc: 'Hundreds of households, every form, every status, in one place. Replaces the Excel war room. Visible to you, your team, and your clients.' }
               ].map((feature, i) => (
                 <m.div 
@@ -155,13 +164,13 @@ export default function SolAdvisorTransitions() {
             <div className="text-center mb-16">
               <h2 className="text-4xl font-display font-bold text-textPrimary mb-4">How the data gets in</h2>
               <p className="text-lg text-textSecondary max-w-3xl mx-auto">
-                What you can start with depends on the move. When you break away, the old firm doesn't hand over an export, so FastTrackr starts from whatever your data access rights let you bring and fills the gaps from there. In an acquisition, the old firm hands over its exports and FastTrackr reads each one.
+                What you can start with depends on the move. When you break away, the firm you're leaving doesn't hand over an export, so FastTrackr starts from whatever your data access rights let you bring and fills the gaps from there. In an acquisition, the acquired firm hands over its exports and FastTrackr reads each one.
               </p>
             </div>
             <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { title: 'Start from what you can bring', desc: 'A protocol sheet, a flat list of household names, or full system exports when the move allows it. FastTrackr builds the households from it, and account shells where the data supports them.' },
-                { title: 'Documents read for you', desc: 'Upload client statements, bank and brokerage statements, driver\'s licenses, voided checks or spreadsheets at the household or project level. FastTrackr pulls out the fields each form needs.' },
+                { title: 'Start from what you can bring', desc: 'A protocol sheet, a flat list of household names, or full system exports when the move allows it. FastTrackr builds the households from it, and account shells where the data supports them. For a non-protocol move with no data source, create the households directly in the platform.' },
+                { title: 'Intelligent extraction from client documents', desc: 'Add the documents your clients send you, like bank and brokerage statements, driver\'s licenses, voided checks or spreadsheets, at the household or project level. FastTrackr pulls out the fields each form needs.' },
                 { title: 'A client upload flow, not a long form', desc: 'Clients get a guided flow with a list of suggested documents. They upload what they have, see exactly what was filled in, and finish the rest themselves or send it back to you.' },
                 { title: 'A bot on the call', desc: 'Schedule a meeting and the FastTrackr bot joins it, then collects the household data from the transcript.' },
                 { title: 'Only the gaps', desc: 'The Pending view shows only the fields still missing, so nobody re-keys what\'s already there.' },
@@ -191,7 +200,7 @@ export default function SolAdvisorTransitions() {
                 {[
                   { n: '1', title: 'Collect', desc: 'AI pulls client and account data from your existing systems, documents, and conversations, so nobody retypes a household from scratch.' },
                   { n: '2', title: 'Prepare', desc: 'The right custodian and firm forms are identified, mapped, and pre-filled, then validated to catch NIGO issues before they reach the custodian.' },
-                  { n: '3', title: 'Sign & submit', desc: "Clients sign what's already filled in. Firm and custodian paperwork go to DocuSign in one click, or out as filled PDFs or Excel in the counterparty's template. API where the custodian supports it." },
+                  { n: '3', title: 'Sign & submit', desc: "Clients sign what's already filled in. Firm and custodian paperwork go to DocuSign in one click, out as filled PDFs or Excel in the counterparty's template, or straight to the custodian by API where it's supported. No retyping either way." },
                   { n: '4', title: 'Track to done', desc: 'Every household and form stays tracked after signing, through NIGO fixes and status updates, until the last account lands.' },
                 ].map((step, i) => (
                   <div key={i} className="relative bg-white p-8 pt-10 rounded-3xl border border-gray-100 shadow-glass text-center">
@@ -214,18 +223,18 @@ export default function SolAdvisorTransitions() {
               </div>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                  <h3 className="text-xl font-bold text-textPrimary mb-3">DocuSign, PDFs or their template</h3>
+                  <h3 className="text-xl font-bold text-textPrimary mb-3">DocuSign, PDFs, their template or API</h3>
                   <p className="text-textSecondary leading-relaxed">
                     One-click push to DocuSign for signature, filled PDFs you can download where a
-                    wet signature is still required, or the household data mapped straight into a
-                    custodian's or broker-dealer's own template when they'd rather do the filling.
-                    Plus an API where the custodian supports it.
+                    wet signature is still required, the household data mapped into a custodian's or
+                    broker-dealer's own Excel template, or straight to the custodian by API where
+                    it's supported. No retyping either way.
                   </p>
                 </div>
                 <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
                   <h3 className="text-xl font-bold text-textPrimary mb-3">Custodian quirks, handled</h3>
                   <p className="text-textSecondary leading-relaxed">
-                    Every custodian has its own rules — a carbon copy here, an SMS verification there.
+                    Every custodian has its own rules: a carbon copy here, an SMS verification there.
                     FastTrackr knows them per custodian and builds them into the submission, so nothing
                     bounces on a technicality.
                   </p>
@@ -259,7 +268,7 @@ export default function SolAdvisorTransitions() {
                 {[
                   { without: 'Data re-keyed from scratch for every household', with: 'Household data collected once, then reused automatically' },
                   { without: 'Forms hunted down and filled by hand across custodians', with: 'Right forms mapped and pre-filled automatically' },
-                  { without: 'NIGO rejections caught only after the custodian sends them back', with: "Each form is checked against the custodian's and the firm's rules before it's submitted" },
+                  { without: 'NIGO rejections caught only after the custodian sends them back', with: "Each form is checked against the custodian's and the firm's rules before it's submitted, to reduce NIGOs" },
                   { without: 'Status tracked in spreadsheets and email threads', with: 'Every household and status in one shared view' },
                   { without: 'Timelines measured in months', with: 'Timelines measured in days' },
                 ].map((row, i) => (
@@ -288,7 +297,7 @@ export default function SolAdvisorTransitions() {
                   { title: 'Protocol transitions', desc: 'Advisors moving between firms in the Broker Protocol take a defined set of client information. FastTrackr organizes that data, flags the gaps, and speeds up collection with an AI-driven flow, then repapers the book at the new custodian, firm paperwork included.' },
                   { title: 'Non-protocol transitions', desc: 'When the departing or receiving firm is outside the Protocol, the move is more constrained. The system adapts to what can and can\'t travel, and keeps the audit trail clean.' },
                   { title: 'Tuck-in acquisitions', desc: 'A practice folding into a larger RIA or platform runs through the same engine, so the acquirer\'s ops team absorbs the volume without growing headcount.' },
-                  { title: 'Same-custodian moves', desc: 'When only the firm or affiliation changes and the custodian stays the same, the assets don\'t move — often just a change-of-advisor form on the custodian side. FastTrackr handles that lighter custodian lift and still prepares the full firm paperwork — advisory agreement, fee schedule, and disclosures — so nothing on the firm side is missed.' },
+                  { title: 'Same-custodian moves', desc: 'When only the firm or affiliation changes and the custodian stays the same, there\'s no ACAT. The master account or G number changes inside the custodian, which happens promptly, using the custodian\'s advisor change form: an LPOA for Schwab, the Advisor Change form for Fidelity or SEI. FastTrackr prepares that form and still prepares the full firm paperwork (advisory agreement, fee schedule and disclosures), so nothing on the firm side is missed.' },
                 ].map((t, i) => (
                   <div key={i} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
                     <h3 className="text-xl font-bold text-textPrimary mb-3">{t.title}</h3>
@@ -308,8 +317,7 @@ export default function SolAdvisorTransitions() {
                 <div>
                   <h3 className="text-xl font-bold text-brandDeep mb-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brandMint" /> Live today</h3>
                   <ul className="space-y-2 text-lg text-textSecondary">
-                    <li>Fidelity, Charles Schwab and SEI: full repapering</li>
-                    <li>Goldman Sachs: we deliver the data in Goldman's own format, so nobody re-keys it</li>
+                    <li>We support Fidelity, Charles Schwab, Goldman Sachs and SEI</li>
                     <li className="text-textSecondary/70">…and more</li>
                   </ul>
                 </div>
@@ -333,8 +341,8 @@ export default function SolAdvisorTransitions() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
                 <TrendingUp className="w-6 h-6 text-brandMint mx-auto mb-4" />
-                <div className="font-bold mb-2">Months → days</div>
-                <div className="text-white/80 text-sm">timelines compress</div>
+                <div className="font-bold mb-2">75% faster</div>
+                <div className="text-white/80 text-sm">from months to days</div>
               </div>
               <div className="text-center">
                 <FileWarning className="w-6 h-6 text-brandMint mx-auto mb-4" />

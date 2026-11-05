@@ -21,7 +21,7 @@ export default function ICPCustodians() {
     },
     {
       q: "How does pricing work for custodians?",
-      a: "Enterprise structures tied to the number of advisors and practices you bring onto your platform. We tailor it to your platform's economics."
+      a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
     }
   ];
 

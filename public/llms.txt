@@ -4,6 +4,9 @@
 
 ## What FastTrackr is
 - An AI transition engine that reads, validates and pre-fills the forms a repapering generates, catches NIGO-triggering errors before submission, and tracks every household and account through the move.
+- Custodians: we support Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing is coming soon.
+- Paperwork goes out by one-click DocuSign, as filled PDFs, as Excel in the counterparty's own template, or straight to the custodian by API where it's supported.
+- Pricing: transition pricing depends on your volumes and use case. Reach out to us to know more.
 
 ## Who it serves
 - Transition consultants running repapering for advisors on the move.

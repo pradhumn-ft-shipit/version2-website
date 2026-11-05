@@ -13,7 +13,7 @@ export default function ICPTransitionConsultants() {
     },
     {
       q: "Do you work across multiple custodians?",
-      a: "Yes. We work with the major custodians and can support your transition end to end. If you'd like to walk through your specific custodian setup, book a quick 30-minute call and we'll cover it."
+      a: "Yes. We support Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing is coming soon. If you'd like to walk through your specific custodian setup, book a quick 30-minute call and we'll cover it."
     },
     {
       q: "What about our existing tooling, do we replace it?",
@@ -21,7 +21,7 @@ export default function ICPTransitionConsultants() {
     },
     {
       q: "How do you price for consultants?",
-      a: "Value-based, usually tied to the deals we help you move and the time we save you. We'll talk through the structure on a call."
+      a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
     }
   ];
 
@@ -45,7 +45,7 @@ export default function ICPTransitionConsultants() {
                 More deals per consultant. <br/><span className="text-gray-400">Without more admin slog.</span>
               </h1>
               <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
-                Advisor repapering software for transition consultants.
+                The advisor transitions platform for transition consultants.
               </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 Take on more transitions with the team you already have. FastTrackr handles the data collection, form-filling, and project management, so your consultants spend their time on the parts only humans can do.
@@ -152,8 +152,9 @@ export default function ICPTransitionConsultants() {
             <p className="text-center text-textSecondary max-w-3xl mx-auto mt-10 leading-relaxed">
               Every custodian wants it delivered differently. FastTrackr pushes signature-ready
               packets to DocuSign, generates filled PDFs where a wet signature is still required,
-              or maps the household data straight into a custodian's or broker-dealer's own template
-              when they'd rather do the filling — so your consultants aren't reformatting for each one.
+              maps the household data into a custodian's or broker-dealer's own Excel template, or
+              sends it straight to the custodian by API where it's supported. No retyping either way,
+              and your consultants aren't reformatting for each one.
             </p>
           </div>
         </section>

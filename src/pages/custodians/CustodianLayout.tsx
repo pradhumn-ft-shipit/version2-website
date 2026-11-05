@@ -6,6 +6,7 @@ import PageCTA from '../../components/PageCTA';
 import PageFAQ from '../../components/PageFAQ';
 import { m } from '../../lib/motion';
 import {
+  ArrowLeftRight,
   ArrowRight,
   CheckCircle2,
   FileWarning,
@@ -17,7 +18,10 @@ import {
 
 /*
  * Shared presentational shell for the durable custodian landing pages
- * (/custodians/schwab, /custodians/fidelity, /custodians/pershing). W6 · T2-3.
+ * (/custodians/schwab, /custodians/fidelity, /custodians/sei, /custodians/pershing).
+ * W6 · T2-3; section order reworked in PR6 (review decisions 12-13): hero →
+ * simple move flow (+ same-custodian case) → NIGO → how FastTrackr helps →
+ * outcomes → technical detail → FAQ → CTA.
  *
  * These pages target advisors repapering a book of business ONTO/BETWEEN a
  * custodian — distinct from /who-we-serve/custodians, which sells to custodians
@@ -47,6 +51,14 @@ export type CustodianLayoutProps = {
   /** Optional status label rendered directly under the H1 — used to mark a
    *  custodian that isn't live on FastTrackr yet (Pershing: "Coming soon"). */
   statusBadge?: ReactNode;
+  /** Optional override for the intro above the simple move flow (Pershing:
+   *  future tense, since it isn't live yet). */
+  flowIntro?: ReactNode;
+  /** Same-custodian case (grounding §18 / review decision 13): the advisor
+   *  changes firm but keeps this custodian. `form` is the custodian form
+   *  (LPOA for Schwab, Advisor Change form for Fidelity and SEI). Omit for a
+   *  custodian that isn't live (Pershing). */
+  sameCustodianForm?: string;
   /** Optional overrides for the "How FastTrackr …" section, for a custodian
    *  that isn't live yet (Pershing), so its copy reads as future tense. */
   helpsHeading?: ReactNode;
@@ -57,10 +69,16 @@ export type CustodianLayoutProps = {
   handoffBody?: ReactNode;
   /** Hide the outcomes strip (Pershing: no outcome claims before it's live). */
   hideOutcomes?: boolean;
-  /** Intro paragraph above the process steps. */
+  /** Technical detail, rendered near the bottom of the page (above the FAQ):
+   *  intro, the sourced custodian/ACATS mechanics, the forms involved and a
+   *  sources note. Never a "repaper" step here: repapering is the first step
+   *  of the simple flow, not a later one. */
   processIntro: ReactNode;
   processSteps: ProcessStep[];
-  /** Optional sourced/generic note rendered under the process steps. */
+  /** Forms involved on a move to this custodian (only names already on the
+   *  page or in the grounding doc). */
+  forms?: string[];
+  /** Optional sourced/generic note rendered under the technical detail. */
   processNote?: ReactNode;
   /** Common not-in-good-order (NIGO) pitfalls for this custodian. */
   nigoItems: InfoItem[];
@@ -71,6 +89,13 @@ export type CustodianLayoutProps = {
   ctaHeadline: string;
 };
 
+/** The signature NIGO item, in the user's wording (review decision 15). Each
+ *  live custodian page lists it first. */
+export const signatureNigoItem: InfoItem = {
+  title: 'Missing or mismatched signatures',
+  desc: 'Every required account owner has to sign, and the signatures have to match what the delivering firm holds. Joint and trust accounts multiply the places a signature can be missed.',
+};
+
 export default function CustodianLayout({
   custodian,
   shortName,
@@ -79,6 +104,8 @@ export default function CustodianLayout({
   subhead,
   intro,
   statusBadge,
+  flowIntro,
+  sameCustodianForm,
   helpsHeading,
   helpsIntro,
   handlesHeading,
@@ -88,6 +115,7 @@ export default function CustodianLayout({
   hideOutcomes = false,
   processIntro,
   processSteps,
+  forms,
   processNote,
   nigoItems,
   blogCategoryId,
@@ -96,6 +124,39 @@ export default function CustodianLayout({
   ctaHeadline,
 }: CustodianLayoutProps) {
   const contactLink = `/contact?interest=advisor-transitions&custodian=${slug}`;
+
+  // The only custodian-move flow (grounding §18, review decision 12).
+  // Repapering is the first step and triggers everything after it.
+  const flowSteps: ProcessStep[] = [
+    {
+      n: '1',
+      title: 'Collect the data',
+      desc: 'FastTrackr collects the household and account data from your exports, statements and client documents.',
+    },
+    {
+      n: '2',
+      title: 'Create the paperwork',
+      desc: `FastTrackr fills the ${shortName} account forms, the transfer of assets forms and your firm paperwork, and puts it all into DocuSign.`,
+    },
+    {
+      n: '3',
+      title: 'Send for signature',
+      desc: 'Everything goes out to clients for signature.',
+    },
+    {
+      n: '4',
+      title: `${shortName} opens the accounts`,
+      desc: `${shortName} validates the paperwork, opens the accounts and initiates the ACAT through DTCC.`,
+    },
+    {
+      n: '5',
+      title: 'Everything settles',
+      desc: 'Once the delivering firm or custodian accepts the transfer, the assets move and everything settles.',
+    },
+  ];
+
+  const stepGridCols =
+    processSteps.length >= 4 ? 'lg:grid-cols-4' : processSteps.length === 3 ? 'lg:grid-cols-3' : '';
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -132,37 +193,57 @@ export default function CustodianLayout({
           </div>
         </section>
 
-        {/* How a transfer to <custodian> works */}
+        {/* How a move to <custodian> works: the simple flow */}
         <section className="py-24 bg-bgCanvas border-y border-gray-100">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 max-w-3xl mx-auto">
               <h2 className="text-4xl font-display font-bold text-textPrimary mb-4">
-                How a transfer to {shortName} works
+                How a move to {shortName} works
               </h2>
-              <p className="text-lg text-textSecondary leading-relaxed">{processIntro}</p>
+              <p className="text-lg text-textSecondary leading-relaxed">
+                {flowIntro ?? (
+                  <>
+                    Repapering is the first step, and it sets off everything else. Once the
+                    paperwork is right, the rest of the move follows.
+                  </>
+                )}
+              </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {processSteps.map((step, i) => (
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {flowSteps.map((step, i) => (
                 <m.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="relative bg-white p-8 pt-10 rounded-3xl border border-gray-100 shadow-glass"
+                  className="relative bg-white p-6 pt-8 rounded-3xl border border-gray-100 shadow-glass"
                 >
-                  <div className="mb-5 w-14 h-14 rounded-2xl bg-brandDeep text-brandMint flex items-center justify-center font-display font-bold text-2xl shadow-lg">
+                  <div className="mb-5 w-12 h-12 rounded-2xl bg-brandDeep text-brandMint flex items-center justify-center font-display font-bold text-xl shadow-lg">
                     {step.n}
                   </div>
-                  <h3 className="text-xl font-bold text-textPrimary mb-2">{step.title}</h3>
+                  <h3 className="text-lg font-bold text-textPrimary mb-2">{step.title}</h3>
                   <p className="text-textSecondary leading-relaxed">{step.desc}</p>
                 </m.div>
               ))}
             </div>
-            {processNote ? (
-              <p className="text-sm text-textSecondary max-w-3xl mx-auto text-center mt-10 leading-relaxed">
-                {processNote}
-              </p>
+
+            {sameCustodianForm ? (
+              <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm max-w-3xl mx-auto mt-12">
+                <div className="flex items-center gap-3 mb-3">
+                  <ArrowLeftRight className="w-6 h-6 text-brandMint" />
+                  <h3 className="text-lg font-bold text-textPrimary">
+                    Changing firms but staying at {shortName}?
+                  </h3>
+                </div>
+                <p className="text-textSecondary leading-relaxed">
+                  You still have to repaper. When you move to a new firm and keep {shortName} as
+                  custodian, there is no ACAT. Steps 1 to 3 are the same, and step 4 becomes a
+                  master account or G number change inside {shortName}, which happens promptly. The{' '}
+                  {shortName} form for this is the {sameCustodianForm}. Your new firm paperwork is
+                  still the full set, and FastTrackr prepares both.
+                </p>
+              </div>
             ) : null}
           </div>
         </section>
@@ -214,9 +295,9 @@ export default function CustodianLayout({
               <p className="text-lg text-textSecondary leading-relaxed">
                 {helpsIntro ?? (
                   <>
-                    FastTrackr is the repapering platform purpose-built for advisor transitions. It
-                    collects household data once, maps and pre-fills the paperwork, catches NIGO issues
-                    before submission, and tracks every account to done.
+                    FastTrackr is the purpose-built platform for advisor transitions. It collects
+                    household data once, fills the paperwork, checks it against custodian and firm
+                    rules before submission to reduce NIGOs, and tracks every account to done.
                   </>
                 )}
               </p>
@@ -226,17 +307,17 @@ export default function CustodianLayout({
                 {
                   icon: <Database />,
                   title: 'Collect once',
-                  desc: 'AI pulls client and account data from your existing documents, statements, and conversations, so no household is retyped from scratch.',
+                  desc: 'AI pulls client and account data from your existing documents, statements and exports, so no household is retyped from scratch.',
                 },
                 {
                   icon: <FileText />,
                   title: 'Map & pre-fill',
-                  desc: `The right ${shortName} new-account, transfer, and firm forms are identified, mapped, and pre-filled, then validated against the fields that drive NIGO rejections.`,
+                  desc: `The right ${shortName} new-account, transfer of assets and firm forms are identified and pre-filled, then checked against the fields that drive NIGO rejections.`,
                 },
                 {
                   icon: <LayoutList />,
                   title: 'Track to done',
-                  desc: 'Every household, form, and transfer status sits in one shared view, replacing the spreadsheet-and-email war room until the last account lands.',
+                  desc: 'Every household, form and transfer status sits in one shared view, in place of the spreadsheet-and-email war room, until the last account lands.',
                 },
               ].map((f, i) => (
                 <m.div
@@ -264,24 +345,24 @@ export default function CustodianLayout({
               <ul className="space-y-4">
                 {(handlesItems ?? [
                   {
-                    title: 'Sign the way the client will',
-                    desc: 'One-click push to DocuSign for e-signature, or download the filled PDFs for a wet signature where a client or form still needs one.',
+                    title: 'Output the way you work',
+                    desc: 'Push to DocuSign in one click, download the filled PDFs, export Excel in the counterparty’s own template, or send straight to the custodian by API where it’s supported. No retyping either way.',
                   },
                   {
                     title: `${shortName}-specific nuances, handled`,
-                    desc: 'The quirks that trip up a submission — carbon-copy requirements, SMS verification, second-signature outreach — FastTrackr builds them into every package it prepares.',
+                    desc: 'Carbon-copy requirements, SMS verification and second-signature outreach trip up submissions. FastTrackr builds them into every package it prepares.',
                   },
                   {
                     title: 'The transfer forms, not just the account opening',
-                    desc: 'FastTrackr populates the ACAT / transfer-of-assets forms too, so the assets start moving with the account paperwork rather than left to chase separately.',
+                    desc: 'FastTrackr fills the ACAT / transfer of assets forms too, so the assets start moving with the account paperwork instead of being chased separately.',
                   },
                   {
                     title: 'Your firm paperwork, not just the custodian forms',
-                    desc: `Beyond the ${shortName} account and transfer forms, FastTrackr also prepares your new firm paperwork — advisory agreement, fee schedule, and disclosures — so every household is fully repapered on both the custodian and the firm side.`,
+                    desc: `Beyond the ${shortName} account and transfer forms, FastTrackr also prepares your new firm paperwork (advisory agreement, fee schedule and disclosures), so every household is repapered on both the custodian and the firm side.`,
                   },
                   {
                     title: 'Nothing slips',
-                    desc: 'Every household is tracked to done, with a pending view that surfaces only what is still missing.',
+                    desc: 'Every household is tracked to done, with a pending view that shows only what is still missing.',
                   },
                 ]).map((item, i) => (
                   <li key={i} className="flex gap-3">
@@ -305,10 +386,10 @@ export default function CustodianLayout({
               <p className="text-textSecondary leading-relaxed">
                 {handoffBody ?? (
                   <>
-                    FastTrackr prepares everything a {custodian} move needs — the household data
-                    collected once, and the new-account and transfer-of-account forms mapped, pre-filled,
-                    and validated to be in good order — and hands it back as signature-ready document
-                    packages. Talk to us about how the handoff would work for your book.
+                    FastTrackr prepares everything a {custodian} move needs: the household data,
+                    collected once, and the new-account, transfer of assets and firm forms, filled and
+                    checked before they go out for signature. Talk to us about how the handoff would
+                    work for your book.
                   </>
                 )}
               </p>
@@ -337,8 +418,8 @@ export default function CustodianLayout({
         <section className="py-20 bg-brandDeep text-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-3 gap-8 text-center">
             {[
-              { title: 'Months → days', desc: 'timelines compress on the move to ' + shortName },
-              { title: 'Fewer NIGOs', desc: 'forms validated before they reach the custodian' },
+              { title: 'Months to days', desc: 'timelines compress on the move to ' + shortName },
+              { title: 'Fewer NIGOs', desc: 'forms checked before they reach the custodian' },
               { title: 'Retained AUM', desc: 'less attrition while the book is in transit' },
             ].map((o, i) => (
               <div key={i}>
@@ -350,6 +431,53 @@ export default function CustodianLayout({
           </div>
         </section>
         )}
+
+        {/* Technical detail: sourced custodian/ACATS mechanics and form names.
+            Deliberately near the bottom so the simple flow and value lead. */}
+        <section className="py-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 max-w-3xl mx-auto">
+              <h2 className="text-3xl font-display font-bold text-textPrimary mb-4">
+                The technical detail: how assets move to {shortName}
+              </h2>
+              <p className="text-lg text-textSecondary leading-relaxed">{processIntro}</p>
+            </div>
+            <div className={`grid md:grid-cols-2 ${stepGridCols} gap-8`}>
+              {processSteps.map((step, i) => (
+                <div
+                  key={i}
+                  className="relative bg-white p-8 pt-10 rounded-3xl border border-gray-100 shadow-sm"
+                >
+                  <div className="mb-5 w-12 h-12 rounded-2xl bg-bgCanvas text-brandDeep flex items-center justify-center font-display font-bold text-xl">
+                    {step.n}
+                  </div>
+                  <h3 className="text-xl font-bold text-textPrimary mb-2">{step.title}</h3>
+                  <p className="text-textSecondary leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+            {forms && forms.length > 0 ? (
+              <div className="max-w-3xl mx-auto mt-12 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                <h3 className="text-lg font-bold text-textPrimary mb-5">
+                  Forms on a {shortName} move
+                </h3>
+                <ul className="space-y-3">
+                  {forms.map((f, i) => (
+                    <li key={i} className="flex gap-3">
+                      <FileText className="w-5 h-5 text-brandMint shrink-0 mt-0.5" />
+                      <span className="text-textSecondary leading-relaxed">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {processNote ? (
+              <p className="text-sm text-textSecondary max-w-3xl mx-auto text-center mt-10 leading-relaxed">
+                {processNote}
+              </p>
+            ) : null}
+          </div>
+        </section>
 
         <PageFAQ faqs={faqs} />
         <PageCTA headline={ctaHeadline} link={contactLink} />

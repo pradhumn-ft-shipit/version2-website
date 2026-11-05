@@ -1,7 +1,12 @@
 import { m } from '../lib/motion';
-import { ShieldCheck, TrendingUp, CalendarX2, ArrowRight } from 'lucide-react';
+import { Zap, ShieldCheck, TrendingUp, CalendarX2, ArrowRight } from 'lucide-react';
 
 const stats = [
+  {
+    icon: <Zap className="w-5 h-5 text-brandMint" />,
+    headline: "75% faster",
+    description: "Less admin work, more revenues. More books moved per quarter."
+  },
   {
     icon: <CalendarX2 className="w-5 h-5 text-brandMint" />,
     headline: (
@@ -16,7 +21,7 @@ const stats = [
   {
     icon: <ShieldCheck className="w-5 h-5 text-brandMint" />,
     headline: "Fewer NIGOs",
-    description: "Pre-validated, mapped forms. Cleaner submissions."
+    description: "Forms checked against custodian and firm rules before they go out. Cleaner submissions."
   },
   {
     icon: <TrendingUp className="w-5 h-5 text-brandMint" />,
@@ -44,7 +49,7 @@ export default function Outcomes() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, i) => (
             <m.div
               key={i}

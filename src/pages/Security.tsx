@@ -6,28 +6,34 @@ import { Button } from '../components/ui/Button';
 import { m } from '../lib/motion';
 
 /*
- * PR3-01 (2026-11-04): /security. Facts come from the product grounding doc
- * (§16, §16.1) only. The SOC 2 report is restricted-use: never link, quote or
- * upload it here. The page offers documentation on request instead. Don't add
- * security claims beyond these without the user's OK.
+ * PR3-01 (2026-11-04): /security. PR6 (2026-11-05): per grounding §18, no
+ * auditor name, no dates, no bridge letter, no next-report date anywhere on
+ * the site (§16.1 stays internal). The SOC 2 report is restricted-use: never
+ * link, quote or upload it here; we share it on request.
  *
- * When the next report arrives (expected around 2027-05-31), update the period
- * and bridge-letter lines below and in the FAQ.
+ * "How we protect data" lists only practices stated in the transitions privacy
+ * policy (§8), terms (§5.4) and client privacy notice (§5). Zero data retention
+ * with AI model providers and deletion after the move come from the user
+ * (grounding §18). Don't add security claims beyond these without the user's OK.
  */
 
 // PageFAQ renders these and emits the matching FAQPage JSON-LD.
 const securityFaqs = [
   {
     q: 'Is FastTrackr SOC 2 compliant?',
-    a: 'Yes. FastTrackr holds a SOC 2 Type II report from Assurion Services LLC for December 1, 2025 to May 31, 2026, covering security, confidentiality and availability, with no exceptions noted.',
+    a: 'Yes. FastTrackr is SOC 2 Type II compliant. If your team needs more detail, write to us and we will share our detailed report.',
   },
   {
-    q: 'Can we see the SOC 2 report?',
-    a: "It's restricted-use, so we don't publish it. Your compliance or security team can request our security documentation.",
+    q: 'How do you protect client data?',
+    a: 'Data is encrypted in transit and at rest. Role-based access controls limit who can see client data, and we run regular security assessments and monitoring. Clients who enter their own details do it in a session secured with a one-time passcode.',
   },
   {
     q: 'Do you train AI models on our client data?',
-    a: 'No. Client data is used to do the work in your account, not to train models.',
+    a: "No. Client data is used to run your transition, not to train models. We also have zero data retention with our AI model providers, so they don't keep it.",
+  },
+  {
+    q: 'What happens to client data after the move?',
+    a: 'FastTrackr deletes client data after the move.',
   },
   {
     q: 'Who owns the data?',
@@ -39,9 +45,16 @@ const sections = [
   {
     heading: 'SOC 2 Type II',
     paragraphs: [
-      'FastTrackr holds a SOC 2 Type II report from Assurion Services LLC. It covers December 1, 2025 to May 31, 2026 and the Security, Confidentiality and Availability criteria, with no exceptions noted. A bridge letter covers June 1 to October 12, 2026, and the next report is expected around May 31, 2027.',
+      'FastTrackr is SOC 2 Type II compliant.',
       'SOC 2 is an audit framework from the AICPA. A Type II report checks that controls worked over a period of months, not just on one day.',
-      "The report is restricted-use, so we don't publish it. Your compliance or security team can ask for our security documentation and we'll send it.",
+      "If your compliance or security team needs more detail, write to us and we'll share our detailed report.",
+    ],
+  },
+  {
+    heading: 'How we protect data',
+    paragraphs: [
+      'We follow industry-standard practices for the client data a transition depends on, such as SSNs, account numbers and other financial details.',
+      'Data is encrypted in transit and at rest. Role-based access controls limit who can see client data, and we run regular security assessments and monitoring. When clients add their own details through the portal, their session is secured with a one-time passcode.',
     ],
   },
   {
@@ -51,8 +64,14 @@ const sections = [
     ],
   },
   {
-    heading: "We don't train models on client data",
-    paragraphs: ["Client data is used to run your transition. It isn't used to train any model."],
+    heading: 'No training, zero data retention',
+    paragraphs: [
+      "Client data is used to run your transition. It isn't used to train any model. We have zero data retention with our AI model providers, so they don't keep what we send them.",
+    ],
+  },
+  {
+    heading: 'Deleted after the move',
+    paragraphs: ['FastTrackr deletes client data after the move.'],
   },
 ];
 
@@ -102,13 +121,13 @@ export default function Security() {
 
           <div className="bg-bgTint rounded-3xl p-8 md:p-10 border border-brandMint/20">
             <h2 className="text-3xl font-display font-bold text-textPrimary tracking-tight mb-4">
-              Ask for our security documents
+              Ask for our detailed report
             </h2>
             <p className="text-lg text-textSecondary leading-relaxed mb-6">
-              Send us a note with your firm name and what your review needs.
+              Send us a note with your firm name and what your review needs, and we'll share our detailed report.
             </p>
             <Link to="/contact">
-              <Button size="lg">Request security documents</Button>
+              <Button size="lg">Request the report</Button>
             </Link>
           </div>
         </section>

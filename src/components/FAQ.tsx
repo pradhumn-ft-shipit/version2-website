@@ -12,11 +12,11 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
   },
   {
     q: "Which custodians do you support?",
-    a: "Fidelity, Charles Schwab and SEI, with full repapering. Goldman Sachs is live too: we deliver the data in Goldman's own format for its onboarding workflow, so nobody re-keys it. BNY Pershing is coming soon. If your custodian isn't listed, send us a note and we'll tell you where it stands. If you're a custodian and want to talk about partnership, write to us the same way."
+    a: "We support Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing is coming soon. If your custodian isn't listed, send us a note and we'll tell you where it stands. If you're a custodian and want to talk about partnership, write to us the same way."
   },
   {
     q: "How does FastTrackr handle our firm's specific forms?",
-    a: "We map your firm's documents into the workflow during setup. Once they're mapped, FastTrackr fills them, checks them and sends them out with the custodian paperwork: by DocuSign, as filled PDFs, or as Excel in the counterparty's own template, with an API where the custodian supports it. New forms or revisions are absorbed without re-platforming."
+    a: "We map your firm's documents into the workflow during setup. Once they're mapped, FastTrackr fills them, checks them and sends them out with the custodian paperwork: by one-click DocuSign, as filled PDFs, as Excel in the counterparty's own template, or straight to the custodian by API where it's supported. No retyping either way. New forms or revisions are absorbed without re-platforming."
   },
   {
     q: "Do you train your AI on our client data?",
@@ -39,7 +39,7 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
   },
   {
     q: "How is FastTrackr priced?",
-    a: "Advisor Transitions pricing isn't published. We can walk you through it on a call."
+    a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
   }
 ];
 

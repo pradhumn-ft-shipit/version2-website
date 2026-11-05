@@ -7,7 +7,7 @@ import { SITE_ORIGIN, absoluteUrl, seoMeta, type SeoConfig } from '../../src/lib
 const seo: SeoConfig = {
   title: 'About FastTrackr AI',
   description:
-    'FastTrackr AI builds software for advisor transitions: the custodian and firm paperwork a move needs, worked out up front and filled from your data.',
+    'FastTrackr AI is the purpose-built platform for advisor transitions: the custodian and firm paperwork a move needs, worked out up front and filled from your data.',
   canonical: '/about',
   ogImage: '/logomark.png',
   jsonLd: {

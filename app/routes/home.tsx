@@ -31,7 +31,7 @@ const seo: SeoConfig = {
         url: `${SITE_ORIGIN}/`,
         logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
         description:
-          "FastTrackr AI is software for advisor transitions. It works out which custodian and firm forms a move needs, then fills them from the advisor's data and sends them out.",
+          "FastTrackr AI is the purpose-built platform for advisor transitions. It works out which custodian and firm forms a move needs, then fills them from the advisor's data and sends them out.",
         founder: { '@type': 'Person', name: 'Vineet Mohan', jobTitle: 'Founder and CEO' },
         sameAs: [
           'https://www.linkedin.com/company/fasttrackr-ai/',

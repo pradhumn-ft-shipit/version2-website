@@ -10,7 +10,7 @@ const capabilities = [
   {
     icon: <FileText className="w-6 h-6 text-brandMint" />,
     title: "Documentation",
-    description: "The right custodian and firm forms are worked out up front and filled from the household record. They go out by one-click DocuSign, as filled PDFs, or as Excel in the counterparty's own template, with an API where the custodian supports it."
+    description: "The right custodian and firm forms are worked out up front and filled from the household record. They go out by one-click DocuSign, as filled PDFs, as Excel in the counterparty's own template, or straight to the custodian by API where it's supported. No retyping either way."
   },
   {
     icon: <LayoutList className="w-6 h-6 text-brandMint" />,

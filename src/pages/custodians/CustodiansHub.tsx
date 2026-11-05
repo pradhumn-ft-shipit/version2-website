@@ -6,26 +6,27 @@ import { m } from '../../lib/motion';
 import { ArrowRight, Landmark } from 'lucide-react';
 
 // Hub for the durable custodian transition pages (W6 · T2-3). Advisors moving a
-// book onto or between custodians land here and route to the custodian-specific
-// page. Distinct from /who-we-serve/custodians, which sells to custodians.
+// book onto or between custodians, or changing firms while keeping their
+// custodian, land here and route to the custodian-specific page. Distinct from
+// /who-we-serve/custodians, which sells to custodians.
 const custodians = [
   {
     name: 'Charles Schwab',
     slug: 'schwab',
     blurb:
-      'New-account applications, transfer-of-account forms, and firm paperwork for every household, prepared and validated so the ACATS move to Schwab runs clean.',
+      'New-account applications, transfer of assets forms and firm paperwork for every household, prepared and checked so the ACATS move to Schwab runs clean. Staying at Schwab and changing firms? The LPOA too.',
   },
   {
     name: 'Fidelity',
     slug: 'fidelity',
     blurb:
-      'A transfer of assets to Fidelity proceeds only once the paperwork is in good order. FastTrackr prepares it so it lands right the first time.',
+      'A transfer of assets to Fidelity proceeds only once the paperwork is in good order. FastTrackr prepares it so it lands right the first time, including the Advisor Change form when you change firms and stay at Fidelity.',
   },
   {
     name: 'SEI',
     slug: 'sei',
     blurb:
-      'Full repapering onto SEI — new-account paperwork and transfer forms for every household, prepared and validated so accounts open in good order the first time.',
+      'Full repapering onto SEI: new-account paperwork and transfer forms for every household, prepared and checked so accounts open in good order the first time. Staying at SEI and changing firms? The Advisor Change form too.',
   },
   {
     name: 'Goldman Sachs',
@@ -38,7 +39,7 @@ const custodians = [
     slug: 'pershing',
     badge: 'Coming soon',
     blurb:
-      'Coming soon to FastTrackr. How accounts open and assets move through NetX360+, and where Pershing paperwork goes not-in-good-order.',
+      'Coming soon. We’re testing it internally. How accounts open and assets move through NetX360+, and where Pershing paperwork goes not-in-good-order.',
   },
 ];
 
@@ -63,11 +64,14 @@ export default function CustodiansHub() {
                 Repaper your book onto any custodian, in days
               </h1>
               <p className="text-xl text-textSecondary leading-relaxed mb-10 max-w-3xl mx-auto">
-                Moving a book of business to a new custodian is a paperwork problem: a
-                transfer-of-account and fresh forms for every household, over the ACATS rail, with a
-                not-in-good-order rejection resetting the clock each time a field is off. FastTrackr
-                is the repapering platform that prepares the data and the forms so the move runs in
-                days, not months. Pick your custodian to see how.
+                Moving a book is a paperwork problem, whether you change firms, custodians or
+                both. A new custodian means fresh account forms and a transfer of assets for every
+                household over the ACATS rail. Staying at your custodian still means an advisor
+                change form there and the full set of new firm paperwork. Either way, a
+                not-in-good-order rejection resets the clock each time a field is off. FastTrackr is
+                the purpose-built platform for advisor transitions. It prepares the data and the
+                forms so the move runs in days, not months. We support Fidelity, Charles Schwab,
+                Goldman Sachs and SEI. BNY Pershing is coming soon. Pick your custodian to see how.
               </p>
             </m.div>
           </div>
@@ -110,8 +114,8 @@ export default function CustodiansHub() {
         {/* Link to the platform */}
         <section className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center py-16">
           <p className="text-lg text-textSecondary leading-relaxed mb-6">
-            Not sure which custodian yet, or moving between two of them? The transition platform
-            handles the whole repapering workflow regardless of where the book lands.
+            Not sure which custodian yet, moving between two of them, or staying where you are?
+            The transition platform handles the whole repapering workflow wherever the book lands.
           </p>
           <Link
             to="/solutions/advisor-transitions"

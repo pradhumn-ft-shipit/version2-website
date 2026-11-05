@@ -50,7 +50,7 @@ export default function Pricing() {
               Pricing built around the <span className="text-brandMint">value you get.</span>
             </h1>
             <p className="text-xl text-textSecondary leading-relaxed">
-              We don't sell seats by the dozen and hope you fit. Advisor transition software pricing flexes to what you're using FastTrackr for, and what it gives back to your firm.
+              We don't sell seats by the dozen and hope you fit. Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing.
             </p>
           </m.div>
         </section>

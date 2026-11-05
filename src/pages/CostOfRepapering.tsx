@@ -496,7 +496,7 @@ export default function CostOfRepapering() {
             once, inside the same 60-to-120-day window you're on the phone retaining clients — and
             retention turns on execution speed, not the legal step. The household set up cleanly in
             week one tends to stay; the one still waiting on paperwork in week six drifts back to the
-            retention team at the old firm.
+            retention team at the firm you left.
           </p>
           <p className="max-w-4xl text-textSecondary leading-relaxed mb-8">
             That reconstruction is the bottleneck FastTrackr is built for. It automates the

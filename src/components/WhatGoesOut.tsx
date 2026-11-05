@@ -23,8 +23,8 @@ const cards = [
   },
   {
     icon: <Plug className="w-7 h-7 text-brandDeep" />,
-    title: 'API where the custodian supports it',
-    description: 'Where a custodian takes data by API, it can go straight across.',
+    title: 'Straight to the custodian by API',
+    description: 'Where a custodian supports it, the data goes straight across by API. Nobody re-keys it.',
   },
 ];
 
@@ -43,7 +43,7 @@ export default function WhatGoesOut() {
             What goes out the door
           </m.h2>
           <p className="text-lg text-textSecondary max-w-2xl mx-auto">
-            Once a household's data is complete and checked, the paperwork goes out in whatever form the other side wants.
+            Once accelerated data collection through FastTrackr is done and checked, the paperwork goes out in whatever form the other side wants: DocuSign, filled PDFs, Excel in their own template, or straight to the custodian by API where it's supported. No retyping either way.
           </p>
         </div>
 

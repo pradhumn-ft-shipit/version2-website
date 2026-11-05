@@ -21,7 +21,7 @@ export default function ICPIBDs() {
     },
     {
       q: "How does pricing work for BDs?",
-      a: "Enterprise pricing tied to advisor volume and transition outcomes. Talk to us about your roadmap and we'll work it through."
+      a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
     }
   ];
 

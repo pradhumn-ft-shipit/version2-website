@@ -5,7 +5,7 @@ import { seoMeta, type SeoConfig, absoluteUrl } from '../../../src/lib/seo';
 const seo: SeoConfig = {
   title: 'Custodian Transitions | FastTrackr AI',
   description:
-    'Move your book to a new custodian in days. Repapering guides for Fidelity, Schwab and SEI, data for Goldman Sachs, and BNY Pershing coming soon.',
+    'Move your book in days, whether you change custodian or only change firms. Guides for Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing coming soon.',
   canonical: '/custodians',
   ogImage: '/logomark.png',
   jsonLd: {
@@ -13,7 +13,7 @@ const seo: SeoConfig = {
     '@type': 'CollectionPage',
     name: 'Custodian Transitions',
     description:
-      'Move your book to a new custodian in days. Repapering guides for Fidelity, Schwab and SEI, data for Goldman Sachs, and BNY Pershing coming soon.',
+      'Move your book in days, whether you change custodian or only change firms. Guides for Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing coming soon.',
     url: absoluteUrl('/custodians'),
     hasPart: [
       { '@type': 'WebPage', name: 'Move your book to Charles Schwab', url: absoluteUrl('/custodians/schwab') },

@@ -14,6 +14,7 @@ const props: CustodianLayoutProps = {
   intro:
     'Bringing a book of business to SEI means new-account applications, transfer of assets forms and firm paperwork for every household. Changing firms while staying at SEI still means an Advisor Change form and the full firm paperwork. That work is what turns a transition into a months-long project. FastTrackr collects the data once and prepares the forms so the move runs in days.',
   sameCustodianForm: 'Advisor Change form',
+  sameCustodianChange: 'an advisor change on the accounts',
   processIntro:
     'Assets move to SEI over the ACATS rail: the Automated Customer Account Transfer Service operated by DTCC, which automates and standardizes asset transfers between firms. Once the paperwork is signed, every transfer follows the same three steps.',
   processSteps: [
@@ -74,7 +75,7 @@ const props: CustodianLayoutProps = {
     },
     {
       q: 'Do I need to repaper if I change firms but stay at SEI?',
-      a: 'Yes. When you move to a new firm and keep SEI as custodian, there is no ACAT. The step becomes a master account or G number change inside SEI, which happens promptly. The SEI form for this is the Advisor Change form, and your new firm paperwork is still the full set. FastTrackr prepares both.',
+      a: 'Yes. When you move to a new firm and keep SEI as custodian, there is no ACAT. The step becomes an advisor change on the accounts inside SEI, which happens promptly. The SEI form for this is the Advisor Change form, and your new firm paperwork is still the full set. FastTrackr prepares both.',
     },
     {
       q: 'How long does it take to move a book to SEI?',

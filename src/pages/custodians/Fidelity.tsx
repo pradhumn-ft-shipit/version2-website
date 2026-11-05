@@ -15,6 +15,7 @@ const props: CustodianLayoutProps = {
   intro:
     'A transition to Fidelity means a transfer of assets and fresh account paperwork for every household. Changing firms while staying at Fidelity still means an Advisor Change form and the full firm paperwork. Fidelity itself says a transfer only proceeds once the paperwork is in good order, and that is exactly where books stall. FastTrackr prepares that paperwork so it lands right the first time.',
   sameCustodianForm: 'Advisor Change form',
+  sameCustodianChange: 'a G number change',
   processIntro:
     'Assets move to Fidelity as a Transfer of Assets (TOA), which runs over the ACATS rail operated by DTCC. Fidelity publishes the timeline for its retail transfers.',
   processSteps: [
@@ -80,7 +81,7 @@ const props: CustodianLayoutProps = {
     },
     {
       q: 'Do I need to repaper if I change firms but stay at Fidelity?',
-      a: 'Yes. When you move to a new firm and keep Fidelity as custodian, there is no ACAT. The step becomes a master account or G number change inside Fidelity, which happens promptly. The Fidelity form for this is the Advisor Change form, and your new firm paperwork is still the full set. FastTrackr prepares both.',
+      a: 'Yes. When you move to a new firm and keep Fidelity as custodian, there is no ACAT. The step becomes a G number change inside Fidelity, which happens promptly. The Fidelity form for this is the Advisor Change form, and your new firm paperwork is still the full set. FastTrackr prepares both.',
     },
     {
       q: 'How long does a transfer to Fidelity take?',

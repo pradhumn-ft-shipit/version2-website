@@ -45,7 +45,7 @@ export default function ICPTransitionConsultants() {
                 More deals per consultant. <br/><span className="text-gray-400">Without more admin slog.</span>
               </h1>
               <h2 className="text-xl md:text-2xl font-semibold text-brandDeep mb-6">
-                The advisor transitions platform for transition consultants.
+                The advisor transition platform for transition consultants, with repapering made easy.
               </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-8">
                 Take on more transitions with the team you already have. FastTrackr handles the data collection, form-filling, and project management, so your consultants spend their time on the parts only humans can do.

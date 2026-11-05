@@ -25,7 +25,7 @@ const securityFaqs = [
   },
   {
     q: 'How do you protect client data?',
-    a: 'Data is encrypted in transit and at rest. Role-based access controls limit who can see client data, and we run regular security assessments and monitoring. Clients who enter their own details do it in a session secured with a one-time passcode.',
+    a: 'Data is encrypted in transit and at rest. Role-based access controls limit who can see client data, and we run regular security assessments and monitoring.',
   },
   {
     q: 'Do you train AI models on our client data?',
@@ -33,7 +33,7 @@ const securityFaqs = [
   },
   {
     q: 'What happens to client data after the move?',
-    a: 'FastTrackr deletes client data after the move.',
+    a: 'FastTrackr deletes client data within 30 days of the move closing.',
   },
   {
     q: 'Who owns the data?',
@@ -54,7 +54,7 @@ const sections = [
     heading: 'How we protect data',
     paragraphs: [
       'We follow industry-standard practices for the client data a transition depends on, such as SSNs, account numbers and other financial details.',
-      'Data is encrypted in transit and at rest. Role-based access controls limit who can see client data, and we run regular security assessments and monitoring. When clients add their own details through the portal, their session is secured with a one-time passcode.',
+      'Data is encrypted in transit and at rest. Role-based access controls limit who can see client data, and we run regular security assessments and monitoring.',
     ],
   },
   {
@@ -71,7 +71,7 @@ const sections = [
   },
   {
     heading: 'Deleted after the move',
-    paragraphs: ['FastTrackr deletes client data after the move.'],
+    paragraphs: ['FastTrackr deletes client data within 30 days of the move closing.'],
   },
 ];
 

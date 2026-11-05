@@ -59,6 +59,8 @@ export type CustodianLayoutProps = {
    *  (LPOA for Schwab, Advisor Change form for Fidelity and SEI). Omit for a
    *  custodian that isn't live (Pershing). */
   sameCustodianForm?: string;
+  /** What changes inside the custodian on a same-custodian move, e.g. 'a master account number change'. */
+  sameCustodianChange?: string;
   /** Optional overrides for the "How FastTrackr …" section, for a custodian
    *  that isn't live yet (Pershing), so its copy reads as future tense. */
   helpsHeading?: ReactNode;
@@ -106,6 +108,7 @@ export default function CustodianLayout({
   statusBadge,
   flowIntro,
   sameCustodianForm,
+  sameCustodianChange,
   helpsHeading,
   helpsIntro,
   handlesHeading,
@@ -238,8 +241,8 @@ export default function CustodianLayout({
                 </div>
                 <p className="text-textSecondary leading-relaxed">
                   You still have to repaper. When you move to a new firm and keep {shortName} as
-                  custodian, there is no ACAT. Steps 1 to 3 are the same, and step 4 becomes a
-                  master account or G number change inside {shortName}, which happens promptly. The{' '}
+                  custodian, there is no ACAT. Steps 1 to 3 are the same, and step 4 becomes{' '}
+                  {sameCustodianChange ?? 'an advisor change'} inside {shortName}, which happens promptly. The{' '}
                   {shortName} form for this is the {sameCustodianForm}. Your new firm paperwork is
                   still the full set, and FastTrackr prepares both.
                 </p>

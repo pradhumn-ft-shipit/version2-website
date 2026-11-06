@@ -17,6 +17,8 @@
 #   Service (version2-website) → Settings → Redirect and Rewrite Rules.
 # (This is how the /fpa → /contact redirect was finally removed when /fpa
 # became a real page — editing this file alone did nothing.)
+# Note (2026-11-06): the routes step of the Blueprint sync failed for 7ad2991
+# and 4dfc186 with no error shown; a support ticket is open with Render.
 
 services:
   - type: web

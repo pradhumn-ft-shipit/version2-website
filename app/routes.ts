@@ -34,8 +34,8 @@ export default [
   route('security', 'routes/security.tsx'),
   // PR3-07: /about was a redirect to "/"; it is now a short page.
   route('about', 'routes/about.tsx'),
-  // PR2-10: no /case-study hub route until PR6 builds one; the bare path is a
-  // true 404 meanwhile (the old unlinked index page is in git history, a001fcb).
+  // Case studies hub (restored 2026-11-06): lists all three studies.
+  route('case-study', 'routes/case-study-index.tsx'),
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
   route('case-study/independent-breakaway-setup', 'routes/case-study-breakaway.tsx'),
   route('case-study/bd-to-ria-400m-transition', 'routes/case-study-bd-to-ria.tsx'),

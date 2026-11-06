@@ -1635,6 +1635,9 @@ services:
         source: /blog/zero-nigo-advisor-transition-300m-book
         destination: /blog/zero-nigo-advisor-transition-300m-book/index.html
       - type: rewrite
+        source: /case-study
+        destination: /case-study/index.html
+      - type: rewrite
         source: /case-study/advisor-transition
         destination: /case-study/advisor-transition/index.html
       - type: rewrite

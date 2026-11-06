@@ -20,7 +20,7 @@ const resourcesLinks = [
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
   { label: 'Glossary', href: '/glossary' }, // W3 definitional hub
-  { label: 'Case Studies', href: '/case-study/advisor-transition' },
+  { label: 'Case Studies', href: '/case-study' },
 ];
 
 const companyLinks = [

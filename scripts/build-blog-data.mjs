@@ -67,6 +67,7 @@ const STATIC_SITEMAP_PAGES = [
   { path: '/resources/blog', priority: '0.5' },
   { path: '/resources/news', priority: '0.6' },
   { path: '/resources/podcasts', priority: '0.6' },
+  { path: '/case-study', priority: '0.7' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
   // PR2-11 (2026-11-04): real pages that returned 200 but weren't listed.
   { path: '/case-study/bd-to-ria-400m-transition', priority: '0.7' },

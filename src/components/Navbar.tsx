@@ -26,7 +26,7 @@ const resourcesItems = [
   { label: 'News', href: '/resources/news' },
   // W3: definitional hub — surfaced in nav + footer.
   { label: 'Glossary', href: '/glossary' },
-  { label: 'Case Studies', href: '/case-study/advisor-transition' },
+  { label: 'Case Studies', href: '/case-study' },
 ];
 
 export default function Navbar() {

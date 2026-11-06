@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
-// PR2-09: the ribbon points at one case study until the /case-study hub exists (PR6).
-const CASE_STUDY_LINK = '/case-study/advisor-transition';
+// The ribbon points at the case studies hub.
+const CASE_STUDY_LINK = '/case-study';
 
 // Three studies, each led by a descriptive type-label (mint) so the fragments
 // read as distinct stories rather than blurring into one claim.
@@ -28,7 +28,7 @@ function MarqueeGroup() {
         </span>
       ))}
       <span className="px-5 inline-flex items-center gap-1.5 font-bold text-white">
-        Read a case study
+        Read our case studies
         <ArrowRight className="w-3.5 h-3.5" />
       </span>
       <span className="text-brandMint/50">&bull;</span>

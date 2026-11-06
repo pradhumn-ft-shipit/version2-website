@@ -60,7 +60,7 @@ The cause is that the long tail looks identical to the advisor — every account
 
 The fix is risk-weighted prioritization. Sentiment tracking across client communication identifies the accounts where the client has stopped responding, has mentioned competing offers, or has signaled hesitation. The advisor doesn't need to chase 200 accounts equally — they need to chase the 20 at highest risk and let operations push the rest forward with standard outreach. This shifts the advisor's day-60-to-90 workload from "call everyone again" to "call the 20 that matter."
 
-This is the same dynamic we covered in [the dark period playbook](https://fasttrackr.ai/blog/dark-period-wirehouse-resignation-tools): broad coverage early, high-touch reinforcement later, with the operations layer doing the tracking that lets the advisor focus on the right accounts.
+This is the same dynamic we covered in [the dark period playbook](https://fasttrackr.ai/blog/dark-period-wirehouse-resignation-tools-to-compress): broad coverage early, high-touch reinforcement later, with the operations layer doing the tracking that lets the advisor focus on the right accounts.
 
 ## Failure mode four: client-side decision fatigue
 
@@ -70,7 +70,7 @@ By day 60, clients have signed everything they were willing to sign easily. The 
 
 The cause is that the request pattern hasn't been redesigned. The client is being asked the same way they were in week 2 — a document arrives, they're expected to sign and return it. By day 90, that pattern has worn out.
 
-The fix is a different intervention pattern at day 60 and beyond. Personal video messages from the advisor explaining what's needed and why. Concierge handling where the operations team sets up the notary appointment, coordinates with the attorney's office, or sends a courier. The cost per account is meaningful, but on a $5M account it pays back in days. For end-game cadence, see [how to design the final 30 days of a transition](https://fasttrackr.ai/blog/final-30-days-advisor-transition-playbook).
+The fix is a different intervention pattern at day 60 and beyond. Personal video messages from the advisor explaining what's needed and why. Concierge handling where the operations team sets up the notary appointment, coordinates with the attorney's office, or sends a courier. The cost per account is meaningful, but on a $5M account it pays back in days. For end-game cadence, see [the advisor transition checklist](https://fasttrackr.ai/transition-checklist).
 
 ## Failure mode five: the operations handoff gap
 

@@ -3,10 +3,22 @@ import { Link } from 'react-router-dom';
 import { m } from '../lib/motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Button } from '../components/ui/Button';
+
+// PR2-10: the not-found page. Prerendered once as dist/404.html (see
+// react-router.config.ts + scripts/stage-dist.mjs), which Render serves with a
+// 404 status for any path that has no file and no rule. The client router's `*`
+// route renders the same component, so in-app navigation matches.
+const links = [
+  { label: 'Advisor transitions', to: '/solutions/advisor-transitions' },
+  { label: 'Custodians', to: '/custodians' },
+  { label: 'Blog', to: '/resources/blog' },
+  { label: 'Contact', to: '/contact' },
+];
 
 export default function NotFound() {
   useEffect(() => {
+    // The static <head> already carries noindex (route meta). This covers the
+    // client-side case where the app navigates here from another page.
     const noindex = document.createElement('meta');
     noindex.name = 'robots';
     noindex.content = 'noindex';
@@ -27,56 +39,22 @@ export default function NotFound() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-sm font-semibold text-brandMint uppercase tracking-wider mb-4">404</div>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-textPrimary leading-tight mb-6">
-              Hmm, this page doesn't exist.
+              Page not found
             </h1>
             <p className="text-xl text-textSecondary leading-relaxed max-w-2xl mx-auto mb-10">
-              It looks like the link you followed may be broken, or the page may have been moved.
+              There's nothing at this address. It may have moved. Try one of these:
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Link to="/"><Button size="lg">Go back home</Button></Link>
-              <Link to="/contact" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">
-                Contact us →
-              </Link>
-            </div>
-
-            <div className="bg-bgCanvas border border-gray-100 rounded-3xl p-8 text-left">
-              <div className="text-sm font-semibold text-textTertiary uppercase tracking-wider mb-4">Try one of these</div>
-              <ul className="grid sm:grid-cols-2 gap-3">
-                <li>
-                  <Link to="/solutions/advisor-transitions" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Advisor Transitions
+            <ul className="bg-bgCanvas border border-gray-100 rounded-3xl p-8 grid sm:grid-cols-2 gap-3 text-left">
+              {links.map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="text-brandDeep font-medium hover:text-brandMint transition-colors">
+                    → {l.label}
                   </Link>
                 </li>
-                <li>
-                  <Link to="/solutions/client-onboarding" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Client Onboarding
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/solutions/meeting-assistant" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Meeting Assistant
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/solutions/document-intelligence" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Document Intelligence
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/pricing" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Pricing
-                  </Link>
-                </li>
-                <li>
-                  <a href="https://console.fasttrackr.ai/login" target="_blank" rel="noreferrer" className="text-brandDeep font-medium hover:text-brandMint transition-colors">
-                    → Try for free
-                  </a>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </m.div>
         </section>
       </main>

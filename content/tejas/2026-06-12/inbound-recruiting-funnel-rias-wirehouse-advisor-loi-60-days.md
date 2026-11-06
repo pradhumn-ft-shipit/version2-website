@@ -1,7 +1,7 @@
 ---
 title: "The Inbound Recruiting Funnel: How RIAs Convert Curious Wirehouse Advisors Into Signed LOIs in 60 Days"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Outbound advisor recruiting averages a 0.4% conversion rate. A well-run inbound funnel — content, screener, intro call, transition-economics modeling, LOI — converts curious advisors at 9 to 14 percent. Here is the 60-day funnel design and the four metrics that actually predict close rate."
 image: inbound-recruiting-funnel-rias-wirehouse-advisor-loi-60-days.jpg
 imageAlt: Funnel diagram showing the 60-day inbound advisor recruiting path from first content touch to signed LOI.

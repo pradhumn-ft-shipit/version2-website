@@ -1,7 +1,7 @@
 ---
 title: Onboarding 10 Concurrent Advisor Books Without Adding Operations Headcount
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Most RIA recruiting operations teams can comfortably run 3 to 5 concurrent advisor onboardings. The jump from 5 to 10 concurrent requires a different operating model — not more people, but a different shape of work. Here is what changes."
 image: onboard-10-concurrent-advisor-books-without-adding-headcount.jpg
 imageAlt: An RIA operations director coordinates a multi-advisor transition cadence on a wall-mounted Kanban board with her team

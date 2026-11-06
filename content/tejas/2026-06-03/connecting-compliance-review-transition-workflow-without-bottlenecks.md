@@ -1,7 +1,7 @@
 ---
 title: Connecting Compliance Review into the Transition Workflow Without Bottlenecks
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Sequential compliance review adds 3-10 days to every transition packet. Firms running in-line review pre-clear 80-90% of packets and move each CCO from 8-12 packets per day to 25-40, without weakening the supervisory record."
 image: connecting-compliance-review-transition-workflow-without-bottlenecks.jpg
 imageAlt: "A compliance officer and an operations director review transition packets at a shared standing desk, with packets flowing between two screens"

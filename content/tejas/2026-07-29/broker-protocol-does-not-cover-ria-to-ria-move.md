@@ -42,7 +42,7 @@ You are looking for five specific things.
 
 **Notice and garden leave.** Some agreements require weeks of notice, during which you may be restricted from preparing to compete.
 
-The output of this reading should be a written list of what the contract actually says, taken to a securities attorney in your state before you take any other step. Our breakdown of [what software can automate and what needs a securities attorney](https://fasttrackr.ai/blog/broker-protocol-automate-vs-securities-attorney) draws the line for a Protocol breakaway, and the line moves further toward counsel in a non-Protocol RIA move.
+The output of this reading should be a written list of what the contract actually says, taken to a securities attorney in your state before you take any other step. Our breakdown of [what software can automate and what needs a securities attorney](https://fasttrackr.ai/blog/broker-protocol-eligibility-checklist-how-to-confirm-both-firms-are-members-befo) draws the line for a Protocol breakaway, and the line moves further toward counsel in a non-Protocol RIA move.
 
 ## Step two: understand what trade secret law adds
 

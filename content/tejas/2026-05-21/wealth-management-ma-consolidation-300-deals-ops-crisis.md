@@ -1,7 +1,7 @@
 ---
 title: "Wealth Management Industry Consolidation: 300 M&A Deals in 2025 and What They Mean for Operations"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "RIA M&A hit an all-time record in 2025 — 349 transactions, up 26% year-over-year — and 52% of firms plan more acquisitions in 2026. Every deal triggers a transition. Here is why deal velocity has become an operations ceiling, and what M&A heads at large RIAs and broker-dealers are doing about it."
 image: wealth-management-ma-consolidation-300-deals-ops-crisis.jpg
 imageAlt: "M&A integration team reviewing concurrent advisor transition pipelines on a strategy room dashboard"

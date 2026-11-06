@@ -60,7 +60,7 @@ Many firms run a hybrid: an in-house core of a desk lead and an intake owner who
 
 ## Measure the desk so you can defend its headcount
 
-A transition desk is a cost center until you measure what it protects, at which point it becomes the operational lever that preserves AUM in every move. Track it. The [operational metrics a recruiting ops director should actually track](https://fasttrackr.ai/blog/advisor-transition-ops-scorecard-metrics) give you the scorecard, but three numbers carry the staffing conversation with leadership.
+A transition desk is a cost center until you measure what it protects, at which point it becomes the operational lever that preserves AUM in every move. Track it. The [operational metrics a recruiting ops director should actually track](https://fasttrackr.ai/blog/breakaway-advisor-compliance-checklist-before-resign) give you the scorecard, but three numbers carry the staffing conversation with leadership.
 
 Accounts-per-specialist-per-week is your throughput and the direct input to capacity planning. NIGO rate is your quality signal and the thing tooling should be visibly moving. Time-to-full-repaper is the outcome leadership feels, because a shorter number means AUM starts earning fees sooner and clients spend less time in the anxious limbo where they are most likely to leave. When you can show that a marginal hire or a tooling investment moves those three numbers, the headcount discussion stops being a plea and becomes a return calculation.
 

@@ -1,7 +1,7 @@
 ---
 title: "The Rise of the Independent Advisor: How Technology Is Reshaping Wealth Management Recruiting in 2026"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The structural shift toward advisor independence has been building for two decades. In 2026, technology has finally made independence genuinely viable for advisors who wouldn't have considered it five years ago."
 image: independent-advisor-rise-technology-recruiting-landscape-2026.jpg
 imageAlt: Financial advisor in a modern independent office space reviewing client portfolios on a tablet with confidence

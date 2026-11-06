@@ -1,7 +1,7 @@
 ---
 title: "Building the Case for Transition Automation Investment: ROI Framework for CFOs and COOs"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "M&A teams running 10–20 advisor acquisitions per year need portfolio-level ROI math, not per-deal math. Here is the framework CFOs and COOs at large RIAs and BDs can take to the board."
 image: roi-framework-transition-automation-cfo-coo.jpg
 imageAlt: CFO and COO presenting portfolio-level transition automation ROI to a board

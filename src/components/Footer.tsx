@@ -3,9 +3,8 @@ import { Button } from './ui/Button';
 
 const solutionsLinks = [
   { label: 'Advisor Transitions', href: '/solutions/advisor-transitions' },
-  { label: 'Client Onboarding', href: '/solutions/client-onboarding' },
-  { label: 'Meeting Assistant', href: '/solutions/meeting-assistant' },
-  { label: 'Document Intelligence', href: '/solutions/document-intelligence' },
+  { label: 'Custodians', href: '/custodians' },
+  { label: 'Security', href: '/security' }, // PR3-10
 ];
 
 const whoWeServeLinks = [
@@ -21,11 +20,11 @@ const resourcesLinks = [
   { label: 'Podcast', href: '/resources/podcasts' },
   { label: 'News', href: '/resources/news' },
   { label: 'Glossary', href: '/glossary' }, // W3 definitional hub
-  { label: 'Case Studies', href: '/case-study' },
-  { label: 'AI Resources for Advisors', href: '/resources-for-financial-advisors' },
+  { label: 'Case Studies', href: '/case-study/advisor-transition' },
 ];
 
 const companyLinks = [
+  { label: 'About', href: '/about' }, // PR3-10
   { label: 'Pricing', href: '/pricing' },
   { label: 'Cost of Transition', href: '/cost-of-repapering' },
   { label: 'Contact', href: '/contact' },
@@ -93,6 +92,23 @@ export default function Footer({ hideCTA = false }: { hideCTA?: boolean }) {
             <p className="text-sm text-textSecondary italic">
               Advisor transitions, finally built right.<br/>Move advisor books in days, not months.
             </p>
+            {/* PR3-02: SOC 2 badge on every page, linked to the security page. */}
+            <Link
+              to="/security"
+              aria-label="SOC 2 Type II. See our security page"
+              className="mt-6 inline-flex items-center gap-3 border border-gray-200 rounded-xl px-3 py-2 hover:border-brandMint transition-colors"
+            >
+              <img
+                src="/logos/soc2-type-ii-112.webp"
+                srcSet="/logos/soc2-type-ii-112.webp 2x, /logos/soc2-type-ii-168.webp 3x"
+                alt=""
+                width={40}
+                height={40}
+                loading="lazy"
+                className="w-10 h-10 object-contain"
+              />
+              <span className="text-sm font-bold text-textPrimary">SOC 2 Type II</span>
+            </Link>
           </div>
 
           <FooterColumn title="Solutions" links={solutionsLinks} />

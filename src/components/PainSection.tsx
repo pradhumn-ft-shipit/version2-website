@@ -98,13 +98,13 @@ export default function PainSection() {
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
           
-          {/* Hero Tile 1 - 90 Days */}
+          {/* Hero Tile 1 - 90 days */}
           <BentoCard className="md:col-span-6 md:row-span-2">
             <div>
               <div className="w-12 h-12 rounded-xl bg-brandMint/10 flex items-center justify-center mb-6">
                 <Calendar className="w-6 h-6 text-brandDeep" />
               </div>
-              <h3 className="text-3xl font-display font-bold text-textPrimary mb-4">90 days. Sometimes longer.</h3>
+              <h3 className="text-3xl font-display font-bold text-textPrimary mb-4">It takes 90 days. Sometimes longer.</h3>
               <p className="text-textSecondary text-lg leading-relaxed">
                 Months of repapering before the last asset transfers. Revenue paused. Client relationships in limbo.
               </p>

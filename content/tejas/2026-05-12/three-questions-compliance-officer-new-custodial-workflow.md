@@ -1,7 +1,7 @@
 ---
 title: Three Questions Every Compliance Officer Should Ask Before Approving a New Custodial Workflow
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: A practical pre-approval checklist for compliance officers reviewing new custodial workflows during an advisor transition. Three questions that catch most NIGO risks before go-live.
 image: three-questions-compliance-officer-new-custodial-workflow.jpg
 imageAlt: Compliance officer reviewing a custodial workflow approval checklist on a tablet

@@ -5,7 +5,7 @@ import { seoMeta, type SeoConfig } from '../../../src/lib/seo';
 const seo: SeoConfig = {
   title: 'For Breakaway Advisors | FastTrackr AI',
   description:
-    'Bring your book with you without breaking your team. Repapering, client data collection, and custodian paperwork run for you, so your move lands in weeks.',
+    'Bring your book with you without breaking your team. FastTrackr handles client data collection, repapering and custodian paperwork, so your move lands in days, not months.',
   canonical: '/who-we-serve/breakaway-advisors',
   ogImage: '/logomark.png',
 };

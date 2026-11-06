@@ -1,7 +1,7 @@
 ---
 title: "Building a Transition Operations Team: The 5 Roles a Mid-Size RIA Needs"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A mid-size RIA absorbing multiple advisor transitions per quarter needs a deliberate operations team — not a single overworked ops person. Here are the 5 roles to build, how AI changes each one, and the timing of when to hire them."
 image: building-transition-operations-team-five-roles-mid-size-ria.jpg
 imageAlt: "Org chart of a mid-size RIA's transition operations team showing five roles and AI-augmented scope per role."

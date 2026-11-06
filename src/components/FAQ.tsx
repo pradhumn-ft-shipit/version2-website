@@ -12,11 +12,11 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
   },
   {
     q: "Which custodians do you support?",
-    a: "We already support the major custodians. If you'd like to know whether yours is covered, drop us a note via the contact form and we'll share specifics. If you're a custodian and want to talk about partnership, write to us the same way."
+    a: "We support Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing is coming soon. If your custodian isn't listed, send us a note and we'll tell you where it stands. If you're a custodian and want to talk about partnership, write to us the same way."
   },
   {
     q: "How does FastTrackr handle our firm's specific forms?",
-    a: "We map your firm's documentation into the workflow during onboarding. Once it's mapped, the system pre-fills it, validates it, and pushes it to wherever it needs to go. New forms or revisions are absorbed without re-platforming."
+    a: "We map your firm's documents into the workflow during setup. Once they're mapped, FastTrackr fills them, checks them and sends them out with the custodian paperwork: by one-click DocuSign, as filled PDFs, as Excel in the counterparty's own template, or straight to the custodian by API where it's supported. No retyping either way. New forms or revisions are absorbed without re-platforming."
   },
   {
     q: "Do you train your AI on our client data?",
@@ -38,19 +38,8 @@ const faqs: { q: string; a: React.ReactNode; schemaAnswer?: string }[] = [
     a: "For most firms, in a matter of days, not months. Setup happens in parallel with your first transition, so you start seeing time saved on day one."
   },
   {
-    q: "Can we use just the Meeting Assistant or Document Intelligence module?",
-    a: "Yes. The modules are independent. Many firms start with one and expand. Pricing is module-based, so you only pay for what you use."
-  },
-  {
     q: "How is FastTrackr priced?",
-    a: (
-      <>
-        For Advisor Transitions, we price based on the time saved and the additional revenue we help you capture. For other modules, pricing is per-seat. The{' '}
-        <Link to="/pricing" className="text-brandDeep font-semibold hover:text-brandMint transition-colors">Pricing</Link>
-        {' '}page has more, or we can walk through it on a call.
-      </>
-    ),
-    schemaAnswer: "For Advisor Transitions, we price based on the time saved and the additional revenue we help you capture. For other modules, pricing is per-seat. The Pricing page has more, or we can walk through it on a call."
+    a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
   }
 ];
 

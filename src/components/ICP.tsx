@@ -25,13 +25,13 @@ const audiences = [
     href: '/who-we-serve/independent-broker-dealers',
     title: 'Independent Broker-Dealers',
     icon: <Network className="w-6 h-6" />,
-    description: 'Win advisor recruits with a transition experience that actually works. Stop losing recruits to the firm with the smoother onboarding.',
+    description: 'Win advisor recruits with a transition experience that actually works. Stop losing recruits to the firm with the smoother onboarding experience during the move.',
   },
   {
     href: '/who-we-serve/custodians',
     title: 'Custodians',
     icon: <Landmark className="w-6 h-6" />,
-    description: 'Help your advisors grow faster, acquire better, and onboard onto your platform smoothly. Be the on-ramp for every new RIA and advisory practice.',
+    description: 'Help your advisors grow faster, acquire better, and bring their books onto your platform smoothly. Be the on-ramp for every new RIA and advisory practice.',
   }
 ];
 

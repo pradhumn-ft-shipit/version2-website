@@ -12,16 +12,9 @@ describe('ctaTargetForTopic', () => {
     );
   });
 
-  it('maps document/back-office posts to document-intelligence', () => {
-    expect(ctaTargetForTopic('Document Processing & Back-Office').href).toBe(
-      '/solutions/document-intelligence',
-    );
-  });
-
-  it('maps communication/notetaking posts to the meeting assistant', () => {
-    expect(ctaTargetForTopic('Client Communication & Notetaking').href).toBe(
-      '/solutions/meeting-assistant',
-    );
+  it('sends document and notetaking posts to the default (module pages retired, PR1-06)', () => {
+    expect(ctaTargetForTopic('Document Processing & Back-Office')).toEqual(DEFAULT_CTA_TARGET);
+    expect(ctaTargetForTopic('Client Communication & Notetaking')).toEqual(DEFAULT_CTA_TARGET);
   });
 
   it('falls back to the advisor-transitions default for null / unknown topics', () => {

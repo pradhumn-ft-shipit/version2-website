@@ -1,12 +1,13 @@
 ---
 title: "NIGO FAQ: What Is Not In Good Order and How Do You Prevent It?"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "NIGO — Not In Good Order — is the most expensive two-word phrase in advisor transition operations. This FAQ covers what NIGOs are, why manual processes produce 30-50% rejection rates, the top five causes, and what broker-dealer ops teams can do to prevent them."
 image: nigo-faq-not-in-good-order-prevention.jpg
 imageAlt: Operations analyst reviewing custodian NIGO rejection notices on a dual-monitor workstation
 persona: Transition-heavy broker-dealer operations executives and ops directors
 author: FastTrackr AI Team
+updated: 2026-11-04
 ---
 NIGO — Not In Good Order — is a custodian or broker-dealer rejection of a submitted account application or document because it's incomplete, incorrect, or fails to meet regulatory or institutional requirements. In advisor transitions, NIGOs are the most expensive two-word phrase in the ops team's vocabulary: each rejection adds 3–7 business days per account, multiplied across a book of 200–500 accounts. Industry data shows that 60% of life insurance and annuity applications are NIGO on first submission, per [Hexure](https://hexure.com/blog/uncategorized/what-are-not-in-good-order-nigo-rates/). In broker-dealer advisor transitions, NIGO rates on manual submissions typically run 30–50%. The questions below address what NIGOs are, why they happen at scale, and specifically how broker-dealer operations teams can prevent them — not just process them faster.
 
@@ -58,6 +59,14 @@ E-signature platforms address one specific NIGO cause: missing or invalid signat
 
 Fidelity, Schwab, and Pershing each have their own form libraries, field requirements, and submission standards. The same account type — for example, a joint tenants with right of survivorship account — requires different forms at each custodian, with different fields marked required, different signature placement, and sometimes different documentation for the account owner's identity. An ops team managing a multi-custodian transition must maintain custodian-specific form libraries and routing logic. Using the wrong form version, a form that expired when the custodian updated their requirements, or a form designed for one custodian submitted to another is a guaranteed NIGO. Intelligent form routing — automatically selecting the current, correct form for each custodian based on account type — is the structural solution. Manual form selection at scale is a NIGO factory.
 
+**Which fields does the carrying firm check on an ACATS transfer?**
+
+Under FINRA's [customer account transfer process](https://www.finra.org/rules-guidance/key-topics/customer-account-transfers), the receiving firm enters the transfer instruction, and the carrying firm (the one that holds the account today) must validate it or take exception to it within three business days. In practice, [ACATS](/glossary/acats) rejects come back on a short list of fields. The account number has to match the carrying firm's record exactly, including leading zeros and formatting. The account type or registration has to line up. So do the account title and owner names, and the tax ID. Some assets, such as proprietary funds, can't move through ACATS at all. Many of these errors start as values re-keyed by hand from a statement. Read them straight off the latest statement and match them against the new account forms before anything is sent, and the error never leaves your desk.
+
+**Does pre-submission validation mean software submits transfers on its own?**
+
+No. Validation hands a person a checked packet with the problem fields already flagged. Software can do the field matching across a whole book. A person still confirms ambiguous name variants, owns trust and entity registrations and beneficiary designations, and handles anything a life event has frozen. That person also does the final review before the packet goes to the custodian. The point is to put a correct packet in front of the reviewer.
+
 ---
 
 ## NIGOs at Scale
@@ -65,6 +74,46 @@ Fidelity, Schwab, and Pershing each have their own form libraries, field require
 **What does a 95% NIGO reduction mean in practice for a BD operations team?**
 
 A 95% NIGO reduction on a 500-account transition at a 30% baseline NIGO rate means: instead of 150 accounts requiring rework cycles, fewer than 8 accounts need correction. The operational math translates directly: the team that was spending two to three weeks on NIGO rework is now spending a day. The ops specialists who were doing re-signature outreach and re-submission processing are now available for client communication and exception handling. At the business level, the transition closes 10–20 days faster — and [Fidelity's research cited in 3xEquity](https://3xequity.com/blog/ripped-from-reddit-repapering-gets-real) shows that 80% of advisors who transitioned actually increased their AUM, which suggests that faster, cleaner transitions drive better client retention. The 95% number isn't just an efficiency metric — it's a revenue protection number.
+
+---
+
+## When a NIGO Comes Back
+
+**What's the fastest way to work a NIGO once it arrives?**
+
+Run every NIGO through the same five steps. First, classify it by root cause, because the cause decides who fixes it. Beneficiary gaps go to client service, form-version problems go to whoever owns the forms, and signature gaps go back through the e-signature workflow. Second, give it one owner and don't pass it around. Third, fix the cause, and correct the source record too (CRM, intake form or spreadsheet) so the same error doesn't turn up on the next account. Fourth, resubmit and tag the resubmission so nobody confuses it with the original. Fifth, close it only after the custodian confirms it was accepted.
+
+**What do you need in hand to fix a NIGO quickly?**
+
+Four things: the custodian's reason or code, the account and form it applies to, the source data that produced the error, and the corrected value. If any of these is missing, the fix stalls. A vague reason code is the usual culprit, because someone has to call the custodian before anyone can correct anything.
+
+**Which NIGOs should be worked first?**
+
+Start with the ones that need the client, since they take longest. Bundle every open issue on the same account or household into one client contact instead of several. After that, work oldest first. Watch for clusters as well. When a field is missing on a few accounts, it is often missing on others that haven't been submitted yet, so check the rest of the book before the next batch goes out.
+
+**Which NIGOs can't be prevented before submission?**
+
+Split your rejects into two groups. Validation can remove the mechanical group: a registration string that doesn't match the carrying firm's record, a transposed tax ID, an account number copied from the wrong page of a statement, a missing signature page, a second transfer fired on an account already in flight. Each of these existed at submission and could have been caught then. The judgment group works differently. An account frozen after a death, a divorce or a legal hold will be rejected however clean the data is. A margin debit has to be settled with the client first. A trust registration that doesn't map cleanly to a new account type needs someone to read the trust. Hand these to a named person early, and don't count them against your validation process.
+
+---
+
+## Measuring and Planning Around NIGOs
+
+**How do you find the fields behind most of your NIGOs?**
+
+Log every reject with five details: the account, the reason the custodian gave, the field that was wrong, where the bad value came from (statement, CRM or manual entry), and the stage where it was caught. Reason codes differ by custodian and are often vague. Sort each one into a small set of field groups as you log it: account number, registration or account type, name and title, tax ID, and non-transferable assets. Once enough rejects are logged, rank the groups. A few of them usually carry most of the volume. Turn each top group into a pre-submission check. Keep the log running across every transition, because a new custodian or a form change can bring an old problem back.
+
+**Which NIGO metrics should an ops team track during a transition?**
+
+Track four, weekly, while transitions are live: NIGO rate by custodian, average time from NIGO receipt to confirmed resubmission, the share of NIGOs by root cause, and the recurrence rate (how often the same cause comes back on later accounts in the same transition). If one cause's share is rising, look at the intake point that feeds it. A high recurrence rate means fixes aren't reaching the source records.
+
+**How do you build the case for preventing NIGOs instead of fixing them faster?**
+
+Use your own numbers rather than a vendor benchmark. You need the accounts in the book, your first-submission NIGO rate, the calendar days a reject adds, the staff time to diagnose and fix one, and the cost to validate an account before it goes out. Prevention is a small cost paid on every account. A fix is a larger cost paid only on rejects, but each one sends the account back through custodian review and often means asking the client to sign again. Faster rework doesn't win that time back. Count the second cost as well: assets at risk while the book sits half-moved, which grows with every week the move runs long. Book mix matters here. Margin accounts, alternatives, trusts with mismatched titles and non-transferable securities reject more often than standard brokerage and retirement accounts, so a per-account average borrowed from another firm won't predict your move.
+
+**How do NIGOs fit into planning a transition timeline?**
+
+NIGO rate is one of four inputs that shape a book's timeline. The others are the account mix, the number of complete packets your team can clear in a day, and how long clients take to sign. Straight-through ACATS accounts move quickly. Trusts, annuities and other non-ACATS assets move on transfer agents' and carriers' clocks, and they usually set the end date. Account mix is mostly fixed. The other three you can change. Validation lowers the NIGO rate. Less re-keying raises daily capacity. Batching forms so each client signs once, rather than several times, cuts signature delays. Plan the move at today's numbers and again at the numbers those changes make realistic, then compare the two.
 
 ---
 

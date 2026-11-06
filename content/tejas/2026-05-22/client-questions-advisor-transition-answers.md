@@ -1,7 +1,7 @@
 ---
 title: 4 Questions Every Client Asks During an Advisor Transition (And How to Answer Them Fast)
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: Four specific client questions dominate every advisor transition — and the quality of your answers determines how much of your book actually follows you to the new firm.
 image: client-questions-advisor-transition-answers.jpg
 imageAlt: Financial advisor on a video call walking a client through transition paperwork

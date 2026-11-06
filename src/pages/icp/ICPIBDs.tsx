@@ -9,7 +9,7 @@ export default function ICPIBDs() {
   const faqs = [
     {
       q: "Can we white-label this for advisors joining our firm?",
-      a: "Yes. The experience can be branded as part of your firm's onboarding."
+      a: "Yes. The experience can be branded as part of your firm's advisor onboarding."
     },
     {
       q: "How does this integrate with our home office systems?",
@@ -21,7 +21,7 @@ export default function ICPIBDs() {
     },
     {
       q: "How does pricing work for BDs?",
-      a: "Enterprise pricing tied to advisor volume and transition outcomes. Talk to us about your roadmap and we'll work it through."
+      a: "Transition pricing depends on your volumes and use case. Reach out to us to know more about pricing."
     }
   ];
 
@@ -66,7 +66,7 @@ export default function ICPIBDs() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 opacity-50">
                       <div className="w-5 h-5 rounded-full border-2 border-gray-300" />
-                      <span className="line-through">90-day transition timeline</span>
+                      <span className="line-through">Months-long transition timeline</span>
                     </div>
                     <div className="flex items-center gap-3 opacity-50">
                       <div className="w-5 h-5 rounded-full border-2 border-gray-300" />
@@ -135,7 +135,7 @@ export default function ICPIBDs() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {[
-                { title: 'A purpose-built onboarding workflow', desc: 'Pre-filled forms. Validated submissions. End-to-end visibility for incoming advisors.' },
+                { title: 'A purpose-built advisor onboarding workflow', desc: 'Pre-filled forms. Validated submissions. End-to-end visibility for incoming advisors.' },
                 { title: 'Faster path to advisor productivity', desc: 'Less time on operational work means more time generating revenue at your firm.' },
                 { title: 'Differentiation in the pitch', desc: '"Here\'s how the move actually looks" becomes a slide you want to show, not one you skip.' },
                 { title: 'Lower load on your transition team', desc: 'Your in-house transition staff handles judgment work, not data entry.' }

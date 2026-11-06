@@ -25,7 +25,7 @@ const steps = [
   {
     icon: <Database />,
     title: 'Collect the book, once',
-    desc: 'FastTrackr’s AI pulls every household, member, and account out of your existing documents, statements, exports, and conversations — no re-keying from scratch.',
+    desc: 'FastTrackr’s AI pulls every household, member, and account out of your existing documents, statements, exports, and conversations, so nothing is re-keyed from scratch.',
   },
   {
     icon: <CheckCircle2 />,
@@ -35,7 +35,7 @@ const steps = [
   {
     icon: <FileSpreadsheet />,
     title: 'Map into Goldman’s format',
-    desc: 'FastTrackr outputs the book in Goldman’s own required format, ready to hand over — the exact template and workflow details are confirmed with Goldman during onboarding.',
+    desc: 'FastTrackr outputs the book in Goldman’s own required format, ready to hand over. The exact template and workflow details are confirmed with Goldman during onboarding.',
   },
   {
     icon: <UploadCloud />,
@@ -47,15 +47,15 @@ const steps = [
 const faqs = [
   {
     q: 'Does FastTrackr repaper directly onto Goldman Sachs?',
-    a: 'Not directly. For Goldman, FastTrackr collects and structures the household and account data and returns it in Goldman’s own required format, ready to upload into Goldman’s onboarding workflow — Goldman opens the accounts on their side. You still get the hard part done for you: the data gathered once, structured, and validated.',
+    a: 'Not directly. For Goldman, FastTrackr collects and structures the household and account data and returns it in Goldman’s own required format, ready to upload into Goldman’s onboarding workflow, and Goldman opens the accounts on their side. The hard part still gets done: the data gathered once, structured and checked.',
   },
   {
     q: 'How is this different from the Schwab or Fidelity pages?',
-    a: 'For Schwab, Fidelity, and SEI, FastTrackr prepares and validates the actual repapering forms for every household. For Goldman, the output is the structured data in Goldman’s preferred format rather than a filled form set — the collection, structuring, and validation work is the same either way.',
+    a: 'For Schwab, Fidelity, and SEI, FastTrackr prepares and validates the actual repapering forms for every household. For Goldman, the output is the structured data in Goldman’s preferred format rather than a filled form set. The collection, structuring and validation work is the same either way.',
   },
   {
     q: 'What data can FastTrackr pull in?',
-    a: 'Structured and unstructured sources alike — CRM and system exports, custodian statements, spreadsheets, PDFs, and more. FastTrackr reads them, extracts the account and household detail, and assembles it into one clean record set.',
+    a: 'Structured and unstructured sources alike: CRM and system exports, custodian statements, spreadsheets, PDFs and more. FastTrackr reads them, extracts the account and household detail, and assembles it into one clean record set.',
   },
   {
     q: 'How does FastTrackr work with Goldman Sachs?',
@@ -90,8 +90,8 @@ export default function GoldmanSachsCustodian() {
               </h2>
               <p className="text-xl text-textSecondary leading-relaxed mb-10 max-w-3xl mx-auto">
                 The slowest part of any transition is gathering and structuring the client data. For
-                a move to Goldman, FastTrackr does exactly that — collecting every household once and
-                returning it in the format Goldman’s onboarding workflow expects, ready to upload.
+                a move to Goldman, FastTrackr does exactly that. It collects every household once and
+                returns it in the format Goldman’s onboarding workflow expects, ready to upload.
               </p>
               <Link to={contactLink}>
                 <button className="bg-brandDeep text-brandMint hover:bg-brandDeepHover px-8 py-4 rounded-full font-bold text-lg transition-colors duration-300 shadow-xl">
@@ -111,7 +111,7 @@ export default function GoldmanSachsCustodian() {
               </h2>
               <p className="text-lg text-textSecondary leading-relaxed">
                 Goldman opens the accounts on their side. FastTrackr does the data work that gets you
-                there — so what lands in Goldman’s workflow is clean, complete, and in the right
+                there, so what lands in Goldman’s workflow is clean, complete, and in the right
                 format the first time.
               </p>
             </div>

@@ -1,7 +1,7 @@
 ---
 title: "FINRA Rule 4511 for Advisor Transitions: A Legal Consultant's Guide to Client Record Transfers"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: FINRA Rule 4511 creates dual liability for both releasing and receiving firms during advisor transitions. Here is where the WORM-storage gap lives — and how to build an audit trail that protects everyone.
 image: legal-consultant-guide-finra-rule-4511-client-record-transfers.jpg
 imageAlt: Compliance audit trail of advisor-transition client records

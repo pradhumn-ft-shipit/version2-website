@@ -1,7 +1,7 @@
 ---
 title: "Executive Committee Deck Template: Cost-Benefit Analysis for Transition Technology"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A ready-to-adapt executive committee deck framework for justifying investment in advisor transition technology—structured around cost, capacity, AUM retention, and three-year ROI."
 image: executive-committee-deck-template-cost-benefit-transition-technology.jpg
 imageAlt: Executive committee slide deck template showing cost-benefit waterfall and ROI timeline for transition technology

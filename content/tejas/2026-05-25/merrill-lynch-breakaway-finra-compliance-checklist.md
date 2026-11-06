@@ -1,7 +1,7 @@
 ---
 title: "Merrill Lynch Breakaway: The FINRA Compliance Checklist (2026 Edition)"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A working FINRA compliance checklist for Merrill Lynch advisors planning to go independent, covering Form U4/U5, Reg S-P, the post-Protocol legal framework, and the specific Merrill FA Agreement provisions that govern departure."
 image: merrill-lynch-breakaway-finra-compliance-checklist.jpg
 imageAlt: FINRA compliance checklist for a Merrill Lynch advisor planning a breakaway move

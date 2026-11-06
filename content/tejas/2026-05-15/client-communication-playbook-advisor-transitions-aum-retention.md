@@ -1,7 +1,7 @@
 ---
 title: "Client Communication During Advisor Transitions: The Playbook That Prevents AUM Loss"
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The single biggest predictor of AUM retention during an advisor transition isn't speed or paperwork quality — it's how fast and how well the advisor communicates with their clients. Here's the playbook."
 image: client-communication-playbook-advisor-transitions-aum-retention.jpg
 imageAlt: "Financial advisor having a warm, focused conversation with a client couple in a professional office setting"

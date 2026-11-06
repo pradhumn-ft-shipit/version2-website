@@ -1,7 +1,7 @@
 ---
 title: "AI and Compliance: Deploying Autonomous Systems for Advisor Transitions Without Regulatory Risk"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "FINRA's 2026 introduction of 'agentic AI' triggers heightened Rule 3110 supervision. Here is how to deploy AI-driven transition systems while maintaining full compliance control."
 image: ai-compliance-finra-sec-advisor-transitions.jpg
 imageAlt: Compliance officer reviewing an AI system audit log alongside FINRA documentation on screen

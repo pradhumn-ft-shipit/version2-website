@@ -1,7 +1,7 @@
 ---
 title: "The Wirehouse Breakaway Class of 2026: Why More Billion-Dollar Advisors Are Going Independent This Year"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The 2026 breakaway class skews larger, faster, and more team-based than any prior year. Here is the trend breakdown — by advisor size, channel, destination, and reported motivation — and the four structural shifts inside the wirehouses that are driving it."
 image: wirehouse-breakaway-class-2026-billion-dollar-advisors-independence-trends.jpg
 imageAlt: "Cohort breakdown of 2026 wirehouse breakaway advisors by AUM band, team size, and destination channel."

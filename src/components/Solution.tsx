@@ -10,7 +10,7 @@ const capabilities = [
   {
     icon: <FileText className="w-6 h-6 text-brandMint" />,
     title: "Documentation",
-    description: "Smart mapping across end custodians and firms. The right documents identified, pre-filled, and ready for signature. Push to the custodian via API where supported, or generate signature-ready documents."
+    description: "The right custodian and firm forms are worked out up front and filled from the household record. They go out by one-click DocuSign, as filled PDFs, as Excel in the counterparty's own template, or straight to the custodian by API where it's supported. No retyping either way."
   },
   {
     icon: <LayoutList className="w-6 h-6 text-brandMint" />,

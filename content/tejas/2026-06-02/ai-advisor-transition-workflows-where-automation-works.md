@@ -1,7 +1,7 @@
 ---
 title: "AI for Advisor Transition Workflows: Where Automation Actually Works and Where It Doesn't"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "AI is being pitched as the answer to every transition operations problem. The reality is more specific — some workflow stages benefit substantially from AI automation, others benefit modestly, and a few should remain human-driven. Here is the honest breakdown by stage."
 image: ai-advisor-transition-workflows-where-automation-works.jpg
 imageAlt: An operations specialist reviews an AI-suggested form output on a laptop while preparing to make a final compliance decision

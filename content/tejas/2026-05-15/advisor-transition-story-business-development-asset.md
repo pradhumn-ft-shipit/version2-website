@@ -1,7 +1,7 @@
 ---
 title: How to Turn Your Transition Story Into a Business Development Asset
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Most advisors treat their transition as something to explain away. The best ones treat it as a business development opportunity. Here's how to convert the story of your move into new client conversations."
 image: advisor-transition-story-business-development-asset.jpg
 imageAlt: "Confident financial advisor in a professional meeting, engaged in an animated conversation with prospective clients"

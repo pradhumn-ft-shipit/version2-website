@@ -55,28 +55,35 @@ const SITE_ORIGIN = 'https://fasttrackr.ai';
 const STATIC_SITEMAP_PAGES = [
   { path: '/', priority: '1.0' },
   { path: '/solutions/advisor-transitions', priority: '0.9' },
-  { path: '/solutions/client-onboarding', priority: '0.8' },
-  { path: '/solutions/meeting-assistant', priority: '0.8' },
-  { path: '/solutions/document-intelligence', priority: '0.8' },
   { path: '/who-we-serve/transition-consultants', priority: '0.8' },
   { path: '/who-we-serve/breakaway-advisors', priority: '0.8' },
   { path: '/who-we-serve/acquisitive-rias', priority: '0.8' },
   { path: '/who-we-serve/independent-broker-dealers', priority: '0.8' },
   { path: '/who-we-serve/custodians', priority: '0.8' },
-  // /about is deliberately absent: it redirects to "/" (see src/App.tsx), and a
-  // sitemap should list canonical destinations rather than redirects. It was
-  // carried over from the previous version of the site.
+  { path: '/about', priority: '0.6' }, // PR3-07: a real page now, not a redirect
   { path: '/pricing', priority: '0.7' },
   { path: '/contact', priority: '0.7' },
+  { path: '/security', priority: '0.6' }, // PR3-01
   { path: '/resources/blog', priority: '0.5' },
   { path: '/resources/news', priority: '0.6' },
   { path: '/resources/podcasts', priority: '0.6' },
-  { path: '/resources-for-financial-advisors', priority: '0.6' },
   { path: '/case-study/advisor-transition', priority: '0.7' },
+  // PR2-11 (2026-11-04): real pages that returned 200 but weren't listed.
+  { path: '/case-study/bd-to-ria-400m-transition', priority: '0.7' },
+  { path: '/case-study/independent-breakaway-setup', priority: '0.7' },
+  { path: '/custodians', priority: '0.8' },
+  { path: '/custodians/fidelity', priority: '0.8' },
+  { path: '/custodians/schwab', priority: '0.8' },
+  { path: '/custodians/sei', priority: '0.8' },
+  { path: '/custodians/goldman-sachs', priority: '0.8' },
+  { path: '/custodians/pershing', priority: '0.6' },
+  { path: '/transition-checklist', priority: '0.7' },
+  { path: '/cost-of-repapering', priority: '0.7' },
+  { path: '/glossary', priority: '0.6' },
   { path: '/privacy-policy', priority: '0.3' },
   { path: '/tos', priority: '0.3' },
   // Intentionally NOT listed, though they are real routes in src/App.tsx:
-  // /fpa (link-only co-marketing landing), /zoom-help-documentation,
+  // /zoom-help-documentation,
   // /privacy-policy-transitions, /tos-transitions, /client-privacy-notice and
   // /client-data-consent-acknowledgment. They stay crawlable and are still
   // prerendered with their own <head> — they are just not submitted for
@@ -141,7 +148,7 @@ function loadCanonicalTopics() {
 }
 
 function loadCategoryIds() {
-  // W4 — the `id:` values from BLOG_CATEGORIES (the eight canonical topics, not
+  // W4 — the `id:` values from BLOG_CATEGORIES (the canonical topics, not
   // the "more resources" catch-all) so the category hub pages
   // (/blog/category/<id>) are listed in the sitemap. Same regex-read approach as
   // loadCanonicalTopics: no import, stays in sync with the single source list.
@@ -150,6 +157,15 @@ function loadCategoryIds() {
   const cut = text.indexOf('UNCATEGORIZED_CATEGORY');
   const region = cut === -1 ? text : text.slice(0, cut);
   return [...region.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
+}
+
+// PR2-11: glossary term pages (/glossary/<slug>) and author pages
+// (/authors/<slug>), regex-read from their TS source lists like the categories.
+function loadSlugsFrom(relPath) {
+  const file = path.join(ROOT, relPath);
+  if (!fs.existsSync(file)) return [];
+  const text = fs.readFileSync(file, 'utf8');
+  return [...text.matchAll(/^\s*\{?\s*slug:\s*['"]([^'"]+)['"]/gm)].map((m) => m[1]);
 }
 
 function isLocalAsset(p) {
@@ -267,6 +283,8 @@ function renderTejasFile(filePath, dateFolder, canonicalTopics) {
       image: imageField || null,
       imageAlt: (data.imageAlt || '').trim() || title,
       date: safeDate(data.date) || safeDate(dateFolder),
+      // PR2-07: date of the last real content revision, if any (frontmatter `updated:`).
+      updated: safeDate(data.updated),
       author: (data.author || '').trim() || 'FastTrackr AI Team',
       description,
       excerpt: makeExcerpt(description, html),
@@ -300,6 +318,7 @@ function renderMarkdownFile(filePath) {
     image: (data.image || '').trim() || null,
     imageAlt: (data.imageAlt || '').trim() || title,
     date: safeDate(data.date),
+    updated: safeDate(data.updated),
     author: (data.author || '').trim() || 'FastTrackr AI Team',
     description,
     excerpt: makeExcerpt(description, html),
@@ -712,6 +731,60 @@ function buildPodcasts() {
   return index;
 }
 
+// PR2-12 (2026-11-04): body clean-up applied to every post JSON (markdown and
+// legacy) before the index is built.
+//   1. Leaked frontmatter: a few legacy bodies open with a heading or paragraph
+//      that prints the authoring metadata (title:, target_query:, queue_id:,
+//      status: humanized …). Drop that element.
+//   2. One H1 per page: the template already renders the post title as the H1.
+//      A leading body H1 that repeats the title is dropped; any other body H1
+//      is demoted to H2 so its text stays.
+const LEAKED_META_RE = /<(h[1-6]|p)\b[^>]*>\s*title:[\s\S]*?<\/\1>/gi;
+const LEAKED_META_KEYS = /(target_query|queue_id|priority_score|status):/i;
+
+function decodeEntities(s) {
+  return s
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&');
+}
+
+function normTitle(s) {
+  return decodeEntities(String(s || '').replace(/<[^>]+>/g, ''))
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function cleanPostBody(html, title) {
+  let out = String(html || '').replace(LEAKED_META_RE, (block) =>
+    LEAKED_META_KEYS.test(block) ? '' : block
+  );
+  const lead = out.match(/^\s*<h1\b[^>]*>([\s\S]*?)<\/h1>\s*/i);
+  if (lead && normTitle(lead[1]) === normTitle(title)) out = out.slice(lead[0].length);
+  return out.replace(/<h1(\b[^>]*)>/gi, '<h2$1>').replace(/<\/h1>/gi, '</h2>');
+}
+
+function cleanAllPostBodies() {
+  let changed = 0;
+  for (const f of fs.readdirSync(POSTS_DIR).filter((n) => n.toLowerCase().endsWith('.json'))) {
+    const file = path.join(POSTS_DIR, f);
+    const post = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const cleaned = cleanPostBody(post.content, post.title);
+    if (cleaned !== post.content) {
+      fs.writeFileSync(file, JSON.stringify({ ...post, content: cleaned }));
+      changed++;
+    }
+  }
+  console.log(`[blog] cleaned body H1s / leaked metadata in ${changed} post${changed === 1 ? '' : 's'}`);
+}
+
 function main() {
   // POSTS_DIR is pure build output: wipe it so a deleted/renamed source can
   // never leave a stale JSON behind to be picked up by the index scan below.
@@ -838,6 +911,8 @@ function main() {
     }
   }
 
+  cleanAllPostBodies();
+
   const jsonFiles = fs
     .readdirSync(POSTS_DIR)
     .filter((f) => f.toLowerCase().endsWith('.json'));
@@ -887,10 +962,18 @@ function writeSitemap(index, newsIndex = [], podcastIndex = []) {
       loc: `${SITE_ORIGIN}${p.path}`,
       priority: p.priority,
     })),
-    // W4 — category hub pages (/blog/category/<id>) for the eight canonical topics.
+    // W4 — category hub pages (/blog/category/<id>) for the canonical topics.
     ...loadCategoryIds().map((id) => ({
       loc: `${SITE_ORIGIN}/blog/category/${id}`,
       priority: '0.5',
+    })),
+    ...loadSlugsFrom('src/lib/glossary.ts').map((slug) => ({
+      loc: `${SITE_ORIGIN}/glossary/${slug}`,
+      priority: '0.5',
+    })),
+    ...loadSlugsFrom('src/lib/authors.ts').map((slug) => ({
+      loc: `${SITE_ORIGIN}/authors/${slug}`,
+      priority: '0.4',
     })),
     ...index.map((post) => ({
       loc: `${SITE_ORIGIN}/blog/${post.slug}`,

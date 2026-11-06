@@ -1,7 +1,7 @@
 ---
 title: "The Recruiting Playbook: How Speed of Onboarding Wins Advisor Transitions"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Why the firm that promises the fastest, cleanest transition wins the recruit — and the operational playbook that lets recruiters deliver on that promise."
 image: recruiting-playbook-win-advisor-transitions-speed.jpg
 imageAlt: Advisor recruiter shaking hands with a transitioning advisor in front of a digital onboarding dashboard

@@ -1,7 +1,7 @@
 ---
 title: What Wealth Management Tech Buyers Miss When Evaluating Transition Platforms
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Most wealth management tech-buying committees evaluate transition platforms the same way they evaluate CRMs — and miss the four operational variables that actually drive NIGO rates, repapering speed, and post-go-live ROI."
 image: wealth-management-tech-buyers-evaluate-transition-platforms.jpg
 imageAlt: Wealth management technology buying committee reviewing transition platform criteria

@@ -6,12 +6,11 @@ import { Button } from './ui/Button';
 import { Link } from 'react-router-dom';
 import AnnouncementRibbon from './AnnouncementRibbon';
 
-const solutionsItems = [
-  { label: 'Advisor Transitions', href: '/solutions/advisor-transitions' },
-  { label: 'Client Onboarding', href: '/solutions/client-onboarding' },
-  { label: 'Meeting Assistant', href: '/solutions/meeting-assistant' },
-  { label: 'Document Intelligence', href: '/solutions/document-intelligence' },
-];
+// PR6 (2026-11-05): streamlined header. Top level is Platform (direct link),
+// Who We Serve (dropdown), Custodians (direct link), Resources (dropdown) and
+// the Book a Demo button. Security, Pricing, About and Cost of Transition live
+// in the footer only. Direct links keep a literal to="..." on one line: the
+// review-site script (aeo-seo/review/scripts/build_review_site.py) parses them.
 
 const whoWeServeItems = [
   { label: 'Transition Consultants', href: '/who-we-serve/transition-consultants' },
@@ -27,9 +26,7 @@ const resourcesItems = [
   { label: 'News', href: '/resources/news' },
   // W3: definitional hub — surfaced in nav + footer.
   { label: 'Glossary', href: '/glossary' },
-  // W2: un-bury the crawlable resource library — the only page that prerenders a
-  // link to every post. Footer-only before; now surfaced in the nav dropdown too.
-  { label: 'Resource Library', href: '/resources-for-financial-advisors' },
+  { label: 'Case Studies', href: '/case-study/advisor-transition' },
 ];
 
 export default function Navbar() {
@@ -69,13 +66,10 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-8 items-center h-full">
-            <NavItem label="Solutions" items={solutionsItems} />
+            <Link to="/solutions/advisor-transitions" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Platform</Link>
             <NavItem label="Who We Serve" items={whoWeServeItems} />
+            <Link to="/custodians" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Custodians</Link>
             <NavItem label="Resources" items={resourcesItems} />
-            <Link to="/case-study" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Case Studies</Link>
-            <Link to="/pricing" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Pricing</Link>
-            {/* REVIEW (W0c): replaced "Contact" (→/contact) nav link with "Cost of Transition" (→/cost-of-repapering); Book a Demo button still covers /contact. Note: /cost-of-repapering goes live with WZ. */}
-            <Link to="/cost-of-repapering" className="text-textSecondary hover:text-textPrimary font-medium transition-colors">Cost of Transition</Link>
           </nav>
 
           {/* CTA */}
@@ -106,13 +100,13 @@ export default function Navbar() {
             className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
-              <MobileSection
-                label="Solutions"
-                items={solutionsItems}
-                isOpen={mobileSubmenu === 'Solutions'}
-                onToggle={() => setMobileSubmenu(mobileSubmenu === 'Solutions' ? null : 'Solutions')}
-                onNavigate={() => setMobileMenuOpen(false)}
-              />
+              <Link
+                to="/solutions/advisor-transitions"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-3 text-base font-medium text-textSecondary"
+              >
+                Platform
+              </Link>
               <MobileSection
                 label="Who We Serve"
                 items={whoWeServeItems}
@@ -120,6 +114,13 @@ export default function Navbar() {
                 onToggle={() => setMobileSubmenu(mobileSubmenu === 'Who We Serve' ? null : 'Who We Serve')}
                 onNavigate={() => setMobileMenuOpen(false)}
               />
+              <Link
+                to="/custodians"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-3 text-base font-medium text-textSecondary"
+              >
+                Custodians
+              </Link>
               <MobileSection
                 label="Resources"
                 items={resourcesItems}
@@ -127,28 +128,6 @@ export default function Navbar() {
                 onToggle={() => setMobileSubmenu(mobileSubmenu === 'Resources' ? null : 'Resources')}
                 onNavigate={() => setMobileMenuOpen(false)}
               />
-              <Link
-                to="/case-study"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-textSecondary"
-              >
-                Case Studies
-              </Link>
-              <Link
-                to="/pricing"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-textSecondary"
-              >
-                Pricing
-              </Link>
-              {/* REVIEW (W0c): replaced "Contact" (→/contact) with "Cost of Transition" (→/cost-of-repapering); Book a Demo below still covers /contact. */}
-              <Link
-                to="/cost-of-repapering"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-textSecondary"
-              >
-                Cost of Transition
-              </Link>
               <div className="pt-4 px-3">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full" variant="primary">Book a Demo</Button>

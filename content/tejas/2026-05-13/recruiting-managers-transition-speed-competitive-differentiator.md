@@ -1,6 +1,6 @@
 ---
 title: "How Recruiting Managers Use Transition Speed as a Competitive Differentiator"
-topic: "Advisor Trends & Industry"
+topic: "Advisor Transitions & Repapering"
 description: "Advisor recruiting hit a 4-year high in 2025. In a market where every firm offers similar economics, the firms winning top advisors are those that can credibly promise a fast, clean transition. Here's how recruiting managers are building that competitive edge."
 author: "FastTrackr AI Team"
 image: recruiting-managers-transition-speed-competitive-differentiator.jpg

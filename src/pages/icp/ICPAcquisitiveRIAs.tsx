@@ -188,7 +188,7 @@ export default function ICPAcquisitiveRIAs() {
               <div className="text-center">
                 <Clock className="w-8 h-8 text-brandMint mx-auto mb-4" />
                 <div className="text-2xl font-bold font-display mb-2">Integration cut</div>
-                <div className="text-white/80">from months to weeks</div>
+                <div className="text-white/80">from months to days</div>
               </div>
               <div className="text-center">
                 <FileWarning className="w-8 h-8 text-brandMint mx-auto mb-4" />

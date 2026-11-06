@@ -1,7 +1,7 @@
 ---
 title: "The First 90 Days After ACATS Completion: A Client Retention Playbook"
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Once ACATS completes, the transition isn't over — it's actually when client confidence is most fragile. This is the 90-day client retention playbook: the communication cadence, the notetaking discipline, and the milestones that lock relationships in."
 image: first-90-days-after-acats-completion-client-retention-playbook.jpg
 imageAlt: 90-day post-transition client retention timeline showing communication touchpoints and milestones.
@@ -62,7 +62,7 @@ The day-30 meeting also formally resumes the planning relationship. During the t
 
 For multi-account households or complex transitions, this is also when to confirm that held-back assets — accounts the client chose not to move during the initial transition — are still on the table. Second-deposit capture rates rise significantly when the day-30 meeting explicitly surfaces them.
 
-The cadence here builds on the disciplines covered in our [advisor transition stakeholder management guide](https://fasttrackr.ai/blog/advisor-transition-stakeholder-management), which maps the full set of relationships the operations team has to manage during a move.
+The cadence here builds on the disciplines covered in our [advisor transition stakeholder management guide](https://fasttrackr.ai/blog/signs-transition-losing-clients), which maps the full set of relationships the operations team has to manage during a move.
 
 ## The day-60 milestone: planning resumption and second-deposit timing
 

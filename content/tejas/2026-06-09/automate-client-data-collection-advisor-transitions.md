@@ -1,7 +1,7 @@
 ---
 title: How to Automate Client Data Collection for Advisor Transitions Without Calling Every Client
-topic: "Client Communication & Notetaking"
-categoryId: ai-in-client-communication-and-notetaking
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "How to replace the 'call every client' transition workflow with automated, secure client-data collection that captures account, beneficiary, and authorization details in days, not weeks."
 image: automate-client-data-collection-advisor-transitions.jpg
 imageAlt: Advisor dashboard showing automated client data-collection status across hundreds of households with secure signing and ID verification.

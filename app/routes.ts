@@ -16,9 +16,6 @@ export default [
 
   // Solutions
   route('solutions/advisor-transitions', 'routes/solutions/advisor-transitions.tsx'),
-  route('solutions/client-onboarding', 'routes/solutions/client-onboarding.tsx'),
-  route('solutions/meeting-assistant', 'routes/solutions/meeting-assistant.tsx'),
-  route('solutions/document-intelligence', 'routes/solutions/document-intelligence.tsx'),
 
   // Custodian transition landing pages (W6 · T2-3) — advisors repapering ONTO a
   // custodian (distinct from the /who-we-serve/custodians ICP page). Hub + one
@@ -33,12 +30,15 @@ export default [
   // Core / marketing
   route('pricing', 'routes/pricing.tsx'),
   route('contact', 'routes/contact.tsx'),
-  route('fpa', 'routes/fpa.tsx'),
-  route('case-study', 'routes/case-study-index.tsx'),
+  // PR3-01: security page (SOC 2 Type II facts, documentation on request).
+  route('security', 'routes/security.tsx'),
+  // PR3-07: /about was a redirect to "/"; it is now a short page.
+  route('about', 'routes/about.tsx'),
+  // PR2-10: no /case-study hub route until PR6 builds one; the bare path is a
+  // true 404 meanwhile (the old unlinked index page is in git history, a001fcb).
   route('case-study/advisor-transition', 'routes/case-study.tsx'),
   route('case-study/independent-breakaway-setup', 'routes/case-study-breakaway.tsx'),
   route('case-study/bd-to-ria-400m-transition', 'routes/case-study-bd-to-ria.tsx'),
-  route('resources-for-financial-advisors', 'routes/resources.tsx'),
   route('zoom-help-documentation', 'routes/zoom-help.tsx'),
 
   // Flagship assets (W6 · T2-4): checklist pillar + cost-of-repapering calculator.
@@ -93,7 +93,6 @@ export default [
   route('for-custodians', 'routes/redirects/for-custodians.tsx'),
   route('blog', 'routes/redirects/blog.tsx'),
   route('resources/podcast', 'routes/redirects/resources-podcast.tsx'),
-  route('about', 'routes/redirects/about.tsx'),
   route('aon', 'routes/redirects/aon.tsx'),
   route('onepagecrm', 'routes/redirects/onepagecrm.tsx'),
 

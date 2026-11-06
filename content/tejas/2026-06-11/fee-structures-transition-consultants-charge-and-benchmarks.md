@@ -1,7 +1,7 @@
 ---
 title: "What Transition Consultants Actually Charge: A Fee Structure Benchmark for 2026"
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Transition consultants charge in radically different ways — flat fee, per-account, retainer, success-based, AUM percentage. Here's a benchmark of what each model actually costs in 2026, what each is worth, and how the math changes when AI automation is in the stack."
 image: fee-structures-transition-consultants-charge-and-benchmarks.jpg
 imageAlt: Comparison chart of transition consultant fee structures and benchmark ranges for 2026.

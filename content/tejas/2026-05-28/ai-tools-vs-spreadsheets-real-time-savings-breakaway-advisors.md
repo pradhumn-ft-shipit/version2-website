@@ -1,7 +1,7 @@
 ---
 title: "AI Tools vs Spreadsheets: Real Time Savings for Breakaway Advisors"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Breakaway advisors running their first transition usually default to spreadsheets. Here is the honest comparison of where AI-driven transition tools actually save time versus where spreadsheets still hold up, broken down by workflow phase and book size."
 image: ai-tools-vs-spreadsheets-real-time-savings-breakaway-advisors.jpg
 imageAlt: Side-by-side workflow comparison showing time savings from AI tools versus spreadsheets across breakaway transition phases

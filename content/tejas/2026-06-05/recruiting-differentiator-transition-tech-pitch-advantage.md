@@ -1,7 +1,7 @@
 ---
 title: "The Recruiting Differentiator: Turning Transition Tech Into a Pitch Advantage"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: How RIA recruiters use transition technology as a differentiated pitch—turning operational quality into a competitive advantage that wins advisor talent.
 image: recruiting-differentiator-transition-tech-pitch-advantage.jpg
 imageAlt: Recruiting pitch slide showing transition technology dashboard and SLA commitments as competitive differentiators

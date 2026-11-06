@@ -1,7 +1,7 @@
 ---
 title: The 7 Documents That Cause the Most Delays in Advisor Transitions (And How to Fix Them)
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Advisor transitions don't slow down randomly — they slow down at predictable chokepoints. These are the seven documents responsible for most delays, and what it takes to eliminate them."
 image: seven-documents-that-delay-advisor-transitions.jpg
 imageAlt: Operations professional organizing stacks of financial documents at a modern desk with multiple monitors

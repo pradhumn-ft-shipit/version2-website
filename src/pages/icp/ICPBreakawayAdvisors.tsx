@@ -13,7 +13,7 @@ export default function ICPBreakawayAdvisors() {
     },
     {
       q: "Which custodians do you support?",
-      a: "We work with the major custodians and can support your transition end to end. If your destination custodian is non-standard, book a 30-minute call and we'll walk through your specific case."
+      a: "We support Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing is coming soon. If your destination custodian is non-standard, book a 30-minute call and we'll walk through your specific case."
     },
     {
       q: "What if my Broker Protocol or non-Protocol situation is complex?",

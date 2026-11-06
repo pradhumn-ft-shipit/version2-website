@@ -1,7 +1,7 @@
 ---
 title: How PE-Backed Wealth Platforms Are Using Technology to Compress Integration Timelines
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "PE-backed wealth management platforms are compressing post-acquisition integration from 90–180 days to 18–45 days through transition automation. Here's what that shift means for deal economics."
 image: pe-backed-wealth-platforms-technology-compress-integration-timelines.jpg
 imageAlt: Private equity wealth management executives reviewing acquisition integration timelines and technology metrics in a boardroom

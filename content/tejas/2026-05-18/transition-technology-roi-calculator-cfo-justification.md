@@ -1,7 +1,7 @@
 ---
 title: "Transition Technology ROI Calculator: How to Justify the Budget to Your CFO"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "CFOs want a payback period under 18 months. Here's the ROI formula, the financial model, and the three metrics that make the case for advisor transition automation in any budget conversation."
 image: transition-technology-roi-calculator-cfo-justification.jpg
 imageAlt: Chief Financial Officer reviewing technology ROI analysis and payback period calculations in a financial services boardroom

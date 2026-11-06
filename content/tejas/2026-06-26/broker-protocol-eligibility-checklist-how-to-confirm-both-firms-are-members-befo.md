@@ -3,6 +3,7 @@ title: "Broker Protocol eligibility checklist: how to confirm both firms are mem
 topic: "Advisor Transitions & Repapering"
 description: "Confirm both firms are Broker Protocol members before your resignation date. Step-by-step eligibility checklist covering J.S. Held verification, joinder timing, ACATS, and NIGO reduction."
 author: "FastTrackr AI Team"
+updated: 2026-11-04
 image: broker-protocol-eligibility-checklist-how-to-confirm-both-firms-are-members-befo-hero.png
 imageAlt: "Broker Protocol eligibility checklist: how to confirm both firms are members before you resign"
 ---
@@ -136,6 +137,32 @@ The Protocol does not operate in isolation. Several other rules govern what happ
 If you are working through a team move, the four-year rule on client ownership in partnership agreements at the departing firm may affect which clients are legally yours to solicit, even under Protocol. That is a contract-law question, not a Protocol question, and it requires attorney review before you finalize your client list.
 
 Transition consultants who manage these moves at scale face the same compliance sequencing requirements across every engagement. [FastTrackr AI's platform for transition consultants](https://fasttrackr.ai/who-we-serve/transition-consultants) is built to handle that volume without sacrificing the per-move precision that Protocol compliance demands.
+
+---
+
+## What the Protocol doesn't cover, and who handles what
+
+Confirming both firms are members settles one question: whether the Protocol applies to the client information you take and to soliciting those clients. It doesn't cancel the rest of your employment agreement. Non-compete clauses, forgivable loans, retention deals, team agreements and clients you got through an internal referral program can all still restrict you. Have a securities attorney read your agreement before you set a resignation date. Nothing here is legal advice.
+
+One way to split the work:
+
+| Task | Owner |
+| --- | --- |
+| Reading your employment agreement for non-solicit, non-compete, team and loan terms | Securities attorney |
+| Drafting the resignation letter | Securities attorney |
+| Deciding what you may say to which clients, and when | Securities attorney |
+| Deciding whether a client came through an internal referral | Securities attorney |
+| Setting the order of resignation, registration and first client contact | Attorney sets it, operations runs it |
+| Building the five-field client list | Operations, with software blocking any extra field |
+| Pre-filling new account forms and tracking transfers | Operations and software |
+
+A simple test: if a task has one right answer, it can be automated. If someone has to read a document about you, it goes to counsel.
+
+Get the scope in writing first. Counsel's output should say which clients, what you may say, and when. Operations builds the workflow from that document. When operations hits a case the scope doesn't cover, it goes back to counsel. It shouldn't be decided by whoever happens to be closest to the deadline.
+
+Be careful what you feed the tools. Document extraction should only run on documents the new firm holds lawfully, like forms the client signs at the new firm or statements the client hands over directly. Run your current firm's statements through a tool and you've made a clean record of taking data the Protocol doesn't allow.
+
+Keep the work in one place. Lawyers for departing firms look for firm data emailed to personal accounts, client information stored on personal devices, printed client files and late-night or weekend logins. Most of that comes from advisors improvising without a compliant place to work. A single system with an audit trail removes the reason to do any of it.
 
 ---
 

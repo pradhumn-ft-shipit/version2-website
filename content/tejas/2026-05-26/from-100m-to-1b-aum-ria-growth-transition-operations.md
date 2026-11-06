@@ -1,7 +1,7 @@
 ---
 title: "From $100M to $1B AUM: How RIAs Build Transition Operations That Scale"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "The transition operations a growing RIA needs at $100M, $500M, and $1B in AUM — the systems, the staffing, and the breakpoints between each stage."
 image: from-100m-to-1b-aum-ria-growth-transition-operations.jpg
 imageAlt: Growth chart showing the ten-fold scale jump from $100M to $1B in AUM

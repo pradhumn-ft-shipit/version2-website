@@ -1,7 +1,7 @@
 ---
 title: Wealthbox-Native Transition Platforms for RIA Recruiting Operations
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: What Wealthbox-native means for a transition platform—and how RIA recruiting operations teams should evaluate Wealthbox integration depth before signing a contract.
 image: wealthbox-native-transition-platforms-ria-recruiting.jpg
 imageAlt: "Wealthbox CRM dashboard with embedded transition workflow showing pipeline, documents, and custodian status"

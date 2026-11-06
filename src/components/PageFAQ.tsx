@@ -2,7 +2,14 @@ import { useState } from 'react';
 import { m } from '../lib/motion';
 import { Plus, Minus } from 'lucide-react';
 
-export default function PageFAQ({ faqs }: { faqs: { q: string, a: string }[] }) {
+export default function PageFAQ({
+  faqs,
+  title = 'Frequently Asked Questions',
+}: {
+  faqs: { q: string, a: string }[];
+  /** Section heading (H2). PR3-01: /security uses "Questions". */
+  title?: string;
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   // FAQPage structured data. Every answer is a plain string here, so the schema
@@ -34,7 +41,7 @@ export default function PageFAQ({ faqs }: { faqs: { q: string, a: string }[] }) 
             viewport={{ once: true }}
             className="text-4xl font-display font-bold text-textPrimary tracking-tight"
           >
-            Frequently Asked Questions
+            {title}
           </m.h2>
         </div>
 

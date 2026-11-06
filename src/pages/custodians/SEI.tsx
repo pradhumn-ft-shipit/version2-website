@@ -1,20 +1,22 @@
-import CustodianLayout, { type CustodianLayoutProps } from './CustodianLayout';
+import CustodianLayout, { type CustodianLayoutProps, signatureNigoItem } from './CustodianLayout';
 
 // SEI custodian transition page (D2). SEI is a full-repaper custodian, handled the
-// same way as Schwab and Fidelity — new-account paperwork, transfer forms, and firm
-// documents prepared and validated by FastTrackr. Generic ACATS process facts are
-// sourced to the SEC/DTCC; SEI-specific timelines and form names are held as TBD
-// until confirmed against SEI's own custodian documentation.
+// same way as Schwab and Fidelity (grounding §17). The move flow and the
+// same-custodian case (Advisor Change form) follow grounding §18 (review
+// decisions 12-13). Generic ACATS process facts are sourced to the SEC/DTCC;
+// SEI-specific timelines and form versions are confirmed with SEI during onboarding.
 const props: CustodianLayoutProps = {
   custodian: 'SEI',
   shortName: 'SEI',
   slug: 'sei',
   h1: 'Move your book to SEI, repapered in days',
-  subhead: 'Advisor transitions and account transfers onto SEI, without the paperwork war room.',
+  subhead: 'Advisor transitions and asset transfers onto SEI, without the paperwork war room.',
   intro:
-    'Bringing a book of business to SEI means new-account applications, transfer-of-account forms, and firm paperwork for every household — the work that turns a transition into a months-long project. FastTrackr collects the data once and prepares the forms so the move runs in days.',
+    'Bringing a book of business to SEI means new-account applications, transfer of assets forms and firm paperwork for every household. Changing firms while staying at SEI still means an Advisor Change form and the full firm paperwork. That work is what turns a transition into a months-long project. FastTrackr collects the data once and prepares the forms so the move runs in days.',
+  sameCustodianForm: 'Advisor Change form',
+  sameCustodianChange: 'an advisor change on the accounts',
   processIntro:
-    'Assets move to SEI over the ACATS rail — the Automated Customer Account Transfer Service operated by DTCC, which automates and standardizes asset transfers between firms. At a high level, every transfer follows the same four steps.',
+    'Assets move to SEI over the ACATS rail: the Automated Customer Account Transfer Service operated by DTCC, which automates and standardizes asset transfers between firms. Once the paperwork is signed, every transfer follows the same three steps.',
   processSteps: [
     {
       n: '1',
@@ -24,18 +26,21 @@ const props: CustodianLayoutProps = {
     {
       n: '2',
       title: 'Validate',
-      desc: 'The delivering firm reviews the request and either rejects it or returns the detailed account asset data — the step where a mismatch sends the transfer back as NIGO.',
+      desc: 'The delivering firm reviews the request and either rejects it or returns the detailed account asset data. This is the step where a mismatch sends the transfer back as NIGO.',
     },
     {
       n: '3',
       title: 'Settle',
       desc: 'Once validated, the assets are delivered and settle through DTCC infrastructure. A standard ACATS transfer runs about six business days end to end (SEC), with accelerated processing as few as four (DTCC).',
     },
-    {
-      n: '4',
-      title: 'Repaper',
-      desc: 'Alongside the transfer, each household needs SEI new-account applications, agreements, and any firm-specific forms executed to complete the move.',
-    },
+  ],
+  forms: [
+    'SEI new-account application, for each account and account type',
+    'Beneficiary forms',
+    'Servicing forms: options, margin, EFT and distributions',
+    'ACAT transfer of assets form',
+    'Advisor Change form, when you change firms and keep SEI as custodian',
+    'Firm paperwork: advisory agreement, fee schedule, Form CRS and privacy policy',
   ],
   processNote: (
     <>
@@ -47,13 +52,10 @@ const props: CustodianLayoutProps = {
     </>
   ),
   nigoItems: [
+    signatureNigoItem,
     {
       title: 'Registration does not match',
       desc: 'The account title and registration on the new SEI paperwork must match the delivering firm’s records exactly. A middle initial, a trust date, or an ownership-type difference is a common rejection.',
-    },
-    {
-      title: 'Missing or mismatched signatures',
-      desc: 'Every required account owner has to sign, and the signatures have to match what the delivering firm holds. Joint and trust accounts multiply the places a signature can be missed.',
     },
     {
       title: 'Incomplete account or transfer details',
@@ -68,20 +70,24 @@ const props: CustodianLayoutProps = {
   blogCategoryLabel: 'Advisor Transitions & Repapering',
   faqs: [
     {
+      q: 'How does a move to SEI work?',
+      a: 'FastTrackr collects the data, creates the paperwork and puts it into DocuSign, and everything goes out for signature. SEI then validates the paperwork, opens the accounts and initiates the ACAT through DTCC. Once the delivering firm or custodian accepts, everything settles. Repapering is the first step, and it sets off everything else.',
+    },
+    {
+      q: 'Do I need to repaper if I change firms but stay at SEI?',
+      a: 'Yes. When you move to a new firm and keep SEI as custodian, there is no ACAT. The step becomes an advisor change on the accounts inside SEI, which happens promptly. The SEI form for this is the Advisor Change form, and your new firm paperwork is still the full set. FastTrackr prepares both.',
+    },
+    {
       q: 'How long does it take to move a book to SEI?',
-      a: 'The underlying ACATS transfer runs about six business days end to end (SEC), or as few as four with DTCC accelerated processing, once a request is validated — but the full advisor transition (collecting data, preparing and signing new-account and transfer forms for every household) is what usually stretches to weeks or months. FastTrackr compresses that preparation work.',
+      a: 'The ACATS transfer itself runs about six business days end to end (SEC), or as few as four with DTCC accelerated processing, once a request is validated. The full advisor transition, collecting data and preparing and signing the paperwork for every household, is what takes 90 days and sometimes longer. FastTrackr compresses that preparation work.',
     },
     {
       q: 'What is ACATS?',
-      a: 'ACATS (Automated Customer Account Transfer Service) is the DTCC-operated system that automates and standardizes the transfer of customer accounts between firms. It is the rail assets travel on when a book moves to SEI.',
+      a: 'ACATS (Automated Customer Account Transfer Service) is the DTCC-operated system that automates and standardizes the transfer of customer assets between firms. It is the rail assets travel on when a book moves to SEI.',
     },
     {
       q: 'What causes an SEI transfer to be rejected as NIGO?',
-      a: 'The most common causes are a registration or title that does not match the delivering firm’s records, missing or mismatched signatures, incomplete account or transfer details, and assets that cannot transfer in-kind. FastTrackr validates these fields before submission.',
-    },
-    {
-      q: 'How does FastTrackr work with SEI?',
-      a: 'FastTrackr prepares the household data and the forms an SEI transition needs, and delivers them as signature-ready, in-good-order packages. Talk to us about how the handoff would work for your book.',
+      a: 'The most common causes are missing or mismatched signatures, a registration or title that does not match the delivering firm’s records, incomplete account or transfer details, and assets that cannot transfer in-kind. FastTrackr checks these fields before submission.',
     },
   ],
   ctaHeadline: 'Planning a move to SEI? See exactly how your book would repaper.',

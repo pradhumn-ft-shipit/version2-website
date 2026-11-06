@@ -1,7 +1,7 @@
 ---
 title: How OSJs Can Onboard 10 New Advisors Per Quarter Without Overwhelming Their Operations Team
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "OSJs can onboard 10 advisors a quarter without adding ops headcount by centralizing data intake, automating form population, and eliminating NIGO correction cycles. Here's the operating model."
 image: osj-onboard-10-advisors-per-quarter.jpg
 imageAlt: OSJ operations team coordinating multiple advisor onboarding workflows on a shared dashboard

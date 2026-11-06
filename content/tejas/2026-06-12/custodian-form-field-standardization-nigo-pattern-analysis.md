@@ -1,7 +1,7 @@
 ---
 title: "What Custodians Could Standardize That Would Cut Industry-Wide NIGOs in Half: A Field-Level Pattern Analysis"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Most NIGOs aren't operator errors — they're predictable consequences of inconsistent field naming, mismatched required/optional flags, and silent validation rules across custodians. Here is the field-level pattern analysis from running 80,000+ packets, and the four standardizations that would cut industry NIGOs roughly in half."
 image: custodian-form-field-standardization-nigo-pattern-analysis.jpg
 imageAlt: "Heatmap of the most NIGO-prone fields across major custodian forms, with proposed standardization mapping."
@@ -87,7 +87,7 @@ The pattern we see at firms that have implemented this is straightforward. They 
 
 Firms using FastTrackr's platform get this stack out of the box — the field dictionary, the validation rules, the cross-custodian mapping — which is how they go from 90 days to 3 weeks on a typical transition and capture 75% faster end-to-end performance. But the underlying insight is portable. Even firms that build their own version of this internally see the bulk of the gain. The architecture is what matters, not the vendor.
 
-This is also where the upstream-document-intelligence story we covered in [document intelligence replacing data entry in broker-dealer back offices](https://fasttrackr.ai/blog/document-intelligence-replacing-data-entry-broker-dealer-back-office) connects to the form-design story here. Document intelligence reads the form. Field-level standardization tells the system what each field means. Together they replace the cognitive load that operators have been carrying alone for decades.
+This is also where the upstream-document-intelligence story we covered in document intelligence replacing data entry in broker-dealer back offices connects to the form-design story here. Document intelligence reads the form. Field-level standardization tells the system what each field means. Together they replace the cognitive load that operators have been carrying alone for decades.
 
 ## Why custodians would actually do this
 

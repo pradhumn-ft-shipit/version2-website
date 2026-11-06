@@ -1,7 +1,7 @@
 ---
 title: "FINRA & Broker Protocol Expertise: How to Evaluate a Transition Vendor"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A buyer's framework for evaluating whether a transition platform actually understands FINRA, the Broker Protocol, and the non-protocol scenarios that decide TRO risk — including the 12 questions every RFP should ask."
 image: finra-broker-protocol-expertise-evaluate-transition-vendor.jpg
 imageAlt: Transition vendor evaluation framework showing FINRA and broker protocol expertise checkpoints

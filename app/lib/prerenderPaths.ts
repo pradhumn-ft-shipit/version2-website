@@ -22,6 +22,9 @@ import { authorSlugs as siteAuthorSlugs } from '../../src/lib/authors';
 // Net effect: a new blog/news post is prerendered automatically the next build,
 // with no edit to route or prerender config, ever.
 
+/** Path used to prerender the `*` not-found route; staged as dist/404.html. */
+export const NOT_FOUND_PRERENDER_PATH = '/404';
+
 export interface PrerenderInput {
   /** Fully-static route paths from the framework (`getStaticPaths()`). */
   staticPaths: string[];

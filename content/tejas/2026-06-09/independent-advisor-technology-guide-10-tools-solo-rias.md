@@ -1,7 +1,7 @@
 ---
 title: "Independent Advisor Technology Guide: The 10 Tools Solo RIAs Need in 2026"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A 2026 reference stack for solo RIAs, covering the ten core technology categories that matter most—CRM, portfolio management, client portal, AI notetaker, transition automation, and the integrations that hold them together."
 image: independent-advisor-technology-guide-10-tools-solo-rias.jpg
 imageAlt: "Solo RIA's screen showing a ten-tool technology stack with integration arrows between CRM, custodian, portfolio management, and AI workflows."

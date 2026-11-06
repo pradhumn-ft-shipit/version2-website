@@ -70,7 +70,7 @@ export default function BlogCategory({
               <div className="mt-6 text-sm text-textTertiary">
                 {posts.length} {posts.length === 1 ? 'article' : 'articles'} ·{' '}
                 <Link
-                  to="/resources-for-financial-advisors"
+                  to="/resources/blog"
                   className="text-brandDeep font-semibold hover:text-brandMint transition-colors"
                 >
                   Browse all topics →

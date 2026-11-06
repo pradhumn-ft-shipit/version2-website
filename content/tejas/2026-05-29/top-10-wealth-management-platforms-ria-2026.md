@@ -1,7 +1,7 @@
 ---
 title: Top 10 Wealth Management Technology Platforms for RIAs in 2026 (Ranked by Use Case)
-topic: "Advisor Trends & Industry"
-categoryId: advisor-trends-behavior-and-industry-commentary
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A use-case-ranked guide to the ten wealth management platforms RIAs are actually deploying in 2026 — portfolio management, financial planning, CRM, transitions, onboarding — and how to choose between them."
 image: top-10-wealth-management-platforms-ria-2026.jpg
 imageAlt: Comparison grid of wealth management technology platforms ranked by use case

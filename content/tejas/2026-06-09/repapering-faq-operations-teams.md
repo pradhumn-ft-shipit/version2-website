@@ -1,7 +1,7 @@
 ---
 title: "Repapering FAQ: Every Question Operations Teams Have About Advisor Transition Paperwork"
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A comprehensive FAQ for operations teams covering the most common repapering questions, including NIGO prevention, custodian-specific quirks, signature workflows, and audit-trail requirements."
 image: repapering-faq-operations-teams.jpg
 imageAlt: "Operations team reviewing a repapering workflow dashboard with NIGO flags, custodian status, and audit-trail entries."

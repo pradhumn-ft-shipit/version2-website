@@ -1,6 +1,6 @@
 ---
 title: "The Whiteboard Principle: How FastTrackr AI Protects Client Data Privacy During Advisor Transitions"
-topic: "Compliance, Security & Data"
+topic: "Advisor Transitions & Repapering"
 description: "Client data privacy during advisor transitions is a regulatory and reputational minefield. FastTrackr's whiteboard approach means client data exists only to facilitate the transition — then it's gone."
 author: "FastTrackr AI Team"
 image: advisor-transition-whiteboard-client-data-privacy.jpg

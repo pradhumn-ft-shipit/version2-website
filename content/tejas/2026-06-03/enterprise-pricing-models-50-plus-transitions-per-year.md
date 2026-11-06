@@ -1,7 +1,7 @@
 ---
 title: "Enterprise Pricing Models for 50+ Transitions Per Year: Beyond Per-Seat SaaS"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Per-seat SaaS pricing breaks at 50+ advisor transitions per year. Here are the four enterprise models acquisitive RIAs actually use, plus the procurement asks and negotiation levers that produce a 3-9 month payback."
 image: enterprise-pricing-models-50-plus-transitions-per-year.jpg
 imageAlt: "A chief operating officer and her M&A finance lead review enterprise pricing options at a conference room table with budget spreadsheets"

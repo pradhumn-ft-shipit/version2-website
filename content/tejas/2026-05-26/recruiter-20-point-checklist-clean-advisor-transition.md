@@ -1,7 +1,7 @@
 ---
 title: "The Recruiter's 20-Point Checklist for a Clean Advisor Transition"
-topic: "Prospecting & Growth"
-categoryId: ai-for-client-prospecting-and-growth
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: A 20-point checklist that recruiters use to ensure a clean advisor transition — from due diligence through Day 90 of the post-transition operations window.
 image: recruiter-20-point-checklist-clean-advisor-transition.jpg
 imageAlt: "Checklist on a polished desk representing a recruiter's pre-transition due diligence"

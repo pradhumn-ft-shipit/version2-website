@@ -1,7 +1,7 @@
 ---
 title: "Enterprise Pricing Models for 50+ Advisor Transitions Per Year: Beyond Per-Seat SaaS"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "Why per-seat SaaS pricing breaks for RIAs running 50+ advisor transitions per year, and what enterprise pricing models actually look like—volume-based, capacity tiers, and outcomes-tied contracts."
 image: enterprise-pricing-50-plus-transitions-beyond-per-seat-saas.jpg
 imageAlt: Pricing model comparison chart showing per-seat versus per-transition versus capacity-tier economics

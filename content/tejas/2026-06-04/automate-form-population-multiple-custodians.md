@@ -1,7 +1,7 @@
 ---
 title: How to Automate Form Population Across Multiple Custodians for Advisor Transitions
-topic: "Document Processing & Back-Office"
-categoryId: document-processing-and-back-office-automation
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A practical playbook for eliminating manual data entry across Fidelity, Schwab, and Pershing forms — reducing NIGOs and processing hundreds of accounts simultaneously during advisor transitions."
 image: automate-form-population-multiple-custodians.jpg
 imageAlt: Automated form-population workflow across multiple custodian systems

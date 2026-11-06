@@ -5,7 +5,7 @@ import { seoMeta, type SeoConfig, absoluteUrl } from '../../../src/lib/seo';
 const seo: SeoConfig = {
   title: 'Custodian Transitions | FastTrackr AI',
   description:
-    'Repaper your book of business onto a new custodian in days. Custodian-specific transition guides for Schwab, Fidelity, and BNY Pershing.',
+    'Move your book in days, whether you change custodian or only change firms. Guides for Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing coming soon.',
   canonical: '/custodians',
   ogImage: '/logomark.png',
   jsonLd: {
@@ -13,12 +13,14 @@ const seo: SeoConfig = {
     '@type': 'CollectionPage',
     name: 'Custodian Transitions',
     description:
-      'Custodian-specific advisor transition and repapering guides for moving a book of business onto Schwab, Fidelity, and BNY Pershing.',
+      'Move your book in days, whether you change custodian or only change firms. Guides for Fidelity, Charles Schwab, Goldman Sachs and SEI. BNY Pershing coming soon.',
     url: absoluteUrl('/custodians'),
     hasPart: [
       { '@type': 'WebPage', name: 'Move your book to Charles Schwab', url: absoluteUrl('/custodians/schwab') },
       { '@type': 'WebPage', name: 'Move your book to Fidelity', url: absoluteUrl('/custodians/fidelity') },
-      { '@type': 'WebPage', name: 'Move your book to BNY Pershing', url: absoluteUrl('/custodians/pershing') },
+      { '@type': 'WebPage', name: 'Move your book to SEI', url: absoluteUrl('/custodians/sei') },
+      { '@type': 'WebPage', name: 'Goldman Sachs: data in Goldman\'s own format', url: absoluteUrl('/custodians/goldman-sachs') },
+      { '@type': 'WebPage', name: 'BNY Pershing (coming soon)', url: absoluteUrl('/custodians/pershing') },
     ],
   },
 };

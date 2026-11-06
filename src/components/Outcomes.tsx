@@ -13,15 +13,15 @@ const stats = [
       <div className="flex items-center gap-2 flex-wrap">
         <span className="text-gray-400 line-through text-2xl font-normal decoration-red-400">Months</span>
         <ArrowRight className="w-5 h-5 text-textSecondary" />
-        <span className="text-brandDeep text-3xl">Weeks</span>
+        <span className="text-brandDeep text-3xl">days</span>
       </div>
     ),
-    description: "The 90-day timeline gets cut down dramatically."
+    description: "Moves that used to take months now take days."
   },
   {
     icon: <ShieldCheck className="w-5 h-5 text-brandMint" />,
     headline: "Fewer NIGOs",
-    description: "Pre-validated, mapped forms. Cleaner submissions."
+    description: "Forms checked against custodian and firm rules before they go out. Cleaner submissions."
   },
   {
     icon: <TrendingUp className="w-5 h-5 text-brandMint" />,

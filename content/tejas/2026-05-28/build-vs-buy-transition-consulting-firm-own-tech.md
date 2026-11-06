@@ -1,7 +1,7 @@
 ---
 title: "Build vs Buy: Should Your Transition Consulting Firm Build Its Own Tech?"
-topic: AI in Wealth Management Strategy
-categoryId: the-role-of-ai-in-wealth-management-strategy
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: "A boutique transition consulting firm running 30-50 transitions per year faces a recurring build-vs-buy question on its technology stack. This is the honest decision framework — total cost of ownership, ongoing engineering burden, and the specific scenarios where building actually pays off."
 image: build-vs-buy-transition-consulting-firm-own-tech.jpg
 imageAlt: Decision tree comparing build-vs-buy economics for transition consulting firm technology

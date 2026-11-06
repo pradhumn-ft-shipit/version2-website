@@ -1,7 +1,7 @@
 ---
 title: "Boutique Consultant's Guide to Systematizing FINRA and Broker Protocol Work"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: How a 3-15 person transition consulting firm can systematize FINRA and Broker Protocol work to handle 20+ concurrent transitions without losing the senior-consultant judgment that clients pay for.
 image: boutique-consultant-systematize-finra-broker-protocol.jpg
 imageAlt: Workflow systemization for a boutique transition consulting firm handling concurrent FINRA Broker Protocol moves

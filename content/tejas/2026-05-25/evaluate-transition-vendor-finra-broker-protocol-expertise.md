@@ -1,7 +1,7 @@
 ---
 title: "FINRA & Broker Protocol Expertise: How to Evaluate a Transition Technology Vendor"
-topic: "Compliance, Security & Data"
-categoryId: ai-for-compliance-security-and-data-management
+topic: "Advisor Transitions & Repapering"
+categoryId: advisor-transitions-and-repapering
 description: The specific evaluation criteria that separate transition technology vendors with real FINRA and Broker Protocol expertise from those with marketing claims — including the seven questions to ask in any vendor demo.
 image: evaluate-transition-vendor-finra-broker-protocol-expertise.jpg
 imageAlt: Vendor evaluation scorecard for FINRA and Broker Protocol expertise in transition technology
